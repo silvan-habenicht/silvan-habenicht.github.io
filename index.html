@@ -79,43 +79,41 @@
         </ul>
         
         <pre><div class="code"><code>
-    interface Befehl {
-      void ausführen();
-    }
+interface Befehl {
+  void ausführen();
+}
         </code></div></pre>
         
         <pre><div class="code"><code>
-        
-    class Bestellung implements Befehl () {
+class Bestellung implements Befehl () {
 
-      List&ltGericht&gt gerichte;
-      Küche küche;
+  List&ltGericht&gt gerichte;
+  Küche küche;
 
-       public Bestellung (Küche küche) {
-         this.küche = küche;
-      }
+   public Bestellung (Küche küche) {
+     this.küche = küche;
+  }
 
-      void ausführen() {
+  void ausführen() {
 
-        for (Gericht g : gerichte) {
-          küche.zubereiten(g);
-        }
-
-      }
-
+    for (Gericht g : gerichte) {
+      küche.zubereiten(g);
     }
-        
+
+  }
+
+} 
         </code></div></pre>
             
           
         <pre><div class="code"><code>
-    class Abrechnung implements Befehl () {
+class Abrechnung implements Befehl () {
 
-      Kasse kasse;
+  Kasse kasse;
 
-      void ausführen() {...}
+  void ausführen() {...}
 
-    }
+}
         </code></div></pre>
             
             <h4>Multiple-Choice</h4>
@@ -195,51 +193,51 @@
         <b>Alter Code</b>
         
         <pre><div class="code"><code>
-    class Bestellung implements Befehl {
+class Bestellung implements Befehl {
 
-      List&gtGericht&lt gerichte;
+  List&gtGericht&lt gerichte;
 
-       ...
+   ...
 
-      void gerichtHinzufügen(int gerichtID) {
+  void gerichtHinzufügen(int gerichtID) {
 
-        Gericht gericht;
+    Gericht gericht;
 
-        if(gerichtID == 1) {
-          gericht = new InsalataMista();
-        } else if (gerichtID == 2) {
-          gericht = new InsalataCapricciosa();
-        }
+    if(gerichtID == 1) {
+      gericht = new InsalataMista();
+    } else if (gerichtID == 2) {
+      gericht = new InsalataCapricciosa();
+    }
 
-          ...
+      ...
 
-          else if (gerichtID == 35) {
-          gericht = new PizzaMargherita();
-        } else if (gerichtID == 36) {
-          gericht = new PizzaCipolla();
-        } else if (gerichtID == 37) {
-          gericht = new PizzaCalzone();
-        }
+      else if (gerichtID == 35) {
+      gericht = new PizzaMargherita();
+    } else if (gerichtID == 36) {
+      gericht = new PizzaCipolla();
+    } else if (gerichtID == 37) {
+      gericht = new PizzaCalzone();
+    }
 
-          ...
+      ...
 
-          else if (gerichtID == 68) {
-            gericht = new PenneAllArrabiata();
-          }
-
-          ...
-
-        gerichte.add(gericht);
-
+      else if (gerichtID == 68) {
+        gericht = new PenneAllArrabiata();
       }
 
-      void ausführen() {
-        for (Gericht g : gerichte) {
-          g.zubereiten();
-          g.servieren();
-        }
+      ...
 
+    gerichte.add(gericht);
+
+  }
+
+  void ausführen() {
+    for (Gericht g : gerichte) {
+      g.zubereiten();
+      g.servieren();
     }
+
+}
     </code></div></pre>
             
         <ul>
@@ -249,27 +247,27 @@
         <b>Neuer Code</b>
         
         <pre><div class="code"><code>
-    class Bestellung implements Befehl{
+class Bestellung implements Befehl{
 
-      List&gtGericht&lt gerichte;
-      GerichteFabrik factory;
+  List&gtGericht&lt gerichte;
+  GerichteFabrik factory;
 
-       ...
+   ...
 
-      void gerichtHinzufügen(int gerichtID) {
+  void gerichtHinzufügen(int gerichtID) {
 
-        Gericht gericht = factory.erzeugeGericht(gerichtID);
-        gerichte.add(gericht);
+    Gericht gericht = factory.erzeugeGericht(gerichtID);
+    gerichte.add(gericht);
 
-      }
+  }
 
-      void ausführen() {
-        for (Gericht g : gerichte) {
-          g.zubereiten();
-          g.servieren();
-        }
-
+  void ausführen() {
+    for (Gericht g : gerichte) {
+      g.zubereiten();
+      g.servieren();
     }
+
+}
         </code></div></pre>
             
         <ul>
