@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Willkommen im Ristorante Bendispasta!</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+    </head>
+
+    <body>
+        
+        <div class="sidenav">
+          <a style="font-weight:bold;color:darkred;font-style:normal;">Pattern-Menü</a>
+          <a style="text-indent:15px;font-size:14px;" href="#command">Command</a>
+          <a style="text-indent:15px;font-size:14px;"href="#factory">Factory</a>
+          <a style="text-indent:15px;font-size:14px;"href="#decorator">Decorator</a>
+          <a style="text-indent:15px;font-size:14px;"href="#strategy">Strategy</a>
+          <a style="text-indent:15px;font-size:14px;"href="#observer">Observer</a>
+          <a style="text-indent:15px;font-size:14px;"href="#adapter">Adapter</a>
+        </div>
+
+        <div>
+        
+        <h1>Il Ristorante <em>Bendispasta</em></h1>
+        <hr class="italian" />
+        <h2>Einführung</h2>
+
+        <!--
+            GEMACHT MIT <3 UND JAVASCRIPT
+        -->
+
+        <p>
+            Design Patterns (deutsch: Entwurfsmuster) sind allgemeine Entwurfsprinzipien, nach denen objektorientierter Softwarecode aufgebaut werden kann. Bei bestimmten wiederkehrenden Anwendungsfällen tragen sie dazu bei, dass der Code möglichst flexibel an veränderte Anforderungen angepasst oder um erweiterte Funktionalität ergänzt werden kann. Die Kenntnis grundlegender Design Patterns ist für die moderne OO-Entwicklung von elementarer Bedeutung.
+        </p>
+
+        <p>
+            Im Folgenden wirst du einige der wichtigsten Design Patterns kennen und einzusetzen lernen. Dazu werfen wir einen Blick in die Arbeitswelt der traditionsreichen virtuellen Pizzeria <em>Bendispasta</em>. Ihr Geschäftführer Jens hat nun angeordnet die vorherrschenden Arbeitsabläufe nach dem Vorbild der agilen Softwareentwicklung zu modernisieren.
+        </p>
+        
+
+        <h2>Willkommen im Ristorante Bendispasta!</h2>
+        
+        <h3 id="command">Das Command-Pattern</h3>
+        <ul>
+          <li>Vermittlung von Bestellsystem/Kellner zur Küche/Theke</li>
+          <li>Warteschlange in der Küche</li>
+        </ul>
+        
+        <pre>
+        <code>
+        <span class="keyword">interface</span> <span class="class">Befehl</span> {
+          void ausführen();
+        }
+        </code>
+        </pre>
+        
+        <pre>
+        <code>
+        <span class="keyword">class</span> <span class="class">Bestellung</span> <span class="keyword">implements</span> <span class="class">Befehl</span>() {
+
+          List&ltGericht&gt gerichte;
+          Küche küche;
+
+          <span class="keyword">public</span> <span class="class">Bestellung</span>(Küche küche) {
+            <span class="keyword">this</span>.küche = küche;
+          }
+
+          <span class="keyword">void</span> ausführen() {
+
+            <span class="keyword">for</span> (Gericht g : gerichte) {
+              küche.zubereiten(g);
+            }
+
+          }
+
+        }
+        </code>
+        </pre>
+            
+        <pre>
+        <code>
+        <span class="keyword">class</span> <span class="class">Abrechnung</span> <span class="keyword">implements</span> <span class="class">Befehl</span>() {
+
+          Kasse kasse;
+
+          void ausführen() {...}
+
+        }
+        </code>
+        </pre>
+        
+    </div>
+
+    </body>
+</html>
