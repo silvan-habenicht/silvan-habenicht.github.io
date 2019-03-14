@@ -48,41 +48,38 @@
           <li>Warteschlange in der Küche</li>
         </ul>
         
-        <pre>
-        <code>
-        <div>
+        <pre><div><code>
         <span class="keyword">interface</span> <span class="class">Befehl</span> {
           void ausführen();
         }
-        </div>
-        </code>
-        </pre>
+        </code></div></pre>
         
-        <pre>
-        <code>
-        <span class="keyword">class</span> <span class="class">Bestellung</span> <span class="keyword">implements</span> <span class="class">Befehl</span>() {
+        <pre><div><code>
+        
+<span class="keyword">class</span> <span class="class">Bestellung</span> <span class="keyword">implements</span> <span class="class">Befehl</span>() {
 
-          List&ltGericht&gt gerichte;
-          Küche küche;
+  List&ltGericht&gt gerichte;
+  Küche küche;
 
-          <span class="keyword">public</span> <span class="class">Bestellung</span>(Küche küche) {
-            <span class="keyword">this</span>.küche = küche;
-          }
+  <span class="keyword">public</span> <span class="class">Bestellung</span>(Küche küche) {
+    <span class="keyword">this</span>.küche = küche;
+  }
 
-          <span class="keyword">void</span> ausführen() {
+  <span class="keyword">void</span> ausführen() {
 
-            <span class="keyword">for</span> (Gericht g : gerichte) {
-              küche.zubereiten(g);
-            }
+    <span class="keyword">for</span> (Gericht g : gerichte) {
+      küche.zubereiten(g);
+    }
 
-          }
+  }
 
-        }
-        </code>
-        </pre>
+}
+        
+        </code></div></pre>
             
-        <pre>
-        <code>
+          
+        <pre><div><code>
+        
         <span class="keyword">class</span> <span class="class">Abrechnung</span> <span class="keyword">implements</span> <span class="class">Befehl</span>() {
 
           Kasse kasse;
@@ -90,8 +87,8 @@
           void ausführen() {...}
 
         }
-        </code>
-        </pre>
+        </code></div></pre>
+          
         
     </div>
 
