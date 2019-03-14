@@ -7,6 +7,7 @@
         <title>Willkommen im Ristorante Bendispasta!</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="styles/school-book.css">
     </head>
 
     <body>
@@ -30,25 +31,29 @@
             }
         </script>
         
+        <script src="highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        
         <div class="sidenav" id="mySidenav">
-          <a style="font-weight:bold;color:darkred;font-style:normal;"onclick="openNav()">Pattern-Menü</a>
-          <a style="text-indent:15px;font-size:14px;" href="#command"onclick="openNav()">Command</a>
-          <a style="text-indent:15px;font-size:14px;"href="#factory"onclick="openNav()">Factory</a>
-          <a style="text-indent:15px;font-size:14px;"href="#decorator"onclick="openNav()">Decorator</a>
-          <a style="text-indent:15px;font-size:14px;"href="#strategy"onclick="openNav()">Strategy</a>
-          <a style="text-indent:15px;font-size:14px;"href="#observer"onclick="openNav()">Observer</a>
-          <a style="text-indent:15px;font-size:14px;"href="#adapter"onclick="openNav()">Adapter</a>
+          <a style="font-weight:bold;color:darkred;font-style:normal;"onclick="closeNav()">Pattern-Menü</a>
+          <a style="text-indent:15px;font-size:14px;" href="#command"onclick="closeNav()">Command</a>
+          <a style="text-indent:15px;font-size:14px;"href="#factory"onclick="closeNav()">Factory</a>
+          <a style="text-indent:15px;font-size:14px;"href="#decorator"onclick="closeNav()">Decorator</a>
+          <a style="text-indent:15px;font-size:14px;"href="#strategy"onclick="closeNav()">Strategy</a>
+          <a style="text-indent:15px;font-size:14px;"href="#observer"onclick="closeNav()">Observer</a>
+          <a style="text-indent:15px;font-size:14px;"href="#adapter"onclick="closeNav()">Adapter</a>
         </div>
         
         <div class="togglebutton">
             
         <a id="toggle" href="javascript:void(0)" onclick="openNav()"><span></span></a>
         </div>
+        
         <div>
             
         <h1>Il Ristorante <em>Bendispasta</em></h1>
         <hr class="italian" />
-        <h2>Einführung</h2>
+        <h2>Willkommen in der Pizzeria Bendispasta!</h2>
 
         <!--
             GEMACHT MIT <3 UND JAVASCRIPT
@@ -61,9 +66,11 @@
         <p>
             Im Folgenden wirst du einige der wichtigsten Design Patterns kennen und einzusetzen lernen. Dazu werfen wir einen Blick in die Arbeitswelt der traditionsreichen virtuellen Pizzeria <em>Bendispasta</em>. Ihr Geschäftführer Jens hat nun angeordnet die vorherrschenden Arbeitsabläufe nach dem Vorbild der agilen Softwareentwicklung zu modernisieren.
         </p>
+    
+            
+        </div>
         
-
-        <h2>Willkommen im Ristorante Bendispasta!</h2>
+        <div>
         
         <h3 id="command">Das Command-Pattern</h3>
         <ul>
@@ -72,44 +79,273 @@
         </ul>
         
         <pre><div class="code"><code>
-<span class="keyword">interface</span> <span class="class">Befehl</span> {
-  void ausführen();
-}
+    interface Befehl {
+      void ausführen();
+    }
         </code></div></pre>
         
         <pre><div class="code"><code>
         
-<span class="keyword">class</span> <span class="class">Bestellung</span> <span class="keyword">implements</span> <span class="class">Befehl</span>() {
+    class Bestellung implements Befehl () {
 
-  List&ltGericht&gt gerichte;
-  Küche küche;
+      List&ltGericht&gt gerichte;
+      Küche küche;
 
-  <span class="keyword">public</span> <span class="class">Bestellung</span>(Küche küche) {
-    <span class="keyword">this</span>.küche = küche;
-  }
+       public Bestellung (Küche küche) {
+         this.küche = küche;
+      }
 
-  <span class="keyword">void</span> ausführen() {
+      void ausführen() {
 
-    <span class="keyword">for</span> (Gericht g : gerichte) {
-      küche.zubereiten(g);
+        for (Gericht g : gerichte) {
+          küche.zubereiten(g);
+        }
+
+      }
+
     }
-
-  }
-
-}
         
         </code></div></pre>
             
           
         <pre><div class="code"><code>
-<span class="keyword">class</span> <span class="class">Abrechnung</span> <span class="keyword">implements</span> <span class="class">Befehl</span>() {
+    class Abrechnung implements Befehl () {
 
-  Kasse kasse;
+      Kasse kasse;
 
-  void ausführen() {...}
+      void ausführen() {...}
 
-}
+    }
         </code></div></pre>
+            
+            <h4>Multiple-Choice</h4>
+            
+            <form>
+                
+                <fieldset>
+                    <b>Was macht das Command-Pattern?</b>
+                    <ul>
+                      <li> 
+                        <label>
+                          <input type="checkbox" name="a1" value="">
+                          Es kontrolliert eine größere Anzahl verwandter Klassen
+                        </label>
+                      </li>
+                      <li> 
+                        <label>
+                           <input type="checkbox" name="a2" value="">
+                           Es überwacht die main-Methode
+                        </label>
+                      </li>
+                      <li>  
+                        <label>
+                          <input type="checkbox" name="a3" checked=true value="">
+                          Es kapselt einen Auftrag in ein Objekt
+                        </label>
+                      </li>
+                      <li>  
+                        <label>
+                          <input type="checkbox" name="a4" value="">
+                          Es sortiert eine Menge von Befehlen
+                        </label>
+                      </li>
+                    </ul> 
+                  </fieldset>
+                <br/>
+                <fieldset>
+                    <b>Wie heißt üblicherweise die Methode, die von einer konkreten Command-Klasse implementiert werden muss?</b>
+                    <ul>
+                      <li> 
+                        <label>
+                          <input type="checkbox" name="a1" value="">
+                          <code>command()</code>
+                        </label>
+                      </li>
+                      <li> 
+                        <label>
+                           <input type="checkbox" name="a2" value="">
+                           <code>transfer()</code>
+                        </label>
+                      </li>
+                      <li>  
+                        <label>
+                          <input type="checkbox" name="a3" value="">
+                          <code>deploy()</code>
+                        </label>
+                      </li>
+                      <li>  
+                        <label>
+                          <input type="checkbox" name="a4" checked=true value="">
+                          <code>execute()</code>
+                        </label>
+                      </li>
+                    </ul> 
+                  </fieldset> 
+                
+            </form>
+          
+    </div>
+        <div>
+        
+        <h3 id="factory">Das Factory-Pattern</h3>
+        <ul>
+          <li>Factory zur Herstellung unterschiedlicher Pizzen/Gerichte</li>
+        </ul>
+            
+        <b>Alter Code</b>
+        
+        <pre><div class="code"><code>
+    class Bestellung implements Befehl {
+
+      List&gtGericht&lt gerichte;
+
+       ...
+
+      void gerichtHinzufügen(int gerichtID) {
+
+        Gericht gericht;
+
+        if(gerichtID == 1) {
+          gericht = new InsalataMista();
+        } else if (gerichtID == 2) {
+          gericht = new InsalataCapricciosa();
+        }
+
+          ...
+
+          else if (gerichtID == 35) {
+          gericht = new PizzaMargherita();
+        } else if (gerichtID == 36) {
+          gericht = new PizzaCipolla();
+        } else if (gerichtID == 37) {
+          gericht = new PizzaCalzone();
+        }
+
+          ...
+
+          else if (gerichtID == 68) {
+            gericht = new PenneAllArrabiata();
+          }
+
+          ...
+
+        gerichte.add(gericht);
+
+      }
+
+      void ausführen() {
+        for (Gericht g : gerichte) {
+          g.zubereiten();
+          g.servieren();
+        }
+
+    }
+    </code></div></pre>
+            
+        <ul>
+          <li>if-else/switch/syboltabelle/array, hauptsache auslagern</li>
+        </ul>
+            
+        <b>Neuer Code</b>
+        
+        <pre><div class="code"><code>
+    class Bestellung implements Befehl{
+
+      List&gtGericht&lt gerichte;
+      GerichteFabrik factory;
+
+       ...
+
+      void gerichtHinzufügen(int gerichtID) {
+
+        Gericht gericht = factory.erzeugeGericht(gerichtID);
+        gerichte.add(gericht);
+
+      }
+
+      void ausführen() {
+        for (Gericht g : gerichte) {
+          g.zubereiten();
+          g.servieren();
+        }
+
+    }
+        </code></div></pre>
+            
+        <ul>
+          <li>Vorteile</li>
+            <ul>
+              <li>Weniger Zuständigkeiten in der Betellung-Klasse</li>
+              <li>GerichteFabrik kann ggf. zur Laufzeit ausgetauscht werden</li>
+              <li>...</li>
+            </ul>
+        </ul>
+            
+            <h4>Multiple-Choice</h4>
+            
+            <form>
+                
+                <fieldset>
+                    <b>Was ist die wesentliche Aufgabe der Fabrikmethode?</b>
+                    <ul>
+                      <li> 
+                        <label>
+                          <input type="checkbox" name="a1" value="">
+                          Erstellen von Objekt-Kopien
+                        </label>
+                      </li>
+                      <li> 
+                        <label>
+                           <input type="checkbox" name="a2" checked=true value="">
+                           Instanziieren von Objekten
+                        </label>
+                      </li>
+                      <li>  
+                        <label>
+                          <input type="checkbox" name="a3"  value="">
+                          Einer Variable Initialwerte zuweisen
+                        </label>
+                      </li>
+                      <li>  
+                        <label>
+                          <input type="checkbox" name="a4" value="">
+                          Überschreiben eines Konstruktors
+                        </label>
+                      </li>
+                    </ul> 
+                  </fieldset>
+                <br/>
+                <fieldset>
+                    <b>Welche Aussagen treffen auf das Factory Method-Muster zu?</b>
+                    <ul>
+                      <li> 
+                        <label>
+                          <input type="checkbox" name="a1" value="">
+                          Eine Klasse, die dieses Pattern einsetzt, muss eine höhere Anzahl unterschiedlicher Objekte behandeln
+                        </label>
+                      </li>
+                      <li> 
+                        <label>
+                           <input type="checkbox" name="a2" checked=true value="">
+                           Die Objektinstanziierung wird ausgelagert
+                        </label>
+                      </li>
+                      <li>  
+                        <label>
+                          <input type="checkbox" name="a3" checked=true value="">
+                          Durch die zusätzliche Factory-Klasse erhöht sich die Gesamtanzahl an Klassen in einem Projekt
+                        </label>
+                      </li>
+                      <li>  
+                        <label>
+                          <input type="checkbox" name="a4" value="">
+                          Eine Factory-Klasse kann keine weiteren Unterklassen haben
+                        </label>
+                      </li>
+                    </ul> 
+                  </fieldset> 
+                
+            </form>
           
     </div>
     </body>
