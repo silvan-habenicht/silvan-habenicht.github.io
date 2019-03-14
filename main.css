@@ -6,7 +6,7 @@ body {
     background: lightyellow;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
     color: #545454;
-    font-family: "linux libertine", Libertine, serif;
+    font-family: "imfellEnglish", imfellEnglish, serif;
     font-size: 16px;
     line-height: 1.5;
     margin: auto;
@@ -74,19 +74,19 @@ span.class {
 }
 
 @font-face {
-  font-family: linux libertine;
-  src: url(fonts/LinLibertine_R.otf);
+  font-family: imfellEnglish;
+  src: url(fonts/imfellEnglish.ttf);
 }
 
 @font-face {
-  font-family: linux libertine;
-  src: url(fonts/LinLibertine_RI.otf);
+  font-family: imfellEnglish;
+  src: url(fonts/imfellEnglish_IT.ttf);
   font-style: italic;
 }
 
 @font-face {
-  font-family: linux libertine;
-  src: url(fonts/LinLibertine_RB.otf);
+  font-family: imfellEnglish;
+  src: url(fonts/imfellEnglish_SC.ttf);
   font-weight: bold;
 }
 
