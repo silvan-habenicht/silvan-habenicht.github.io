@@ -9,9 +9,9 @@ body {
     font-family: "linux libertine", Libertine, serif;
     font-size: 16px;
     line-height: 1.5;
-    margin: 0 auto;
+    margin: auto;
     max-width: 800px;
-    padding: 2em 2em 4em;
+    padding: 2em 4em 4em;
 }
 
 h1 {
@@ -36,14 +36,6 @@ a {
     color: darkred;
 }
 
-b, strong {
-    font-weight: 600;
-}
-
-samp {
-    display: none;
-}
-
 img {
     animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;
     background: transparent;
@@ -58,7 +50,7 @@ pre {
     background-color: beige;
 }
 
-div {
+div.code {
     overflow-x:scroll;
     padding: 0 30px;
 }
@@ -115,13 +107,12 @@ span.class {
   height: 100%; /* 100% Full-height */
   width: 0; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
-  top: 0;
-  left: 0;
-  background-color: white; /* Black*/
+  z-index: 0; /* Stay on top */
+  background-color: beige; /* Black*/
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  left: 0;
+  transition: 1s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
 /* The navigation menu links */
@@ -139,19 +130,10 @@ span.class {
   color: rgba(205,33,42,1);
 }
 
-/* Position and style the close button (top right corner) */
-.sidenav .closebtn {
-  position: absolute;
-  top: 10px;
-  left: 0px;
-  font-size: 36px;
-  margin-left: 50;
-}
-
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
   transition: margin-left .5s;
-  padding: 20px;
+  padding: 0;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -164,6 +146,8 @@ span.class {
   display: block;
   width: 28px;
   height: 30px;
+  position: absolute;
+  font-size: 36px;
 }
 
 #toggle span:after,
@@ -188,6 +172,5 @@ span.class {
   height: 5px;
   background-color: darkred;
   transition: all 0.3s;
-  backface-visibility: hidden;
   border-radius: 2px;
 }
