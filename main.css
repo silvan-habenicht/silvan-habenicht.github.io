@@ -1,0 +1,133 @@
+html {
+    background: beige;
+}
+
+body {
+    background: lightyellow;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
+    color: #545454;
+    font-family: "linux libertine", Libertine, serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 2em 2em 4em;
+}
+
+h1 {
+    color: darkred;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+    font-size: 30pt;
+}
+
+h2, h3, h4, h5, h6 {
+    color: #222;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+h2 {
+    margin-top: 1.3em;
+}
+
+a {
+    color: darkred;
+}
+
+b, strong {
+    font-weight: 600;
+}
+
+samp {
+    display: none;
+}
+
+img {
+    animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;
+    background: transparent;
+    border: 10px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    display: block;
+    margin: 1.3em auto;
+    max-width: 95%;
+}
+
+pre {
+    background-color: beige;
+}
+
+hr.italian {
+  border: 0;   /* in order to override TWBS stylesheet */
+  height: 5px;
+
+  background: linear-gradient(to right, rgba(0,140,69,1) 0%, rgba(0,140,69,1) 33%, rgba(244,245,240,1) 33%, rgba(244,245,240,1) 66%, rgba(205,33,42,1) 66%, rgba(205,33,42,1) 100%); /* W3C */
+}
+
+span.keyword {
+    color: darkred;
+}
+
+span.class {
+    color: darkgreen;
+    font-weight: bold;
+}
+
+@font-face {
+  font-family: linux libertine;
+  src: url(fonts/LinLibertine_R.otf);
+}
+
+@font-face {
+  font-family: linux libertine;
+  src: url(fonts/LinLibertine_RI.otf);
+  font-style: italic;
+}
+
+@font-face {
+  font-family: linux libertine;
+  src: url(fonts/LinLibertine_RB.otf);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: linux libertine;
+  src: url(fonts/LinLibertine_RBI.otf);
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: linux libertine sans;
+  src: url(fonts/LinBiolinum_R.otf);
+}
+
+.sidenav {
+  position: fixed;
+  z-index: 1;
+  top: 20px;
+  left: 10px;
+  background: lightyellow;
+  overflow-x: hidden;
+  padding: 10px 10px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
+  color: #545454;
+}
+
+.sidenav a {
+  padding: 0px 10px 0px 10px;
+  text-decoration: none;
+    font-style: italic;
+  color: darkred;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: rgba(205,33,42,1);
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
