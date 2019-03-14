@@ -110,31 +110,84 @@ span.class {
   src: url(fonts/LinBiolinum_R.otf);
 }
 
+/* The side navigation menu */
 .sidenav {
-  position: fixed;
-  z-index: 1;
-  top: 20px;
-  left: 10px;
-  background: lightyellow;
-  overflow-x: hidden;
-  padding: 10px 10px;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
-  color: #545454;
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: white; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
+/* The navigation menu links */
 .sidenav a {
-  padding: 0px 10px 0px 10px;
+  padding: 8px 8px 8px 32px;
   text-decoration: none;
-    font-style: italic;
+  font-size: 25px;
   color: darkred;
   display: block;
+  transition: 0.3s;
 }
 
+/* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
   color: rgba(205,33,42,1);
 }
 
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  font-size: 36px;
+  margin-left: 50;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+#toggle {
+  display: block;
+  width: 28px;
+  height: 30px;
+}
+
+#toggle span:after,
+#toggle span:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -9px;
+}
+#toggle span:after{
+  top: 9px;
+}
+#toggle span {
+  position: relative;
+  display: block;
+}
+
+#toggle span,
+#toggle span:after,
+#toggle span:before {
+  width: 100%;
+  height: 5px;
+  background-color: darkred;
+  transition: all 0.3s;
+  backface-visibility: hidden;
+  border-radius: 2px;
 }
