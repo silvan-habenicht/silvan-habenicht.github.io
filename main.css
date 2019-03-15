@@ -4,7 +4,7 @@ html {
 
 body {
     background: lightyellow;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     color: #545454;
     font-family: "imfellEnglish", imfellEnglish, serif;
     font-size: 16px;
@@ -115,8 +115,9 @@ span.class {
   position: fixed; /* Stay in place */
   z-index: 0; /* Stay on top */
   background-color: beige; /* Black*/
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
+  padding-top: 100px; /* Place content 60px from the top */
   left: 0;
   top: 0;
   transition: 1s; /* 0.5 second transition effect to slide in the sidenav */
@@ -181,4 +182,5 @@ span.class {
   background-color: darkred;
   transition: all 0.3s;
   border-radius: 2px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
