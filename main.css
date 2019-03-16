@@ -149,8 +149,9 @@ span.class {
 
 /* On smaller screens, where height is less than 450px, change the style of the sideMenu (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-  .sideMenu {padding-top: 36px;}
-  .sideMenu a {font-size: 18px;}
+    .sideMenu {padding-top: 36px;}
+    .sideMenu a {font-size: 18px;}
+    body {padding: 2em 1em 2em 4em;}
 }
 
 #toggle {
