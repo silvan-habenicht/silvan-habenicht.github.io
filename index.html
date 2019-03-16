@@ -25,12 +25,15 @@
             <a style="text-indent:15px;font-size:14px;"href="#strategy"onclick="openCloseMenu()">Strategy</a>
             <a style="text-indent:15px;font-size:14px;"href="#observer"onclick="openCloseMenu()">Observer</a>
             <a style="text-indent:15px;font-size:14px;"href="#adapter"onclick="openCloseMenu()">Adapter</a>
+            <a style="text-indent:15px;font-size:14px;"href="#mvc"onclick="openCloseMenu()">MVC</a>
         </div>
 
+        <!-- sidebar menu icon -->
         <div class="menuIcon">
             <a id="toggle" href="javascript:void(0)" onclick="openCloseMenu()"><span></span></a>
         </div>
 
+        <!-- title + welcoming text -->
         <div>
             <h1>Il Ristorante Bendispasta</h1>
             <hr class="italian" />
@@ -46,9 +49,9 @@
 
         </div>
 
-        <div>
-
-            <h3 id="command">Das Command-Pattern</h3>
+        <!-- Das Command-Pattern -->
+        <div id="command">
+            <h3>Das Command-Pattern</h3>
             <ul>
                 <li>Vermittlung von Bestellsystem/Kellner zur Küche/Theke</li>
                 <li>Warteschlange in der Küche</li>
@@ -63,7 +66,7 @@ interface Befehl {
             <pre><div class="code"><code>
 class Bestellung implements Befehl () {
 
-    List&ltGericht&gt gerichte;
+    List&lt;Gericht&gt; gerichte;
     Küche küche;
 
     public Bestellung (Küche küche) {
@@ -154,8 +157,9 @@ class Abrechnung implements Befehl () {
             </form>
         </div>
         
-        <div>
-            <h3 id="factory">Das Factory-Pattern</h3>
+        <!-- Das Factory-Pattern -->
+        <div id="factory">
+            <h3>Das Factory-Pattern</h3>
             <ul>
                 <li>Factory zur Herstellung unterschiedlicher Pizzen/Gerichte</li>
             </ul>
@@ -165,7 +169,7 @@ class Abrechnung implements Befehl () {
             <pre><div class="code"><code>
 class Bestellung implements Befehl {
 
-    List&ltGericht&gt gerichte;
+    List&lt;Gericht&gt; gerichte;
 
     ...
 
@@ -219,7 +223,7 @@ class Bestellung implements Befehl {
             <pre><div class="code"><code>
 class Bestellung implements Befehl{
 
-    List&ltGericht&gt gerichte;
+    List&lt;Gericht&gt; gerichte;
     GerichteFabrik factory;
 
     ...
@@ -314,6 +318,393 @@ class Bestellung implements Befehl{
                     </ul> 
                 </fieldset> 
             </form>
+        </div>
+        
+        <!-- Das Decorator-Pattern -->
+        <div id="decorator">
+            <h3>Das Decorator-Pattern</h3>
+            <ul>
+                <li>Optionale Garnitur hinzufügen</li>
+            </ul>
+
+            <pre><div class="code"><code>
+class PizzaMargheritaMitKnoblauch extends PizzaMargherita {}
+
+class PizzaMargheritaMitOregano extends PizzaMargherita {}
+
+class PizzaMargheritaMitScharferSauce extends PizzaMargherita {}
+
+class PizzaMargheritaMitOreganoUndKnoblauch extends PizzaMargherita {}
+
+class PizzaMargheritaMitKnoblauchUndScharferSauce extends PizzaMargherita {}
+
+class PizzaMargheritaMitOreganoUndScharferSauce extends PizzaMargherita {}
+
+class PizzaMargheritaMitKnoblauchUndOreganoUndScharferSauce extends PizzaMargherita {}
+
+            </code></div></pre>
+
+            <b>Neuer Code</b>
+
+            <pre><div class="code"><code>
+abstract class Garnitur implements Gericht {}
+            </code></div></pre>
+            
+            <pre><div class="code"><code>
+enum GarniturTyp {
+
+  KNOBLAUCH,
+  SCHARF,
+  OREGANO
+
+}
+            </code></div></pre>
+            
+            <pre><div class="code"><code>
+class Knoblauch extends Garnitur {
+
+    Gericht gericht;
+    public Knoblauch(Gericht gericht) {
+        this.gericht = gericht;
+    }
+
+    zubereiten() {
+        gericht.zubereiten();
+        ...
+    }
+  
+}
+            </code></div></pre>
+            
+            <pre><div class="code"><code>
+class GerichteFabrik {
+
+    // erzeugt ein einfaches Gericht aus der Karte
+    Gericht erzeugeGericht(int gerichtID){...}
+
+    // dem Gericht eine Garnitur hinzufügen
+    Gericht dekoriereGarnitur(Gericht gericht, GarniturTyp garniturTyp){
+
+        switch (garniturTyp){
+
+            case KNOBLAUCH:
+                return new Knoblauch(gericht);
+
+            case OREGANO:
+                return new Oregano(gericht);
+
+            case SCHARF:
+                return new ScharfeSauce(gericht);
+
+            default:
+                return gericht;
+
+        }
+
+    }
+
+}
+            </code></div></pre>
+
+            <h4>Multiple-Choice</h4>
+
+            <form>
+                <fieldset>
+                    Worin besteht die wesentliche Aufgabe eines Decorators?
+                    <ul>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="a1" checked=true value="">
+                                Erweitern eines Objektes ohne Erzeugung weiterer Unterklassen
+                            </label>
+                        </li>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="a2" value="">
+                                Bereitstellen überflüssiger Funktionalitäten
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="a3"  value="">
+                                Sammeln von Funktionen ohne Rückgabewert
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="a4" value="">
+                                Verbesserung der Fabrikmethode
+                            </label>
+                        </li>
+                    </ul> 
+                </fieldset>
+            </form>
+        </div>
+        
+        <!-- Das Strategy-Pattern -->
+        <div id="strategy">
+            <h3>Das Strategy-Pattern</h3>
+            <ul>
+                <li>Sich wiederholende Zubereitungsarten mehrfach nutzen</li>
+                <li>Saisonal austauschbare oder verbesserte Rezepte (Algorithmen) einfach umsetzen</li>
+            </ul>
+
+            <pre><div class="code"><code>
+interface Gericht {
+
+    void zubereiten();
+    void servieren();
+    List&lt;String&gt; getZutaten();
+    ...
+  
+}
+
+            </code></div></pre>
+
+            <pre><div class="code"><code>
+interface Zubereitungsart {
+
+    void zubereiten();
+
+}
+            </code></div></pre>
+            
+            <pre><div class="code"><code>
+abstract class Pizza implements Gericht {
+
+    Zubereitungsart zubereitungsart;
+
+    void zubereiten() {
+
+        zubereitungsart.zubereiten();
+
+    }
+
+}
+            </code></div></pre>
+            
+            <pre><div class="code"><code>
+class ItalienischeZubereitungsart implements Zubereitungsart {
+
+    void zubereiten() {
+        // Pizza auf italienische Art zubereiten
+        ...
+    }
+
+}
+            </code></div></pre>
+            
+            <pre><div class="code"><code>
+class PizzaMargherita extends Pizza {
+
+    public PizzaMargherita() {
+
+        this.zubereitungsart = new ItalienischeZubereitungsart();
+
+    }
+
+}
+            </code></div></pre>
+
+            <h4>Multiple-Choice</h4>
+
+            <form>
+                <fieldset>
+                    Was ist der wesentliche Zweck des Strategy-Ansatzes?
+                    <ul>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="a1" value="">
+                                Einen konkreten Algorithmus möglichst effizient gestalten
+                            </label>
+                        </li>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="a2" value="">
+                                Die Anzahl der Klassenvariablen optimieren
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="a3"  value="">
+                                Den vorrangigen Zweck eines Projektes stets im Auge behalten
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="a4" checked=true value="">
+                                Algorithmen bzw. Methoden einer Klasse leicht austauschbar halten
+                            </label>
+                        </li>
+                    </ul> 
+                </fieldset>
+            </form>
+        </div>
+        
+        <!-- Das Observer-Pattern -->
+        <div id="observer">
+            <h3>Das Observer-Pattern</h3>
+            <ul>
+                <li>Bestellstatus aktualisieren</li>
+                <li>java.util.Observable/Observer nutzen</li>
+            </ul>
+
+            <pre><div class="code"><code>
+class Bestellung extends Observable implements Befehl {
+
+    String status;
+
+    void bestellstatusÄndern(String status) {
+        this.status = status;
+        setChanged();
+        notifyObservers();
+    }
+
+    String getStatus() {
+        return status;
+    }
+
+    ...
+}
+            </code></div></pre>
+
+            <pre><div class="code"><code>
+class Kunde implements Observer {
+
+    String bestellstatus;
+
+    void update(Observable observable, Object arg) {
+        if (observable instanceof Bestellung) {
+            Bestellung bestellung = (Bestellung) observable;
+            bestellstatus = bestellung.getStatus();
+        }
+    }
+
+}
+            </code></div></pre>
+            
+            <h4>Multiple-Choice</h4>
+
+            <form>
+                <fieldset>
+                    Wozu dient das Observer-Muster?
+                    <ul>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="a1" value="">
+                                Vermeidung von zeitgleichen Objektzugriffen bei nebenläufigen Anwendungen
+                            </label>
+                        </li>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="a2" value="">
+                                Effizienteres Pair-Programming
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="a3"  value="">
+                                Kontrolle der Nutzung von Variablentypen
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="a4" checked=true value="">
+                                Objekte über Änderungen in einem anderen Objekt auf dem Laufenden halten
+                            </label>
+                        </li>
+                    </ul> 
+                </fieldset>
+                <br/>
+                <fieldset>
+                    Welche Aussage stimmt nicht?
+                    <ul>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="a1" value="">
+                                Ein Observable kann mehrere Observer benachrichtigen
+                            </label>
+                        </li>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="a2" value="">
+                                Ein Observer-Objekt kann mehrere Obervables abonieren
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="a3" checked=true value="">
+                                <code>java.util.Observable </code> ist ein Interface
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="a4" value="">
+                                <code>java.util.Observer </code> ist ein Interface
+                            </label>
+                        </li>
+                    </ul> 
+                </fieldset>
+            </form>
+        
+        </div>
+        
+        <!-- Das Adapter-Pattern -->
+        <div id="adapter">
+            <h3>Das Adapter-Pattern</h3>
+            <ul>
+                <li>Gleichbehandlung von Getränken und Gerichten</li>
+            </ul>
+
+            <pre><div class="code"><code>
+interface Gericht {
+
+    void zubereiten();
+    void servieren();
+    List&lt;String&gt; getZutaten();
+
+    ...
+  
+}
+
+            </code></div></pre>
+
+            <pre><div class="code"><code>
+interface Getränk {
+
+    void zubereiten();
+    void einschänken();
+    List&lt;String&gt; getZutaten();
+    ...
+  
+}
+            </code></div></pre>
+            
+            <pre><div class="code"><code>
+class GetränkeAdapter implements Gericht {
+
+    Getränk getränk;
+
+    public GetränkeAdapter(Getränk getränk) {
+        this.getränk = getränk;
+    }
+
+    void zubereiten() {
+        getränk.zubereiten();
+    }
+
+    void servieren() {
+        getränk.einschänken();
+    }
+    ...
+
+}
+            </code></div></pre>
+        </div>
+        
+        <!-- Der Model-View-Controller -->
+        <div id="mvc">
+            <h3>Der Model-View-Controller</h3>
         </div>
     </body>
 </html>
