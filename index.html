@@ -4,348 +4,316 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Willkommen im Ristorante Bendispasta!</title>
+        <title>Bendispasta | Lernplattform für Design Patterns</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="main.css">
         <link rel="stylesheet" href="javascript/styles/school-book.css">
     </head>
 
     <body>
-        
-        <script>
-            /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
-            var opened = 0;
-            function openNav() {
-              if(!opened){
-              opened = 1;
-              document.getElementById("mySidenav").style.width = "250px";
-              document.getElementById("main").style.marginLeft = "250px";
-              } else {closeNav();}
-            }
 
-            /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-            function closeNav() {
-              opened = 0;
-              document.getElementById("mySidenav").style.width = "0";
-              document.getElementById("main").style.marginLeft = "0";
-            }
-        </script>
-        
+        <!-- include JavaScript -->
         <script src="javascript/highlight.pack.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script>
-        
-        <div class="sidenav" id="mySidenav">
-          <a style="font-weight:bold;color:darkred;font-style:normal;"onclick="closeNav()">Pattern-Menü</a>
-          <a style="text-indent:15px;font-size:14px;" href="#command"onclick="closeNav()">Command</a>
-          <a style="text-indent:15px;font-size:14px;"href="#factory"onclick="closeNav()">Factory</a>
-          <a style="text-indent:15px;font-size:14px;"href="#decorator"onclick="closeNav()">Decorator</a>
-          <a style="text-indent:15px;font-size:14px;"href="#strategy"onclick="closeNav()">Strategy</a>
-          <a style="text-indent:15px;font-size:14px;"href="#observer"onclick="closeNav()">Observer</a>
-          <a style="text-indent:15px;font-size:14px;"href="#adapter"onclick="closeNav()">Adapter</a>
+        <script src="script.js"></script>
+
+        <!-- sidebar menu -->
+        <div class="sideMenu" id="patternMenu">
+            <a style="font-weight:bold;color:darkred;font-style:normal;"onclick="openCloseMenu()">Pattern-Menü</a>
+            <a style="text-indent:15px;font-size:14px;" href="#command"onclick="openCloseMenu()">Command</a>
+            <a style="text-indent:15px;font-size:14px;"href="#factory"onclick="openCloseMenu()">Factory</a>
+            <a style="text-indent:15px;font-size:14px;"href="#decorator"onclick="openCloseMenu()">Decorator</a>
+            <a style="text-indent:15px;font-size:14px;"href="#strategy"onclick="openCloseMenu()">Strategy</a>
+            <a style="text-indent:15px;font-size:14px;"href="#observer"onclick="openCloseMenu()">Observer</a>
+            <a style="text-indent:15px;font-size:14px;"href="#adapter"onclick="openCloseMenu()">Adapter</a>
         </div>
-        
-        <div class="togglebutton">
-            
-        <a id="toggle" href="javascript:void(0)" onclick="openNav()"><span></span></a>
+
+        <div class="menuIcon">
+            <a id="toggle" href="javascript:void(0)" onclick="openCloseMenu()"><span></span></a>
         </div>
-        
+
         <div>
-            
-        <h1>Il Ristorante Bendispasta</h1>
-        <hr class="italian" />
-        <h2>Willkommen in der Pizzeria Bendispasta!</h2>
+            <h1>Il Ristorante Bendispasta</h1>
+            <hr class="italian" />
+            <h2>Willkommen in der Pizzeria Bendispasta!</h2>
 
-        <!--
-            GEMACHT MIT <3 UND JAVASCRIPT
-        -->
+            <p>
+                Diese Website dient dem appetitlichen Einstieg in <em>Design Patterns</em> (zu deutsch: Entwurfsmuster). Hierbei handelt es sich um allgemeine Entwurfsprinzipien, nach denen objektorientierter Softwarecode aufgebaut werden kann. Bei bestimmten wiederkehrenden Anwendungsfällen helfen diese dabei, dass der Code möglichst flexibel an veränderte Anforderungen angepasst oder um erweiterte Funktionalität ergänzt werden kann. Die Kenntnis grundlegender <em>Design Patterns</em> ist für die moderne OO-Entwicklung von elementarer Bedeutung.
+            </p>
 
-            
-        <p>
-            Diese Website dient dem appetitlichen Einstieg in <em>Design Patterns</em> (zu deutsch: Entwurfsmuster). Hierbei handelt es sich um allgemeine Entwurfsprinzipien, nach denen objektorientierter Softwarecode aufgebaut werden kann. Bei bestimmten wiederkehrenden Anwendungsfällen helfen diese dabei, dass der Code möglichst flexibel an veränderte Anforderungen angepasst oder um erweiterte Funktionalität ergänzt werden kann. Die Kenntnis grundlegender <em>Design Patterns</em> ist für die moderne OO-Entwicklung von elementarer Bedeutung.
-        </p>
+            <p>
+                Im Folgenden wirst du einige der wichtigsten <em>Design Patterns</em> kennen und einzusetzen lernen. Wir werfen dazu einen Blick in die Arbeitswelt der traditionsreichen virtuellen Pizzeria <em>Bendispasta</em>. Ihr Geschäftführer Jens hat dort erst kürzlich angeordnet, die vorherrschenden Arbeitsabläufe nach dem Vorbild der agilen Softwareentwicklung zu modernisieren.
+            </p>
 
-        <p>
-            Im Folgenden wirst du einige der wichtigsten <em>Design Patterns</em> kennen und einzusetzen lernen. Wir werfen dazu einen Blick in die Arbeitswelt der traditionsreichen virtuellen Pizzeria <em>Bendispasta</em>. Ihr Geschäftführer Jens hat dort erst kürzlich angeordnet, die vorherrschenden Arbeitsabläufe nach dem Vorbild der agilen Softwareentwicklung zu modernisieren.
-        </p>
-    
-            
         </div>
-        
+
         <div>
-        
-        <h3 id="command">Das Command-Pattern</h3>
-        <ul>
-          <li>Vermittlung von Bestellsystem/Kellner zur Küche/Theke</li>
-          <li>Warteschlange in der Küche</li>
-        </ul>
-        
-        <pre><div class="code"><code>
+
+            <h3 id="command">Das Command-Pattern</h3>
+            <ul>
+                <li>Vermittlung von Bestellsystem/Kellner zur Küche/Theke</li>
+                <li>Warteschlange in der Küche</li>
+            </ul>
+
+            <pre><div class="code"><code>
 interface Befehl {
-  void ausführen();
+    void ausführen();
 }
-        </code></div></pre>
-        
-        <pre><div class="code"><code>
+            </code></div></pre>
+
+            <pre><div class="code"><code>
 class Bestellung implements Befehl () {
 
-  List&ltGericht&gt gerichte;
-  Küche küche;
+    List&ltGericht&gt gerichte;
+    Küche küche;
 
-   public Bestellung (Küche küche) {
-     this.küche = küche;
-  }
-
-  void ausführen() {
-
-    for (Gericht g : gerichte) {
-      küche.zubereiten(g);
+    public Bestellung (Küche küche) {
+        this.küche = küche;
     }
 
-  }
+    void ausführen() {
+
+        for (Gericht g : gerichte) {
+            küche.zubereiten(g);
+        }
+
+    }
 
 } 
-        </code></div></pre>
-            
-          
-        <pre><div class="code"><code>
+            </code></div></pre>
+
+            <pre><div class="code"><code>
 class Abrechnung implements Befehl () {
 
-  Kasse kasse;
+    Kasse kasse;
 
-  void ausführen() {...}
+    void ausführen() {...}
 
-}
-        </code></div></pre>
-            
+    }
+            </code></div></pre>
             <h4>Multiple-Choice</h4>
-            
             <form>
-                
                 <fieldset>
                     Was macht das Command-Pattern?
                     <ul>
-                      <li> 
-                        <label>
-                          <input type="checkbox" name="a1" value="">
-                          Es kontrolliert eine größere Anzahl verwandter Klassen
-                        </label>
-                      </li>
-                      <li> 
-                        <label>
-                           <input type="checkbox" name="a2" value="">
-                           Es überwacht die main-Methode
-                        </label>
-                      </li>
-                      <li>  
-                        <label>
-                          <input type="checkbox" name="a3" checked=true value="">
-                          Es kapselt einen Auftrag in ein Objekt
-                        </label>
-                      </li>
-                      <li>  
-                        <label>
-                          <input type="checkbox" name="a4" value="">
-                          Es sortiert eine Menge von Befehlen
-                        </label>
-                      </li>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="a1" value="">
+                                Es kontrolliert eine größere Anzahl verwandter Klassen
+                            </label>
+                        </li>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="a2" value="">
+                                Es überwacht die main-Methode
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="a3" checked=true value="">
+                                Es kapselt einen Auftrag in ein Objekt
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="a4" value="">
+                                Es sortiert eine Menge von Befehlen
+                            </label>
+                        </li>
                     </ul> 
-                  </fieldset>
+                </fieldset>
                 <br/>
                 <fieldset>
                     Wie heißt üblicherweise die Methode, die von einer konkreten Command-Klasse implementiert werden muss?
                     <ul>
-                      <li> 
-                        <label>
-                          <input type="checkbox" name="a1" value="">
-                          <code>command()</code>
-                        </label>
-                      </li>
-                      <li> 
-                        <label>
-                           <input type="checkbox" name="a2" value="">
-                           <code>transfer()</code>
-                        </label>
-                      </li>
-                      <li>  
-                        <label>
-                          <input type="checkbox" name="a3" value="">
-                          <code>deploy()</code>
-                        </label>
-                      </li>
-                      <li>  
-                        <label>
-                          <input type="checkbox" name="a4" checked=true value="">
-                          <code>execute()</code>
-                        </label>
-                      </li>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="a1" value="">
+                                <code>command()</code>
+                            </label>
+                        </li>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="a2" value="">
+                                <code>transfer()</code>
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="a3" value="">
+                                <code>deploy()</code>
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="a4" checked=true value="">
+                                <code>execute()</code>
+                            </label>
+                        </li>
                     </ul> 
-                  </fieldset> 
-                
+                </fieldset> 
             </form>
-          
-    </div>
+        </div>
+        
         <div>
-        
-        <h3 id="factory">Das Factory-Pattern</h3>
-        <ul>
-          <li>Factory zur Herstellung unterschiedlicher Pizzen/Gerichte</li>
-        </ul>
-            
-        <b>Alter Code</b>
-        
-        <pre><div class="code"><code>
+            <h3 id="factory">Das Factory-Pattern</h3>
+            <ul>
+                <li>Factory zur Herstellung unterschiedlicher Pizzen/Gerichte</li>
+            </ul>
+
+            <b>Alter Code</b>
+
+            <pre><div class="code"><code>
 class Bestellung implements Befehl {
 
-  List&ltGericht&gt gerichte;
+    List&ltGericht&gt gerichte;
 
-   ...
+    ...
 
-  void gerichtHinzufügen(int gerichtID) {
+    void gerichtHinzufügen(int gerichtID) {
 
-    Gericht gericht;
+        Gericht gericht;
 
-    if(gerichtID == 1) {
-      gericht = new InsalataMista();
-    } else if (gerichtID == 2) {
-      gericht = new InsalataCapricciosa();
+        if(gerichtID == 1) {
+            gericht = new InsalataMista();
+        } else if (gerichtID == 2) {
+            gericht = new InsalataCapricciosa();
+        }
+
+        ...
+
+        else if (gerichtID == 35) {
+            gericht = new PizzaMargherita();
+        } else if (gerichtID == 36) {
+            gericht = new PizzaCipolla();
+        } else if (gerichtID == 37) {
+            gericht = new PizzaCalzone();
+        }
+
+        ...
+
+        else if (gerichtID == 68) {
+            gericht = new PenneAllArrabiata();
+        }
+
+        ...
+
+        gerichte.add(gericht);
+
     }
 
-      ...
+    void ausführen() {
+        for (Gericht g : gerichte) {
+            g.zubereiten();
+            g.servieren();
+        }
 
-      else if (gerichtID == 35) {
-      gericht = new PizzaMargherita();
-    } else if (gerichtID == 36) {
-      gericht = new PizzaCipolla();
-    } else if (gerichtID == 37) {
-      gericht = new PizzaCalzone();
     }
+            </code></div></pre>
 
-      ...
+            <ul>
+                <li>if-else/switch/syboltabelle/array, hauptsache auslagern</li>
+            </ul>
 
-      else if (gerichtID == 68) {
-        gericht = new PenneAllArrabiata();
-      }
+            <b>Neuer Code</b>
 
-      ...
-
-    gerichte.add(gericht);
-
-  }
-
-  void ausführen() {
-    for (Gericht g : gerichte) {
-      g.zubereiten();
-      g.servieren();
-    }
-
-}
-    </code></div></pre>
-            
-        <ul>
-          <li>if-else/switch/syboltabelle/array, hauptsache auslagern</li>
-        </ul>
-            
-        <b>Neuer Code</b>
-        
-        <pre><div class="code"><code>
+            <pre><div class="code"><code>
 class Bestellung implements Befehl{
 
-  List&ltGericht&gt gerichte;
-  GerichteFabrik factory;
+    List&ltGericht&gt gerichte;
+    GerichteFabrik factory;
 
-   ...
+    ...
 
-  void gerichtHinzufügen(int gerichtID) {
+    void gerichtHinzufügen(int gerichtID) {
 
-    Gericht gericht = factory.erzeugeGericht(gerichtID);
-    gerichte.add(gericht);
+        Gericht gericht = factory.erzeugeGericht(gerichtID);
+        gerichte.add(gericht);
 
-  }
-
-  void ausführen() {
-    for (Gericht g : gerichte) {
-      g.zubereiten();
-      g.servieren();
     }
 
-}
-        </code></div></pre>
-            
-        <ul>
-          <li>Vorteile</li>
+    void ausführen() {
+        for (Gericht g : gerichte) {
+            g.zubereiten();
+            g.servieren();
+        }
+
+    }
+            </code></div></pre>
+
             <ul>
-              <li>Weniger Zuständigkeiten in der Betellung-Klasse</li>
-              <li>GerichteFabrik kann ggf. zur Laufzeit ausgetauscht werden</li>
-              <li>...</li>
+                <li>
+                    Vorteile
+                </li>
+                <ul>
+                    <li>Weniger Zuständigkeiten in der Betellung-Klasse</li>
+                    <li>GerichteFabrik kann ggf. zur Laufzeit ausgetauscht werden</li>
+                    <li>...</li>
+                </ul>
             </ul>
-        </ul>
-            
+
             <h4>Multiple-Choice</h4>
-            
+
             <form>
-                
                 <fieldset>
                     Was ist die wesentliche Aufgabe der Fabrikmethode?
                     <ul>
-                      <li> 
-                        <label>
-                          <input type="checkbox" name="a1" value="">
-                          Erstellen von Objekt-Kopien
-                        </label>
-                      </li>
-                      <li> 
-                        <label>
-                           <input type="checkbox" name="a2" checked=true value="">
-                           Instanziieren von Objekten
-                        </label>
-                      </li>
-                      <li>  
-                        <label>
-                          <input type="checkbox" name="a3"  value="">
-                          Einer Variable Initialwerte zuweisen
-                        </label>
-                      </li>
-                      <li>  
-                        <label>
-                          <input type="checkbox" name="a4" value="">
-                          Überschreiben eines Konstruktors
-                        </label>
-                      </li>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="a1" value="">
+                                Erstellen von Objekt-Kopien
+                            </label>
+                        </li>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="a2" checked=true value="">
+                                Instanziieren von Objekten
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="a3"  value="">
+                                Einer Variable Initialwerte zuweisen
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="a4" value="">
+                                Überschreiben eines Konstruktors
+                            </label>
+                        </li>
                     </ul> 
-                  </fieldset>
+                </fieldset>
                 <br/>
                 <fieldset>
                     Welche Aussagen treffen auf das Factory Method-Muster zu?
                     <ul>
-                      <li> 
-                        <label>
-                          <input type="checkbox" name="a1" value="">
-                          Eine Klasse, die dieses Pattern einsetzt, muss eine höhere Anzahl unterschiedlicher Objekte behandeln
-                        </label>
-                      </li>
-                      <li> 
-                        <label>
-                           <input type="checkbox" name="a2" checked=true value="">
-                           Die Objektinstanziierung wird ausgelagert
-                        </label>
-                      </li>
-                      <li>  
-                        <label>
-                          <input type="checkbox" name="a3" checked=true value="">
-                          Durch die zusätzliche Factory-Klasse erhöht sich die Gesamtanzahl an Klassen in einem Projekt
-                        </label>
-                      </li>
-                      <li>  
-                        <label>
-                          <input type="checkbox" name="a4" value="">
-                          Eine Factory-Klasse kann keine weiteren Unterklassen haben
-                        </label>
-                      </li>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="a1" value="">
+                                Eine Klasse, die dieses Pattern einsetzt, muss eine höhere Anzahl unterschiedlicher Objekte behandeln
+                            </label>
+                        </li>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="a2" checked=true value="">
+                                Die Objektinstanziierung wird ausgelagert
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="a3" checked=true value="">
+                                Durch die zusätzliche Factory-Klasse erhöht sich die Gesamtanzahl an Klassen in einem Projekt
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="a4" value="">
+                                Eine Factory-Klasse kann keine weiteren Unterklassen haben
+                            </label>
+                        </li>
                     </ul> 
-                  </fieldset> 
-                
+                </fieldset> 
             </form>
-          
-    </div>
+        </div>
     </body>
 </html>

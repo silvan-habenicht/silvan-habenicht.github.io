@@ -53,15 +53,17 @@ form ul {
 div.code {
     overflow-x:scroll;
     padding: 0 30px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
 
 
 hr.italian {
-  border: 0;   /* in order to override TWBS stylesheet */
+  border: 0;
   height: 5px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 
-  background: linear-gradient(to right, rgba(0,140,69,1) 0%, rgba(0,140,69,1) 33%, rgba(244,245,240,1) 33%, rgba(244,245,240,1) 66%, rgba(205,33,42,1) 66%, rgba(205,33,42,1) 100%); /* W3C */
+  background: linear-gradient(to right, rgba(0,140,69,1) 0%, rgba(0,140,69,1) 33%, rgba(244,245,240,1) 33%, rgba(244,245,240,1) 66%, rgba(205,33,42,1) 66%, rgba(205,33,42,1) 100%);
 }
 
 span.keyword {
@@ -102,14 +104,14 @@ span.class {
   src: url(fonts/LinBiolinum_R.otf);
 }
 
-.togglebutton {
+.menuIcon {
   position: fixed; /* Stay in place */
   z-index: 0; /* Stay on top */
   left: 0;
   margin-left: 20px;
 }
 /* The side navigation menu */
-.sidenav {
+.sideMenu {
   height: 100%; /* 100% Full-height */
   width: 0; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
@@ -120,11 +122,11 @@ span.class {
   padding-top: 60px; /* Place content 60px from the top */
   left: 0;
   top: 0;
-  transition: 1s; /* 0.5 second transition effect to slide in the sidenav */
+  transition: 1s; /* 0.5 second transition effect to slide in the sideMenu */
 }
 
 /* The navigation menu links */
-.sidenav a {
+.sideMenu a {
   padding: 8px 8px 8px 36px;
   text-decoration: none;
   font-size: 25px;
@@ -135,7 +137,7 @@ span.class {
 }
 
 /* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
+.sideMenu a:hover {
   color: rgba(205,33,42,1);
 }
 
@@ -145,10 +147,10 @@ span.class {
   padding: 0;
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+/* On smaller screens, where height is less than 450px, change the style of the sideMenu (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 36px;}
-  .sidenav a {font-size: 18px;}
+  .sideMenu {padding-top: 36px;}
+  .sideMenu a {font-size: 18px;}
 }
 
 #toggle {
