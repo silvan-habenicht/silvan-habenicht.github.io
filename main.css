@@ -189,17 +189,16 @@ span.class {
 }
 
 .header {
-    margin-top: 10px;
     margin-bottom: 30px;
     text-align: center;
 }
 
 .header img {
-    height: 120px;
-    display: inline;
-    margin-left: 40px;
-    position: absolute;
-    top: 30px;
+    max-height: 120px;
+    padding: 2em;
+    top: 0;
+    right: 0;
+    position:absolute;
 }
 
 .header h1 {
