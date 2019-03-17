@@ -25,7 +25,7 @@ hljs.initHighlightingOnLoad();
 
 setTimeout(function () {
     "use strict";
-    if (window.innerWidth > 1000) {
+    if (window.innerWidth > 600) {
         openCloseMenu();
     }
 }, 500);

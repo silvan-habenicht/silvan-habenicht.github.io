@@ -12,7 +12,6 @@ body {
     margin: auto;
     max-width: 800px;
     padding: 2em 4em 4em;
-    transition: all 1s ease-in-out;
 }
 
 h1 {
@@ -63,7 +62,6 @@ div.code {
     padding: 0 30px;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
-
 
 
 hr.italian {
@@ -120,17 +118,17 @@ span.class {
 }
 /* The side navigation menu */
 .sideMenu {
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 0; /* Stay on top */
-  background-color: beige; /* Black*/
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px; /* Place content 60px from the top */
-  left: 0;
-  top: 0;
-  transition: 1s; /* 0.5 second transition effect to slide in the sideMenu */
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 0; /* Stay on top */
+    background-color: beige;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px; /* Place content 60px from the top */
+    left: 0;
+    top: 0;
+    transition: 1s; /* 0.5 second transition effect to slide in the sideMenu */
 }
 
 /* The navigation menu links */
