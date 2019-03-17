@@ -188,19 +188,10 @@ span.class {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
-.header {
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.header img {
+#logo {
     max-height: 120px;
-    padding: 2em;
+    position: absolute;
     top: 0;
     right: 0;
-    position:absolute;
-}
-
-.header h1 {
-    display: inline;
+    margin: 2em;
 }
