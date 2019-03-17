@@ -9,7 +9,9 @@ function openCloseMenu() {
     if (!opened) {
         opened = 1;
         document.getElementById("patternMenu").style.width = "240px";
-        if (window.innerWidth > 600 && window.innerWidth < 1280) {
+        if (window.innerWidth >= 1280) {
+            document.getElementById("patternMenu").style.width = (window.innerWidth - 800) / 2 + "px";
+        } else if (window.innerWidth > 600) {
             document.getElementById("main").style.marginLeft = "240px";
         }
     } else {
