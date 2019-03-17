@@ -53,16 +53,6 @@ button:hover {
     box-shadow: 0 0 2px rgba(0, 0, 0, 2);
 }
 
-img {
-    animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;
-    background: transparent;
-    border: 10px solid rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
-    display: block;
-    margin: 1.3em auto;
-    max-width: 95%;
-}
-
 form ul {
   list-style-type: none;
 }
@@ -196,4 +186,22 @@ span.class {
   transition: all 0.3s;
   border-radius: 2px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.header img {
+    height: 120px;
+    display: inline;
+    margin-left: 40px;
+    position: absolute;
+    top: 30px;
+}
+
+.header h1 {
+    display: inline;
 }
