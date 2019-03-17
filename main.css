@@ -190,8 +190,8 @@ span.class {
 
 #logo {
     max-height: 120px;
-    position: absolute;
+    position:absolute;
     top: 0;
-    right: 0;
-    margin: 2em;
+    float: right;
+    margin: 1em;
 }
