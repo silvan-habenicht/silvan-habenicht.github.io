@@ -19,13 +19,13 @@
         <!-- sidebar menu -->
         <div class="sideMenu" id="patternMenu">
             <a style="font-weight:bold;color:darkred;font-style:normal;"onclick="openCloseMenu()">Pattern-Menü</a>
-            <a style="text-indent:15px;font-size:14px;" href="#command"onclick="openCloseMenu()">Command</a>
-            <a style="text-indent:15px;font-size:14px;"href="#factory"onclick="openCloseMenu()">Factory</a>
-            <a style="text-indent:15px;font-size:14px;"href="#decorator"onclick="openCloseMenu()">Decorator</a>
-            <a style="text-indent:15px;font-size:14px;"href="#strategy"onclick="openCloseMenu()">Strategy</a>
-            <a style="text-indent:15px;font-size:14px;"href="#observer"onclick="openCloseMenu()">Observer</a>
-            <a style="text-indent:15px;font-size:14px;"href="#adapter"onclick="openCloseMenu()">Adapter</a>
-            <a style="text-indent:15px;font-size:14px;"href="#mvc"onclick="openCloseMenu()">MVC</a>
+            <a id="commandMenu" style="text-indent:15px;font-size:14px;" href="#command"onclick="openCloseMenu()">Command</a>
+            <a id="factoryMenu" style="text-indent:15px;font-size:14px;"href="#factory"onclick="openCloseMenu()">Factory</a>
+            <a id="decoratorMenu" style="text-indent:15px;font-size:14px;"href="#decorator"onclick="openCloseMenu()">Decorator</a>
+            <a id="strategyMenu" style="text-indent:15px;font-size:14px;"href="#strategy"onclick="openCloseMenu()">Strategy</a>
+            <a id="observerMenu" style="text-indent:15px;font-size:14px;"href="#observer"onclick="openCloseMenu()">Observer</a>
+            <a id="adapterMenu" style="text-indent:15px;font-size:14px;"href="#adapter"onclick="openCloseMenu()">Adapter</a>
+            <a id="mvcMenu" style="text-indent:15px;font-size:14px;"href="#mvc"onclick="openCloseMenu()">MVC</a>
         </div>
 
         <!-- sidebar menu icon -->
@@ -52,6 +52,7 @@
         <!-- Das Command-Pattern -->
         <div id="command">
             <h3>Das Command-Pattern</h3>
+            <a style="cursor:pointer;text-decoration:none;font-size:12px;margin-left: 2em;" href="#commandForm">direkt zur Test-Abfrage...</a>
             <ul>
                 <li>Vermittlung von Bestellsystem/Kellner zur Küche/Theke</li>
                 <li>Warteschlange in der Küche</li>
@@ -93,32 +94,33 @@ class Abrechnung implements Befehl () {
 
     }
             </code></div></pre>
-            <h4>Multiple-Choice</h4>
-            <form>
+    
+            <form id="commandForm">
+                <h4>Multiple-Choice</h4>
                 <fieldset>
                     Was macht das Command-Pattern?
                     <ul>
                         <li> 
                             <label>
-                                <input type="checkbox" name="a1" value="">
+                                <input type="checkbox" name="commandA1" value="">
                                 Es kontrolliert eine größere Anzahl verwandter Klassen
                             </label>
                         </li>
                         <li> 
                             <label>
-                                <input type="checkbox" name="a2" value="">
+                                <input type="checkbox" name="commandA2" value="">
                                 Es überwacht die main-Methode
                             </label>
                         </li>
                         <li>  
                             <label>
-                                <input type="checkbox" name="a3" checked=true value="">
+                                <input type="checkbox" name="commandA3" checked=true value="">
                                 Es kapselt einen Auftrag in ein Objekt
                             </label>
                         </li>
                         <li>  
                             <label>
-                                <input type="checkbox" name="a4" value="">
+                                <input type="checkbox" name="commandA4" value="">
                                 Es sortiert eine Menge von Befehlen
                             </label>
                         </li>
@@ -130,30 +132,32 @@ class Abrechnung implements Befehl () {
                     <ul>
                         <li> 
                             <label>
-                                <input type="checkbox" name="a1" value="">
+                                <input type="checkbox" name="commandB1" value="">
                                 <code>command()</code>
                             </label>
                         </li>
                         <li> 
                             <label>
-                                <input type="checkbox" name="a2" value="">
+                                <input type="checkbox" name="commandB2" value="">
                                 <code>transfer()</code>
                             </label>
                         </li>
                         <li>  
                             <label>
-                                <input type="checkbox" name="a3" value="">
+                                <input type="checkbox" name="commandB3" value="">
                                 <code>deploy()</code>
                             </label>
                         </li>
                         <li>  
                             <label>
-                                <input type="checkbox" name="a4" checked=true value="">
+                                <input type="checkbox" name="commandB4" checked=true value="">
                                 <code>execute()</code>
                             </label>
                         </li>
                     </ul> 
-                </fieldset> 
+                </fieldset>
+                <br/>
+                <button type="button" onclick="checkCommand()">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<a id="commandResult"></a>
             </form>
         </div>
         

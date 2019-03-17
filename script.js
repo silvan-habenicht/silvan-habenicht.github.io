@@ -20,3 +20,32 @@ function openCloseMenu() {
 /*global hljs*/
 /* call function for syntax highlighting from highlight.pack.js*/
 hljs.initHighlightingOnLoad();
+
+/* exported checkCommand to index.html*/
+function checkCommand() {
+    "use strict";
+    var commandForm = document.getElementById("commandForm"),
+        commandMenu = document.getElementById("commandMenu"),
+        commandResult = document.getElementById("commandResult");
+    
+    if (!commandForm.commandA1.checked &&
+            !commandForm.commandA2.checked &&
+            commandForm.commandA3.checked &&
+            !commandForm.commandA4.checked &&
+            !commandForm.commandB1.checked &&
+            !commandForm.commandB2.checked &&
+            !commandForm.commandB3.checked &&
+            commandForm.commandB4.checked) {
+        
+        commandMenu.style.color = "rgba(0,140,69,1)";
+        commandMenu.innerHTML = "Command &#10003;";
+        commandResult.style.color = "rgba(0,140,69,1)";
+        commandResult.innerHTML = "&#10003;";
+    
+    } else {
+        commandMenu.style.color = "darkred";
+        commandMenu.innerHTML = "Command";
+        commandResult.style.color = "darkred";
+        commandResult.innerHTML = "&#10007; Bitte überprüfe deine Eingaben.";
+    }
+}
