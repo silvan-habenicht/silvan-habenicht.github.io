@@ -15,6 +15,11 @@ body {
 }
 
 h1 {
+    color: darkred;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+    font-size: 30pt;
 }
 
 h2, h3, h4, h5, h6 {
@@ -115,13 +120,13 @@ span.class {
 /* The side navigation menu */
 .sideMenu {
   height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
+  width: 250px; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
   z-index: 0; /* Stay on top */
   background-color: beige; /* Black*/
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
+  padding-top: 20px; /* Place content 60px from the top */
   left: 0;
   top: 0;
   transition: 1s; /* 0.5 second transition effect to slide in the sideMenu */
@@ -143,12 +148,16 @@ span.class {
   color: rgba(205,33,42,1);
 }
 
+.sideMenu img {
+    width: 120px;
+    display: block;
+    margin-left: 60px;
+}
+
 /* On smaller screens, where width is less than 500px, change the style (less padding and a smaller font size) */
 @media screen and (max-width: 500px) {
     .sideMenu a {font-size: 18px;}
     body {padding: 2em 1em 2em 4em;}
-    h1 img {visibility: hidden;}
-    h1 {margin: 0px;}
 }
 
 #toggle {
@@ -183,18 +192,4 @@ span.class {
   transition: all 0.3s;
   border-radius: 2px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-}
-
-h1 img {
-    max-height: 120px;
-    top: 0;
-    margin: 1em;
-    position: absolute;
-    align-content: flex-end
-    display: flex;
-}
-
-h1 {
-    margin-right: 100px;
-    text-align: center;
 }
