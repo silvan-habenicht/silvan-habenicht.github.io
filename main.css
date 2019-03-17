@@ -12,6 +12,7 @@ body {
     margin: auto;
     max-width: 800px;
     padding: 2em 4em 4em;
+    transition: all 1s ease-in-out;
 }
 
 h1 {
@@ -120,7 +121,7 @@ span.class {
 /* The side navigation menu */
 .sideMenu {
   height: 100%; /* 100% Full-height */
-  width: 250px; /* 0 width - change this with JavaScript */
+  width: 0; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
   z-index: 0; /* Stay on top */
   background-color: beige; /* Black*/
@@ -156,7 +157,7 @@ span.class {
 
 /* On smaller screens, where width is less than 500px, change the style (less padding and a smaller font size) */
 @media screen and (max-width: 500px) {
-    .sideMenu a {font-size: 18px;}
+    /*.sideMenu a {font-size: 18px;}*/
     body {padding: 2em 1em 2em 4em;}
 }
 

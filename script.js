@@ -8,16 +8,27 @@ function openCloseMenu() {
     "use strict";
     if (!opened) {
         opened = 1;
-        document.getElementById("patternMenu").style.width = "250px";
+        document.getElementById("patternMenu").style.width = "240px";
+        if (window.innerWidth > 600 && window.innerWidth < 1280) {
+            document.getElementById("main").style.marginLeft = "240px";
+        }
     } else {
         opened = 0;
         document.getElementById("patternMenu").style.width = "0";
+        document.getElementById("main").style.marginLeft = "auto";
     }
 }
 
 /*global hljs*/
 /* call function for syntax highlighting from highlight.pack.js*/
 hljs.initHighlightingOnLoad();
+
+setTimeout(function () {
+    "use strict";
+    if (window.innerWidth > 1000) {
+        openCloseMenu();
+    }
+}, 500);
 
 /* exported checkCommand to index.html*/
 function checkCommand() {
