@@ -10,7 +10,7 @@ function openCloseMenu() {
         opened = 1;
         document.getElementById("patternMenu").style.width = "240px";
         if (window.innerWidth >= 1280) {
-            document.getElementById("patternMenu").style.width = (window.innerWidth - 800) / 2 + "px";
+            document.getElementById("patternMenu").style.width = (window.innerWidth - 802) / 2 + "px";
         } else if (window.innerWidth > 600) {
             document.getElementById("main").style.marginLeft = "240px";
         }
