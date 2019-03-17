@@ -23,12 +23,15 @@ function openCloseMenu() {
 /* call function for syntax highlighting from highlight.pack.js*/
 hljs.initHighlightingOnLoad();
 
-setTimeout(function () {
-    "use strict";
-    if (window.innerWidth > 600) {
-        openCloseMenu();
+if (window.innerWidth > 600) {
+    if (window.innerWidth < 1280) {
+        document.getElementById("main").style.marginLeft = "240px";
     }
-}, 500);
+    setTimeout(function () {
+        "use strict";
+        openCloseMenu();
+    }, 500);
+}
 
 /* exported checkCommand to index.html*/
 function checkCommand() {
