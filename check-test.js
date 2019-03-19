@@ -12,8 +12,16 @@ function checkSolved() {
     if (!decoratorSolved) { return; }
     if (!strategySolved) { return; }
     if (!observerSolved) { return; }
-    document.getElementById("match").play();
     document.getElementById("certificate").disabled = false;
+    setTimeout(function () {
+        document.getElementById("match").play();
+    }, 1000);
+}
+
+function playTone() {
+    "use strict";
+    document.getElementById("ping").volume = 0.5;
+    document.getElementById("ping").play();
 }
 
 /* Checking the multiple choice test for the command pattern. */
@@ -37,7 +45,7 @@ function checkCommand(pattern) { /* exported checkCommand */
         patternResult.style.color = "darkgreen";
         patternResult.innerHTML = "&#10003;";
         commandSolved = true;
-        document.getElementById("bling").play();
+        playTone();
         checkSolved();
     
     } else {
@@ -70,6 +78,7 @@ function checkFactory(pattern) { /* exported checkFactory */
         patternResult.style.color = "darkgreen";
         patternResult.innerHTML = "&#10003;";
         factorySolved = true;
+        playTone();
         checkSolved();
     
     } else {
@@ -98,6 +107,7 @@ function checkDecorator(pattern) { /* exported checkDecorator */
         patternResult.style.color = "darkgreen";
         patternResult.innerHTML = "&#10003;";
         decoratorSolved = true;
+        playTone();
         checkSolved();
     
     } else {
@@ -126,6 +136,7 @@ function checkStrategy(pattern) { /* exported checkStrategy */
         patternResult.style.color = "darkgreen";
         patternResult.innerHTML = "&#10003;";
         strategySolved = true;
+        playTone();
         checkSolved();
     
     } else {
@@ -158,6 +169,7 @@ function checkObserver(pattern) { /* exported checkObserver */
         patternResult.style.color = "darkgreen";
         patternResult.innerHTML = "&#10003;";
         observerSolved = true;
+        playTone();
         checkSolved();
     
     } else {
