@@ -41,6 +41,9 @@ a {
 
 p {
     text-align: justify;
+    -ms-hyphens: auto; /* ab IE10 */ 
+    -moz-hyphens: auto; /* seit Firefox 6 */
+    -webkit-hyphens: auto; /* seit Safari 5.1 (OS X), Safari 4.1 (iOS) */
     hyphens: auto;
 }
 

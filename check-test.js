@@ -15,13 +15,16 @@ function checkSolved() {
     document.getElementById("certificate").disabled = false;
     setTimeout(function () {
         var audio = new Audio('audio/tinder-match.mp3');
+        audio.volume = 0.2;
         audio.play();
     }, 1000);
 }
 
+var audio = new Audio('audio/tinder-message.mp3');
+audio.volume = 0.1;
+
 function playTone() {
     "use strict";
-    var audio = new Audio('audio/tinder-message.mp3');
     audio.play();
 }
 
