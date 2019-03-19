@@ -12,6 +12,8 @@ body {
     margin: auto;
     max-width: 672px;
     padding: 2em 4em 4em;
+    transition-property: margin;
+    transition-duration: 1s;
 }
 
 h1 {
@@ -51,6 +53,12 @@ button {
 
 button:hover {
     box-shadow: 0 0 2px rgba(0, 0, 0, 2);
+}
+
+button:disabled {
+    background: lightgrey;
+    box-shadow: none;
+    cursor: default;
 }
 
 form ul {
@@ -144,7 +152,7 @@ span.class {
 
 /* When you mouse over the navigation links, change their color */
 .sideMenu a:hover {
-  color: rgba(205,33,42,1);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 2);
 }
 
 .sideMenu img {
