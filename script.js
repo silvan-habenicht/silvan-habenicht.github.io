@@ -45,32 +45,32 @@ window.onresize = function (event) { // eslint-disable-line no-unused-vars
     
     if (opened) {
         if (window.innerWidth < 560) {
-            document.getElementById("main").style.padding = "2em 1em 2em 4em";
             document.getElementById("main").style.marginLeft = "0%";
             document.getElementById("patternMenu").style.width = "240px";
+            document.getElementById("main").style.padding = "2em 1em 2em 4em";
         } else if (window.innerWidth < 800) {
+            document.getElementById("main").style.marginLeft = "240px";
+            document.getElementById("patternMenu").style.width = "240px";
             document.getElementById("main").style.padding = "2em 1em 2em 1em";
-            document.getElementById("main").style.marginLeft = "240px";
-            document.getElementById("patternMenu").style.width = "240px";
         } else if (window.innerWidth < 1280) {
-            document.getElementById("main").style.padding = "2em 4em 4em";
             document.getElementById("main").style.marginLeft = "240px";
             document.getElementById("patternMenu").style.width = "240px";
-        } else {
             document.getElementById("main").style.padding = "2em 4em 4em";
+        } else {
             document.getElementById("main").style.marginLeft = "auto";
             document.getElementById("patternMenu").style.width = (window.innerWidth - 802) / 2 + "px";
+            document.getElementById("main").style.padding = "2em 4em 4em";
         }
     } else {
         if (window.innerWidth < 560) {
+            document.getElementById("main").style.marginLeft = "0%";
             document.getElementById("main").style.padding = "2em 1em 2em 4em";
-            document.getElementById("main").style.marginLeft = "0%";
         } else if (window.innerWidth < 800) {
-            document.getElementById("main").style.padding = "2em 4em 4em";
             document.getElementById("main").style.marginLeft = "0%";
-        } else {
             document.getElementById("main").style.padding = "2em 4em 4em";
+        } else {
             document.getElementById("main").style.marginLeft = (window.innerWidth - 800) / 2 + "px";
+            document.getElementById("main").style.padding = "2em 4em 4em";
         }
     }
 };

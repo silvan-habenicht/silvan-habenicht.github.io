@@ -32,9 +32,9 @@ function checkCommand(pattern) { /* exported checkCommand */
             !patternForm.commandB3.checked &&
             patternForm.commandB4.checked) {
         
-        patternMenu.style.color = "rgba(0,140,69,1)";
+        patternMenu.style.color = "darkgreen";
         patternMenu.innerHTML = "Command &#10003;";
-        patternResult.style.color = "rgba(0,140,69,1)";
+        patternResult.style.color = "darkgreen";
         patternResult.innerHTML = "&#10003;";
         commandSolved = true;
         document.getElementById("bling").play();
@@ -65,9 +65,9 @@ function checkFactory(pattern) { /* exported checkFactory */
             patternForm.factoryB3.checked &&
             !patternForm.factoryB4.checked) {
         
-        patternMenu.style.color = "rgba(0,140,69,1)";
+        patternMenu.style.color = "darkgreen";
         patternMenu.innerHTML = "Factory &#10003;";
-        patternResult.style.color = "rgba(0,140,69,1)";
+        patternResult.style.color = "darkgreen";
         patternResult.innerHTML = "&#10003;";
         factorySolved = true;
         checkSolved();
@@ -93,9 +93,9 @@ function checkDecorator(pattern) { /* exported checkDecorator */
             !patternForm.decoratorA3.checked &&
             !patternForm.decoratorA4.checked) {
         
-        patternMenu.style.color = "rgba(0,140,69,1)";
+        patternMenu.style.color = "darkgreen";
         patternMenu.innerHTML = "Decorator &#10003;";
-        patternResult.style.color = "rgba(0,140,69,1)";
+        patternResult.style.color = "darkgreen";
         patternResult.innerHTML = "&#10003;";
         decoratorSolved = true;
         checkSolved();
@@ -121,9 +121,9 @@ function checkStrategy(pattern) { /* exported checkStrategy */
             !patternForm.strategyA3.checked &&
             patternForm.strategyA4.checked) {
         
-        patternMenu.style.color = "rgba(0,140,69,1)";
+        patternMenu.style.color = "darkgreen";
         patternMenu.innerHTML = "Strategy &#10003;";
-        patternResult.style.color = "rgba(0,140,69,1)";
+        patternResult.style.color = "darkgreen";
         patternResult.innerHTML = "&#10003;";
         strategySolved = true;
         checkSolved();
@@ -153,9 +153,9 @@ function checkObserver(pattern) { /* exported checkObserver */
             patternForm.observerB3.checked &&
             !patternForm.observerB4.checked) {
         
-        patternMenu.style.color = "rgba(0,140,69,1)";
+        patternMenu.style.color = "darkgreen";
         patternMenu.innerHTML = "Observer &#10003;";
-        patternResult.style.color = "rgba(0,140,69,1)";
+        patternResult.style.color = "darkgreen";
         patternResult.innerHTML = "&#10003;";
         observerSolved = true;
         checkSolved();

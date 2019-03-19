@@ -38,6 +38,11 @@ a {
     color: darkred;
 }
 
+p {
+    text-align: justify;
+    hyphens: auto;
+}
+
 button {
     font-family: inherit;
     font-size: 1em;
@@ -74,10 +79,11 @@ div.code {
 
 hr.italian {
   border: 0;
+  margin-top: -7px;
   height: 5px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-
-  background: linear-gradient(to right, rgba(0,140,69,1) 0%, rgba(0,140,69,1) 33%, rgba(244,245,240,1) 33%, rgba(244,245,240,1) 66%, rgba(205,33,42,1) 66%, rgba(205,33,42,1) 100%);
+  border-radius: 2px;
+  background: linear-gradient(to right, rgb(0,140,69) 0%, rgb(0,140,69) 33%, rgb(244,245,240) 33%, rgb(244,245,240) 66%, rgb(205,33,42) 66%, rgb(205,33,42) 100%);
 }
 
 span.keyword {
@@ -120,9 +126,10 @@ span.class {
 
 .menuIcon {
   position: fixed; /* Stay in place */
-  z-index: 0; /* Stay on top */
+  z-index: 1; /* Stay visible */
   left: 0;
-  margin-left: 20px;
+  top: 16px;
+  margin-left: 16px;
 }
 /* The side navigation menu */
 .sideMenu {
@@ -180,10 +187,10 @@ span.class {
   content: "";
   position: absolute;
   left: 0;
-  top: -9px;
+  top: 9px;
 }
 #toggle span:after{
-  top: 9px;
+  top: 18px;
 }
 #toggle span {
   position: relative;
