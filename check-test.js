@@ -14,14 +14,15 @@ function checkSolved() {
     if (!observerSolved) { return; }
     document.getElementById("certificate").disabled = false;
     setTimeout(function () {
-        document.getElementById("match").play();
+        var audio = new Audio('audio/tinder-match.mp3');
+        audio.play();
     }, 1000);
 }
 
 function playTone() {
     "use strict";
-    document.getElementById("ping").volume = 0.5;
-    document.getElementById("ping").play();
+    var audio = new Audio('audio/tinder-message.mp3');
+    audio.play();
 }
 
 /* Checking the multiple choice test for the command pattern. */
