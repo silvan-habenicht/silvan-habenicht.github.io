@@ -274,6 +274,7 @@ span.class {
     border-style: solid;
     border-width: thin;
     border-radius: 2px;
+    white-space: nowrap;
 }
 
 .testjump:hover {

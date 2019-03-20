@@ -135,7 +135,7 @@ class GetraenkeAdapter implements Gericht {
         
         
             <p>
-                Wann immer wir unserem Koch also ein Getränk übergeben möchten, stecken wir es vorher in einen Getränkeadapter. Wenn wir beispielsweise möchten, dass sich unser Koch um ein Wasser kümmert, so schreiben wir ihm anstelle von <code>new Wasser</code> folgendes auf Aufgabenliste: <code>new GetraenkeAdapter(new Wasser())</code>. Wir erzeugen also ein Objekt der Klasse <code>GetraenkeAdapter</code>, welchem wir im Kosntruktor ein Getränk übergeben. Der Getränke-Adapter kümmert sich darum, die Funktionen der Getränke-Klasse in ihre Entsprechungen aus der Gerichte-Klasse zu übersetzen. Da <code>GetraenkeAdapter</code> eine Unterklasse von <code>Gericht</code> ist, sind keine weiteren Änderungen in der <code>Koch</code>-Klasse erforderlich.
+                Wann immer wir unserem Koch also ein Getränk übergeben möchten, stecken wir es vorher in einen Getränkeadapter. Wenn wir beispielsweise möchten, dass sich unser Koch um ein Wasser kümmert, so schreiben wir ihm anstelle von <code>new Wasser</code> folgendes auf Aufgabenliste: <code>new GetraenkeAdapter(new Wasser())</code>. Wir erzeugen also ein Objekt der Klasse <code>GetraenkeAdapter</code>, welchem wir im Konstruktor ein Getränk übergeben. Der Getränke-Adapter kümmert sich darum, die Funktionen der Getränke-Klasse in ihre Entsprechungen aus der Gerichte-Klasse zu übersetzen. Da <code>GetraenkeAdapter</code> eine Unterklasse von <code>Gericht</code> ist, sind keine weiteren Änderungen in der <code>Koch</code>-Klasse erforderlich.
             </p>
         
             <form id="adapterForm">
