@@ -32,7 +32,7 @@ h2, h3, h4, h5, h6 {
 }
 
 h2 {
-    margin-top: 1.3em;
+    margin-top: 2em;
 }
 
 h4 {
@@ -82,11 +82,10 @@ button:disabled {
 }
 
 form ul {
-  list-style-type: none;
+  list-style-type: none; /* no enumeration symbols in listings */
 }
 
 div.code {
-    overflow-x:scroll;
     padding: 0 30px;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
@@ -192,7 +191,8 @@ span.class {
 
 /* On smaller screens, where width is less than 500px, change the style (less padding and a smaller font size) */
 @media screen and (max-width: 500px) {
-    body {padding: 2em 1em 2em 4em;}
+    body {padding: 2em 1em 2em 4em;font-size: 12px;}
+    p code {font-size: 10px;}
 }
 
 #toggle {

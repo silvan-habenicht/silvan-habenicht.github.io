@@ -64,7 +64,7 @@
         
         <!-- Das Adapter-Pattern -->
         <div id="adapter">
-            <h3>Das Adapter-Pattern <a class="testjump" href="#adapterForm">...direkt zum Test...</a></h3>
+            <h2>Das Adapter-Pattern <a class="testjump" href="#adapterForm">...direkt zum Test...</a></h2>
             
             <p>
                 Im Restaurant <em>BendisPasta</em> werden in erster Linie zwei Arten von Objekten serviert: Gerichte und Getränke.      
@@ -137,9 +137,14 @@ class GetraenkeAdapter implements Gericht {
             <p>
                 Wann immer wir unserem Koch also ein Getränk übergeben möchten, stecken wir es vorher in einen Getränkeadapter. Wenn wir beispielsweise möchten, dass sich unser Koch um ein Wasser kümmert, so schreiben wir ihm anstelle von <code>new Wasser</code> folgendes auf Aufgabenliste: <code>new GetraenkeAdapter(new Wasser())</code>. Wir erzeugen also ein Objekt der Klasse <code>GetraenkeAdapter</code>, welchem wir im Konstruktor ein Getränk übergeben. Der Getränke-Adapter kümmert sich darum, die Funktionen der Getränke-Klasse in ihre Entsprechungen aus der Gerichte-Klasse zu übersetzen. Da <code>GetraenkeAdapter</code> eine Unterklasse von <code>Gericht</code> ist, sind keine weiteren Änderungen in der <code>Koch</code>-Klasse erforderlich.
             </p>
+            
+            <h4>Ein Praxisbeispiel</h4>
+            <p>
+                Enumerator an Iterator anpassen (vKbF 257)
+            </p>
         
             <form id="adapterForm">
-                <h4>Multiple Choice-Test</h4>
+                <h3>Multiple Choice-Test</h3>
                 <fieldset>
                     Was ist die Aufgabe das Adapter-Patterns?
                     <ul>
@@ -206,7 +211,7 @@ class GetraenkeAdapter implements Gericht {
 
         <!-- Das Command-Pattern -->
         <div id="command">
-            <h3>Das Command-Pattern <a class="testjump" href="#commandForm">...direkt zum Test...</a></h3>
+            <h2>Das Command-Pattern <a class="testjump" href="#commandForm">...direkt zum Test...</a></h2>
             <ul>
                 <li>Vermittlung von Bestellsystem/Kellner zur Küche/Theke</li>
                 <li>Warteschlange in der Küche</li>
@@ -250,7 +255,7 @@ class Abrechnung implements Befehl () {
             </code></div></pre>
     
             <form id="commandForm">
-                <h4>Multiple Choice-Test</h4>
+                <h3>Multiple Choice-Test</h3>
                 <fieldset>
                     Was macht das Command-Pattern?
                     <ul>
@@ -317,7 +322,7 @@ class Abrechnung implements Befehl () {
         
         <!-- Das Factory-Pattern -->
         <div id="factory">
-            <h3>Das Factory-Pattern <a class="testjump" href="#factoryForm">...direkt zum Test...</a></h3>
+            <h2>Das Factory-Pattern <a class="testjump" href="#factoryForm">...direkt zum Test...</a></h2>
             <ul>
                 <li>Factory zur Herstellung unterschiedlicher Pizzen/Gerichte</li>
             </ul>
@@ -414,7 +419,7 @@ class Bestellung implements Befehl{
             </ul>
 
             <form id="factoryForm">
-                <h4>Multiple Choice-Test</h4>
+                <h3>Multiple Choice-Test</h3>
                 <fieldset>
                     Was ist die wesentliche Aufgabe der Fabrikmethode?
                     <ul>
@@ -481,7 +486,7 @@ class Bestellung implements Befehl{
         
         <!-- Das Decorator-Pattern -->
         <div id="decorator">
-            <h3>Das Decorator-Pattern <a class="testjump" href="#decoratorForm">...direkt zum Test...</a></h3>
+            <h2>Das Decorator-Pattern <a class="testjump" href="#decoratorForm">...direkt zum Test...</a></h2>
             <ul>
                 <li>Optionale Garnitur hinzufügen</li>
             </ul>
@@ -566,7 +571,7 @@ class GerichteFabrik {
             </code></div></pre>
 
             <form id="decoratorForm">
-                <h4>Multiple Choice-Test</h4>
+                <h3>Multiple Choice-Test</h3>
                 <fieldset>
                     Worin besteht die wesentliche Aufgabe eines Decorators?
                     <ul>
@@ -603,7 +608,7 @@ class GerichteFabrik {
         
         <!-- Das Strategy-Pattern -->
         <div id="strategy">
-            <h3>Das Strategy-Pattern <a class="testjump" href="#strategyForm">...direkt zum Test...</a></h3>
+            <h2>Das Strategy-Pattern <a class="testjump" href="#strategyForm">...direkt zum Test...</a></h2>
             <ul>
                 <li>Sich wiederholende Zubereitungsarten mehrfach nutzen</li>
                 <li>Saisonal austauschbare oder verbesserte Rezepte (Algorithmen) einfach umsetzen</li>
@@ -667,7 +672,7 @@ class PizzaMargherita extends Pizza {
             </code></div></pre>
             
             <form id="strategyForm">
-                <h4>Multiple Choice-Test</h4>
+                <h3>Multiple Choice-Test</h3>
                 <fieldset>
                     Was ist der wesentliche Zweck des Strategy-Ansatzes?
                     <ul>
@@ -704,7 +709,7 @@ class PizzaMargherita extends Pizza {
         
         <!-- Das Observer-Pattern -->
         <div id="observer">
-            <h3>Das Observer-Pattern <a class="testjump" href="#observerForm">...direkt zum Test...</a></h3>
+            <h2>Das Observer-Pattern <a class="testjump" href="#observerForm">...direkt zum Test...</a></h2>
             <ul>
                 <li>Bestellstatus aktualisieren</li>
                 <li>java.util.Observable/Observer nutzen</li>
@@ -745,7 +750,7 @@ class Kunde implements Observer {
             </code></div></pre>
 
             <form id="observerForm">
-                <h4>Multiple Choice-Test</h4>
+                <h3>Multiple Choice-Test</h3>
                 <fieldset>
                     Wozu dient das Observer-Muster?
                     <ul>
@@ -813,7 +818,7 @@ class Kunde implements Observer {
         
         <!-- Der Model-View-Controller -->
         <div id="mvc">
-            <h3>Der Model-View-Controller <a class="testjump" href="#mvcForm">...direkt zum Test...</a></h3>
+            <h2>Der Model-View-Controller <a class="testjump" href="#mvcForm">...direkt zum Test...</a></h2>
         </div>
         
         <div id="alert">
