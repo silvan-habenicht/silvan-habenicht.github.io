@@ -21,23 +21,20 @@
         
         <!-- multiple choice test evaluation -->
         <script src="check-test.js"></script>
-        
-        <audio id="ping" src="audio/tinder-message.mp3"></audio>
-        <audio id="match" src="audio/tinder-match.mp3" ></audio>
 
         <!-- sidebar menu -->
         <div class="sideMenu" id="patternMenu">
             <img src="pictures/pasta_medium.png" alt="Logo">
             <a id="titleMenu" style="font-weight:bold;box-shadow: none;font-style:normal;">Pattern-Menü</a>
+            <a id="adapterMenu" style="text-indent:15px;font-size:14px;"href="#adapter"onclick="conditionCloseMenu()">Adapter</a>
             <a id="commandMenu" style="text-indent:15px;font-size:14px;" href="#command"onclick="conditionCloseMenu()">Command</a>
             <a id="factoryMenu" style="text-indent:15px;font-size:14px;"href="#factory"onclick="conditionCloseMenu()">Factory</a>
             <a id="decoratorMenu" style="text-indent:15px;font-size:14px;"href="#decorator"onclick="conditionCloseMenu()">Decorator</a>
             <a id="strategyMenu" style="text-indent:15px;font-size:14px;"href="#strategy"onclick="conditionCloseMenu()">Strategy</a>
             <a id="observerMenu" style="text-indent:15px;font-size:14px;"href="#observer"onclick="conditionCloseMenu()">Observer</a>
-            <a id="adapterMenu" style="text-indent:15px;font-size:14px;"href="#adapter"onclick="conditionCloseMenu()">Adapter</a>
             <a id="mvcMenu" style="text-indent:15px;font-size:14px;"href="#mvc"onclick="conditionCloseMenu()">MVC</a>
             <br/>
-            <button type="button" style="text-indent:40px;white-space: nowrap;border-top-left-radius:0;border-bottom-left-radius:0;padding-right: 16px;" disabled=true onclick="getCertificate()" id="certificate">Zertifikat erstellen</button>
+            <button type="button" disabled=true onclick="getCertificate()" id="certificate">Zertifikat erstellen</button>
             <br/>
             <br/>
             <br/>
@@ -45,7 +42,7 @@
 
         <!-- sidebar menu icon -->
         <div class="menuIcon">
-            <a id="toggle" href="javascript:void(0)" onclick="openCloseMenu()"><span></span></a>
+            <a id="toggle" onclick="openCloseMenu()"><span></span></a>
         </div>
 
         <!-- title + welcoming text -->
@@ -56,7 +53,7 @@
             <h2>Willkommen in der Pizzeria BendisPasta!</h2>
 
             <p>
-                Diese Website dient einem schmackhaften Einstieg in <em>Design Patterns</em> (zu deutsch: Entwurfsmuster). Hierbei handelt es sich um allgemeine Entwurfsprinzipien, nach denen objektorientierter Softwarecode aufgebaut werden kann. Bei bestimmten wiederkehrenden Anwendungsfällen helfen diese dabei, dass der Code möglichst flexibel an veränderte Anforderungen angepasst oder um erweiterte Funktionalität ergänzt werden kann. Die Kenntnis grundlegender <em>Design Patterns</em> ist für die moderne OO-Entwicklung von elementarer Bedeutung.
+                Diese Website dient einem schmackhaften Einstieg in <em>Design Patterns</em> (zu Deutsch: Entwurfsmuster). Hierbei handelt es sich um allgemeine Entwurfsprinzipien, nach denen objektorientierter Softwarecode aufgebaut werden kann. Bei bestimmten wiederkehrenden Anwendungsfällen helfen diese dabei, dass der Code möglichst flexibel an veränderte Anforderungen angepasst oder um erweiterte Funktionalität ergänzt werden kann. Die Kenntnis grundlegender <em>Design Patterns</em> ist für die moderne OO-Entwicklung von elementarer Bedeutung.
             </p>
 
             <p>
@@ -64,11 +61,152 @@
             </p>
 
         </div>
+        
+        <!-- Das Adapter-Pattern -->
+        <div id="adapter">
+            <h3>Das Adapter-Pattern <a class="testjump" href="#adapterForm">...direkt zum Test...</a></h3>
+            
+            <p>
+                Im Restaurant <em>BendisPasta</em> werden in erster Linie zwei Arten von Objekten serviert: Gerichte und Getränke.      
+            </p>
+            
+            <div style="display:flex; flex-wrap: wrap;">
+                <div style="margin-left: auto;margin-right: auto;">
+                <h4>Gerichte-API</h4>
+                <pre><div class="code"><code>
+interface Gericht {
+
+    void zubereiten();
+    void servieren();
+    ...
+  
+}
+                </code></div></pre>
+                </div>
+                <div style="margin-left: auto;margin-right: auto;">
+                <h4>Getränke-API</h4>
+                <pre><div class="code"><code>
+interface Getraenk {
+
+    void einschaenken();
+    void servieren();
+    ...
+  
+}
+                </code></div></pre>
+                </div>
+            </div>
+            
+            <p>
+                Bislang wurde die Methode <code>zubereiten()</code> ausschließlich von einer Instanz der Klasse <code>Koch</code> aufgerufen, das Einschänken der Getränke wurde hingegen von einem <code>Barkeeper</code>-Objekt übernommen. Im Zuge der betrieblichen Rationalisierungsmaßnahmen wird von den Mitarbeitern nun mehr Flexibilität verlangt. Um an besucherarmen Tagen effizienter zu arbeiten, sollen alle Mitarbeiter, die bislang nur mit Gerichten zu tun hatten, auch mit Getränken umgehen können.
+            </p>
+            
+            <h4>Was ist zu tun?</h4>
+            <p>
+                Im Kern machen die beiden Methoden <code>zubereiten()</code> und <code>einschaenken()</code> dasselbe: Sie bereiten eine Bestellung so vor, dass sie vom Kellner serviert werden kann. Wann immer ein Koch auf einem Gerichte-Objekt <code>zubereiten()</code> aufrufen würde, müsste er also anstelle dessen <code>einschaenken()</code> aufrufen, sofern er es mit einem Getränk zu tun hat. Eine Möglichkeit das zu realisieren besteht in einem Refactoring. Wir könnten z. B. alle Klassen so anpassen, dass <code>Gericht</code> und <code>Getraenk</code> sowie <code>Koch</code>, <code>Barkeeper</code> und alle anderen Mitarbeiter nur noch mit einer einheitlichen Methode (z. B. <code>vorbereiten()</code>) arbeiten. Der Refactoring Ansatz ist jedoch mit hohem Aufwand verbunden, falls die bisherigen Methodennamen und Strukturen schon vielfach genutzt wurden und verstreut im Einsatz sind.
+            </p>
+            
+            <h4>Die Lösung</h4>
+            <p>
+                Eine schnelle und einfach Lösung des Problems besteht darin, das Adapter-Pattern zu nutzen. Unten siehst du eine Getränke-Adapter-Klasse, die es dem Koch ermöglicht, ein Getränk genau so zu behandeln, wie er es von seinen Gerichten gewohnt ist:
+            </p>
+            
+            
+            <pre><div class="code"><code>
+class GetraenkeAdapter implements Gericht {
+
+    Getraenk getraenk;
+
+    public GetraenkeAdapter(Getraenk getraenk) {
+        this.getraenk = getraenk;
+    }
+
+    void zubereiten() {
+        getränk.einschaenken();
+    }
+
+    void servieren() {
+        getränk.servieren();
+    }
+    ...
+
+}
+            </code></div></pre>
+        
+        
+            <p>
+                Wann immer wir unserem Koch also ein Getränk übergeben möchten, stecken wir es vorher in einen Getränkeadapter. Wenn wir beispielsweise möchten, dass sich unser Koch um ein Wasser kümmert, so schreiben wir ihm anstelle von <code>new Wasser</code> folgendes auf Aufgabenliste: <code>new GetraenkeAdapter(new Wasser())</code>. Wir erzeugen also ein Objekt der Klasse <code>GetraenkeAdapter</code>, welchem wir im Kosntruktor ein Getränk übergeben. Der Getränke-Adapter kümmert sich darum, die Funktionen der Getränke-Klasse in ihre Entsprechungen aus der Gerichte-Klasse zu übersetzen. Da <code>GetraenkeAdapter</code> eine Unterklasse von <code>Gericht</code> ist, sind keine weiteren Änderungen in der <code>Koch</code>-Klasse erforderlich.
+            </p>
+        
+            <form id="adapterForm">
+                <h4>Multiple Choice-Test</h4>
+                <fieldset>
+                    Was ist die Aufgabe das Adapter-Patterns?
+                    <ul>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="adapterA1" value="">
+                                Transformation von angloamerikanischen Maßeinheiten in das metrische System und umgekehrt
+                            </label>
+                        </li>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="adapterA2" value="">
+                                Refactoring
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="adapterA3" value="">
+                                Es reduziert eine Schnittstelle auf die Elemente, die ein bestimmter Client benötigt
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="adapterA4" checked=true value="">
+                                Übersetzung der Schnittstelle einer bestimmten Klasse in die Schnittstelle einer ähnlich gearteten anderen Klasse
+                            </label>
+                        </li>
+                    </ul> 
+                </fieldset>
+                <br/>
+                <fieldset>
+                    Welches Objekt wird der Adapter-Klasse im Konstruktor übergeben?
+                    <ul>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="adapterB1" checked=true value="">
+                                Das Objekt, dessen Schnittstelle für den Client übersetzt werden muss
+                            </label>
+                        </li>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="adapterB2" value="">
+                                Das Objekt, dessen Schnittstelle der Client erwartet
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="adapterB3" value="">
+                                Das <code>null</code>-Objekt
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="adapterB4" value="">
+                                Das Client-Objekt
+                            </label>
+                        </li>
+                    </ul> 
+                </fieldset>
+                <br/>
+                <button type="button" onclick="checkAdapter('adapter')">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<a id="adapterResult"></a>
+            </form>
+        </div>
 
         <!-- Das Command-Pattern -->
         <div id="command">
-            <h3>Das Command-Pattern</h3>
-            <a style="cursor:pointer;text-decoration:none;font-size:12px;margin-left: 2em;" href="#commandForm">...direkt zum Test...</a>
+            <h3>Das Command-Pattern <a class="testjump" href="#commandForm">...direkt zum Test...</a></h3>
             <ul>
                 <li>Vermittlung von Bestellsystem/Kellner zur Küche/Theke</li>
                 <li>Warteschlange in der Küche</li>
@@ -112,7 +250,7 @@ class Abrechnung implements Befehl () {
             </code></div></pre>
     
             <form id="commandForm">
-                <h4>Multiple-Choice</h4>
+                <h4>Multiple Choice-Test</h4>
                 <fieldset>
                     Was macht das Command-Pattern?
                     <ul>
@@ -179,8 +317,7 @@ class Abrechnung implements Befehl () {
         
         <!-- Das Factory-Pattern -->
         <div id="factory">
-            <h3>Das Factory-Pattern</h3>
-            <a style="cursor:pointer;text-decoration:none;font-size:12px;margin-left: 2em;" href="#factoryForm">...direkt zum Test...</a>
+            <h3>Das Factory-Pattern <a class="testjump" href="#factoryForm">...direkt zum Test...</a></h3>
             <ul>
                 <li>Factory zur Herstellung unterschiedlicher Pizzen/Gerichte</li>
             </ul>
@@ -276,9 +413,8 @@ class Bestellung implements Befehl{
                 </ul>
             </ul>
 
-            <h4>Multiple-Choice</h4>
-
             <form id="factoryForm">
+                <h4>Multiple Choice-Test</h4>
                 <fieldset>
                     Was ist die wesentliche Aufgabe der Fabrikmethode?
                     <ul>
@@ -345,8 +481,7 @@ class Bestellung implements Befehl{
         
         <!-- Das Decorator-Pattern -->
         <div id="decorator">
-            <h3>Das Decorator-Pattern</h3>
-            <a style="cursor:pointer;text-decoration:none;font-size:12px;margin-left: 2em;" href="#decoratorForm">...direkt zum Test...</a>
+            <h3>Das Decorator-Pattern <a class="testjump" href="#decoratorForm">...direkt zum Test...</a></h3>
             <ul>
                 <li>Optionale Garnitur hinzufügen</li>
             </ul>
@@ -430,9 +565,8 @@ class GerichteFabrik {
 }
             </code></div></pre>
 
-            <h4>Multiple-Choice</h4>
-
             <form id="decoratorForm">
+                <h4>Multiple Choice-Test</h4>
                 <fieldset>
                     Worin besteht die wesentliche Aufgabe eines Decorators?
                     <ul>
@@ -469,8 +603,7 @@ class GerichteFabrik {
         
         <!-- Das Strategy-Pattern -->
         <div id="strategy">
-            <h3>Das Strategy-Pattern</h3>
-            <a style="cursor:pointer;text-decoration:none;font-size:12px;margin-left: 2em;" href="#strategyForm">...direkt zum Test...</a>
+            <h3>Das Strategy-Pattern <a class="testjump" href="#strategyForm">...direkt zum Test...</a></h3>
             <ul>
                 <li>Sich wiederholende Zubereitungsarten mehrfach nutzen</li>
                 <li>Saisonal austauschbare oder verbesserte Rezepte (Algorithmen) einfach umsetzen</li>
@@ -532,10 +665,9 @@ class PizzaMargherita extends Pizza {
 
 }
             </code></div></pre>
-
-            <h4>Multiple-Choice</h4>
-
+            
             <form id="strategyForm">
+                <h4>Multiple Choice-Test</h4>
                 <fieldset>
                     Was ist der wesentliche Zweck des Strategy-Ansatzes?
                     <ul>
@@ -572,8 +704,7 @@ class PizzaMargherita extends Pizza {
         
         <!-- Das Observer-Pattern -->
         <div id="observer">
-            <h3>Das Observer-Pattern</h3>
-            <a style="cursor:pointer;text-decoration:none;font-size:12px;margin-left: 2em;" href="#observerForm">...direkt zum Test...</a>
+            <h3>Das Observer-Pattern <a class="testjump" href="#observerForm">...direkt zum Test...</a></h3>
             <ul>
                 <li>Bestellstatus aktualisieren</li>
                 <li>java.util.Observable/Observer nutzen</li>
@@ -612,10 +743,9 @@ class Kunde implements Observer {
 
 }
             </code></div></pre>
-            
-            <h4>Multiple-Choice</h4>
 
             <form id="observerForm">
+                <h4>Multiple Choice-Test</h4>
                 <fieldset>
                     Wozu dient das Observer-Muster?
                     <ul>
@@ -681,64 +811,14 @@ class Kunde implements Observer {
         
         </div>
         
-        <!-- Das Adapter-Pattern -->
-        <div id="adapter">
-            <h3>Das Adapter-Pattern</h3>
-            <a style="cursor:pointer;text-decoration:none;font-size:12px;margin-left: 2em;" href="#adapterForm">...direkt zum Test...</a>
-            <ul>
-                <li>Gleichbehandlung von Getränken und Gerichten</li>
-            </ul>
-
-            <pre><div class="code"><code>
-interface Gericht {
-
-    void zubereiten();
-    void servieren();
-    List&lt;String&gt; getZutaten();
-
-    ...
-  
-}
-
-            </code></div></pre>
-
-            <pre><div class="code"><code>
-interface Getränk {
-
-    void zubereiten();
-    void einschänken();
-    List&lt;String&gt; getZutaten();
-    ...
-  
-}
-            </code></div></pre>
-            
-            <pre><div class="code"><code>
-class GetränkeAdapter implements Gericht {
-
-    Getränk getränk;
-
-    public GetränkeAdapter(Getränk getränk) {
-        this.getränk = getränk;
-    }
-
-    void zubereiten() {
-        getränk.zubereiten();
-    }
-
-    void servieren() {
-        getränk.einschänken();
-    }
-    ...
-
-}
-            </code></div></pre>
-        </div>
-        
         <!-- Der Model-View-Controller -->
         <div id="mvc">
-            <h3>Der Model-View-Controller</h3>
-            <a style="cursor:pointer;text-decoration:none;font-size:12px;margin-left: 2em;" href="#mvcForm">...direkt zum Test...</a>
+            <h3>Der Model-View-Controller <a class="testjump" href="#mvcForm">...direkt zum Test...</a></h3>
+        </div>
+        
+        <div id="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            Gratulation! Du kannst jetzt dein Zertifikat herunterladen
         </div>
     </body>
 </html>

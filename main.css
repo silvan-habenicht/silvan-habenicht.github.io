@@ -35,6 +35,9 @@ h2 {
     margin-top: 1.3em;
 }
 
+h4 {
+}
+
 a {
     color: darkred;
 }
@@ -45,6 +48,14 @@ p {
     -moz-hyphens: auto; /* seit Firefox 6 */
     -webkit-hyphens: auto; /* seit Safari 5.1 (OS X), Safari 4.1 (iOS) */
     hyphens: auto;
+}
+
+p code {
+    background: beige;
+    padding-left: 4px;
+    padding-right: 4px;
+    color: black;
+    font-size: 12px;
 }
 
 button {
@@ -144,20 +155,19 @@ span.class {
     background-color: beige;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 20px; /* Place content 60px from the top */
+    padding-top: 20px;
     left: 0;
     top: 0;
-    transition: 1s; /* 0.5 second transition effect to slide in the sideMenu */
+    transition: 1s;
 }
 
 /* The navigation menu links */
 .sideMenu a {
-  padding: 8px 8px 8px 36px;
+  padding: 8px 8px 8px 38px;
   text-decoration: none;
   font-size: 25px;
   color: darkred;
   display: block;
-  transition: 0.3s;
   white-space: nowrap;
 }
 
@@ -172,9 +182,16 @@ span.class {
     margin-left: 60px;
 }
 
+.sideMenu button {
+    text-indent:46px;
+    white-space: nowrap;
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
+    padding-right: 16px;
+}
+
 /* On smaller screens, where width is less than 500px, change the style (less padding and a smaller font size) */
 @media screen and (max-width: 500px) {
-    /*.sideMenu a {font-size: 18px;}*/
     body {padding: 2em 1em 2em 4em;}
 }
 
@@ -184,6 +201,7 @@ span.class {
     height: 30px;
     position: absolute;
     font-size: 36px;
+    cursor: pointer;
 }
 
 #toggle span:after,
@@ -207,7 +225,57 @@ span.class {
   width: 100%;
   height: 5px;
   background-color: darkred;
-  transition: all 0.3s;
   border-radius: 2px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+/* The alert message box */
+#alert {
+    padding: 20px;
+    background-color: beige;
+    border-color: darkred;
+    border-radius: 2px;
+    border-style: solid;
+    color: darkred;
+    position: fixed;
+    top: 33%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 0;
+    line-height: 30px;
+    transition: all 2s;
+}
+
+/* The close button */
+.closebtn {
+    float: right;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 0;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  box-shadow: 0 0 2px black;
+}
+
+.testjump {
+    cursor:pointer;
+    text-decoration:none;
+    font-size:11px;
+    margin-left: 2em;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-style: solid;
+    border-width: thin;
+    border-radius: 2px;
+}
+
+.testjump:hover {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 1);
 }

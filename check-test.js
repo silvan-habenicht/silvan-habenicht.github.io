@@ -1,5 +1,7 @@
 /*eslint-env browser*/
-var commandSolved = false,
+/*global Audio: false */
+var adapterSolved = false,
+    commandSolved = false,
     factorySolved = false,
     decoratorSolved = false,
     strategySolved = false,
@@ -7,6 +9,7 @@ var commandSolved = false,
 
 function checkSolved() {
     "use strict";
+    if (!adapterSolved) { return; }
     if (!commandSolved) { return; }
     if (!factorySolved) { return; }
     if (!decoratorSolved) { return; }
@@ -17,6 +20,7 @@ function checkSolved() {
         var audio = new Audio('audio/tinder-match.mp3');
         audio.volume = 0.2;
         audio.play();
+        document.getElementById("alert").style.display = "block";
     }, 1000);
 }
 
@@ -26,6 +30,39 @@ audio.volume = 0.1;
 function playTone() {
     "use strict";
     audio.play();
+}
+
+/* Checking the multiple choice test for the adapter pattern. */
+function checkAdapter(pattern) { /* exported checkAdapter */
+    "use strict";
+    var patternForm = document.getElementById(pattern + "Form"),
+        patternMenu = document.getElementById(pattern + "Menu"),
+        patternResult = document.getElementById(pattern + "Result");
+    
+    if (!patternForm.adapterA1.checked &&
+            !patternForm.adapterA2.checked &&
+            !patternForm.adapterA3.checked &&
+            patternForm.adapterA4.checked &&
+            patternForm.adapterB1.checked &&
+            !patternForm.adapterB2.checked &&
+            !patternForm.adapterB3.checked &&
+            !patternForm.adapterB4.checked) {
+        
+        patternMenu.style.color = "darkgreen";
+        patternMenu.innerHTML = "Adapter &#10003;";
+        patternResult.style.color = "darkgreen";
+        patternResult.innerHTML = "&#10003;";
+        adapterSolved = true;
+        playTone();
+        checkSolved();
+    
+    } else {
+        patternMenu.style.color = "darkred";
+        patternMenu.innerHTML = "Adapter";
+        patternResult.style.color = "darkred";
+        patternResult.innerHTML = "&#10007; Bitte überprüfe deine Eingaben.";
+        adapterSolved = false;
+    }
 }
 
 /* Checking the multiple choice test for the command pattern. */
