@@ -40,13 +40,17 @@ function checkAdapter(pattern) { /* exported checkAdapter */
         patternResult = document.getElementById(pattern + "Result");
     
     if (!patternForm.adapterA1.checked &&
-            !patternForm.adapterA2.checked &&
-            !patternForm.adapterA3.checked &&
-            patternForm.adapterA4.checked &&
-            patternForm.adapterB1.checked &&
-            !patternForm.adapterB2.checked &&
-            !patternForm.adapterB3.checked &&
-            !patternForm.adapterB4.checked) {
+        !patternForm.adapterA2.checked &&
+        !patternForm.adapterA3.checked &&
+        patternForm.adapterA4.checked &&
+        patternForm.adapterB1.checked &&
+        !patternForm.adapterB2.checked &&
+        !patternForm.adapterB3.checked &&
+        !patternForm.adapterB4.checked &&
+        patternForm.adapterC1.value == "hasNext()" &&
+        patternForm.adapterC2.value == "enumeration.hasMoreElements()" &&
+        patternForm.adapterC3.value == "enumeration.nextElement()" &&
+        patternForm.adapterC4.value == "remove()") {
         
         patternMenu.style.color = "darkgreen";
         patternMenu.innerHTML = "Adapter &#10003;";

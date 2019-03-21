@@ -21,6 +21,12 @@
         
         <!-- multiple choice test evaluation -->
         <script src="check-test.js"></script>
+        
+        <!-- pop-up notification -->
+        <div id="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            Gratulation! Du kannst jetzt dein Zertifikat herunterladen
+        </div>
 
         <!-- sidebar menu -->
         <div class="sideMenu" id="patternMenu">
@@ -140,13 +146,15 @@ class GetraenkeAdapter implements Gericht {
             
             <h4>Ein Praxisbeispiel</h4>
             <p>
-                Enumerator an Iterator anpassen (vKbF 257)
+                Wenn du schon eine Weile mit Java gearbeitet hast, wird dir das Interface <code>java.util.Iterator</code> vielleicht ein Begriff sein. Die Schnittstelle bietet vier Funktionen <code>hasNext()</code>, <code>next()</code> sowie <code>remove()</code> und löst damit ihren Vorgänger <code>java.util.Enumeration</code> ab. Die beiden Methoden der Enumeration-Schnittstelle sind <code>hasMoreElements()</code> und <code>nextElement()</code>. Es kann durchaus vorkommen, dass wir in einem alten Java-Projekt auf Enumerations stoßen, obwohl wir inzwischen Iterators verwenden sollten. In einem solchen Fall würde es sich anbieten, mit einem Enumeration-Adapter zu arbeiten.
             </p>
+            
+            <p class="note">Übrigens: Auch der Iterator ist ein sogenanntes Design Pattern. Zweck des Iterator-Patterns ist es, den Zugriff auf Objekte einer Collection zu ermöglichen, ohne die zugrunde liegende Implementierung zu kennen.</p>
         
             <form id="adapterForm">
-                <h3>Multiple Choice-Test</h3>
+                <h3>Zwischenprüfung</h3>
                 <fieldset>
-                    Was ist die Aufgabe das Adapter-Patterns?
+                    Was ist die Aufgabe des Adapter-Patterns?
                     <ul>
                         <li> 
                             <label>
@@ -203,6 +211,32 @@ class GetraenkeAdapter implements Gericht {
                             </label>
                         </li>
                     </ul> 
+                </fieldset>
+                <br/>
+                <fieldset>
+                    Bitte ergänze den nachfolgenden Code-Ausschnitt. Zur Erinnerung: Das Interface <code>Iterator</code> besitzt die drei Methoden <code>hasNext()</code>, <code>next()</code> sowie <code>remove()</code>. Das Interface <code>Enumeration</code> hat lediglich die zwei Funktionen <code>hasMoreElements()</code> und <code>nextElement()</code>.
+                    <pre><div class="code"><code>
+class EnumerationAdapter implements Iterator&lt;E&gt; {
+
+    Enumeration&lt;?&gt; enumeration;
+
+    public EnumerationAdapter(Enumeration&lt;?&gt; enumeration) {
+        this.enumeration = enumeration;
+    }
+
+    public boolean <input type="text" value="hasNext()" style="width: 9ch;" name="adapterC1"> { // Bitte vervollständigen
+        return <input type="text" value="enumeration.hasMoreElements()" style="width: 29ch;" name="adapterC2">; // Bitte vervollständigen
+    }
+
+    public E next() {
+        return <input type="text" value="enumeration.nextElement()" style="width: 25ch;" name="adapterC3">; // Bitte vervollständigen
+    }
+    
+    public void <input type="text" value="remove()" style="width: 8ch;" name="adapterC4"> { // Bitte vervollständigen
+        throw new UnsupportedOperationException();
+    }
+}
+                    </code></div></pre>
                 </fieldset>
                 <br/>
                 <button type="button" onclick="checkAdapter('adapter')">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<a id="adapterResult"></a>
@@ -821,9 +855,13 @@ class Kunde implements Observer {
             <h2>Der Model-View-Controller <a class="testjump" href="#mvcForm">...direkt zum Test...</a></h2>
         </div>
         
-        <div id="alert">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-            Gratulation! Du kannst jetzt dein Zertifikat herunterladen
+        <div id="literature">
+            <h2>Weiterführende Literatur</h2>
+            <ul>
+                <li>Freeman, Eric und Elisabeth Robson (2015). <em>Entwurfsmuster von Kopf bis Fuß</em></li>
+                <li>Gamma, Erich u. a. (2015). <em>Design Patterns. Entwurfsmuster als Elemente wiederverwendbarer
+                    objektorientierter Software</em></li>
+            </ul>
         </div>
     </body>
 </html>
