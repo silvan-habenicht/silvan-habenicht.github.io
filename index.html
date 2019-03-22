@@ -464,7 +464,7 @@ class GerichteBestellung implements Befehl {
                 Das Factory Method-Pattern empfiehlt uns genau das. Wir erstellen eine neue Klasse <code>GerichteFabrik</code>, die eine Methode zur Erzeugung von Gerichten bereitstellt: <code>erzeugeGericht()</code>. Wie genau diese Methode implementiert wird, interessiert uns dabei erstmal nicht. Dies kann wie im vorigen Beispiel anhand einer Menge von if- bzw. case-Abfragen geschehen, mithilfe geeigneter Datenstrukturen oder auf Grundlage einer inneren bzw. globalen Speisekarten-Klasse. Entscheidend ist, dass wir unsere Klassenstruktur allein durch die Auslagerung schon erheblich verbessert haben. Zudem kann die Gerichtefabrik nun zur Laufzeit ausgetauscht werden.
             </p>
 
-            <b>Neuer Code</b>
+            <h4>Neuer Code</h4>
             <pre><div class="code"><code>
 class GerichteBestellung implements Befehl{
 
@@ -559,8 +559,8 @@ class GerichteFabrik {
 
     public GerichteFabrik() {}
     
-    <input type="text" value="Gericht" style="width: 7ch;" name="factoryC1"> <input type="text" value="erzeugeGericht" style="width: 14ch;color: darkblue;font-weight: bold;" name="factoryC2">(int gerichtID) {
-        ...
+    <input type="text" value="Gericht" style="width: 7ch;" name="factoryC1"> <input type="text" value="erzeugeGericht" style="width: 14ch;color: darkblue;font-weight: bold;" name="factoryC2">(int gerichtID) { // Rückgabetyp und Methodennamen eintragen
+        ... 
     }
 
 }
