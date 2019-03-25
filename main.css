@@ -278,18 +278,17 @@ input[type=text]:hover {
 #alert {
     padding: 20px;
     background-color: beige;
-    border-color: darkred;
+    border-color: beige;
     border-radius: 2px;
     border-style: solid;
-    color: darkred;
+    color: black;
     position: fixed;
     top: 33%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: none;
-    z-index: 0;
-    line-height: 30px;
-    transition: all 2s;
+    z-index: 2;
+    box-shadow: 0 0 2px black;
 }
 
 /* The close button */

@@ -20,6 +20,10 @@ function solveAll() { /* exported solveAll*/
     form.factoryB1.checked = true;
     form.factoryB2.checked = true;
     form.factoryB3.checked = true;
+    form = document.getElementById("strategyForm");
+    form.elements[4].checked = true;
+    form = document.getElementById("decoratorForm");
+    form.elements[1].checked = true;
 }
 
     
@@ -145,37 +149,6 @@ function checkFactory(pattern) { /* exported checkFactory */
     }
 }
 
-/* Checking the multiple choice test for the decorator pattern. */
-function checkDecorator(pattern) { /* exported checkDecorator */
-    "use strict";
-    var patternForm = document.getElementById(pattern + "Form"),
-        patternMenu = document.getElementById(pattern + "Menu"),
-        patternResult = document.getElementById(pattern + "Result"),
-        patternButton = document.getElementById(pattern + "Button");
-    
-    if (patternForm.decoratorA1.checked &&
-            !patternForm.decoratorA2.checked &&
-            !patternForm.decoratorA3.checked &&
-            !patternForm.decoratorA4.checked) {
-        
-        patternMenu.style.color = "darkgreen";
-        patternMenu.innerHTML = "Decorator &#10003;";
-        patternResult.innerHTML = "";
-        patternButton.style.background = "darkgreen";
-        decoratorSolved = true;
-        playTone();
-        checkSolved();
-    
-    } else {
-        patternMenu.style.color = "darkred";
-        patternMenu.innerHTML = "Decorator";
-        patternResult.style.color = "darkred";
-        patternResult.innerHTML = "&#10007; Bitte überprüfe deine Eingaben.";
-        patternButton.style.background = "darkred";
-        decoratorSolved = false;
-    }
-}
-
 /* Checking the multiple choice test for the strategy pattern. */
 function checkStrategy(pattern) { /* exported checkStrategy */
     "use strict";
@@ -184,10 +157,7 @@ function checkStrategy(pattern) { /* exported checkStrategy */
         patternResult = document.getElementById(pattern + "Result"),
         patternButton = document.getElementById(pattern + "Button");
     
-    if (!patternForm.strategyA1.checked &&
-            !patternForm.strategyA2.checked &&
-            !patternForm.strategyA3.checked &&
-            patternForm.strategyA4.checked) {
+    if (patternForm.elements[4].checked) {
         
         patternMenu.style.color = "darkgreen";
         patternMenu.innerHTML = "Strategy &#10003;";
@@ -204,6 +174,34 @@ function checkStrategy(pattern) { /* exported checkStrategy */
         patternResult.innerHTML = "&#10007; Bitte überprüfe deine Eingaben.";
         patternButton.style.background = "darkred";
         strategySolved = false;
+    }
+}
+
+/* Checking the multiple choice test for the decorator pattern. */
+function checkDecorator(pattern) { /* exported checkDecorator */
+    "use strict";
+    var patternForm = document.getElementById(pattern + "Form"),
+        patternMenu = document.getElementById(pattern + "Menu"),
+        patternResult = document.getElementById(pattern + "Result"),
+        patternButton = document.getElementById(pattern + "Button");
+    
+    if (patternForm.elements[1].checked) {
+        
+        patternMenu.style.color = "darkgreen";
+        patternMenu.innerHTML = "Decorator &#10003;";
+        patternResult.innerHTML = "";
+        patternButton.style.background = "darkgreen";
+        decoratorSolved = true;
+        playTone();
+        checkSolved();
+    
+    } else {
+        patternMenu.style.color = "darkred";
+        patternMenu.innerHTML = "Decorator";
+        patternResult.style.color = "darkred";
+        patternResult.innerHTML = "&#10007; Bitte überprüfe deine Eingaben.";
+        patternButton.style.background = "darkred";
+        decoratorSolved = false;
     }
 }
 

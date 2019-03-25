@@ -37,8 +37,8 @@
             <a id="adapterMenu" style="text-indent:15px;font-size:14px;"href="#adapter"onclick="conditionCloseMenu()">Adapter</a>
             <a id="commandMenu" style="text-indent:15px;font-size:14px;" href="#command"onclick="conditionCloseMenu()">Command</a>
             <a id="factoryMenu" style="text-indent:15px;font-size:14px;"href="#factory"onclick="conditionCloseMenu()">Factory</a>
-            <a id="decoratorMenu" style="text-indent:15px;font-size:14px;"href="#decorator"onclick="conditionCloseMenu()">Decorator</a>
             <a id="strategyMenu" style="text-indent:15px;font-size:14px;"href="#strategy"onclick="conditionCloseMenu()">Strategy</a>
+            <a id="decoratorMenu" style="text-indent:15px;font-size:14px;"href="#decorator"onclick="conditionCloseMenu()">Decorator</a>
             <a id="observerMenu" style="text-indent:15px;font-size:14px;"href="#observer"onclick="conditionCloseMenu()">Observer</a>
             <a id="mvcMenu" style="text-indent:15px;font-size:14px;"href="#mvc"onclick="conditionCloseMenu()">MVC</a>
             <br/>
@@ -90,7 +90,6 @@ interface Gericht {
 
     void zubereiten();
     void servieren();
-    ...
   
 }
                 </code></div></pre>
@@ -102,7 +101,6 @@ interface Getraenk {
 
     void einschaenken();
     void servieren();
-    ...
   
 }
                 </code></div></pre>
@@ -560,7 +558,7 @@ class GerichteFabrik {
     public GerichteFabrik() {}
     
     <input type="text" value="Gericht" style="width: 7ch;" name="factoryC1"> <input type="text" value="erzeugeGericht" style="width: 14ch;color: darkblue;font-weight: bold;" name="factoryC2">(int gerichtID) { // Rückgabetyp und Methodennamen eintragen
-        ... 
+        ... // beliebige Implementierung (nichts zu ergänzen)
     }
 
 }
@@ -569,12 +567,153 @@ class GerichteFabrik {
             </form>
         </div>
         
+        <!-- Das Strategy-Pattern -->
+        <div id="strategy">
+            <h2>Das Strategy-Pattern <a class="testjump" href="#strategyForm">...direkt zum Test...</a></h2>
+            
+            <p class="note">
+                Zur „Definition einer Familie von einzeln gekapselten, austauschbaren Algorithmen. Das Design Pattern Strategy (Strategie) ermöglicht eine variable und von den Clients unabhängige Nutzung des Algorithmus.“ [GoF]
+            </p>
+            
+            <p>
+                Die Pizzeria <em>BendisPasta</em> legt viel Wert auf ein vielseitiges und abwechslungsreiches Angebot. Aus diesem Grund müssen die Gerichte der Karte je nach Saison und Koch auf unterschiedliche Weise zubereitet werden. So soll auch die Pizza nicht nur nach klassisch italienischer Rezeptur, sondern auch auf amerikanischer Art gebacken werden können. Zudem will man sich offen halten, noch weitere Rezepturen und Variationen anbieten und bestehende Rezepte jederzeit ändern zu können.
+            </p>
+            
+            <h4>Was ist zu tun?</h4>
+            
+            <p>
+                Derzeit ist die Methode <code>zubereiten()</code> in den konkreten Gerichte-Klassen der einzige Ort, an dem die einzelnen Schritte einer Rezeptur spezifiziert, d. h. implementiert sind. Wenn wir also eine Pizza Margherita nicht auf italienische, sondern auf amerikanische Art zubereiten wollen, so müssten wir dazu die gesamte Methode <code>zubereiten()</code> in der Klasse <code>PizzaMargherita</code> überschreiben. Wir sind nun auf der Suche nach einer Möglichkeit, um den darin enthaltenen Code flexibel austauschen zu können.
+            </p>
+            
+            <h4>Die Lösung</h4>
+            
+            <p>
+                Hier kommt uns das Strategy-Pattern wie gerufen. Dieses empfieht uns, die unterschiedlichen Zubeeitungsarten in eigene Klassen zu kapseln und die gewünschte Zubereitungsart in einer Klassenvariable unseres Gerichtes zu speichern. Der Algortihmus zum Zubereiten der Pizza ist dann nicht mehr in der Pizza-Klasse selbst implementiert, stattdessen wird er über den Zugriff auf die darin gespeicherte Zubereitungsart aufgerufen. Wir erstellen also zunächst ein neues Interface, welches wir <code>Zubereitungsart</code> nennen:
+            </p>
+
+
+            <pre><div class="code"><code>
+interface Zubereitungsart {
+
+    void zubereiten(String[] zutaten);
+
+}
+            </code></div></pre>
+            
+            <p>
+                Eine konkrete Zubereitungsart wäre z. B. <code>ItalienischeZubereitungsart</code>:
+            </p>
+            
+            <pre><div class="code"><code>
+class ItalienischeZubereitungsart implements Zubereitungsart {
+
+    void zubereiten(String[] zutaten) {
+        ... // Pizza mit den gegebenen Zutaten auf italienische Art zubereiten
+    }
+
+}
+            </code></div></pre>
+            
+            <p>
+                Unser neues Interface hat eine einzige Methode, für die es geschaffen wurde &mdash; <code>zubereiten(String[] zutaten)</code>. In unserer abstrakten Pizza-Klasse fügen wir nun die neue Klassenvariable <code>zubereitungsart</code> hinzu und ergänzen die Möglichkeit die gewünschte Zubereitungsart schon im Konstruktor zu spezifizieren:
+            </p>
+            
+            <pre><div class="code"><code>
+abstract class Pizza implements Gericht {
+
+    String[] zutaten;
+    Zubereitungsart zubereitungsart;
+    
+    public Pizza() {}
+    
+    public Pizza(Zubereitungsart zubereitungsart) {
+        this.zubereitungsart = zubereitungsart;
+    }
+
+    abstract void zubereiten() {}
+
+}
+            </code></div></pre>
+            
+            <p>
+                So könnte dann eine konkrete Klasse vom Typ Pizza aussehen:
+            </p>
+            
+            <pre><div class="code"><code>
+class PizzaMargherita extends Pizza {
+
+    public PizzaMargherita() {
+    
+        this.zubereitungsart = new ItalienischeZubereitungsart(); // Standard-Zubereitungsart
+        zutaten = {"Tomatensauce", "Mozarella"};
+
+    }
+    
+    public PizzaMargherita(Zubereitungsart zubereitungsart) {
+    
+        this.zubereitungsart = zubereitungsart;
+        zutaten = {"Tomatensauce", "Mozarella"};
+        
+    }
+    
+    void zubereiten() {
+        zubereitungsart.zubereiten(zutaten);
+    }
+
+}
+            </code></div></pre>
+            
+            <p>
+                Nun können wir Pizzen flexibel mit unterschiedlichen Zubereitungsarten erzeugen. Mithilfe einer Setter-methode &mdash; <code>setZubereitungsart()</code> &mdash; könnten wir die Zubereitungsart sogar zur Laufzeit ändern. Wird eine Zubereitungsart bearbeitet, so werden die Änderungen von allen Gerichteklassen, die diese Zubereitungsart verwenden, automatisch übernommen. Wie du siehst, bietet das Strategy-Pattern eine ganze Reihe von Vorteilen.
+            </p>
+            
+            <form id="strategyForm">
+                <h3>Multiple Choice-Test</h3>
+                <fieldset>
+                    Was ist die wesentliche Motivation des Strategy-Ansatzes?
+                    <ul>
+                        <li> 
+                            <label>
+                                <input type="radio" name="strategyA">
+                                Einen konkreten Algorithmus möglichst effizient gestalten
+                            </label>
+                        </li>
+                        <li> 
+                            <label>
+                                <input type="radio" name="strategyA">
+                                Die Menge an Klassenvariablen minimieren
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="radio" name="strategyA">
+                                Den vorrangigen Zweck eines Projektes stets im Auge behalten
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="radio" name="strategyA">
+                                Algorithmen bzw. Methoden einer Klasse leicht austauschbar halten
+                            </label>
+                        </li>
+                    </ul> 
+                </fieldset>
+                <br/>
+                <button type="button" onclick="checkStrategy('strategy')" id="strategyButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="strategyResult"></center>
+            </form>
+        </div>
+        
         <!-- Das Decorator-Pattern -->
         <div id="decorator">
             <h2>Das Decorator-Pattern <a class="testjump" href="#decoratorForm">...direkt zum Test...</a></h2>
-            <ul>
-                <li>Optionale Garnitur hinzufügen</li>
-            </ul>
+            
+            <p class="note">
+                Zur „dynamische[n] Erweiterung der Funktionalität eines Objekts. Decorator-Objekte stellen hinsichtlich der Ergänzung einer Klasse um weitere Zuständigkeiten eine flexible Alternative zur Unterklassenbildung dar.“ [GoF]
+            </p>
+            
+            <p>
+                Als nächstes möchten wir den Kunden von <em>BendisPasta</em> die Möglichkeit bieten, ihren Gerichten  eine Garnitur hinzuzufügen. So soll es für alle Pizzen die Option geben, sie u. A. mit Knoblauch, Oregano oder scharfer Sauce serviert zu bekommen. Hier sehen wir einen ersten Vorschlag, diesem Wunsch zu entsprechen &mdash; durch Bildung weiterer Unterklassen:
+            </p>
 
             <pre><div class="code"><code>
 class PizzaMargheritaMitKnoblauch extends PizzaMargherita {}
@@ -592,68 +731,67 @@ class PizzaMargheritaMitOreganoUndScharferSauce extends PizzaMargherita {}
 class PizzaMargheritaMitKnoblauchUndOreganoUndScharferSauce extends PizzaMargherita {}
 
             </code></div></pre>
-
-            <b>Neuer Code</b>
-
-            <pre><div class="code"><code>
-abstract class Garnitur implements Gericht {}
-            </code></div></pre>
             
-            <pre><div class="code"><code>
-enum GarniturTyp {
+            <p>
+                Es ist wohl recht offensichtlich, dass das nicht der richtige Weg sein kann. Mit jeder zusätzlichen Garnitur im Angebot würde sich die Menge an Unterklassen verdoppeln. Zudem müsste für jedes konkrte Gericht eine eigene Menge solcher Unterklassen erstellt werden. Früher oder später würde das in einem einzigen Chaos enden.
+            </p>
+                
+            <h4>Was ist zu tun?</h4>
+            
+            <p>
+                Wir suchen eine einfache und saubere Möglichkeit, unseren konkreten Gerichten optionale Eigenschaften hinzuzufügen. Weitere Unterklassen dieser Gerichte sind, wie wir gesehen haben, für uns keine Option. Besser wäre es, für jede Garnitur eine eigene Klasse vom Typ <code>Garnitur</code> zu bilden und diese den Gerichten irgendwie als optionale Eigenschaft beizufügen. Der Intuitive Ansatz bestünde wohl darin, die Gerichte-Klasse um neue Klassenvariablen zu ergänzen, in denen die verschiedenen Garnituren hinterlegt werden können. Doch mit dem Decorator-Pattern haben wir ein Muster zur Hand, dass unser Problem auf bewährte Art und Weise, doch etwas anders angeht.
+            </p>
+                
+            <h4>Die Lösung</h4>
+            
+            <p>
+                Dreh- und Angelpunkt unseres neuen Patterns ist eine abstrakte Decorator-Klasse, die wir in unserem Fall Garnitur nennen. Dazu hier ein Beispiel, wie wir das Decorator-Pattern zum Würzen unserer Pizzen nutzen können:
+            </p>
 
-  KNOBLAUCH,
-  SCHARF,
-  OREGANO
+            <pre><div class="code"><code>
+abstract class PizzaGarnitur extends Pizza {
+
+    float preis;
+    Pizza pizza;
+    
+    abstract void zubereiten();
+    
+    void servieren() {
+        pizza.servieren();
+    };
+    
+    int preis() {
+        return pizza.preis() + this.preis; 
+    }
 
 }
             </code></div></pre>
             
+            <p>
+                Unsere neue Klasse <code>PizzaGarnitur</code> erweitert die abstrakte Klasse <code>Pizza</code> &mdash; sie ist damit sozusagen selbst eine Pizza. Der Konstruktor erwartet allerdings im Übergabeparameter die „echte“ Pizza, welche dann in der Klassenvariable <code>pizza</code> gesichert wird. Für jede Methode, die eine Klasse vom Typ <code>Pizza</code> bereitstellen muss, ruft die Klasse vom Typ <code>GerichteGarnitur</code> die entsprechende Methode per Zugriff auf das gespeicherte Pizza-Objekt auf. Im Fall von Knoblauch sieht das dann in etwa so aus:
+            </p>
+            
             <pre><div class="code"><code>
-class Knoblauch extends Garnitur {
-
-    Gericht gericht;
-    public Knoblauch(Gericht gericht) {
-        this.gericht = gericht;
+class Knoblauch extends PizzaGarnitur {
+    
+    public Knoblauch(Pizza pizza) {
+        this.pizza = pizza;
+        this.preis = 0.5;
     }
 
-    zubereiten() {
-        gericht.zubereiten();
-        ...
+    void zubereiten() {
+        pizza.zubereiten();
+        ... // mit Knoblauch garnieren
     }
   
 }
             </code></div></pre>
             
-            <pre><div class="code"><code>
-class GerichteFabrik {
+            <p>
+                Wenn wir nun eine Pizza Margherita mit Knoblauch erzeugen möchten, so geschieht dies einfach durch die Anweisung <code>Pizza meinePizza = new Knoblauch(new PizzaMargherita)</code>. Möchten wir außerdem Oregano dazu, so wäre folgende Anweisung ebenfalls möglich: <code>meinePizza = new Oregano(meinePizza)</code>. Für Restaurantgäste ohne Begleitung bestünde sogar die Option eine Pizza mit doppelt Knoblauch zu bekommen: <code>meinePizza = new Knoblauch(new Knoblauch(new PizzaMargherita))</code>.
+            </p>
+            
 
-    // erzeugt ein einfaches Gericht aus der Karte
-    Gericht erzeugeGericht(int gerichtID){...}
-
-    // dem Gericht eine Garnitur hinzufügen
-    Gericht dekoriereGarnitur(Gericht gericht, GarniturTyp garniturTyp){
-
-        switch (garniturTyp){
-
-            case KNOBLAUCH:
-                return new Knoblauch(gericht);
-
-            case OREGANO:
-                return new Oregano(gericht);
-
-            case SCHARF:
-                return new ScharfeSauce(gericht);
-
-            default:
-                return gericht;
-
-        }
-
-    }
-
-}
-            </code></div></pre>
 
             <form id="decoratorForm">
                 <h3>Multiple Choice-Test</h3>
@@ -662,25 +800,25 @@ class GerichteFabrik {
                     <ul>
                         <li> 
                             <label>
-                                <input type="checkbox" name="decoratorA1" checked=true value="">
+                                <input type="radio" name="decoratorA">
                                 Erweitern eines Objektes ohne Erzeugung weiterer Unterklassen
                             </label>
                         </li>
                         <li> 
                             <label>
-                                <input type="checkbox" name="decoratorA2" value="">
+                                <input type="radio" name="decoratorA">
                                 Bereitstellen überflüssiger Funktionalitäten
                             </label>
                         </li>
                         <li>  
                             <label>
-                                <input type="checkbox" name="decoratorA3"  value="">
+                                <input type="radio" name="decoratorA">
                                 Sammeln von Funktionen ohne Rückgabewert
                             </label>
                         </li>
                         <li>  
                             <label>
-                                <input type="checkbox" name="decoratorA4" value="">
+                                <input type="radio" name="decoratorA">
                                 Verbesserung der Fabrikmethode
                             </label>
                         </li>
@@ -690,107 +828,7 @@ class GerichteFabrik {
                 <button type="button" onclick="checkDecorator('decorator')" id="decoratorButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="decoratorResult"></center>
             </form>
         </div>
-        
-        <!-- Das Strategy-Pattern -->
-        <div id="strategy">
-            <h2>Das Strategy-Pattern <a class="testjump" href="#strategyForm">...direkt zum Test...</a></h2>
-            <ul>
-                <li>Sich wiederholende Zubereitungsarten mehrfach nutzen</li>
-                <li>Saisonal austauschbare oder verbesserte Rezepte (Algorithmen) einfach umsetzen</li>
-            </ul>
 
-            <pre><div class="code"><code>
-interface Gericht {
-
-    void zubereiten();
-    void servieren();
-    List&lt;String&gt; getZutaten();
-    ...
-  
-}
-
-            </code></div></pre>
-
-            <pre><div class="code"><code>
-interface Zubereitungsart {
-
-    void zubereiten();
-
-}
-            </code></div></pre>
-            
-            <pre><div class="code"><code>
-abstract class Pizza implements Gericht {
-
-    Zubereitungsart zubereitungsart;
-
-    void zubereiten() {
-
-        zubereitungsart.zubereiten();
-
-    }
-
-}
-            </code></div></pre>
-            
-            <pre><div class="code"><code>
-class ItalienischeZubereitungsart implements Zubereitungsart {
-
-    void zubereiten() {
-        // Pizza auf italienische Art zubereiten
-        ...
-    }
-
-}
-            </code></div></pre>
-            
-            <pre><div class="code"><code>
-class PizzaMargherita extends Pizza {
-
-    public PizzaMargherita() {
-
-        this.zubereitungsart = new ItalienischeZubereitungsart();
-
-    }
-
-}
-            </code></div></pre>
-            
-            <form id="strategyForm">
-                <h3>Multiple Choice-Test</h3>
-                <fieldset>
-                    Was ist der wesentliche Zweck des Strategy-Ansatzes?
-                    <ul>
-                        <li> 
-                            <label>
-                                <input type="checkbox" name="strategyA1" value="">
-                                Einen konkreten Algorithmus möglichst effizient gestalten
-                            </label>
-                        </li>
-                        <li> 
-                            <label>
-                                <input type="checkbox" name="strategyA2" value="">
-                                Die Anzahl der Klassenvariablen optimieren
-                            </label>
-                        </li>
-                        <li>  
-                            <label>
-                                <input type="checkbox" name="strategyA3"  value="">
-                                Den vorrangigen Zweck eines Projektes stets im Auge behalten
-                            </label>
-                        </li>
-                        <li>  
-                            <label>
-                                <input type="checkbox" name="strategyA4" checked=true value="">
-                                Algorithmen bzw. Methoden einer Klasse leicht austauschbar halten
-                            </label>
-                        </li>
-                    </ul> 
-                </fieldset>
-                <br/>
-                <button type="button" onclick="checkStrategy('strategy')" id="strategyButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="strategyResult"></center>
-            </form>
-        </div>
         
         <!-- Das Observer-Pattern -->
         <div id="observer">

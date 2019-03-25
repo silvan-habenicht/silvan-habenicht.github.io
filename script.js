@@ -57,8 +57,8 @@ window.onresize = function (event) { // eslint-disable-line no-unused-vars
             document.getElementById("patternMenu").style.width = "240px";
             document.getElementById("main").style.padding = "2em 4em 4em";
         } else {
-            document.getElementById("main").style.marginLeft = "auto";
-            document.getElementById("patternMenu").style.width = (window.innerWidth - 802) / 2 + "px";
+            document.getElementById("main").style.marginLeft = (window.innerWidth - 800) / 2 + "px";
+            document.getElementById("patternMenu").style.width = (window.innerWidth - 800) / 2 + "px";
             document.getElementById("main").style.padding = "2em 4em 4em";
         }
     } else {
