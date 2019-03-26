@@ -36,10 +36,10 @@
             <a id="titleMenu" style="font-weight:bold;box-shadow: none;font-style:normal;">Pattern-Menü</a>
             <a id="adapterMenu" style="text-indent:15px;font-size:14px;"href="#adapter"onclick="conditionCloseMenu()">Adapter</a>
             <a id="commandMenu" style="text-indent:15px;font-size:14px;" href="#command"onclick="conditionCloseMenu()">Command</a>
+            <a id="observerMenu" style="text-indent:15px;font-size:14px;"href="#observer"onclick="conditionCloseMenu()">Observer</a>
             <a id="factoryMenu" style="text-indent:15px;font-size:14px;"href="#factory"onclick="conditionCloseMenu()">Factory</a>
             <a id="strategyMenu" style="text-indent:15px;font-size:14px;"href="#strategy"onclick="conditionCloseMenu()">Strategy</a>
             <a id="decoratorMenu" style="text-indent:15px;font-size:14px;"href="#decorator"onclick="conditionCloseMenu()">Decorator</a>
-            <a id="observerMenu" style="text-indent:15px;font-size:14px;"href="#observer"onclick="conditionCloseMenu()">Observer</a>
             <a id="mvcMenu" style="text-indent:15px;font-size:14px;"href="#mvc"onclick="conditionCloseMenu()">MVC</a>
             <br/>
             <button type="button" style="width: auto;" disabled=true onclick="getCertificate()" id="certificate">Zertifikat erstellen</button>
@@ -83,7 +83,7 @@
             </p>
             
             <div style="display:flex; flex-wrap: wrap;">
-                <div style="margin-left: auto;margin-right: auto;">
+                <div style="margin-left: auto;margin-right: auto;overflow-x: scroll;">
                 <h4>Gerichte-API</h4>
                 <pre><div class="code"><code>
 interface Gericht {
@@ -94,7 +94,7 @@ interface Gericht {
 }
                 </code></div></pre>
                 </div>
-                <div style="margin-left: auto;margin-right: auto;">
+                <div style="margin-left: auto;margin-right: auto;overflow-x: scroll;">
                 <h4>Getränke-API</h4>
                 <pre><div class="code"><code>
 interface Getraenk {
@@ -322,6 +322,7 @@ class Kellner {
         for(Befehl b : bestellung) {
             b.ausfuehren();
         }
+        bestellung.clear();
     }
 
 } 
@@ -391,6 +392,237 @@ class Kellner {
                 <br/>
                 <button type="button" onclick="checkCommand('command')" id="commandButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="commandResult"></center>
             </form>
+        </div>
+        
+        <!-- Das Observer-Pattern -->
+        <div id="observer">
+            <h2>Das Observer-Pattern <a class="testjump" href="#observerForm">...direkt zum Test...</a></h2>
+            
+            <p class="note">
+                Definition einer 1-zu-n-Abhängigkeit zwischen Objekten, damit im Fall einer Zustandsänderung eines Objekts alle davon abhängigen Objekte entsprechend benachrichtigt und automatisch aktualisiert werden.
+            </p>
+            
+            <p>
+                Werfen wir einen Blick in den Arbeitsalltag eines Kellners im <em>Ristorante BendisPasta</em>: 
+            </p>
+            
+            <ul>
+                <li>Eine Gruppe von neuen Gästen betritt das Restaurant.</li>
+                <li>Der Kellner bringt die Menükarten und fragt, was er den Gästen zu Trinken bringen kann.</li>
+                <li>Die Gäste sagen, sie müssen noch überlgegen.</li>
+                <li>Die Gäste haben sich entschieden und <em>warten</em> auf den Kellner.</li>
+                <li>Der Kellner kommt <em>irgendwann</em> wieder und nimmt eine Getränkebestellung entgegen.</li>
+                <li>Der Kellner übermittelt die Bestellung an den Barkeeper.</li>
+                <li>Der Kellner <em>wartet</em>, bis der Barkeeper die Getränke <em>irgendwann</em> eingeschänkt hat.</li>
+                <li>Der Kellner serviert die Getränke und fragt, was die Gäste essen möchten.</li>
+                <li>Die Gäste bitten um etwas Bedenkzeit.</li>
+                <li>Die Gäste <em>warten</em> auf den Kellner.</li>
+                <li><em>Irgendwann</em> kommt der Kellner wieder und nimmt die Bestellung auf.</li>
+                <li>Die Bestellung wird an die Küche weitergeleitet.</li>
+                <li><em>Irgendwann</em> geht der Kellner zurück zum Tisch, um Wein nachzuschenken.</li>
+                <li>Die Gläser sind jedoch noch voll.</li>
+                <li>Der Kellner erkundigt sich <em>irgendwann</em> in der Küche, ob schon ein Gericht servierbereit ist.</li>
+                <li>Der Koch schickt ihn weg. Der Kellner <em>wartet</em>.</li>
+                <li>Inzwischen ist die Bestellung zubereitet.</li>
+                <li>Der Kellner kommt <em>irgendwann</em> wieder zur Küche. Das Essen ist nun nicht mehr ganz warm.</li>
+                <li>Er serviert die Bestellung.</li>
+                <li>...</li>
+            </ul>
+            
+            <p>
+                Zwei Wörter stechen in dieser Aufzählung besonders hervor &mdash; <em>warten</em> und <em>irgendwann</em>. Die Kellner unseres Restaurants leisten eigentlich hervorragende Arbeit, doch ihr Timing ist unter aller Sau. Während eines Arbeitstages verbringen sie einen Großteil ihrer Zeit damit zu warten oder unnötige Strecken zu laufen, weil sie nicht wissen wann sie wo zu sein haben. Diese Vergeudung von kostbarer Arbeitszeit sollte Geschäftsführer Jens nicht weiter auf sich sitzen lassen.
+            </p>
+            
+            <h4>Was ist zu tun?</h4>
+            
+            <p>
+                Derzeit müssen die Kellner von <em>BendisPasta</em> einen Restaurantteil nach dem anderen abklappern und sich jedes Mal erkundigen, ob sie dort gerade gebraucht werden oder nicht. Umgekehrt wird ein Schuh draus: Würden die Kellner nur im Bedarfsfall zu sich gerufen, so ließe sich deren Arbeitseffizienz enorm steigern. Wir möchten daher ein neues System etablieren, in welchem die Kellner benachrichtigt werden können sobald ein Kunde bestellen möchte bzw. sobald ein Gericht fertig zubereitet worden ist.
+            </p>
+            
+            <h4>Die Lösung</h4>
+            
+            <p>
+                Glücklicherweise müssen wir uns auch für dieses Problem nicht mehr den Kopf zerbrechen, denn das Observer-Pattern bietet hierfür eine praktikable Schablone. Und nicht nur das &mdash; im Package <code>java.util</code> findet sich sogar ein entsprechendes Framework, welches wir direkt einsetzen können! Dazu zählen das Interface <code>Observer</code> sowie die Klasse <code>Observable</code>.
+                
+            </p>
+            
+            <div style="display:flex; flex-wrap: wrap;">
+                <div style="margin-left: auto;margin-right: auto;overflow-x: scroll;">
+                <h4>Observer-API</h4>
+                <pre><div class="code" style="max-width: 300px;"><code>
+interface Observer {
+
+    void update(Observable o, Object arg);
+  
+}
+                </code></div></pre>
+                </div>
+                <div style="margin-left: auto;margin-right: auto;overflow-x: scroll;">
+                <h4>Observable-API</h4>
+                <pre><div class="code" style="max-width: 300px;" ><code>
+class Observer {
+
+    void addObserver(Observer o) {...}
+    protected void clearChanged() {...}
+    int countObservers() {...}
+    void deleteObserver(Observer o) {...}
+    void deleteObservers() {...}
+    boolean hasChanged() {...}
+    void notifyObservers() {...}
+    void notifyObservers(Object arg) {...}
+    protected void setChanged() {...}
+  
+}
+                </code></div></pre>
+                </div>
+            </div>
+            
+            <p>
+                In unserem Fall implementiert der Kellner das Interface <code>Observer</code>, damit er von den <code>Observables</code>, die er beobachtet (<em>observe</em>), benachrichtigt werden kann. Dazu muss er eine einzige Methode <code>update()</code> implementieren; sie wird später von den Observables aufgerufen, welche darin eine Referenz auf sich selbst übergeben. Auf diese Weise kann der Kellner direkt auf das Objekt zugreifen, von dem er benachrichtigt wurde:
+            </p>
+            
+            <pre><div class="code"><code>
+class Kellner implements Observer { 
+
+    void update(Observable observable, Object arg) {
+        if (observable intanceof Tisch) {
+            Tisch tisch = (Tisch) observable;
+            zumOrtGehen(tisch);
+        } else if (observable instanceof Theke) {
+            Theke theke = (Theke) observable;
+            zumOrtGehen(theke);
+        } ... // ggf. weitere in Frage kommende Observables
+    }
+    
+    zumOrtGehen(Ort ort) {...} // zum Restaurantteil „ort“ gehen
+
+}
+            </code></div></pre>
+            
+            <p>
+                Unterklassen von <code>java.util.Observable</code>, die einen Observer bzw. im konkreten Fall einen Kellner benachrichtigen möchten, können dazu einfach die geerbte Methode <code>notifyObservers()</code> nutzen. Sie hat zur Folge, dass auf allen eingetragenen Observern die Update-Methode aufgerufen wird. Ein solches Observable könnte die (hier nicht genauer spezifizierte) Klasse <code>Tisch</code> sein:
+            </p>
+
+            <pre><div class="code"><code>
+class Tisch extends Observable implements Ort {
+    
+    ... // diverse Klassenvariablen für Bestellung, Personananzahl etc.
+    
+    public Tisch() {}
+    
+    ... // diverse Methoden
+    
+    // Wann immer an einem Tisch ein Kellner benötigt wird, wird diese Funktion aufgerufen
+    void statusAenderung() {
+        setChanged();
+        notifyObservers(); // Kellner und andere Observer benachrichtigen
+    }
+}
+            </code></div></pre>
+
+            <form id="observerForm">
+                <h3>Multiple Choice-Test</h3>
+                <fieldset>
+                    Wozu dient das Observer-Muster?
+                    <ul>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="observerA1" value="">
+                                Vermeidung von zeitgleichen Objektzugriffen bei nebenläufigen Anwendungen
+                            </label>
+                        </li>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="observerA2" value="">
+                                Effizienteres Pair-Programming
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="observerA3"  value="">
+                                Kontrolle der Nutzung von Variablentypen
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="observerA4" checked=true value="">
+                                Objekte über Änderungen in einem anderen Objekt auf dem Laufenden halten
+                            </label>
+                        </li>
+                    </ul> 
+                </fieldset>
+                <br/>
+                <fieldset>
+                    Welche Aussage stimmt nicht?
+                    <ul>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="observerB1" value="">
+                                Ein Observable kann mehrere Observer benachrichtigen
+                            </label>
+                        </li>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="observerB2" value="">
+                                Ein Observer-Objekt kann mehrere Obervables abonieren
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="observerB3" checked=true value="">
+                                <code>java.util.Observable </code> ist ein Interface
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="observerB4" value="">
+                                <code>java.util.Observer </code> ist ein Interface
+                            </label>
+                        </li>
+                    </ul> 
+                </fieldset>
+                <br/>
+                <fieldset>
+                
+                </fieldset>
+                <pre><div class="code"><code>
+class Theke extends Observable {
+    
+    public Theke() {...}
+     
+    void zubereiten() {
+        ... // die Pizza zubereiten
+        zubereitet = true;
+        neuerStatus();
+    }
+    
+    // Wann immer an einer Theke ein Kellner benötigt wird, wird diese Funktion aufgerufen
+    void statusAenderung() {
+        setChanged();
+        notifyObservers(); // Kellner und andere Observer benachrichtigen
+    }
+    
+}
+                </code></div></pre>
+                <pre><div class="code"><code>
+abstract class Pizza extends Observable implements Gericht {
+
+    boolean zubereitet = false;
+    
+    public Pizza() {}
+     
+    
+    // Wann immer an einem Tisch ein Kellner benötigt wird, wird diese Funktion aufgerufen
+    void neuerStatus() {
+        setChanged();
+        notifyObservers();
+    }
+}
+                </code></div></pre>
+                <br/>
+                <button type="button" onclick="checkObserver('observer')" id="observerButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="observerResult"></center>
+            </form>
+        
         </div>
         
         <!-- Das Factory-Pattern -->
@@ -630,7 +862,7 @@ abstract class Pizza implements Gericht {
         this.zubereitungsart = zubereitungsart;
     }
 
-    abstract void zubereiten() {}
+    abstract void zubereiten();
 
 }
             </code></div></pre>
@@ -827,116 +1059,6 @@ class Knoblauch extends PizzaGarnitur {
                 <br/>
                 <button type="button" onclick="checkDecorator('decorator')" id="decoratorButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="decoratorResult"></center>
             </form>
-        </div>
-
-        
-        <!-- Das Observer-Pattern -->
-        <div id="observer">
-            <h2>Das Observer-Pattern <a class="testjump" href="#observerForm">...direkt zum Test...</a></h2>
-            <ul>
-                <li>Bestellstatus aktualisieren</li>
-                <li>java.util.Observable/Observer nutzen</li>
-            </ul>
-
-            <pre><div class="code"><code>
-class Bestellung extends Observable implements Befehl {
-
-    String status;
-
-    void bestellstatusÄndern(String status) {
-        this.status = status;
-        setChanged();
-        notifyObservers();
-    }
-
-    String getStatus() {
-        return status;
-    }
-
-    ...
-}
-            </code></div></pre>
-
-            <pre><div class="code"><code>
-class Kunde implements Observer {
-
-    String bestellstatus;
-
-    void update(Observable observable, Object arg) {
-        if (observable instanceof Bestellung) {
-            Bestellung bestellung = (Bestellung) observable;
-            bestellstatus = bestellung.getStatus();
-        }
-    }
-
-}
-            </code></div></pre>
-
-            <form id="observerForm">
-                <h3>Multiple Choice-Test</h3>
-                <fieldset>
-                    Wozu dient das Observer-Muster?
-                    <ul>
-                        <li> 
-                            <label>
-                                <input type="checkbox" name="observerA1" value="">
-                                Vermeidung von zeitgleichen Objektzugriffen bei nebenläufigen Anwendungen
-                            </label>
-                        </li>
-                        <li> 
-                            <label>
-                                <input type="checkbox" name="observerA2" value="">
-                                Effizienteres Pair-Programming
-                            </label>
-                        </li>
-                        <li>  
-                            <label>
-                                <input type="checkbox" name="observerA3"  value="">
-                                Kontrolle der Nutzung von Variablentypen
-                            </label>
-                        </li>
-                        <li>  
-                            <label>
-                                <input type="checkbox" name="observerA4" checked=true value="">
-                                Objekte über Änderungen in einem anderen Objekt auf dem Laufenden halten
-                            </label>
-                        </li>
-                    </ul> 
-                </fieldset>
-                <br/>
-                <fieldset>
-                    Welche Aussage stimmt nicht?
-                    <ul>
-                        <li> 
-                            <label>
-                                <input type="checkbox" name="observerB1" value="">
-                                Ein Observable kann mehrere Observer benachrichtigen
-                            </label>
-                        </li>
-                        <li> 
-                            <label>
-                                <input type="checkbox" name="observerB2" value="">
-                                Ein Observer-Objekt kann mehrere Obervables abonieren
-                            </label>
-                        </li>
-                        <li>  
-                            <label>
-                                <input type="checkbox" name="observerB3" checked=true value="">
-                                <code>java.util.Observable </code> ist ein Interface
-                            </label>
-                        </li>
-                        <li>  
-                            <label>
-                                <input type="checkbox" name="observerB4" value="">
-                                <code>java.util.Observer </code> ist ein Interface
-                            </label>
-                        </li>
-                    </ul> 
-                </fieldset>
-                <br/>
-                <button type="button" onclick="checkObserver('observer')" id="observerButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="observerResult"></center>
-            </form>
-        
         </div>
         
         <!-- Der Model-View-Controller -->
