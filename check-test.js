@@ -15,6 +15,10 @@ function solveAll() { /* exported solveAll*/
     form = document.getElementById("commandForm");
     form.elements[3].checked = true;
     form.elements[9].checked = true;
+    form = document.getElementById("observerForm");
+    form.elements[4].checked = true;
+    form.observerB3.checked = true;
+    form.observerB4.checked = true;
     form = document.getElementById("factoryForm");
     form.elements[2].checked = true;
     form.factoryB1.checked = true;
@@ -115,6 +119,42 @@ function checkCommand(pattern) { /* exported checkCommand */
     }
 }
 
+/* Checking the multiple choice test for the observer pattern. */
+function checkObserver(pattern) { /* exported checkObserver */
+    "use strict";
+    var patternForm = document.getElementById(pattern + "Form"),
+        patternMenu = document.getElementById(pattern + "Menu"),
+        patternResult = document.getElementById(pattern + "Result"),
+        patternButton = document.getElementById(pattern + "Button");
+    
+    if (patternForm.elements[4].checked &&
+            !patternForm.observerB1.checked &&
+            !patternForm.observerB2.checked &&
+            patternForm.observerB3.checked &&
+            patternForm.observerB4.checked &&
+            patternForm.observerC1.value === "extends" &&
+            patternForm.observerC2.value === "Observable" &&
+            patternForm.observerC3.value === "!bestellungAbholbereit" &&
+            patternForm.observerC4.value === "notifyObservers()") {
+        
+        patternMenu.style.color = "darkgreen";
+        patternMenu.innerHTML = "Observer &#10003;";
+        patternResult.innerHTML = "";
+        patternButton.style.background = "darkgreen";
+        observerSolved = true;
+        playTone();
+        checkSolved();
+    
+    } else {
+        patternMenu.style.color = "darkred";
+        patternMenu.innerHTML = "Observer";
+        patternResult.style.color = "darkred";
+        patternResult.innerHTML = "&#10007; Bitte überprüfe deine Eingaben.";
+        patternButton.style.background = "darkred";
+        observerSolved = false;
+    }
+}
+
 /* Checking the multiple choice test for the factory pattern. */
 function checkFactory(pattern) { /* exported checkFactory */
     "use strict";
@@ -129,7 +169,8 @@ function checkFactory(pattern) { /* exported checkFactory */
             patternForm.factoryB3.checked &&
             !patternForm.factoryB4.checked &&
             patternForm.factoryC1.value === "Gericht" &&
-            patternForm.factoryC2.value === "erzeugeGericht") {
+            patternForm.factoryC2.value === "erzeugeGericht" &&
+            patternForm.factoryC3.value === "int") {
         
         patternMenu.style.color = "darkgreen";
         patternMenu.innerHTML = "Factory &#10003;";
@@ -202,41 +243,6 @@ function checkDecorator(pattern) { /* exported checkDecorator */
         patternResult.innerHTML = "&#10007; Bitte überprüfe deine Eingaben.";
         patternButton.style.background = "darkred";
         decoratorSolved = false;
-    }
-}
-
-/* Checking the multiple choice test for the observer pattern. */
-function checkObserver(pattern) { /* exported checkObserver */
-    "use strict";
-    var patternForm = document.getElementById(pattern + "Form"),
-        patternMenu = document.getElementById(pattern + "Menu"),
-        patternResult = document.getElementById(pattern + "Result"),
-        patternButton = document.getElementById(pattern + "Button");
-    
-    if (!patternForm.observerA1.checked &&
-            !patternForm.observerA2.checked &&
-            !patternForm.observerA3.checked &&
-            patternForm.observerA4.checked &&
-            !patternForm.observerB1.checked &&
-            !patternForm.observerB2.checked &&
-            patternForm.observerB3.checked &&
-            !patternForm.observerB4.checked) {
-        
-        patternMenu.style.color = "darkgreen";
-        patternMenu.innerHTML = "Observer &#10003;";
-        patternResult.innerHTML = "";
-        patternButton.style.background = "darkgreen";
-        observerSolved = true;
-        playTone();
-        checkSolved();
-    
-    } else {
-        patternMenu.style.color = "darkred";
-        patternMenu.innerHTML = "Observer";
-        patternResult.style.color = "darkred";
-        patternResult.innerHTML = "&#10007; Bitte überprüfe deine Eingaben.";
-        patternButton.style.background = "darkred";
-        observerSolved = false;
     }
 }
 

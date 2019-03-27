@@ -485,7 +485,7 @@ class Observer {
 class Kellner implements Observer { 
 
     void update(Observable observable, Object arg) {
-        if (observable intanceof Tisch) {
+        if (observable instanceof Tisch) {
             Tisch tisch = (Tisch) observable;
             zumOrtGehen(tisch);
         } else if (observable instanceof Theke) {
@@ -500,22 +500,22 @@ class Kellner implements Observer {
             </code></div></pre>
             
             <p>
-                Unterklassen von <code>java.util.Observable</code>, die einen Observer bzw. im konkreten Fall einen Kellner benachrichtigen möchten, können dazu einfach die geerbte Methode <code>notifyObservers()</code> nutzen. Sie hat zur Folge, dass auf allen eingetragenen Observern die Update-Methode aufgerufen wird. Ein solches Observable könnte die (hier nicht genauer spezifizierte) Klasse <code>Tisch</code> sein:
+                Unterklassen von <code>java.util.Observable</code>, die einen Observer bzw. im konkreten Fall einen Kellner benachrichtigen möchten, können dazu einfach die geerbte Methode <code>notifyObservers()</code> nutzen. Ihr Aufruf hat zur Folge, dass in allen eingetragenen Observern die Update-Methode ausgeführt wird; als Parameter wird das Observable selbst übergeben. Ein solches Observable könnte ein Objekt der (hier nicht genauer spezifizierten) Klasse <code>Tisch</code> sein:
             </p>
 
             <pre><div class="code"><code>
 class Tisch extends Observable implements Ort {
     
-    ... // diverse Klassenvariablen für Bestellung, Personananzahl etc.
+    ... // diverse Klassenvariablen für Tischnummer, Standort, Bestellung o. Ä.
     
     public Tisch() {}
     
     ... // diverse Methoden
     
-    // Wann immer an einem Tisch ein Kellner benötigt wird, wird diese Funktion aufgerufen
+    // Wann immer an einem Tisch etwas benötigt wird, wird diese Funktion aufgerufen
     void statusAenderung() {
         setChanged();
-        notifyObservers(); // Kellner und andere Observer benachrichtigen
+        notifyObservers(); // Kellner und sonstige Observer benachrichtigen
     }
 }
             </code></div></pre>
@@ -527,25 +527,25 @@ class Tisch extends Observable implements Ort {
                     <ul>
                         <li> 
                             <label>
-                                <input type="checkbox" name="observerA1" value="">
+                                <input type="radio" name="observerA">
                                 Vermeidung von zeitgleichen Objektzugriffen bei nebenläufigen Anwendungen
                             </label>
                         </li>
                         <li> 
                             <label>
-                                <input type="checkbox" name="observerA2" value="">
+                                <input type="radio" name="observerA">
                                 Effizienteres Pair-Programming
                             </label>
                         </li>
                         <li>  
                             <label>
-                                <input type="checkbox" name="observerA3"  value="">
+                                <input type="radio" name="observerA">
                                 Kontrolle der Nutzung von Variablentypen
                             </label>
                         </li>
                         <li>  
                             <label>
-                                <input type="checkbox" name="observerA4" checked=true value="">
+                                <input type="radio" name="observerA">
                                 Objekte über Änderungen in einem anderen Objekt auf dem Laufenden halten
                             </label>
                         </li>
@@ -557,66 +557,53 @@ class Tisch extends Observable implements Ort {
                     <ul>
                         <li> 
                             <label>
-                                <input type="checkbox" name="observerB1" value="">
-                                Ein Observable kann mehrere Observer benachrichtigen
+                                <input type="checkbox" name="observerB1">
+                                Ein Observable kann mehrere Observer registrieren
                             </label>
                         </li>
                         <li> 
                             <label>
-                                <input type="checkbox" name="observerB2" value="">
-                                Ein Observer-Objekt kann mehrere Obervables abonieren
+                                <input type="checkbox" name="observerB2">
+                                Ein Observer-Objekt kann sich in mehreren Obervables registrieren
                             </label>
                         </li>
                         <li>  
                             <label>
-                                <input type="checkbox" name="observerB3" checked=true value="">
+                                <input type="checkbox" name="observerB3">
                                 <code>java.util.Observable </code> ist ein Interface
                             </label>
                         </li>
                         <li>  
                             <label>
-                                <input type="checkbox" name="observerB4" value="">
-                                <code>java.util.Observer </code> ist ein Interface
+                                <input type="checkbox" name="observerB4">
+                                <code>java.util.Observer </code> ist eine abstrakte Klasse
                             </label>
                         </li>
                     </ul> 
                 </fieldset>
                 <br/>
                 <fieldset>
-                
+                    Vervollständige das folgende Klassengerüst.
                 </fieldset>
                 <pre><div class="code"><code>
-class Theke extends Observable {
+class Theke <input type="text" value = "extends" style="width: 7ch;font-weight: bold; color: rgb(0,85,153);" name="observerC1"> <input type="text" value = "Observable" style="width: 10ch;font-weight: bold; color: rgb(44,0,159);" name="observerC2"> {
+
+    boolean bestellungAbholbereit = false;
     
     public Theke() {...}
-     
-    void zubereiten() {
-        ... // die Pizza zubereiten
-        zubereitet = true;
-        neuerStatus();
+    
+    /* Diese Methode wird aufgerufen, nachdem alle Getränke einer Bestellug eingeschänkt wurden.
+     * Sie wird erneut aufgerufen, sobald diese abgeholt worden sind. */
+    void abholstatusAendern() {
+        bestellungAbholbereit = <input type="text" value = "!bestellungAbholbereit" style="width: 22ch;" name="observerC3">; // Abholstatus umkehren
+        statusAenderung();
     }
     
-    // Wann immer an einer Theke ein Kellner benötigt wird, wird diese Funktion aufgerufen
     void statusAenderung() {
         setChanged();
-        notifyObservers(); // Kellner und andere Observer benachrichtigen
+        <input type="text" value = "notifyObservers()" style="width: 17ch;" name="observerC4">; // Kellner und sonstige Observer benachrichtigen
     }
     
-}
-                </code></div></pre>
-                <pre><div class="code"><code>
-abstract class Pizza extends Observable implements Gericht {
-
-    boolean zubereitet = false;
-    
-    public Pizza() {}
-     
-    
-    // Wann immer an einem Tisch ein Kellner benötigt wird, wird diese Funktion aufgerufen
-    void neuerStatus() {
-        setChanged();
-        notifyObservers();
-    }
 }
                 </code></div></pre>
                 <br/>
@@ -789,7 +776,8 @@ class GerichteFabrik {
 
     public GerichteFabrik() {}
     
-    <input type="text" value="Gericht" style="width: 7ch;" name="factoryC1"> <input type="text" value="erzeugeGericht" style="width: 14ch;color: darkblue;font-weight: bold;" name="factoryC2">(int gerichtID) { // Rückgabetyp und Methodennamen eintragen
+    // Fabrikmethode
+    <input type="text" value="Gericht" style="width: 7ch;" name="factoryC1"> <input type="text" value="erzeugeGericht" style="width: 14ch;color: rgb(44,0,159);font-weight: bold;" name="factoryC2">(<input type="text" value="int" style="width: 3ch;color: rgb(0,85,153);font-weight: bold;" name="factoryC3"> gerichtID) { // Rückgabetyp, Methodennamen und Parametertyp eintragen
         ... // beliebige Implementierung (nichts zu ergänzen)
     }
 
@@ -882,10 +870,8 @@ class PizzaMargherita extends Pizza {
     }
     
     public PizzaMargherita(Zubereitungsart zubereitungsart) {
-    
         this.zubereitungsart = zubereitungsart;
-        zutaten = {"Tomatensauce", "Mozarella"};
-        
+        zutaten = {"Tomatensauce", "Mozarella"};       
     }
     
     void zubereiten() {
@@ -925,7 +911,7 @@ class PizzaMargherita extends Pizza {
                         <li>  
                             <label>
                                 <input type="radio" name="strategyA">
-                                Algorithmen bzw. Methoden einer Klasse leicht austauschbar halten
+                                Algorithmen bzw. Methoden einer Klasse leichter austauschbar halten
                             </label>
                         </li>
                     </ul> 
@@ -1033,13 +1019,13 @@ class Knoblauch extends PizzaGarnitur {
                         <li> 
                             <label>
                                 <input type="radio" name="decoratorA">
-                                Erweitern eines Objektes ohne Erzeugung weiterer Unterklassen
+                                Erweitern eines Objektes
                             </label>
                         </li>
                         <li> 
                             <label>
                                 <input type="radio" name="decoratorA">
-                                Bereitstellen überflüssiger Funktionalitäten
+                                Verschönern der Klassenstruktur
                             </label>
                         </li>
                         <li>  
