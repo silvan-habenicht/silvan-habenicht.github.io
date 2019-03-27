@@ -65,7 +65,7 @@
             </p>
 
             <p>
-                Im Folgenden wirst du einige der wichtigsten <em>Design Patterns</em> kennen und einzusetzen lernen. Wir werfen dazu einen Blick in die Arbeitswelt der traditionsreichen virtuellen Pizzeria <em>BendisPasta</em>. Ihr Geschäftführer Jens hat dort erst kürzlich angeordnet, die vorherrschenden Arbeitsabläufe nach dem Vorbild der agilen Softwareentwicklung zu modernisieren.
+                Im Folgenden wirst du einige der wichtigsten <em>Design Patterns</em> kennen und einzusetzen lernen. Wir werfen dazu einen Blick in die Arbeitswelt der traditionsreichen virtuellen Pizzeria <em>BendisPasta</em>. Ihr Geschäftsführer Jens hat dort erst kürzlich angeordnet, die vorherrschenden Arbeitsabläufe nach dem Vorbild der agilen Softwareentwicklung zu modernisieren.
             </p>
 
         </div>
@@ -264,7 +264,7 @@ class EnumerationAdapter implements Iterator&lt;E&gt; {
             <h4>Was ist zu tun?</h4>
             
             <p>
-                Unser Geschäftsführer Jens schlägt vor, die ausführenden Mitarbeiter von den Kunden zu entkoppeln. Jegliche Bestellung soll nur noch über einen Vermittler, den Kellner, abgewickelt werden. Dem Kunde kann egal sein auf welchem Wege sein Gericht zubereitet, sein Getränk einschänkt oder ihm eine <a target="_blank" href="https://www.youtube.com/watch?v=XFj45oeA7bE" >saubere Gabel</a> gebracht wird &mdash; Ansprechpartner soll in allen Fällen der Kellner sein.
+                Unser Geschäftsführer Jens schlägt vor, die ausführenden Mitarbeiter von den Kunden zu entkoppeln. Jegliche Bestellung soll nur noch über einen Vermittler, den Kellner, abgewickelt werden. Dem Kunde kann egal sein auf welchem Wege sein Gericht zubereitet, sein Getränk einschenkt oder ihm eine <a target="_blank" href="https://www.youtube.com/watch?v=XFj45oeA7bE" >saubere Gabel</a> gebracht wird &mdash; Ansprechpartner soll in allen Fällen der Kellner sein.
             </p>
             
             <h4>Die Lösung</h4>
@@ -281,7 +281,7 @@ interface Befehl {
             </code></div></pre>
             
             <p>
-                Der Ablauf in einem Command-Pattern sieht in etwa wiefolgt aus: Der Kunde erzeugt zunächst ein konkretes Befehls-Objekt und benennt darin den Empfänger (das Objekt, welches den Befehl am Ende ausführen soll/kann). Der Aufrufer nimmt das Befehls-Objekt entgegen, speichert es und ruft bei Gelegenheit dessen ausfuehren()-Methode auf. Diese wiederum ruft den Empfänger auf, der schließlich den eigentlichen Befehl ausführt. Sehen wir uns einmal an, wie so eine konkrete Befehls-Klasse aussehen könnte. Der Empfänger ist in diesem Fall ein Gericht:
+                Der Ablauf in einem Command-Pattern sieht in etwa wie folgt aus: Der Kunde erzeugt zunächst ein konkretes Befehls-Objekt und benennt darin den Empfänger (das Objekt, welches den Befehl am Ende ausführen soll/kann). Der Aufrufer nimmt das Befehls-Objekt entgegen, speichert es und ruft bei Gelegenheit dessen ausfuehren()-Methode auf. Diese wiederum ruft den Empfänger auf, der schließlich den eigentlichen Befehl ausführt. Sehen wir uns einmal an, wie so eine konkrete Befehls-Klasse aussehen könnte. Der Empfänger ist in diesem Fall ein Gericht:
             </p>
             
             <pre><div class="code"><code>
@@ -408,12 +408,12 @@ class Kellner {
             
             <ul>
                 <li>Eine Gruppe von neuen Gästen betritt das Restaurant.</li>
-                <li>Der Kellner bringt die Menükarten und fragt, was er den Gästen zu Trinken bringen kann.</li>
-                <li>Die Gäste sagen, sie müssen noch überlgegen.</li>
+                <li>Der Kellner bringt die Menükarten und fragt, was er den Gästen zu trinken bringen kann.</li>
+                <li>Die Gäste sagen, sie müssen noch überlegen.</li>
                 <li>Die Gäste haben sich entschieden und <em>warten</em> auf den Kellner.</li>
                 <li>Der Kellner kommt <em>irgendwann</em> wieder und nimmt eine Getränkebestellung entgegen.</li>
                 <li>Der Kellner übermittelt die Bestellung an den Barkeeper.</li>
-                <li>Der Kellner <em>wartet</em>, bis der Barkeeper die Getränke <em>irgendwann</em> eingeschänkt hat.</li>
+                <li>Der Kellner <em>wartet</em>, bis der Barkeeper die Getränke <em>irgendwann</em> eingeschenkt hat.</li>
                 <li>Der Kellner serviert die Getränke und fragt, was die Gäste essen möchten.</li>
                 <li>Die Gäste bitten um etwas Bedenkzeit.</li>
                 <li>Die Gäste <em>warten</em> auf den Kellner.</li>
@@ -430,13 +430,13 @@ class Kellner {
             </ul>
             
             <p>
-                Zwei Wörter stechen in dieser Aufzählung besonders hervor &mdash; <em>warten</em> und <em>irgendwann</em>. Die Kellner unseres Restaurants leisten eigentlich hervorragende Arbeit, doch ihr Timing ist unter aller Sau. Während eines Arbeitstages verbringen sie einen Großteil ihrer Zeit damit zu warten oder unnötige Strecken zu laufen, weil sie nicht wissen wann sie wo zu sein haben. Diese Vergeudung von kostbarer Arbeitszeit sollte Geschäftsführer Jens nicht weiter auf sich sitzen lassen.
+                Zwei Wörter stechen in dieser Aufzählung besonders hervor &mdash; <em>warten</em> und <em>irgendwann</em>. Die Kellner unseres Restaurants leisten eigentlich hervorragende Arbeit, doch ihr Timing ist unter aller Sau. Während eines Arbeitstages verbringen sie einen Großteil ihrer Zeit damit zu warten oder unnötige Strecken zu laufen, weil sie nicht wissen, wann sie wo zu sein haben. Diese Vergeudung von kostbarer Arbeitszeit sollte Geschäftsführer Jens nicht weiter auf sich sitzen lassen.
             </p>
             
             <h4>Was ist zu tun?</h4>
             
             <p>
-                Derzeit müssen die Kellner von <em>BendisPasta</em> einen Restaurantteil nach dem anderen abklappern und sich jedes Mal erkundigen, ob sie dort gerade gebraucht werden oder nicht. Umgekehrt wird ein Schuh draus: Würden die Kellner nur im Bedarfsfall zu sich gerufen, so ließe sich deren Arbeitseffizienz enorm steigern. Wir möchten daher ein neues System etablieren, in welchem die Kellner benachrichtigt werden können sobald ein Kunde bestellen möchte bzw. sobald ein Gericht fertig zubereitet worden ist.
+                Derzeit müssen die Kellner von <em>BendisPasta</em> einen Teil des Restaurants nach dem anderen abklappern und sich jedes Mal erkundigen, ob sie dort gerade gebraucht werden oder nicht. Umgekehrt wird ein Schuh draus: Würden die Kellner nur im Bedarfsfall zu sich gerufen, so ließe sich deren Arbeitseffizienz enorm steigern. Wir möchten daher ein neues System etablieren, in welchem die Kellner benachrichtigt werden können, sobald ein Kunde bestellen möchte bzw. sobald ein Gericht fertig zubereitet worden ist.
             </p>
             
             <h4>Die Lösung</h4>
@@ -807,7 +807,7 @@ class GerichteFabrik {
             <h4>Die Lösung</h4>
             
             <p>
-                Hier kommt uns das Strategy-Pattern wie gerufen. Dieses empfieht uns, die unterschiedlichen Zubeeitungsarten in eigene Klassen zu kapseln und die gewünschte Zubereitungsart in einer Klassenvariable unseres Gerichtes zu speichern. Der Algortihmus zum Zubereiten der Pizza ist dann nicht mehr in der Pizza-Klasse selbst implementiert, stattdessen wird er über den Zugriff auf die darin gespeicherte Zubereitungsart aufgerufen. Wir erstellen also zunächst ein neues Interface, welches wir <code>Zubereitungsart</code> nennen:
+                Hier kommt uns das Strategy-Pattern wie gerufen. Dieses empfiehlt uns, die unterschiedlichen Zubereitungsarten in eigene Klassen zu kapseln und die gewünschte Zubereitungsart in einer Klassenvariable unseres Gerichtes zu speichern. Der Algorithmus zum Zubereiten der Pizza ist dann nicht mehr in der Pizza-Klasse selbst implementiert, stattdessen wird er über den Zugriff auf die darin gespeicherte Zubereitungsart aufgerufen. Wir erstellen also zunächst ein neues Interface, welches wir <code>Zubereitungsart</code> nennen:
             </p>
 
 
@@ -834,7 +834,7 @@ class ItalienischeZubereitungsart implements Zubereitungsart {
             </code></div></pre>
             
             <p>
-                Unser neues Interface hat eine einzige Methode, für die es geschaffen wurde &mdash; <code>zubereiten(String[] zutaten)</code>. In unserer abstrakten Pizza-Klasse fügen wir nun die neue Klassenvariable <code>zubereitungsart</code> hinzu und ergänzen die Möglichkeit die gewünschte Zubereitungsart schon im Konstruktor zu spezifizieren:
+                Unser neues Interface hat eine einzige Methode, für die es geschaffen wurde: <code>zubereiten(String[] zutaten)</code>. In unserer abstrakten Pizza-Klasse fügen wir nun die neue Klassenvariable <code>zubereitungsart</code> hinzu und ergänzen die Möglichkeit die gewünschte Zubereitungsart schon im Konstruktor zu spezifizieren:
             </p>
             
             <pre><div class="code"><code>
@@ -945,19 +945,19 @@ class <input type="text" value = "AmerikanischeZubereitungsart" style="width: 28
             </p>
 
             <pre><div class="code"><code>
-class PizzaMargheritaMitKnoblauch extends PizzaMargherita {}
+class PizzaMargheritaMitKnoblauch extends PizzaMargherita {...}
 
-class PizzaMargheritaMitOregano extends PizzaMargherita {}
+class PizzaMargheritaMitOregano extends PizzaMargherita {...}
 
-class PizzaMargheritaMitScharferSauce extends PizzaMargherita {}
+class PizzaMargheritaMitScharferSauce extends PizzaMargherita {...}
 
-class PizzaMargheritaMitOreganoUndKnoblauch extends PizzaMargherita {}
+class PizzaMargheritaMitOreganoUndKnoblauch extends PizzaMargherita {...}
 
-class PizzaMargheritaMitKnoblauchUndScharferSauce extends PizzaMargherita {}
+class PizzaMargheritaMitKnoblauchUndScharferSauce extends PizzaMargherita {...}
 
-class PizzaMargheritaMitOreganoUndScharferSauce extends PizzaMargherita {}
+class PizzaMargheritaMitOreganoUndScharferSauce extends PizzaMargherita {...}
 
-class PizzaMargheritaMitKnoblauchUndOreganoUndScharferSauce extends PizzaMargherita {}
+class PizzaMargheritaMitKnoblauchUndOreganoUndScharferSauce extends PizzaMargherita {...}
 
             </code></div></pre>
             
@@ -968,7 +968,7 @@ class PizzaMargheritaMitKnoblauchUndOreganoUndScharferSauce extends PizzaMargher
             <h4>Was ist zu tun?</h4>
             
             <p>
-                Wir suchen eine einfache und saubere Möglichkeit, unseren konkreten Gerichten optionale Eigenschaften hinzuzufügen. Weitere Unterklassen dieser Gerichte sind, wie wir gesehen haben, für uns keine Option. Besser wäre es, für jede Garnitur eine eigene Klasse vom Typ <code>Garnitur</code> zu bilden und diese den Gerichten irgendwie als optionale Eigenschaft beizufügen. Der Intuitive Ansatz bestünde wohl darin, die Gerichte-Klasse um neue Klassenvariablen zu ergänzen, in denen die verschiedenen Garnituren hinterlegt werden können. Doch mit dem Decorator-Pattern haben wir ein Muster zur Hand, dass unser Problem auf bewährte Art und Weise, doch etwas anders angeht.
+                Wir suchen eine einfache und saubere Möglichkeit, unseren konkreten Gerichten optionale Eigenschaften hinzuzufügen. Weitere Unterklassen dieser Gerichte sind, wie wir gesehen haben, für uns keine Option. Besser wäre es, für jede Garnitur eine eigene Klasse vom Typ <code>Garnitur</code> zu bilden und diese den Gerichten irgendwie als optionale Eigenschaft beizufügen. Der intuitive Ansatz bestünde wohl darin, die Gerichte-Klasse um neue Klassenvariablen zu ergänzen, in denen die verschiedenen Garnituren hinterlegt werden können. Doch mit dem Decorator-Pattern haben wir ein Muster zur Hand, dass unser Problem auf bewährte Art und Weise, doch etwas anders angeht.
             </p>
                 
             <h4>Die Lösung</h4>
