@@ -245,7 +245,7 @@ class EnumerationAdapter implements Iterator&lt;E&gt; {
     
 }
                 </code></div></pre>
-                <button type="button" onclick="checkAdapter('adapter')" id="adapterButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="adapterResult"></center>
+                <button type="button" onclick="checkAdapter()" id="adapterButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="adapterResult"></center>
             </form>
         </div>
 
@@ -390,7 +390,7 @@ class Kellner {
                     </ul> 
                 </fieldset>
                 <br/>
-                <button type="button" onclick="checkCommand('command')" id="commandButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="commandResult"></center>
+                <button type="button" onclick="checkCommand()" id="commandButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="commandResult"></center>
             </form>
         </div>
         
@@ -491,7 +491,7 @@ class Kellner implements Observer {
         } else if (observable instanceof Theke) {
             Theke theke = (Theke) observable;
             zumOrtGehen(theke);
-        } ... // ggf. weitere in Frage kommende Observables
+        } ... // ggf. Abfrage weiterer in Frage kommenden Observables
     }
     
     zumOrtGehen(Ort ort) {...} // zum Restaurantteil „ort“ gehen
@@ -606,8 +606,7 @@ class Theke <input type="text" value = "extends" style="width: 7ch;font-weight: 
     
 }
                 </code></div></pre>
-                <br/>
-                <button type="button" onclick="checkObserver('observer')" id="observerButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="observerResult"></center>
+                <button type="button" onclick="checkObserver()" id="observerButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="observerResult"></center>
             </form>
         
         </div>
@@ -678,7 +677,7 @@ class GerichteBestellung implements Befehl {
 
             <h4>Die Lösung</h4>
             <p>
-                Das Factory Method-Pattern empfiehlt uns genau das. Wir erstellen eine neue Klasse <code>GerichteFabrik</code>, die eine Methode zur Erzeugung von Gerichten bereitstellt: <code>erzeugeGericht()</code>. Wie genau diese Methode implementiert wird, interessiert uns dabei erstmal nicht. Dies kann wie im vorigen Beispiel anhand einer Menge von if- bzw. case-Abfragen geschehen, mithilfe geeigneter Datenstrukturen oder auf Grundlage einer inneren bzw. globalen Speisekarten-Klasse. Entscheidend ist, dass wir unsere Klassenstruktur allein durch die Auslagerung schon erheblich verbessert haben. Zudem kann die Gerichtefabrik nun zur Laufzeit ausgetauscht werden.
+                Das Factory Method-Pattern empfiehlt uns genau das. Wir erstellen eine neue Klasse <code>GerichteFabrik</code>, die eine Methode zur Erzeugung von Gerichten bereitstellt: <code>erzeugeGericht()</code>. Wie genau diese Methode implementiert wird, interessiert uns dabei erstmal nicht. Dies kann wie im vorigen Beispiel anhand einer Menge von if- bzw. case-Abfragen geschehen, mithilfe einer inneren bzw. globalen Speisekarten-Klasse oder auf der Grundlage sonstiger geeigneter Datenstrukturen. Entscheidend ist, dass wir unsere Klassenstruktur allein durch die Auslagerung schon erheblich verbessert haben. Zudem kann die Gerichtefabrik nun zur Laufzeit ausgetauscht werden.
             </p>
 
             <h4>Neuer Code</h4>
@@ -783,7 +782,7 @@ class GerichteFabrik {
 
 }
                 </code></div></pre>
-                <button type="button" onclick="checkFactory('factory')" id="factoryButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="factoryResult"></center>
+                <button type="button" onclick="checkFactory()" id="factoryButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="factoryResult"></center>
             </form>
         </div>
         
@@ -917,7 +916,19 @@ class PizzaMargherita extends Pizza {
                     </ul> 
                 </fieldset>
                 <br/>
-                <button type="button" onclick="checkStrategy('strategy')" id="strategyButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="strategyResult"></center>
+                <fieldset>
+                    Ergänze das Gerüst für eine neue Zubereitungsart <code>AmerikanischeZubereitungsart</code>
+                </fieldset>
+                <pre><div class="code"><code>
+class <input type="text" value = "AmerikanischeZubereitungsart" style="width: 28ch;font-weight: bold; color: rgb(44,0,159);" name="strategyC1"> <input type="text" value = "implements" style="width: 10ch;font-weight: bold; color: rgb(0,85,153);" name="strategyC2"> <input type="text" value = "Zubereitungsart" style="width: 15ch;font-weight: bold; color: rgb(44,0,159);" name="strategyC3"> {
+    
+    <input type="text" value="void" style="width: 4ch;font-weight: bold; color: rgb(0,85,153);" name="strategyC4"> <input type="text" value="zubereiten" style="width: 10ch;color: rgb(44,0,159);font-weight: bold;" name="strategyC5">(<input type="text" value="String[]" style="width: 8ch;" name="strategyC6"> zutaten) { // Rückgabetyp, Methodennamen und Parametertyp eintragen
+        ... // Pizza mit den gegebenen Zutaten auf amerikanische Art zubereiten
+    }
+    
+}
+                </code></div></pre>
+                <button type="button" onclick="checkStrategy()" id="strategyButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="strategyResult"></center>
             </form>
         </div>
         
@@ -1043,7 +1054,7 @@ class Knoblauch extends PizzaGarnitur {
                     </ul> 
                 </fieldset>
                 <br/>
-                <button type="button" onclick="checkDecorator('decorator')" id="decoratorButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="decoratorResult"></center>
+                <button type="button" onclick="checkDecorator()" id="decoratorButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="decoratorResult"></center>
             </form>
         </div>
         
@@ -1051,6 +1062,10 @@ class Knoblauch extends PizzaGarnitur {
         <div id="mvc">
             <h2>Der Model-View-Controller <a class="testjump" href="#mvcForm">...direkt zum Test...</a></h2>
         </div>
+        
+        <p class="note">
+            „Zur Unterteilung einer Software in die drei Komponenten Datenmodell (<em>model</em>), Präsentation (<em>view</em>) und Programmsteuerung (<em>controller</em>). [...] Ziel des Musters ist ein flexibler Programmentwurf, der eine spätere Änderung oder Erweiterung erleichtert und eine Wiederverwendbarkeit der einzelnen Komponenten ermöglicht.“ [<a target="_blank" style="text-decoration: none; color: #545454;" href="https://de.wikipedia.org/w/index.php?title=Model_View_Controller&oldid=185257654" >Wikipedia</a>]
+        </p>
         
         <div id="literature">
             <h2>Weiterführende Literatur</h2>

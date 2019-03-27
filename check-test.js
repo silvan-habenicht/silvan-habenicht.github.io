@@ -7,6 +7,19 @@ var adapterSolved = false,
     strategySolved = false,
     observerSolved = false;
 
+var patternForm,
+    patternMenu,
+    patternResult,
+    patternButton;
+
+function setPatternVariables(pattern) {
+    "use strict";
+    patternForm = document.getElementById(pattern + "Form");
+    patternMenu = document.getElementById(pattern + "Menu");
+    patternResult = document.getElementById(pattern + "Result");
+    patternButton = document.getElementById(pattern + "Button");
+}
+
 function solveAll() { /* exported solveAll*/
     "use strict";
     var form = document.getElementById("adapterForm");
@@ -58,12 +71,9 @@ function playTone() {
 
 
 /* Checking the multiple choice test for the adapter pattern. */
-function checkAdapter(pattern) { /* exported checkAdapter */
+function checkAdapter() { /* exported checkAdapter */
     "use strict";
-    var patternForm = document.getElementById(pattern + "Form"),
-        patternMenu = document.getElementById(pattern + "Menu"),
-        patternResult = document.getElementById(pattern + "Result"),
-        patternButton = document.getElementById(pattern + "Button");
+    setPatternVariables("adapter");
     
     if (patternForm.elements[4].checked &&
             patternForm.elements[6].checked &&
@@ -91,12 +101,9 @@ function checkAdapter(pattern) { /* exported checkAdapter */
 }
 
 /* Checking the multiple choice test for the command pattern. */
-function checkCommand(pattern) { /* exported checkCommand */
+function checkCommand() { /* exported checkCommand */
     "use strict";
-    var patternForm = document.getElementById(pattern + "Form"),
-        patternMenu = document.getElementById(pattern + "Menu"),
-        patternResult = document.getElementById(pattern + "Result"),
-        patternButton = document.getElementById(pattern + "Button");
+    setPatternVariables("command");
     
     if (patternForm.elements[3].checked &&
             patternForm.elements[9].checked) {
@@ -120,12 +127,9 @@ function checkCommand(pattern) { /* exported checkCommand */
 }
 
 /* Checking the multiple choice test for the observer pattern. */
-function checkObserver(pattern) { /* exported checkObserver */
+function checkObserver() { /* exported checkObserver */
     "use strict";
-    var patternForm = document.getElementById(pattern + "Form"),
-        patternMenu = document.getElementById(pattern + "Menu"),
-        patternResult = document.getElementById(pattern + "Result"),
-        patternButton = document.getElementById(pattern + "Button");
+    setPatternVariables("observer");
     
     if (patternForm.elements[4].checked &&
             !patternForm.observerB1.checked &&
@@ -156,12 +160,9 @@ function checkObserver(pattern) { /* exported checkObserver */
 }
 
 /* Checking the multiple choice test for the factory pattern. */
-function checkFactory(pattern) { /* exported checkFactory */
+function checkFactory() { /* exported checkFactory */
     "use strict";
-    var patternForm = document.getElementById(pattern + "Form"),
-        patternMenu = document.getElementById(pattern + "Menu"),
-        patternResult = document.getElementById(pattern + "Result"),
-        patternButton = document.getElementById(pattern + "Button");
+    setPatternVariables("factory");
     
     if (patternForm.elements[2].checked &&
             patternForm.factoryB1.checked &&
@@ -191,14 +192,17 @@ function checkFactory(pattern) { /* exported checkFactory */
 }
 
 /* Checking the multiple choice test for the strategy pattern. */
-function checkStrategy(pattern) { /* exported checkStrategy */
+function checkStrategy() { /* exported checkStrategy */
     "use strict";
-    var patternForm = document.getElementById(pattern + "Form"),
-        patternMenu = document.getElementById(pattern + "Menu"),
-        patternResult = document.getElementById(pattern + "Result"),
-        patternButton = document.getElementById(pattern + "Button");
+    setPatternVariables("strategy");
     
-    if (patternForm.elements[4].checked) {
+    if (patternForm.elements[4].checked &&
+            patternForm.strategyC1.value === "AmerikanischeZubereitungsart" &&
+            patternForm.strategyC2.value === "implements" &&
+            patternForm.strategyC3.value === "Zubereitungsart" &&
+            patternForm.strategyC4.value === "void" &&
+            patternForm.strategyC5.value === "zubereiten" &&
+            patternForm.strategyC6.value === "String[]") {
         
         patternMenu.style.color = "darkgreen";
         patternMenu.innerHTML = "Strategy &#10003;";
@@ -219,12 +223,9 @@ function checkStrategy(pattern) { /* exported checkStrategy */
 }
 
 /* Checking the multiple choice test for the decorator pattern. */
-function checkDecorator(pattern) { /* exported checkDecorator */
+function checkDecorator() { /* exported checkDecorator */
     "use strict";
-    var patternForm = document.getElementById(pattern + "Form"),
-        patternMenu = document.getElementById(pattern + "Menu"),
-        patternResult = document.getElementById(pattern + "Result"),
-        patternButton = document.getElementById(pattern + "Button");
+    setPatternVariables("decorator");
     
     if (patternForm.elements[1].checked) {
         
