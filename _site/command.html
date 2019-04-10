@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="de">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ristorante BendisPasta | Lernplattform für Design Patterns</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="highlighting/styles/school-book.css">
+        <link rel="icon" type="image/jpg" href="pictures/pasta_small.png"/>
+    </head>
+
+    <body id="main">
+
+      <!-- syntax highlighting -->
+      <script src="highlighting/highlight.pack.js"></script>
+      <!-- website appearance -->
+      <script src="script.js"></script>
+
+      <!-- sidebar menu icon -->
+<div class="menuIcon">
+    <a id="toggle" onclick="openCloseMenu()"><span></span></a>
+</div>
+
+<!-- sidebar menu -->
+<nav class="sideMenu" id="patternMenu">
+    <img src="pictures/pasta_medium.png" href="/index.html" alt="Logo">
+    <a id="titleMenu" style="font-weight:bold;box-shadow: none;font-style:normal;">Pattern-Menü</a>
+    
+      <a id="adapterMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/adapter.html" >Adapter</a>
+    
+      <a id="commandMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/command.html" class="current">Command</a>
+    
+      <a id="observerMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/observer.html" >Observer</a>
+    
+      <a id="factoryMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/factory.html" >Factory</a>
+    
+      <a id="strategyMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/strategy.html" >Strategy</a>
+    
+      <a id="decoratorMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/decorator.html" >Decorator</a>
+    
+    <br/>
+    <button type="button" style="width: auto;" disabled=true onclick="getCertificate()" id="certificate">Zertifikat erstellen</button>
+    <br/>
+    <br/>
+    <br/>
+</nav>
+
+
+      <!-- pop-up notification -->
+        <div id="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            Gratulation! Du kannst jetzt dein Zertifikat herunterladen
+        </div>
+
+
+      <hr class="italian" />
+      <h1>Ristorante BendisPasta<h1>
+      <hr class="italian" />
+
+      <h2 id="das-command-pattern-direkt-zum-test">Das Command-Pattern <a class="testjump" href="#commandForm">…direkt zum Test…</a></h2>
+
+<p class="note">
+    Zur „Kapselung eines Requests als Objekt, um so die Parametrisierung von Clients mit verschiedenen Requests, Warteschlangen- oder Logging-Operationen sowie das Rückgängigmachen von Operationen zu ermöglichen.“ [GoF]
+</p>
+
+<p>In letzter Zeit gab es mehrere Beschwerden von Kunden des Ristorante Bendispasta, die etwa versucht haben bei einem Koch ein Getränk zu bestellen. Sie wurden barsch zurückgewiesen mit Aussagen wie „Dafür bin ich nicht zuständig!“ oder „Jetzt nicht!“. Ein Ähnliches verhalten legten auch andere Mitarbeiter an den Tag. Viele Kunden sind verunsichert, an wen Sie sich mit Ihren Bestellwünschen wenden sollen.</p>
+
+<h4 id="was-ist-zu-tun">Was ist zu tun?</h4>
+
+<p>Unser Geschäftsführer Jens schlägt vor, die ausführenden Mitarbeiter von den Kunden zu entkoppeln. Jegliche Bestellung soll nur noch über einen Vermittler, den Kellner, abgewickelt werden. Dem Kunde kann egal sein auf welchem Wege sein Gericht zubereitet, sein Getränk einschenkt oder ihm eine <a target="_blank" href="https://www.youtube.com/watch?v=XFj45oeA7bE">saubere Gabel</a> gebracht wird — Ansprechpartner soll in allen Fällen der Kellner sein.</p>
+
+<h4 id="die-lösung">Die Lösung</h4>
+
+<p>An dieser Stelle bedienen wir uns dem Command-Pattern, welches sich in vier Klassen und ein Interface gliedert: Es gibt den Kunden (<em>Client</em>), den Empfänger (<em>Receiver</em>), den Aufrufer (<em>Invoker</em>) und den konkreten Befehl (<em>concrete Command</em>), der ein Interface vom Typ Befehl (<em>Command</em>) implementiert. Dieses Interface, enthält eine einzige Methode <code>ausfuehren()</code> bzw. <code>execute()</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">Befehl</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">ausfuehren</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Der Ablauf in einem Command-Pattern sieht in etwa wie folgt aus: Der Kunde erzeugt zunächst ein konkretes Befehls-Objekt und benennt darin den Empfänger (das Objekt, welches den Befehl am Ende ausführen soll/kann). Der Aufrufer nimmt das Befehls-Objekt entgegen, speichert es und ruft bei Gelegenheit dessen ausfuehren()-Methode auf. Diese wiederum ruft den Empfänger auf, der schließlich den eigentlichen Befehl ausführt. Sehen wir uns einmal an, wie so eine konkrete Befehls-Klasse aussehen könnte. Der Empfänger ist in diesem Fall ein Gericht:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">GerichteBestellung</span> <span class="kd">implements</span> <span class="n">Befehl</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="n">Gericht</span> <span class="n">gericht</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">GerichteBestellung</span> <span class="o">(</span><span class="n">Gericht</span> <span class="n">gericht</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">gericht</span> <span class="o">=</span> <span class="n">gericht</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">ausfuehren</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">gericht</span><span class="o">.</span><span class="na">zubereiten</span><span class="o">();</span>
+        <span class="n">gericht</span><span class="o">.</span><span class="na">servieren</span><span class="o">();</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Nun werfen wir einen Blick auf die Kellner-Klasse, welche in unserem Beispiel als Aufrufer fungiert. Nachdem der Kunde einen konkreten Befehl erzeugt hat, kann er ihn dem Kellner in der Methode <code>bestellungEntgegennehmen(Befehl befehl)</code> übergeben. Dieser wird dann später alle Befehle ausführen lassen.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Kellner</span> <span class="o">{</span>
+
+    <span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="o">;</span><span class="n">Befehl</span><span class="o">&amp;</span><span class="n">gt</span><span class="o">;</span> <span class="n">bestellung</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Kellner</span> <span class="o">()</span> <span class="o">{</span>
+        <span class="n">bestellung</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&amp;</span><span class="n">lt</span><span class="o">;</span><span class="n">Befehl</span><span class="o">&amp;</span><span class="n">gt</span><span class="o">;();</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">bestellungEntgegennehmen</span><span class="o">(</span><span class="n">Befehl</span> <span class="n">befehl</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">bestellung</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">befehl</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">bestellungAbschliessen</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span><span class="o">(</span><span class="n">Befehl</span> <span class="n">b</span> <span class="o">:</span> <span class="n">bestellung</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">b</span><span class="o">.</span><span class="na">ausfuehren</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="n">bestellung</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<form id="commandForm">
+    <h3>Zwischenprüfung</h3>
+    <fieldset>
+        Was macht das Command-Pattern?
+        <ul>
+            <li>
+                <label>
+                    <input type="radio" name="commandA" />
+                    Es kontrolliert eine größere Anzahl verwandter Klassen
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="commandA" />
+                    Es überwacht die main-Methode
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="commandA" />
+                    Es kapselt einen Auftrag in ein Objekt
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="commandA" />
+                    Es sortiert eine Menge von Befehlen
+                </label>
+            </li>
+        </ul>
+    </fieldset>
+    <br />
+    <fieldset>
+        Wie heißt üblicherweise die Methode, die von einer konkreten Command-Klasse implementiert werden muss?
+        <ul>
+            <li>
+                <label>
+                    <input type="radio" name="commandB" />
+                    <code>command()</code>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="commandB" />
+                    <code>transfer()</code>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="commandB" />
+                    <code>deploy()</code>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="commandB" />
+                    <code>execute()</code>
+                </label>
+            </li>
+        </ul>
+    </fieldset>
+    <br />
+    <button type="button" onclick="checkCommand()" id="commandButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="commandResult"></center>
+</form>
+
+
+    </body>
+
+    <!-- multiple choice test evaluation -->
+    <script src="check-test.js"></script>
+
+    <!-- Lösungen anzeigen -->
+    <script>solveAll();</script>
+
+</html>

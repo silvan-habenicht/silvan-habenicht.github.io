@@ -1,0 +1,18 @@
+<!-- sidebar menu icon -->
+<div class="menuIcon">
+    <a id="toggle" onclick="openCloseMenu()"><span></span></a>
+</div>
+
+<!-- sidebar menu -->
+<nav class="sideMenu" id="patternMenu">
+    <img src="pictures/pasta_medium.png" href="/index.html" alt="Logo">
+    <a id="titleMenu" style="font-weight:bold;box-shadow: none;font-style:normal;">Pattern-Menü</a>
+    {% for item in site.data.navigation %}
+      <a id="{{ item.id }}"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="{{ item.link }}" {% if page.url == item.link %}class="current"{% endif %}>{{ item.name }}</a>
+    {% endfor %}
+    <br/>
+    <button type="button" style="width: auto;" disabled=true onclick="getCertificate()" id="certificate">Zertifikat erstellen</button>
+    <br/>
+    <br/>
+    <br/>
+</nav>

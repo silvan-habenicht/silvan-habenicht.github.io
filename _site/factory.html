@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="de">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ristorante BendisPasta | Lernplattform für Design Patterns</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="highlighting/styles/school-book.css">
+        <link rel="icon" type="image/jpg" href="pictures/pasta_small.png"/>
+    </head>
+
+    <body id="main">
+
+      <!-- syntax highlighting -->
+      <script src="highlighting/highlight.pack.js"></script>
+      <!-- website appearance -->
+      <script src="script.js"></script>
+
+      <!-- sidebar menu icon -->
+<div class="menuIcon">
+    <a id="toggle" onclick="openCloseMenu()"><span></span></a>
+</div>
+
+<!-- sidebar menu -->
+<nav class="sideMenu" id="patternMenu">
+    <img src="pictures/pasta_medium.png" href="/index.html" alt="Logo">
+    <a id="titleMenu" style="font-weight:bold;box-shadow: none;font-style:normal;">Pattern-Menü</a>
+    
+      <a id="adapterMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/adapter.html" >Adapter</a>
+    
+      <a id="commandMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/command.html" >Command</a>
+    
+      <a id="observerMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/observer.html" >Observer</a>
+    
+      <a id="factoryMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/factory.html" class="current">Factory</a>
+    
+      <a id="strategyMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/strategy.html" >Strategy</a>
+    
+      <a id="decoratorMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/decorator.html" >Decorator</a>
+    
+    <br/>
+    <button type="button" style="width: auto;" disabled=true onclick="getCertificate()" id="certificate">Zertifikat erstellen</button>
+    <br/>
+    <br/>
+    <br/>
+</nav>
+
+
+      <!-- pop-up notification -->
+        <div id="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            Gratulation! Du kannst jetzt dein Zertifikat herunterladen
+        </div>
+
+
+      <hr class="italian" />
+      <h1>Ristorante BendisPasta<h1>
+      <hr class="italian" />
+
+      <h2>Das Factory Method-Pattern <a class="testjump" href="#factoryForm">...direkt zum Test...</a></h2>
+
+<p class="note">
+    Zur „Definition einer Schnittstelle zur Objekterzeugung, wobei die Bestimmung der zu instanziierenden Klasse den Unterklassen überlassen bleibt. Das Design Pattern Factory Method (Fabrikmethode) gestattet einer Klasse, die Instanziierung an Unterklassen zu delegieren.“ [GoF]
+</p>
+
+<p>Bislang war es so, dass der Kunde zunächst wissen musste, wie er ein bestimmtes Gericht erzeugt, ehe er dieses in Form einer <code>GerichteBestellung</code> in Auftrag geben konnte. Eigentlich ist das nicht die Aufgabe des Kunden und sollte ein Geheimnis der Küche bleiben. Der Kunde hat eine Menükarte, in dem die einzelnen Gerichte mit Nummern versehen aufgelistet sind. Wir möchten daher unsere Befehls-Klassen dahingehend ändern, dass die Zuständigkeit der Gericht-Instanziierung nicht mehr beim Kunden liegt.</p>
+
+<h4 id="was-ist-zu-tun">Was ist zu tun?</h4>
+
+<p>Anstelle konkreter Menü-Objekte, wollen wir den Befehlsklassen in Zukunft die entsprechenden Nummern aus der Karte übergeben. Die neue <code>GerichteBestellung</code>-Klasse könnte in etwa so aussehen:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">GerichteBestellung</span> <span class="kd">implements</span> <span class="n">Befehl</span> <span class="o">{</span>
+
+  <span class="kd">private</span> <span class="n">Gericht</span> <span class="n">gericht</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="nf">GerichteBestellung</span><span class="o">(</span><span class="kt">int</span> <span class="n">gerichtID</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="k">if</span><span class="o">(</span><span class="n">gerichtID</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">gericht</span> <span class="o">=</span> <span class="k">new</span> <span class="n">InsalataMista</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">gerichtID</span> <span class="o">==</span> <span class="mi">2</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">gericht</span> <span class="o">=</span> <span class="k">new</span> <span class="n">InsalataCapricciosa</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="o">...</span>
+
+    <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">gerichtID</span> <span class="o">==</span> <span class="mi">35</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">gericht</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PizzaMargherita</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">gerichtID</span> <span class="o">==</span> <span class="mi">36</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">gericht</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PizzaCipolla</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">gerichtID</span> <span class="o">==</span> <span class="mi">37</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">gericht</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PizzaCalzone</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="o">...</span>
+
+    <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">gerichtID</span> <span class="o">==</span> <span class="mi">68</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">gericht</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PenneAllArrabiata</span><span class="o">();</span>
+    <span class="o">}</span>
+
+  <span class="o">...</span>
+
+  <span class="o">}</span>
+
+  <span class="kt">void</span> <span class="n">ausf</span><span class="err">ü</span><span class="n">hren</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">gericht</span><span class="o">.</span><span class="na">zubereiten</span><span class="o">();</span>
+    <span class="n">gericht</span><span class="o">.</span><span class="na">servieren</span><span class="o">();</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Wie du vielleicht schon erkannt hast, ist diese Art der Implementierung eher nicht zu empfehlen. Sie macht Änderungen der Menükarte enorm umständlich und sie bürdet der Befehlsklasse eine Rolle auf, für die sie eigentlich nicht gedacht ist. Besser wäre es, die Instanziierung der einzelnen Gerichte in eine eigens dafür geschaffene Klasse auszulagern.</p>
+
+<h4 id="die-lösung">Die Lösung</h4>
+
+<p>Das Factory Method-Pattern empfiehlt uns genau das. Wir erstellen eine neue Klasse <code>GerichteFabrik</code>, die eine Methode zur Erzeugung von Gerichten bereitstellt: <code>erzeugeGericht()</code>. Wie genau diese Methode implementiert wird, interessiert uns dabei erstmal nicht. Dies kann wie im vorigen Beispiel anhand einer Menge von if- bzw. case-Abfragen geschehen, mithilfe einer inneren bzw. globalen Speisekarten-Klasse oder auf der Grundlage sonstiger geeigneter Datenstrukturen. Entscheidend ist, dass wir unsere Klassenstruktur allein durch die Auslagerung schon erheblich verbessert haben. Änderungen der Speisekarte müssen jetzt nur noch in die zentrale Gerichte-Fabrik übertragen werden, um alle Klassen, die die Fabrik nutzen, auf einen Schlag zu aktualisieren. Zudem kann die Gerichtefabrik im Bedarfsfall auch zur Laufzeit ausgetauscht werden.</p>
+
+<h4 id="neuer-code">Neuer Code</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">GerichteBestellung</span> <span class="kd">implements</span> <span class="n">Befehl</span><span class="o">{</span>
+
+  <span class="kd">private</span> <span class="n">Gericht</span> <span class="n">gericht</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">GerichteFabrik</span> <span class="n">fabrik</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="nf">GerichteBestellung</span><span class="o">(</span><span class="kt">int</span> <span class="n">gerichtID</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">fabrik</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GerichteFabrikImpl</span><span class="o">();</span>
+    <span class="n">gericht</span> <span class="o">=</span> <span class="n">fabrik</span><span class="o">.</span><span class="na">erzeugeGericht</span><span class="o">(</span><span class="n">gerichtID</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="kt">void</span> <span class="nf">ausfuehren</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">gericht</span><span class="o">.</span><span class="na">zubereiten</span><span class="o">();</span>
+    <span class="n">gericht</span><span class="o">.</span><span class="na">servieren</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="kt">void</span> <span class="nf">setFabrik</span><span class="o">(</span><span class="n">GerichteFabrik</span> <span class="n">fabrik</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">fabrik</span> <span class="o">=</span> <span class="n">fabrik</span><span class="o">;</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<form id="factoryForm">
+    <h3>Zwischenprüfung</h3>
+    <fieldset>
+        Was ist die wesentliche Aufgabe der Fabrikmethode?
+        <ul>
+            <li>
+                <label>
+                    <input type="radio" name="factoryA" />
+                    Erstellen von Objekt-Kopien
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="factoryA" />
+                    Instanziieren von Objekten
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="factoryA" />
+                    Einer Variable Initialwerte zuweisen
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="factoryA" />
+                    Überschreiben eines Konstruktors
+                </label>
+            </li>
+        </ul>
+    </fieldset>
+    <br />
+    <fieldset>
+        Welche Aussagen treffen auf das Factory Method-Muster zu?
+        <ul>
+            <li>
+                <label>
+                    <input type="checkbox" name="factoryB1" />
+                    Es fördert die Kapselung
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" name="factoryB2" />
+                    Die Objekterzeugung wird ausgelagert
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" name="factoryB3" />
+                    Durch die zusätzliche Factory-Klasse erhöht sich die Gesamtanzahl an Klassen in einem Projekt
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" name="factoryB4" />
+                    Eine Factory-Klasse kann keine weiteren Unterklassen haben
+                </label>
+            </li>
+        </ul>
+    </fieldset>
+    <br />
+    <fieldset>
+        Ergänze das untenstehende Gerüst für unsere GerichteFabrik.
+    </fieldset>
+    <pre><div class="code"><code>
+class GerichteFabrik {
+
+  public GerichteFabrik() {}
+
+  // Fabrikmethode
+  <input type="text" value="Gericht" style="width: 7ch;" name="factoryC1" /> <input type="text" value="erzeugeGericht" style="width: 14ch;color: rgb(44,0,159);font-weight: bold;" name="factoryC2" />(<input type="text" value="int" style="width: 3ch;color: rgb(0,85,153);font-weight: bold;" name="factoryC3" /> gerichtID) { // Rückgabetyp, Methodennamen und Parametertyp eintragen
+  ... // beliebige Implementierung (nichts zu ergänzen)
+  }
+
+}
+    </code></div></pre>
+    <button type="button" onclick="checkFactory()" id="factoryButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="factoryResult"></center>
+</form>
+
+
+    </body>
+
+    <!-- multiple choice test evaluation -->
+    <script src="check-test.js"></script>
+
+    <!-- Lösungen anzeigen -->
+    <script>solveAll();</script>
+
+</html>

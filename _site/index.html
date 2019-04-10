@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ristorante BendisPasta | Lernplattform für Design Patterns</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="highlighting/styles/school-book.css">
+        <link rel="icon" type="image/jpg" href="pictures/pasta_small.png"/>
+    </head>
+
+    <body id="main">
+
+      <!-- syntax highlighting -->
+      <script src="highlighting/highlight.pack.js"></script>
+      <!-- website appearance -->
+      <script src="script.js"></script>
+
+      <!-- sidebar menu icon -->
+<div class="menuIcon">
+    <a id="toggle" onclick="openCloseMenu()"><span></span></a>
+</div>
+
+<!-- sidebar menu -->
+<nav class="sideMenu" id="patternMenu">
+    <img src="pictures/pasta_medium.png" href="/index.html" alt="Logo">
+    <a id="titleMenu" style="font-weight:bold;box-shadow: none;font-style:normal;">Pattern-Menü</a>
+    
+      <a id="adapterMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/adapter.html" >Adapter</a>
+    
+      <a id="commandMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/command.html" >Command</a>
+    
+      <a id="observerMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/observer.html" >Observer</a>
+    
+      <a id="factoryMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/factory.html" >Factory</a>
+    
+      <a id="strategyMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/strategy.html" >Strategy</a>
+    
+      <a id="decoratorMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/decorator.html" >Decorator</a>
+    
+    <br/>
+    <button type="button" style="width: auto;" disabled=true onclick="getCertificate()" id="certificate">Zertifikat erstellen</button>
+    <br/>
+    <br/>
+    <br/>
+</nav>
+
+
+      <!-- pop-up notification -->
+        <div id="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            Gratulation! Du kannst jetzt dein Zertifikat herunterladen
+        </div>
+
+
+      <hr class="italian" />
+      <h1>Ristorante BendisPasta<h1>
+      <hr class="italian" />
+
+      <script>enterHome();</script>
+
+<h2>Willkommen in der Pizzeria BendisPasta!</h2>
+
+<p>
+    Diese Website dient einem schmackhaften Einstieg in <em>Design Patterns</em> (zu Deutsch: Entwurfsmuster). Hierbei handelt es sich um allgemeine Entwurfsprinzipien, nach denen objektorientierter Softwarecode aufgebaut werden kann. Bei bestimmten wiederkehrenden Anwendungsfällen helfen diese dabei, dass der Code möglichst flexibel an veränderte Anforderungen angepasst oder um erweiterte Funktionalität ergänzt werden kann. Die Kenntnis grundlegender <em>Design Patterns</em> ist für die moderne OO-Entwicklung von elementarer Bedeutung.
+</p>
+
+<p>
+    Im Folgenden wirst du einige der wichtigsten <em>Design Patterns</em> kennen und einzusetzen lernen. Wir werfen dazu einen Blick in die Arbeitswelt der traditionsreichen virtuellen Pizzeria <em>BendisPasta</em>. Ihr Geschäftsführer Jens hat dort erst kürzlich angeordnet, die vorherrschenden Arbeitsabläufe nach dem Vorbild der agilen Softwareentwicklung zu modernisieren.
+</p>
+
+
+    </body>
+
+    <!-- multiple choice test evaluation -->
+    <script src="check-test.js"></script>
+
+    <!-- Lösungen anzeigen -->
+    <script>solveAll();</script>
+
+</html>

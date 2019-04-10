@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="de">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ristorante BendisPasta | Lernplattform für Design Patterns</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="highlighting/styles/school-book.css">
+        <link rel="icon" type="image/jpg" href="pictures/pasta_small.png"/>
+    </head>
+
+    <body id="main">
+
+      <!-- syntax highlighting -->
+      <script src="highlighting/highlight.pack.js"></script>
+      <!-- website appearance -->
+      <script src="script.js"></script>
+
+      <!-- sidebar menu icon -->
+<div class="menuIcon">
+    <a id="toggle" onclick="openCloseMenu()"><span></span></a>
+</div>
+
+<!-- sidebar menu -->
+<nav class="sideMenu" id="patternMenu">
+    <img src="pictures/pasta_medium.png" href="/index.html" alt="Logo">
+    <a id="titleMenu" style="font-weight:bold;box-shadow: none;font-style:normal;">Pattern-Menü</a>
+    
+      <a id="adapterMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/adapter.html" >Adapter</a>
+    
+      <a id="commandMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/command.html" >Command</a>
+    
+      <a id="observerMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/observer.html" >Observer</a>
+    
+      <a id="factoryMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/factory.html" >Factory</a>
+    
+      <a id="strategyMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/strategy.html" >Strategy</a>
+    
+      <a id="decoratorMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/decorator.html" class="current">Decorator</a>
+    
+    <br/>
+    <button type="button" style="width: auto;" disabled=true onclick="getCertificate()" id="certificate">Zertifikat erstellen</button>
+    <br/>
+    <br/>
+    <br/>
+</nav>
+
+
+      <!-- pop-up notification -->
+        <div id="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            Gratulation! Du kannst jetzt dein Zertifikat herunterladen
+        </div>
+
+
+      <hr class="italian" />
+      <h1>Ristorante BendisPasta<h1>
+      <hr class="italian" />
+
+      <h2 id="das-decorator-pattern-direkt-zum-test">Das Decorator-Pattern <a class="testjump" href="#decoratorForm">…direkt zum Test…</a></h2>
+
+<p class="note">
+    Zur „dynamische[n] Erweiterung der Funktionalität eines Objekts. Decorator-Objekte stellen hinsichtlich der Ergänzung einer Klasse um weitere Zuständigkeiten eine flexible Alternative zur Unterklassenbildung dar.“ [GoF]
+</p>
+
+<p>Als nächstes möchten wir den Kunden von <em>BendisPasta</em> die Möglichkeit bieten, ihren Gerichten  eine Garnitur hinzuzufügen. So soll es für alle Pizzen die Option geben, sie u. A. mit Knoblauch, Oregano oder scharfer Sauce serviert zu bekommen. Hier sehen wir einen ersten Vorschlag, diesem Wunsch zu entsprechen — durch Bildung weiterer Unterklassen:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">PizzaMargheritaMitKnoblauch</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
+
+<span class="kd">class</span> <span class="nc">PizzaMargheritaMitOregano</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
+
+<span class="kd">class</span> <span class="nc">PizzaMargheritaMitScharferSauce</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
+
+<span class="kd">class</span> <span class="nc">PizzaMargheritaMitOreganoUndKnoblauch</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
+
+<span class="kd">class</span> <span class="nc">PizzaMargheritaMitKnoblauchUndScharferSauce</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
+
+<span class="kd">class</span> <span class="nc">PizzaMargheritaMitOreganoUndScharferSauce</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
+
+<span class="kd">class</span> <span class="nc">PizzaMargheritaMitKnoblauchUndOreganoUndScharferSauce</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
+
+</code></pre></div></div>
+
+<p>Es ist wohl recht offensichtlich, dass das nicht der richtige Weg sein kann. Mit jeder zusätzlichen Garnitur im Angebot würde sich die Menge an Unterklassen verdoppeln. Zudem müsste für jedes konkrte Gericht eine eigene Menge solcher Unterklassen erstellt werden. Früher oder später würde das in einem einzigen Chaos enden.</p>
+
+<h4 id="was-ist-zu-tun">Was ist zu tun?</h4>
+
+<p>Wir suchen eine einfache und saubere Möglichkeit, unseren konkreten Gerichten optionale Eigenschaften hinzuzufügen. Weitere Unterklassen dieser Gerichte sind, wie wir gesehen haben, für uns keine Option. Besser wäre es, für jede Garnitur eine eigene Klasse vom Typ <code class="highlighter-rouge">Garnitur</code> zu bilden und diese den Gerichten irgendwie als optionale Eigenschaft beizufügen. Der intuitive Ansatz bestünde wohl darin, die Gerichte-Klasse um neue Instanzvariablen zu ergänzen, in denen die verschiedenen Garnituren hinterlegt werden können. Doch mit dem Decorator-Pattern haben wir ein Muster zur Hand, dass unser Problem auf bewährte Art und Weise, doch etwas anders angeht.</p>
+
+<h4 id="die-lösung">Die Lösung</h4>
+
+<p>Dreh- und Angelpunkt unseres neuen Patterns ist eine abstrakte Decorator-Klasse, die wir in unserem Fall Garnitur nennen. Dazu hier ein Beispiel, wie wir das Decorator-Pattern zum Würzen unserer Pizzen nutzen können:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">PizzaGarnitur</span> <span class="kd">extends</span> <span class="n">Pizza</span> <span class="o">{</span>
+
+  <span class="kd">private</span> <span class="kt">float</span> <span class="n">preis</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">Pizza</span> <span class="n">pizza</span><span class="o">;</span>
+
+  <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">();</span>
+
+  <span class="kt">void</span> <span class="nf">servieren</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">pizza</span><span class="o">.</span><span class="na">servieren</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="kt">int</span> <span class="nf">preis</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">pizza</span><span class="o">.</span><span class="na">preis</span><span class="o">()</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">preis</span><span class="o">;</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Unsere neue Klasse <code class="highlighter-rouge">PizzaGarnitur</code> erweitert die abstrakte Klasse <code class="highlighter-rouge">Pizza</code> — sie ist damit sozusagen selbst eine Pizza. Der Konstruktor erwartet allerdings im Übergabeparameter die „echte“ Pizza, welche dann in der Instanzvariable <code class="highlighter-rouge">pizza</code> gesichert wird. Für jede Methode, die eine Klasse vom Typ <code class="highlighter-rouge">Pizza</code> bereitstellen muss, ruft die Klasse vom Typ <code class="highlighter-rouge">GerichteGarnitur</code> die entsprechende Methode per Zugriff auf das gespeicherte Pizza-Objekt auf. Im Fall von Knoblauch sieht das dann in etwa so aus:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Knoblauch</span> <span class="kd">extends</span> <span class="n">PizzaGarnitur</span> <span class="o">{</span>
+
+  <span class="kd">public</span> <span class="nf">Knoblauch</span><span class="o">(</span><span class="n">Pizza</span> <span class="n">pizza</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">pizza</span> <span class="o">=</span> <span class="n">pizza</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">preis</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">pizza</span><span class="o">.</span><span class="na">zubereiten</span><span class="o">();</span>
+    <span class="o">...</span> <span class="c1">// mit Knoblauch garnieren</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Wenn wir nun eine Pizza Margherita mit Knoblauch erzeugen möchten, so geschieht dies einfach durch die Anweisung <code class="highlighter-rouge">Pizza meinePizza = new Knoblauch(new PizzaMargherita)</code>. Möchten wir außerdem Oregano dazu, so wäre folgende Anweisung ebenfalls möglich: <code class="highlighter-rouge">meinePizza = new Oregano(meinePizza)</code>. Für Restaurantgäste ohne Begleitung bestünde sogar die Option eine Pizza mit doppelt Knoblauch zu bekommen: <code class="highlighter-rouge">meinePizza = new Knoblauch(new Knoblauch(new PizzaMargherita))</code>.</p>
+
+<form id="decoratorForm">
+    <h3>Multiple Choice-Test</h3>
+    <fieldset>
+        Worin besteht die wesentliche Aufgabe eines Decorators?
+        <ul>
+            <li>
+                <label>
+                    <input type="radio" name="decoratorA" />
+                    Erweitern eines Objektes
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="decoratorA" />
+                    Verschönern der Klassenstruktur
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="decoratorA" />
+                    Sammeln von Funktionen ohne Rückgabewert
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="decoratorA" />
+                    Verbesserung der Fabrikmethode
+                </label>
+            </li>
+        </ul>
+    </fieldset>
+    <br />
+    <button type="button" onclick="checkDecorator()" id="decoratorButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="decoratorResult"></center>
+</form>
+
+
+    </body>
+
+    <!-- multiple choice test evaluation -->
+    <script src="check-test.js"></script>
+
+    <!-- Lösungen anzeigen -->
+    <script>solveAll();</script>
+
+</html>

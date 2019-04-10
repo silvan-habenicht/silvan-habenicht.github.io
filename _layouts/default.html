@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{page.title}} | Lernplattform für Design Patterns</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="highlighting/styles/school-book.css">
+        <link rel="icon" type="image/jpg" href="pictures/pasta_small.png"/>
+    </head>
+
+    <body id="main">
+
+      <!-- syntax highlighting -->
+      <script src="highlighting/highlight.pack.js"></script>
+      <!-- website appearance -->
+      <script src="script.js"></script>
+
+      {% include navigation.html %}
+
+      <!-- pop-up notification -->
+        <div id="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            Gratulation! Du kannst jetzt dein Zertifikat herunterladen
+        </div>
+
+
+      <hr class="italian" />
+      <h1>{{page.title}}<h1>
+      <hr class="italian" />
+
+      {{content}}
+
+    </body>
+
+    <!-- multiple choice test evaluation -->
+    <script src="check-test.js"></script>
+
+    <!-- Lösungen anzeigen -->
+    <script>solveAll();</script>
+
+</html>
