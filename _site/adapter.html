@@ -7,7 +7,7 @@
         <title>Ristorante BendisPasta | Lernplattform für Design Patterns</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/main.css">
-        <link rel="stylesheet" href="/javascript/highlighting/styles/school-book.css">
+        <link rel="stylesheet" href="/javascript/highlighting/styles/school-book.css"> <!-- alternativ: pojoaque.css -->
         <link rel="icon" type="image/jpg" href="/data/pictures/pasta_small.png"/>
     </head>
 
@@ -40,6 +40,8 @@
     <br/>
     <button type="button" style="width: auto;" disabled=true onclick="getCertificate()" id="certificate">Zertifikat erstellen</button>
     <br/>
+    <button type="button" style="width: auto;" onclick="" >Pattern-Bibliothek</button>
+    <br/>
     <br/>
     <br/>
 </nav>
@@ -53,7 +55,7 @@
 
 
       <hr class="italian" />
-      <h1>Ristorante BendisPasta<h1>
+      <a href="/index.html" style="text-decoration: none;"><h1>Ristorante BendisPasta<h1></a>
       <hr class="italian" />
 
       <h2 id="das-adapter-pattern-direkt-zum-test">Das Adapter-Pattern <a class="testjump" href="#adapterForm">…direkt zum Test…</a></h2>
@@ -81,7 +83,7 @@ interface Gericht {
     <pre><div class="code"><code>
 interface Getraenk {
 
-  void einschaenken();
+  void einschenken();
   void servieren();
 
 }
@@ -89,11 +91,11 @@ interface Getraenk {
     </div>
 </div>
 
-<p>Bislang wurde die Methode <code>zubereiten()</code> ausschließlich von einer Instanz der Klasse <code>Koch</code> aufgerufen, das Einschänken der Getränke wurde hingegen von einem <code>Barkeeper</code>-Objekt übernommen. Im Zuge der betrieblichen Rationalisierungsmaßnahmen wird von den Mitarbeitern nun mehr Flexibilität verlangt. Um an besucherarmen Tagen effizienter zu arbeiten, sollen alle Mitarbeiter, die bislang nur mit Gerichten zu tun hatten, auch mit Getränken umgehen können.</p>
+<p>Bislang wurde die Methode <code class="highlighter-rouge">zubereiten()</code> ausschließlich von einer Instanz der Klasse <code class="highlighter-rouge">Koch</code> aufgerufen, das Einschenken der Getränke wurde hingegen von einem <code class="highlighter-rouge">Barkeeper</code>-Objekt übernommen. Im Zuge der betrieblichen Rationalisierungsmaßnahmen wird von den Mitarbeitern nun mehr Flexibilität verlangt. Um an besucherarmen Tagen effizienter zu arbeiten, sollen alle Mitarbeiter, die bislang nur mit Gerichten zu tun hatten, auch mit Getränken umgehen können.</p>
 
 <h4 id="was-ist-zu-tun">Was ist zu tun?</h4>
 
-<p>Im Kern machen die beiden Methoden <code>zubereiten()</code> und <code>einschaenken()</code> dasselbe: Sie bereiten eine Bestellung so vor, dass sie vom Kellner serviert werden kann. Wann immer ein Koch auf einem Gerichte-Objekt <code>zubereiten()</code> aufrufen würde, müsste er also anstelle dessen <code>einschaenken()</code> aufrufen, sofern er es mit einem Getränk zu tun hat. Eine Möglichkeit das zu realisieren besteht in einem Refactoring. Wir könnten z. B. alle Klassen so anpassen, dass <code>Gericht</code> und <code>Getraenk</code> sowie <code>Koch</code>, <code>Barkeeper</code> und alle anderen Mitarbeiter nur noch mit einer einheitlichen Methode (z. B. <code>vorbereiten()</code>) arbeiten. Der Refactoring Ansatz ist jedoch mit hohem Aufwand verbunden, falls die bisherigen Methodennamen und Strukturen schon vielfach genutzt wurden und verstreut im Einsatz sind.</p>
+<p>Im Kern machen die beiden Methoden <code class="highlighter-rouge">zubereiten()</code> und <code class="highlighter-rouge">einschenken()</code> dasselbe: Sie bereiten eine Bestellung so vor, dass sie vom Kellner serviert werden kann. Wann immer ein Koch auf einem Gerichte-Objekt <code class="highlighter-rouge">zubereiten()</code> aufrufen würde, müsste er also anstelle dessen <code class="highlighter-rouge">einschenken()</code> aufrufen, sofern er es mit einem Getränk zu tun hat. Eine Möglichkeit das zu realisieren besteht in einem Refactoring. Wir könnten z. B. alle Klassen so anpassen, dass <code class="highlighter-rouge">Gericht</code> und <code class="highlighter-rouge">Getraenk</code> sowie <code class="highlighter-rouge">Koch</code>, <code class="highlighter-rouge">Barkeeper</code> und alle anderen Mitarbeiter nur noch mit einer einheitlichen Methode (z. B. <code class="highlighter-rouge">vorbereiten()</code>) arbeiten. Der Refactoring Ansatz ist jedoch mit hohem Aufwand verbunden, falls die bisherigen Methodennamen und Strukturen schon vielfach genutzt wurden und verstreut im Einsatz sind.</p>
 
 <h4 id="die-lösung">Die Lösung</h4>
 
@@ -108,7 +110,7 @@ interface Getraenk {
   <span class="o">}</span>
 
   <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">getraenk</span><span class="o">.</span><span class="na">einschaenken</span><span class="o">();</span>
+    <span class="n">getraenk</span><span class="o">.</span><span class="na">einschenken</span><span class="o">();</span>
   <span class="o">}</span>
 
   <span class="kt">void</span> <span class="nf">servieren</span><span class="o">()</span> <span class="o">{</span>
@@ -119,11 +121,11 @@ interface Getraenk {
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p>Wann immer wir unserem Koch also ein Getränk übergeben möchten, stecken wir es vorher in einen Getränkeadapter. Wenn wir beispielsweise möchten, dass sich unser Koch um ein Wasser kümmert, so schreiben wir ihm anstelle von <code>new Wasser</code> folgendes auf Aufgabenliste: <code>new GetraenkeAdapter(new Wasser())</code>. Wir erzeugen also ein Objekt der Klasse <code>GetraenkeAdapter</code>, welchem wir im Konstruktor ein Getränk übergeben. Der Getränke-Adapter kümmert sich darum, die Funktionen der Getränke-Klasse in ihre Entsprechungen aus der Gerichte-Klasse zu übersetzen. Da <code>GetraenkeAdapter</code> eine Unterklasse von <code>Gericht</code> ist, sind keine weiteren Änderungen in der <code>Koch</code>-Klasse erforderlich.</p>
+<p>Wann immer wir unserem Koch also ein Getränk übergeben möchten, stecken wir es vorher in einen Getränkeadapter. Wenn wir beispielsweise möchten, dass sich unser Koch um ein Wasser kümmert, so schreiben wir ihm anstelle von <code class="highlighter-rouge">new Wasser</code> folgendes auf Aufgabenliste: <code class="highlighter-rouge">new GetraenkeAdapter(new Wasser())</code>. Wir erzeugen also ein Objekt der Klasse <code class="highlighter-rouge">GetraenkeAdapter</code>, welchem wir im Konstruktor ein Getränk übergeben. Der Getränke-Adapter kümmert sich darum, die Funktionen der Getränke-Klasse in ihre Entsprechungen aus der Gerichte-Klasse zu übersetzen. Da <code class="highlighter-rouge">GetraenkeAdapter</code> eine Unterklasse von <code class="highlighter-rouge">Gericht</code> ist, sind keine weiteren Änderungen in der <code class="highlighter-rouge">Koch</code>-Klasse erforderlich.</p>
 
 <h4 id="ein-praxisbeispiel">Ein Praxisbeispiel</h4>
 
-<p>Wenn du schon eine Weile mit Java gearbeitet hast, wird dir das Interface <code>java.util.Iterator</code> vielleicht ein Begriff sein. Die Schnittstelle beinhaltet die Funktionen <code>hasNext()</code>, <code>next()</code> sowie <code>remove()</code> und löst damit ihren Vorgänger <code>java.util.Enumeration</code> ab. Die beiden Methoden der Enumeration-Schnittstelle sind <code>hasMoreElements()</code> und <code>nextElement()</code>. Es kann durchaus vorkommen, dass wir in einem alten Java-Projekt auf Enumerations stoßen, obwohl wir inzwischen Iterators verwenden. In einem solchen Fall würde es sich anbieten, mit einem Enumeration-Adapter zu arbeiten.</p>
+<p>Wenn du schon eine Weile mit Java gearbeitet hast, wird dir das Interface <code>java.util.Iterator</code> vielleicht ein Begriff sein. Die Schnittstelle beinhaltet die Funktionen <code class="highlighter-rouge">hasNext()</code>, <code class="highlighter-rouge">next()</code> sowie <code class="highlighter-rouge">remove()</code> und löst damit ihren Vorgänger <code class="highlighter-rouge">java.util.Enumeration</code> ab. Die beiden Methoden der Enumeration-Schnittstelle sind <code class="highlighter-rouge">hasMoreElements()</code> und <code class="highlighter-rouge">nextElement()</code>. Es kann durchaus vorkommen, dass wir in einem alten Java-Projekt auf Enumerations stoßen, obwohl wir inzwischen Iterators verwenden. In einem solchen Fall würde es sich anbieten, mit einem Enumeration-Adapter zu arbeiten.</p>
 
 <p class="note">
     Übrigens: Auch der Iterator ist ein sogenanntes Design Pattern. Zweck des Iterator-Patterns ist es, den Zugriff auf Objekte einer Collection zu ermöglichen, ohne die zugrunde liegende Implementierung zu kennen.

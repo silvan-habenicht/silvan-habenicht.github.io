@@ -29,7 +29,7 @@ interface Gericht {
     <pre><div class="code"><code>
 interface Getraenk {
 
-  void einschaenken();
+  void einschenken();
   void servieren();
 
 }
@@ -37,11 +37,11 @@ interface Getraenk {
     </div>
 </div>
 
-Bislang wurde die Methode <code>zubereiten()</code> ausschließlich von einer Instanz der Klasse <code>Koch</code> aufgerufen, das Einschänken der Getränke wurde hingegen von einem <code>Barkeeper</code>-Objekt übernommen. Im Zuge der betrieblichen Rationalisierungsmaßnahmen wird von den Mitarbeitern nun mehr Flexibilität verlangt. Um an besucherarmen Tagen effizienter zu arbeiten, sollen alle Mitarbeiter, die bislang nur mit Gerichten zu tun hatten, auch mit Getränken umgehen können.
+Bislang wurde die Methode ``zubereiten()`` ausschließlich von einer Instanz der Klasse ``Koch`` aufgerufen, das Einschenken der Getränke wurde hingegen von einem ``Barkeeper``-Objekt übernommen. Im Zuge der betrieblichen Rationalisierungsmaßnahmen wird von den Mitarbeitern nun mehr Flexibilität verlangt. Um an besucherarmen Tagen effizienter zu arbeiten, sollen alle Mitarbeiter, die bislang nur mit Gerichten zu tun hatten, auch mit Getränken umgehen können.
 
 #### Was ist zu tun?
 
-Im Kern machen die beiden Methoden <code>zubereiten()</code> und <code>einschaenken()</code> dasselbe: Sie bereiten eine Bestellung so vor, dass sie vom Kellner serviert werden kann. Wann immer ein Koch auf einem Gerichte-Objekt <code>zubereiten()</code> aufrufen würde, müsste er also anstelle dessen <code>einschaenken()</code> aufrufen, sofern er es mit einem Getränk zu tun hat. Eine Möglichkeit das zu realisieren besteht in einem Refactoring. Wir könnten z. B. alle Klassen so anpassen, dass <code>Gericht</code> und <code>Getraenk</code> sowie <code>Koch</code>, <code>Barkeeper</code> und alle anderen Mitarbeiter nur noch mit einer einheitlichen Methode (z. B. <code>vorbereiten()</code>) arbeiten. Der Refactoring Ansatz ist jedoch mit hohem Aufwand verbunden, falls die bisherigen Methodennamen und Strukturen schon vielfach genutzt wurden und verstreut im Einsatz sind.
+Im Kern machen die beiden Methoden ``zubereiten()`` und ``einschenken()`` dasselbe: Sie bereiten eine Bestellung so vor, dass sie vom Kellner serviert werden kann. Wann immer ein Koch auf einem Gerichte-Objekt ``zubereiten()`` aufrufen würde, müsste er also anstelle dessen ``einschenken()`` aufrufen, sofern er es mit einem Getränk zu tun hat. Eine Möglichkeit das zu realisieren besteht in einem Refactoring. Wir könnten z. B. alle Klassen so anpassen, dass ``Gericht`` und ``Getraenk`` sowie ``Koch``, ``Barkeeper`` und alle anderen Mitarbeiter nur noch mit einer einheitlichen Methode (z. B. ``vorbereiten()``) arbeiten. Der Refactoring Ansatz ist jedoch mit hohem Aufwand verbunden, falls die bisherigen Methodennamen und Strukturen schon vielfach genutzt wurden und verstreut im Einsatz sind.
 
 
 #### Die Lösung
@@ -59,7 +59,7 @@ class GetraenkeAdapter implements Gericht {
   }
 
   void zubereiten() {
-    getraenk.einschaenken();
+    getraenk.einschenken();
   }
 
   void servieren() {
@@ -70,12 +70,12 @@ class GetraenkeAdapter implements Gericht {
 }
 ```
 
-Wann immer wir unserem Koch also ein Getränk übergeben möchten, stecken wir es vorher in einen Getränkeadapter. Wenn wir beispielsweise möchten, dass sich unser Koch um ein Wasser kümmert, so schreiben wir ihm anstelle von <code>new Wasser</code> folgendes auf Aufgabenliste: <code>new GetraenkeAdapter(new Wasser())</code>. Wir erzeugen also ein Objekt der Klasse <code>GetraenkeAdapter</code>, welchem wir im Konstruktor ein Getränk übergeben. Der Getränke-Adapter kümmert sich darum, die Funktionen der Getränke-Klasse in ihre Entsprechungen aus der Gerichte-Klasse zu übersetzen. Da <code>GetraenkeAdapter</code> eine Unterklasse von <code>Gericht</code> ist, sind keine weiteren Änderungen in der <code>Koch</code>-Klasse erforderlich.
+Wann immer wir unserem Koch also ein Getränk übergeben möchten, stecken wir es vorher in einen Getränkeadapter. Wenn wir beispielsweise möchten, dass sich unser Koch um ein Wasser kümmert, so schreiben wir ihm anstelle von ``new Wasser`` folgendes auf Aufgabenliste: ``new GetraenkeAdapter(new Wasser())``. Wir erzeugen also ein Objekt der Klasse ``GetraenkeAdapter``, welchem wir im Konstruktor ein Getränk übergeben. Der Getränke-Adapter kümmert sich darum, die Funktionen der Getränke-Klasse in ihre Entsprechungen aus der Gerichte-Klasse zu übersetzen. Da ``GetraenkeAdapter`` eine Unterklasse von ``Gericht`` ist, sind keine weiteren Änderungen in der ``Koch``-Klasse erforderlich.
 
 
 #### Ein Praxisbeispiel
 
-Wenn du schon eine Weile mit Java gearbeitet hast, wird dir das Interface <code>java.util.Iterator</code> vielleicht ein Begriff sein. Die Schnittstelle beinhaltet die Funktionen <code>hasNext()</code>, <code>next()</code> sowie <code>remove()</code> und löst damit ihren Vorgänger <code>java.util.Enumeration</code> ab. Die beiden Methoden der Enumeration-Schnittstelle sind <code>hasMoreElements()</code> und <code>nextElement()</code>. Es kann durchaus vorkommen, dass wir in einem alten Java-Projekt auf Enumerations stoßen, obwohl wir inzwischen Iterators verwenden. In einem solchen Fall würde es sich anbieten, mit einem Enumeration-Adapter zu arbeiten.
+Wenn du schon eine Weile mit Java gearbeitet hast, wird dir das Interface <code>java.util.Iterator</code> vielleicht ein Begriff sein. Die Schnittstelle beinhaltet die Funktionen ``hasNext()``, ``next()`` sowie ``remove()`` und löst damit ihren Vorgänger ``java.util.Enumeration`` ab. Die beiden Methoden der Enumeration-Schnittstelle sind ``hasMoreElements()`` und ``nextElement()``. Es kann durchaus vorkommen, dass wir in einem alten Java-Projekt auf Enumerations stoßen, obwohl wir inzwischen Iterators verwenden. In einem solchen Fall würde es sich anbieten, mit einem Enumeration-Adapter zu arbeiten.
 
 
 <p class="note">

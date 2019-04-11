@@ -23,29 +23,34 @@ class GerichteBestellung implements Befehl {
 
   public GerichteBestellung(int gerichtID) {
 
-    if(gerichtID == 1) {
-      gericht = new InsalataMista();
-    } else if (gerichtID == 2) {
-      gericht = new InsalataCapricciosa();
-    }
+    switch(gerichtID) {
 
-    ...
+      case 1:
+        gericht = new InsalataMista();
+        break;
+      case 2:
+        gericht = new InsalataCapricciosa();
+        break;
 
-    else if (gerichtID == 35) {
-      gericht = new PizzaMargherita();
-    } else if (gerichtID == 36) {
-      gericht = new PizzaCipolla();
-    } else if (gerichtID == 37) {
-      gericht = new PizzaCalzone();
-    }
+      ...
 
-    ...
+      case 35:
+        gericht = new PizzaMargherita();
+        break;
+      case 36:
+        gericht = new PizzaCipolla();
+        break;
+      case 37:
+        gericht = new PizzaCalzone();
+        break;
 
-    else if (gerichtID == 68) {
-      gericht = new PenneAllArrabiata();
-    }
+      ...
 
-  ...
+      case 68:
+        gericht = new PenneAllArrabiata();
+        break;
+
+      ...
 
   }
 

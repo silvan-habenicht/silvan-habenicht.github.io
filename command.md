@@ -56,10 +56,10 @@ Nun werfen wir einen Blick auf die Kellner-Klasse, welche in unserem Beispiel al
 ```java
 class Kellner {
 
-    List&lt;Befehl&gt; bestellung;
+    List<Befehl> bestellung;
 
     public Kellner () {
-        bestellung = new ArrayList&lt;Befehl&gt;();
+        bestellung = new ArrayList<Befehl>();
     }
 
     void bestellungEntgegennehmen(Befehl befehl) {
