@@ -15,7 +15,7 @@ $(document).ready(function() {
       ],
       path: "data/audio/",
       preload: true,
-      volume: 0.5
+      volume: 0.2
   });
 
 });
@@ -54,8 +54,9 @@ function retrieveSolvedTests() {
     solveDecorator();
     styleSolved("decorator", "Decorator");
   }
-  checkSolved();
-
+  if (allPatternsSolved()) {
+    $("#certificate").prop("disabled", false);
+  }
 }
 
 function solveAllTests() {
@@ -128,19 +129,24 @@ function solveDecorator() {
   $("#decoratorA").attr("checked",true);
 }
 
+function allPatternsSolved() {
+  if (localStorage.getItem("adapterSolved") == "false") { return false; }
+  if (localStorage.getItem("commandSolved") == "false") { return false; }
+  if (localStorage.getItem("factorySolved") == "false") { return false; }
+  if (localStorage.getItem("decoratorSolved") == "false") { return false; }
+  if (localStorage.getItem("strategySolved") == "false") { return false; }
+  if (localStorage.getItem("observerSolved") == "false") { return false; }
+  return true;
+}
 
 function checkSolved() {
-    if (localStorage.getItem("adapterSolved") == "false") { return; }
-    if (localStorage.getItem("commandSolved") == "false") { return; }
-    if (localStorage.getItem("factorySolved") == "false") { return; }
-    if (localStorage.getItem("decoratorSolved") == "false") { return; }
-    if (localStorage.getItem("strategySolved") == "false") { return; }
-    if (localStorage.getItem("observerSolved") == "false") { return; }
+  if (allPatternsSolved()) {
     $("#certificate").prop("disabled", false);
     setTimeout(function () {
         ion.sound.play("tinder-match");
         document.getElementById("alert").style.display = "block";
     }, 1000);
+  }
 }
 
 function checkAdapter() {

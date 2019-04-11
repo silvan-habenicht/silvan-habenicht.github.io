@@ -3,11 +3,9 @@
 /* off canvas menu script */
 var opened = false;
 
-$( document ).ready(function() {
+hljs.initHighlightingOnLoad();
 
-  /*global hljs*/
-  /* call function for syntax highlighting from highlight.pack.js*/
-  hljs.initHighlightingOnLoad();
+$( document ).ready(function() {
 
   if(home) {
     enterHome();
