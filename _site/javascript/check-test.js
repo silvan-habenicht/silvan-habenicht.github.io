@@ -8,6 +8,16 @@ $(document).ready(function() {
     retrieveSolvedTests();
   }
 
+  ion.sound({
+      sounds: [
+          {name: "tinder-message"},
+          {name: "tinder-match"}
+      ],
+      path: "data/audio/",
+      preload: true,
+      volume: 0.5
+  });
+
 });
 
 function setAllTestsUnsolved() {
@@ -128,19 +138,9 @@ function checkSolved() {
     if (localStorage.getItem("observerSolved") == "false") { return; }
     $("#certificate").prop("disabled", false);
     setTimeout(function () {
-        var audio = new Audio('data/audio/tinder-match.mp3');
-        audio.volume = 0.2;
-        audio.play();
+        ion.sound.play("tinder-match");
         document.getElementById("alert").style.display = "block";
     }, 1000);
-}
-
-var audio = new Audio('data/audio/tinder-message.mp3');
-audio.volume = 0.1;
-
-function playTone() {
-    "use strict";
-    audio.play();
 }
 
 function checkAdapter() {
@@ -152,9 +152,9 @@ function checkAdapter() {
             $("#adapterC3").val() === "enumeration.nextElement()" &&
             $("#adapterC4").val() === "remove()") {
 
-        localStorage.setItem("adapterSolved","true");
         styleSolved("adapter", "Adapter");
-        playTone();
+        localStorage.setItem("adapterSolved","true");
+        ion.sound.play("tinder-message");
         checkSolved();
 
     } else {
@@ -170,7 +170,7 @@ function checkCommand() {
 
         styleSolved("command", "Command");
         localStorage.setItem("commandSolved","true");
-        playTone();
+        ion.sound.play("tinder-message");
         checkSolved();
 
     } else {
@@ -193,7 +193,7 @@ function checkObserver() {
 
         styleSolved("observer", "Observer");
         localStorage.setItem("observerSolved","true");
-        playTone();
+        ion.sound.play("tinder-message");
         checkSolved();
 
     } else {
@@ -215,7 +215,7 @@ function checkFactory() {
 
         styleSolved("factory", "Factory");
         localStorage.setItem("factorySolved","true");
-        playTone();
+        ion.sound.play("tinder-message");
         checkSolved();
 
     } else {
@@ -236,7 +236,7 @@ function checkStrategy() {
 
         styleSolved("strategy", "Strategy");
         localStorage.setItem("strategySolved","true");
-        playTone();
+        ion.sound.play("tinder-message");
         checkSolved();
 
     } else {
@@ -251,7 +251,7 @@ function checkDecorator() {
 
         styleSolved("decorator", "Decorator");
         localStorage.setItem("decoratorSolved","true");
-        playTone();
+        ion.sound.play("tinder-message");
         checkSolved();
 
     } else {
