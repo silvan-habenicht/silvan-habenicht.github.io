@@ -10,10 +10,9 @@ $(document).ready(function() {
 
   ion.sound({
       sounds: [
-          {name: "tinder-message"},
-          {name: "tinder-match"}
+          {name: "bell_ring"}
       ],
-      path: "data/audio/",
+      path: "javascript/ion/sounds/",
       preload: true,
       volume: 0.5
   });
@@ -138,7 +137,7 @@ function checkSolved() {
     if (localStorage.getItem("observerSolved") == "false") { return; }
     $("#certificate").prop("disabled", false);
     setTimeout(function () {
-        ion.sound.play("tinder-match");
+        ion.sound.play("bell_ring");
         document.getElementById("alert").style.display = "block";
     }, 1000);
 }
@@ -154,7 +153,7 @@ function checkAdapter() {
 
         styleSolved("adapter", "Adapter");
         localStorage.setItem("adapterSolved","true");
-        ion.sound.play("tinder-message");
+        ion.sound.play("bell_ring");
         checkSolved();
 
     } else {
@@ -170,7 +169,7 @@ function checkCommand() {
 
         styleSolved("command", "Command");
         localStorage.setItem("commandSolved","true");
-        ion.sound.play("tinder-message");
+        ion.sound.play("bell_ring");
         checkSolved();
 
     } else {
@@ -193,7 +192,7 @@ function checkObserver() {
 
         styleSolved("observer", "Observer");
         localStorage.setItem("observerSolved","true");
-        ion.sound.play("tinder-message");
+        ion.sound.play("bell_ring");
         checkSolved();
 
     } else {
@@ -215,7 +214,7 @@ function checkFactory() {
 
         styleSolved("factory", "Factory");
         localStorage.setItem("factorySolved","true");
-        ion.sound.play("tinder-message");
+        ion.sound.play("bell_ring");
         checkSolved();
 
     } else {
@@ -236,7 +235,7 @@ function checkStrategy() {
 
         styleSolved("strategy", "Strategy");
         localStorage.setItem("strategySolved","true");
-        ion.sound.play("tinder-message");
+        ion.sound.play("bell_ring");
         checkSolved();
 
     } else {
@@ -251,7 +250,7 @@ function checkDecorator() {
 
         styleSolved("decorator", "Decorator");
         localStorage.setItem("decoratorSolved","true");
-        ion.sound.play("tinder-message");
+        ion.sound.play("bell_ring");
         checkSolved();
 
     } else {
