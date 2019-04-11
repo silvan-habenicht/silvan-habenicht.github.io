@@ -5,7 +5,7 @@
 
 <!-- sidebar menu -->
 <nav class="sideMenu" id="patternMenu">
-    <img src="pictures/pasta_medium.png" href="/index.html" alt="Logo">
+    <img src="/data/pictures/pasta_medium.png" alt="Logo">
     <a id="titleMenu" style="font-weight:bold;box-shadow: none;font-style:normal;">Pattern-Menü</a>
     {% for item in site.data.navigation %}
       <a id="{{ item.id }}"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="{{ item.link }}" {% if page.url == item.link %}class="current"{% endif %}>{{ item.name }}</a>

@@ -108,7 +108,7 @@ Nun können wir Pizzen flexibel mit unterschiedlichen Zubereitungsarten erzeugen
             </li>
             <li>
                 <label>
-                    <input type="radio" name="strategyA">
+                    <input type="radio" id="strategyA" name="strategyA">
                     Algorithmen bzw. Methoden einer Klasse leichter austauschbar halten
                 </label>
             </li>
@@ -119,9 +119,9 @@ Nun können wir Pizzen flexibel mit unterschiedlichen Zubereitungsarten erzeugen
         Ergänze das Gerüst für eine neue Zubereitungsart <code>AmerikanischeZubereitungsart</code>
     </fieldset>
     <pre><div class="code"><code>
-class <input type="text" value = "AmerikanischeZubereitungsart" style="width: 28ch;font-weight: bold; color: rgb(44,0,159);" name="strategyC1"> <input type="text" value = "implements" style="width: 10ch;font-weight: bold; color: rgb(0,85,153);" name="strategyC2"> <input type="text" value = "Zubereitungsart" style="width: 15ch;font-weight: bold; color: rgb(44,0,159);" name="strategyC3"> {
+class <input type="text" id="strategyC1" style="width: 28ch;font-weight: bold; color: rgb(44,0,159);"> <input type="text" id="strategyC2" style="width: 10ch;font-weight: bold; color: rgb(0,85,153);"> <input type="text" id="strategyC3" style="width: 15ch;font-weight: bold; color: rgb(44,0,159);"> {
 
-<input type="text" value="void" style="width: 4ch;font-weight: bold; color: rgb(0,85,153);" name="strategyC4"> <input type="text" value="zubereiten" style="width: 10ch;color: rgb(44,0,159);font-weight: bold;" name="strategyC5">(<input type="text" value="String[]" style="width: 8ch;" name="strategyC6"> zutaten) { // Rückgabetyp, Methodennamen und Parametertyp eintragen
+<input type="text" id="strategyC4" style="width: 4ch;font-weight: bold; color: rgb(0,85,153);"> <input type="text" id="strategyC5" style="width: 10ch;color: rgb(44,0,159);font-weight: bold;">(<input type="text" id="strategyC6" style="width: 8ch;"> zutaten) { // Rückgabetyp, Methodennamen und Parametertyp eintragen
 ... // Pizza mit den gegebenen Zutaten auf amerikanische Art zubereiten
 }
 

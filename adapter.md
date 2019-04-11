@@ -107,7 +107,7 @@ Wenn du schon eine Weile mit Java gearbeitet hast, wird dir das Interface <code>
             </li>
             <li>
                 <label>
-                    <input type="radio" name="adapterA">
+                    <input id="adapterA" type="radio" name="adapterA">
                     Übersetzung der Schnittstelle einer bestimmten Klasse in die Schnittstelle einer ähnlich gearteten anderen Klasse
                 </label>
             </li>
@@ -119,7 +119,7 @@ Wenn du schon eine Weile mit Java gearbeitet hast, wird dir das Interface <code>
         <ul>
             <li>
                 <label>
-                    <input type="radio" name="adapterB">
+                    <input id="adapterB" type="radio" name="adapterB">
                     Das Objekt, dessen Schnittstelle für den Client übersetzt werden muss
                 </label>
             </li>
@@ -156,15 +156,15 @@ class EnumerationAdapter implements Iterator&lt;E&gt; {
     this.enumeration = enumeration;
   }
 
-  public boolean <input type="text" value = "hasNext()" style="width: 9ch;" name="adapterC1"> { // Bitte vervollständigen
-    return <input type="text" value="enumeration.hasMoreElements()" style="width: 29ch;" name="adapterC2">; // Bitte vervollständigen
+  public boolean <input type="text" id="adapterC1" style="width: 9ch;"> { // Bitte vervollständigen
+    return <input type="text" id="adapterC2" style="width: 29ch;">; // Bitte vervollständigen
   }
 
   public E next() {
-    return <input type="text" value="enumeration.nextElement()" style="width: 25ch;" name="adapterC3">; // Bitte vervollständigen
+    return <input type="text" id="adapterC3" style="width: 25ch;">; // Bitte vervollständigen
   }
 
-  public void <input type="text" value="remove()" style="width: 8ch;" name="adapterC4"> { // Bitte vervollständigen
+  public void <input type="text" id="adapterC4" style="width: 8ch;"> { // Bitte vervollständigen
     throw new UnsupportedOperationException();
   }
 

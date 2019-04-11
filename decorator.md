@@ -86,7 +86,7 @@ Wenn wir nun eine Pizza Margherita mit Knoblauch erzeugen möchten, so geschieht
         <ul>
             <li>
                 <label>
-                    <input type="radio" name="decoratorA">
+                    <input type="radio" id="decoratorA" name="decoratorA">
                     Erweitern eines Objektes
                 </label>
             </li>

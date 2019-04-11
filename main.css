@@ -44,7 +44,7 @@ a {
 
 p {
     text-align: justify;
-    -ms-hyphens: auto; /* ab IE10 */ 
+    -ms-hyphens: auto; /* ab IE10 */
     -moz-hyphens: auto; /* seit Firefox 6 */
     -webkit-hyphens: auto; /* seit Safari 5.1 (OS X), Safari 4.1 (iOS) */
     hyphens: auto;
@@ -91,9 +91,13 @@ button:disabled {
     cursor: default;
 }
 
+center {
+  color: darkred;
+}
+
 fieldset {
     text-align: justify;
-    -ms-hyphens: auto; /* ab IE10 */ 
+    -ms-hyphens: auto; /* ab IE10 */
     -moz-hyphens: auto; /* seit Firefox 6 */
     -webkit-hyphens: auto; /* seit Safari 5.1 (OS X), Safari 4.1 (iOS) */
     hyphens: auto;
@@ -156,31 +160,31 @@ input[type=text]:hover {
 
 @font-face {
   font-family: imfellEnglish;
-  src: url(fonts/imfellEnglish.ttf);
+  src: url(data/fonts/imfellEnglish.ttf);
 }
 
 @font-face {
   font-family: imfellEnglish;
-  src: url(fonts/imfellEnglish_IT.ttf);
+  src: url(data/fonts/imfellEnglish_IT.ttf);
   font-style: italic;
 }
 
 @font-face {
   font-family: imfellEnglish;
-  src: url(fonts/imfellEnglish_SC.ttf);
+  src: url(data/fonts/imfellEnglish_SC.ttf);
   font-weight: bold;
 }
 
 @font-face {
   font-family: linux libertine;
-  src: url(fonts/LinLibertine_RBI.otf);
+  src: url(data/fonts/LinLibertine_RBI.otf);
   font-weight: bold;
   font-style: italic;
 }
 
 @font-face {
   font-family: linux libertine sans;
-  src: url(fonts/LinBiolinum_R.otf);
+  src: url(data/fonts/LinBiolinum_R.otf);
 }
 
 .menuIcon {
@@ -323,4 +327,11 @@ input[type=text]:hover {
 
 .testjump:hover {
     box-shadow: 0 0 2px rgba(0, 0, 0, 1);
+}
+
+.notransition {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
 }

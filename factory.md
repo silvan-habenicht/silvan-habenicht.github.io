@@ -101,7 +101,7 @@ class GerichteBestellung implements Befehl{
             </li>
             <li>
                 <label>
-                    <input type="radio" name="factoryA">
+                    <input type="radio" id="factoryA" name="factoryA">
                     Instanziieren von Objekten
                 </label>
             </li>
@@ -125,25 +125,25 @@ class GerichteBestellung implements Befehl{
         <ul>
             <li>
                 <label>
-                    <input type="checkbox" name="factoryB1">
+                    <input type="checkbox" id="factoryB1">
                     Es fördert die Kapselung
                 </label>
             </li>
             <li>
                 <label>
-                    <input type="checkbox" name="factoryB2">
-                    Die Objekterzeugung wird ausgelagert
+                    <input type="checkbox" id="factoryB2">
+                    Die Erzeugung von Objekten wird ausgelagert
                 </label>
             </li>
             <li>
                 <label>
-                    <input type="checkbox" name="factoryB3">
+                    <input type="checkbox" id="factoryB3">
                     Durch die zusätzliche Factory-Klasse erhöht sich die Gesamtanzahl an Klassen in einem Projekt
                 </label>
             </li>
             <li>
                 <label>
-                    <input type="checkbox" name="factoryB4">
+                    <input type="checkbox" id="factoryB4">
                     Eine Factory-Klasse kann keine weiteren Unterklassen haben
                 </label>
             </li>
@@ -159,7 +159,7 @@ class GerichteFabrik {
   public GerichteFabrik() {}
 
   // Fabrikmethode
-  <input type="text" value="Gericht" style="width: 7ch;" name="factoryC1"> <input type="text" value="erzeugeGericht" style="width: 14ch;color: rgb(44,0,159);font-weight: bold;" name="factoryC2">(<input type="text" value="int" style="width: 3ch;color: rgb(0,85,153);font-weight: bold;" name="factoryC3"> gerichtID) { // Rückgabetyp, Methodennamen und Parametertyp eintragen
+  <input type="text" id="factoryC1" style="width: 7ch;"> <input type="text" id="factoryC2" style="width: 14ch;color: rgb(44,0,159);font-weight: bold;">(<input type="text" id="factoryC3" style="width: 3ch;color: rgb(0,85,153);font-weight: bold;"> gerichtID) { // Rückgabetyp, Methodennamen und Parametertyp eintragen
   ... // beliebige Implementierung (nichts zu ergänzen)
   }
 

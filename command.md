@@ -16,12 +16,12 @@ In letzter Zeit gab es mehrere Beschwerden von Kunden des Ristorante Bendispasta
 #### Was ist zu tun?
 
 
-Unser Geschäftsführer Jens schlägt vor, die ausführenden Mitarbeiter von den Kunden zu entkoppeln. Jegliche Bestellung soll nur noch über einen Vermittler, den Kellner, abgewickelt werden. Dem Kunde kann egal sein auf welchem Wege sein Gericht zubereitet, sein Getränk einschenkt oder ihm eine <a target="_blank" href="https://www.youtube.com/watch?v=XFj45oeA7bE" >saubere Gabel</a> gebracht wird &mdash; Ansprechpartner soll in allen Fällen der Kellner sein.
+Unser Geschäftsführer Jens schlägt vor, die ausführenden Mitarbeiter von den Kunden zu entkoppeln. Jegliche Bestellung soll nur noch über einen Vermittler, den Kellner, abgewickelt werden. Dem Kunde kann egal sein auf welchem Wege sein Gericht zubereitet, sein Getränk einschenkt oder ihm eine <a target="blank" href="https://www.youtube.com/watch?v=XFj45oeA7bE" >saubere Gabel</a> gebracht wird &mdash; Ansprechpartner soll in allen Fällen der Kellner sein.
 
 #### Die Lösung
 
 
-An dieser Stelle bedienen wir uns dem Command-Pattern, welches sich in vier Klassen und ein Interface gliedert: Es gibt den Kunden (<em>Client</em>), den Empfänger (<em>Receiver</em>), den Aufrufer (<em>Invoker</em>) und den konkreten Befehl (<em>concrete Command</em>), der ein Interface vom Typ Befehl (<em>Command</em>) implementiert. Dieses Interface, enthält eine einzige Methode <code>ausfuehren()</code> bzw. <code>execute()</code>:
+An dieser Stelle bedienen wir uns dem Command-Pattern, welches sich in vier Klassen und ein Interface gliedert: Es gibt den Kunden (_Client_), den Empfänger (_Receiver_), den Aufrufer (_Invoker_) und den konkreten Befehl (_concrete Command_), der ein Interface vom Typ Befehl (_Command_) implementiert. Dieses Interface, enthält eine einzige Methode ``ausfuehren()`` bzw. ``execute()``:
 
 
 ```java
@@ -31,7 +31,7 @@ interface Befehl {
 ```
 
 
-Der Ablauf in einem Command-Pattern sieht in etwa wie folgt aus: Der Kunde erzeugt zunächst ein konkretes Befehls-Objekt und benennt darin den Empfänger (das Objekt, welches den Befehl am Ende ausführen soll/kann). Der Aufrufer nimmt das Befehls-Objekt entgegen, speichert es und ruft bei Gelegenheit dessen ausfuehren()-Methode auf. Diese wiederum ruft den Empfänger auf, der schließlich den eigentlichen Befehl ausführt. Sehen wir uns einmal an, wie so eine konkrete Befehls-Klasse aussehen könnte. Der Empfänger ist in diesem Fall ein Gericht:
+Der Ablauf in einem Command-Pattern sieht in etwa wie folgt aus: Der Kunde erzeugt zunächst ein konkretes Befehls-Objekt und benennt darin den Empfänger (das Objekt, welches den Befehl am Ende ausführen soll/kann). Der Aufrufer nimmt das Befehls-Objekt entgegen, speichert es und ruft bei Gelegenheit dessen ``ausfuehren()``-Methode auf. Diese wiederum ruft den Empfänger auf, der schließlich den eigentlichen Befehl ausführt. Sehen wir uns einmal an, wie so eine konkrete Befehls-Klasse aussehen könnte. Der Empfänger ist in diesem Fall ein Gericht:
 
 
 ```java
@@ -95,7 +95,7 @@ class Kellner {
             </li>
             <li>
                 <label>
-                    <input type="radio" name="commandA">
+                    <input id="commandA" type="radio" name="commandA">
                     Es kapselt einen Auftrag in ein Objekt
                 </label>
             </li>
@@ -131,7 +131,7 @@ class Kellner {
             </li>
             <li>
                 <label>
-                    <input type="radio" name="commandB">
+                    <input id="commandB" type="radio" name="commandB">
                     <code>execute()</code>
                 </label>
             </li>

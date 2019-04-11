@@ -6,17 +6,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Ristorante BendisPasta | Lernplattform für Design Patterns</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="main.css">
-        <link rel="stylesheet" href="highlighting/styles/school-book.css">
-        <link rel="icon" type="image/jpg" href="pictures/pasta_small.png"/>
+        <link rel="stylesheet" href="/main.css">
+        <link rel="stylesheet" href="/javascript/highlighting/styles/school-book.css">
+        <link rel="icon" type="image/jpg" href="/data/pictures/pasta_small.png"/>
     </head>
 
-    <body id="main">
+    <script>var home = false;</script>
 
-      <!-- syntax highlighting -->
-      <script src="highlighting/highlight.pack.js"></script>
-      <!-- website appearance -->
-      <script src="script.js"></script>
+    <body id="main">
 
       <!-- sidebar menu icon -->
 <div class="menuIcon">
@@ -25,7 +22,7 @@
 
 <!-- sidebar menu -->
 <nav class="sideMenu" id="patternMenu">
-    <img src="pictures/pasta_medium.png" href="/index.html" alt="Logo">
+    <img src="/data/pictures/pasta_medium.png" alt="Logo">
     <a id="titleMenu" style="font-weight:bold;box-shadow: none;font-style:normal;">Pattern-Menü</a>
     
       <a id="adapterMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/adapter.html" class="current">Adapter</a>
@@ -157,7 +154,7 @@ interface Getraenk {
             </li>
             <li>
                 <label>
-                    <input type="radio" name="adapterA" />
+                    <input id="adapterA" type="radio" name="adapterA" />
                     Übersetzung der Schnittstelle einer bestimmten Klasse in die Schnittstelle einer ähnlich gearteten anderen Klasse
                 </label>
             </li>
@@ -169,7 +166,7 @@ interface Getraenk {
         <ul>
             <li>
                 <label>
-                    <input type="radio" name="adapterB" />
+                    <input id="adapterB" type="radio" name="adapterB" />
                     Das Objekt, dessen Schnittstelle für den Client übersetzt werden muss
                 </label>
             </li>
@@ -206,15 +203,15 @@ class EnumerationAdapter implements Iterator&lt;E&gt; {
     this.enumeration = enumeration;
   }
 
-  public boolean <input type="text" value="hasNext()" style="width: 9ch;" name="adapterC1" /> { // Bitte vervollständigen
-    return <input type="text" value="enumeration.hasMoreElements()" style="width: 29ch;" name="adapterC2" />; // Bitte vervollständigen
+  public boolean <input type="text" id="adapterC1" style="width: 9ch;" /> { // Bitte vervollständigen
+    return <input type="text" id="adapterC2" style="width: 29ch;" />; // Bitte vervollständigen
   }
 
   public E next() {
-    return <input type="text" value="enumeration.nextElement()" style="width: 25ch;" name="adapterC3" />; // Bitte vervollständigen
+    return <input type="text" id="adapterC3" style="width: 25ch;" />; // Bitte vervollständigen
   }
 
-  public void <input type="text" value="remove()" style="width: 8ch;" name="adapterC4" /> { // Bitte vervollständigen
+  public void <input type="text" id="adapterC4" style="width: 8ch;" /> { // Bitte vervollständigen
     throw new UnsupportedOperationException();
   }
 
@@ -226,10 +223,16 @@ class EnumerationAdapter implements Iterator&lt;E&gt; {
 
     </body>
 
-    <!-- multiple choice test evaluation -->
-    <script src="check-test.js"></script>
+    <!-- import jQuery -->
+    <script src="javascript/jquery-3.3.0.min.js"></script>
 
-    <!-- Lösungen anzeigen -->
-    <script>solveAll();</script>
+    <!-- syntax highlighting -->
+    <script src="javascript/highlighting/highlight.pack.js"></script>
+
+    <!-- website appearance -->
+    <script src="javascript/script.js"></script>
+
+    <!-- multiple choice test evaluation -->
+    <script src="javascript/check-test.js"></script>
 
 </html>

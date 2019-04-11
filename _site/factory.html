@@ -6,17 +6,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Ristorante BendisPasta | Lernplattform für Design Patterns</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="main.css">
-        <link rel="stylesheet" href="highlighting/styles/school-book.css">
-        <link rel="icon" type="image/jpg" href="pictures/pasta_small.png"/>
+        <link rel="stylesheet" href="/main.css">
+        <link rel="stylesheet" href="/javascript/highlighting/styles/school-book.css">
+        <link rel="icon" type="image/jpg" href="/data/pictures/pasta_small.png"/>
     </head>
 
-    <body id="main">
+    <script>var home = false;</script>
 
-      <!-- syntax highlighting -->
-      <script src="highlighting/highlight.pack.js"></script>
-      <!-- website appearance -->
-      <script src="script.js"></script>
+    <body id="main">
 
       <!-- sidebar menu icon -->
 <div class="menuIcon">
@@ -25,7 +22,7 @@
 
 <!-- sidebar menu -->
 <nav class="sideMenu" id="patternMenu">
-    <img src="pictures/pasta_medium.png" href="/index.html" alt="Logo">
+    <img src="/data/pictures/pasta_medium.png" alt="Logo">
     <a id="titleMenu" style="font-weight:bold;box-shadow: none;font-style:normal;">Pattern-Menü</a>
     
       <a id="adapterMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/adapter.html" >Adapter</a>
@@ -153,7 +150,7 @@
             </li>
             <li>
                 <label>
-                    <input type="radio" name="factoryA" />
+                    <input type="radio" id="factoryA" name="factoryA" />
                     Instanziieren von Objekten
                 </label>
             </li>
@@ -177,25 +174,25 @@
         <ul>
             <li>
                 <label>
-                    <input type="checkbox" name="factoryB1" />
+                    <input type="checkbox" id="factoryB1" />
                     Es fördert die Kapselung
                 </label>
             </li>
             <li>
                 <label>
-                    <input type="checkbox" name="factoryB2" />
-                    Die Objekterzeugung wird ausgelagert
+                    <input type="checkbox" id="factoryB2" />
+                    Die Erzeugung von Objekten wird ausgelagert
                 </label>
             </li>
             <li>
                 <label>
-                    <input type="checkbox" name="factoryB3" />
+                    <input type="checkbox" id="factoryB3" />
                     Durch die zusätzliche Factory-Klasse erhöht sich die Gesamtanzahl an Klassen in einem Projekt
                 </label>
             </li>
             <li>
                 <label>
-                    <input type="checkbox" name="factoryB4" />
+                    <input type="checkbox" id="factoryB4" />
                     Eine Factory-Klasse kann keine weiteren Unterklassen haben
                 </label>
             </li>
@@ -211,7 +208,7 @@ class GerichteFabrik {
   public GerichteFabrik() {}
 
   // Fabrikmethode
-  <input type="text" value="Gericht" style="width: 7ch;" name="factoryC1" /> <input type="text" value="erzeugeGericht" style="width: 14ch;color: rgb(44,0,159);font-weight: bold;" name="factoryC2" />(<input type="text" value="int" style="width: 3ch;color: rgb(0,85,153);font-weight: bold;" name="factoryC3" /> gerichtID) { // Rückgabetyp, Methodennamen und Parametertyp eintragen
+  <input type="text" id="factoryC1" style="width: 7ch;" /> <input type="text" id="factoryC2" style="width: 14ch;color: rgb(44,0,159);font-weight: bold;" />(<input type="text" id="factoryC3" style="width: 3ch;color: rgb(0,85,153);font-weight: bold;" /> gerichtID) { // Rückgabetyp, Methodennamen und Parametertyp eintragen
   ... // beliebige Implementierung (nichts zu ergänzen)
   }
 
@@ -223,10 +220,16 @@ class GerichteFabrik {
 
     </body>
 
-    <!-- multiple choice test evaluation -->
-    <script src="check-test.js"></script>
+    <!-- import jQuery -->
+    <script src="javascript/jquery-3.3.0.min.js"></script>
 
-    <!-- Lösungen anzeigen -->
-    <script>solveAll();</script>
+    <!-- syntax highlighting -->
+    <script src="javascript/highlighting/highlight.pack.js"></script>
+
+    <!-- website appearance -->
+    <script src="javascript/script.js"></script>
+
+    <!-- multiple choice test evaluation -->
+    <script src="javascript/check-test.js"></script>
 
 </html>

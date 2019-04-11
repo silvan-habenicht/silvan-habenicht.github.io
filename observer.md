@@ -39,7 +39,6 @@ Zwei Wörter stechen in dieser Aufzählung besonders hervor &mdash; _warten_ und
 
 #### Was ist zu tun?
 
-
 Derzeit müssen die Kellner von _BendisPasta_ einen Teil des Restaurants nach dem anderen abklappern und sich jedes Mal erkundigen, ob sie dort gerade gebraucht werden oder nicht. Umgekehrt wird ein Schuh draus: Würden die Kellner nur im Bedarfsfall zu sich gerufen, so ließe sich deren Arbeitseffizienz enorm steigern. Wir möchten daher ein neues System etablieren, in welchem die Kellner benachrichtigt werden können, sobald ein Kunde bestellen möchte bzw. sobald ein Gericht fertig zubereitet worden ist.
 
 Die Lösung
@@ -60,7 +59,7 @@ interface Observer {
     <div style="margin-left: auto;margin-right: auto;overflow-x: scroll;">
     <h4>Observable-API</h4>
     <pre><div class="code" style="max-width: 300px;" ><code>
-class Observer {
+class Observable {
 
   void addObserver(Observer o) {...}
   protected void clearChanged() {...}
@@ -78,7 +77,7 @@ class Observer {
 </div>
 
 
-In unserem Fall implementiert der Kellner das Interface ```Observer```, damit er von den ```Observables```, die er beobachtet (_observe_), benachrichtigt werden kann. Dazu muss er eine einzige Methode ```update()``` implementieren; sie wird später von den Observables aufgerufen, welche darin eine Referenz auf sich selbst übergeben. Auf diese Weise kann der Kellner direkt auf das Objekt zugreifen, von dem er benachrichtigt wurde:
+In unserem Fall implementiert der Kellner das Interface ``Observer``, damit er von den ``Observables``, die er beobachtet (_observe_), benachrichtigt werden kann. Dazu muss er eine einzige Methode ``update()`` implementieren; sie wird später von den Observables aufgerufen, welche darin eine Referenz auf sich selbst übergeben. Auf diese Weise kann der Kellner direkt auf das Objekt zugreifen, von dem er benachrichtigt wurde:
 
 
 ```java
@@ -143,7 +142,7 @@ class Tisch extends Observable implements Ort {
             </li>
             <li>
                 <label>
-                    <input type="radio" name="observerA">
+                    <input type="radio" id="observerA" name="observerA">
                     Objekte über Änderungen in einem anderen Objekt auf dem Laufenden halten
                 </label>
             </li>
@@ -151,29 +150,29 @@ class Tisch extends Observable implements Ort {
     </fieldset>
     <br/>
     <fieldset>
-        Welche Aussage stimmt nicht?
+        Welche Aussagen stimmen nicht?
         <ul>
             <li>
                 <label>
-                    <input type="checkbox" name="observerB1">
+                    <input type="checkbox" id="observerB1">
                     Ein Observable kann mehrere Observer registrieren
                 </label>
             </li>
             <li>
                 <label>
-                    <input type="checkbox" name="observerB2">
+                    <input type="checkbox" id="observerB2">
                     Ein Observer-Objekt kann sich in mehreren Obervables registrieren
                 </label>
             </li>
             <li>
                 <label>
-                    <input type="checkbox" name="observerB3">
+                    <input type="checkbox" id="observerB3">
                     <code>java.util.Observable </code> ist ein Interface
                 </label>
             </li>
             <li>
                 <label>
-                    <input type="checkbox" name="observerB4">
+                    <input type="checkbox" id="observerB4">
                     <code>java.util.Observer </code> ist eine abstrakte Klasse
                 </label>
             </li>
@@ -184,23 +183,23 @@ class Tisch extends Observable implements Ort {
         Vervollständige das folgende Klassengerüst.
     </fieldset>
     <pre><div class="code"><code>
-class Theke <input type="text" value = "extends" style="width: 7ch;font-weight: bold; color: rgb(0,85,153);" name="observerC1"> <input type="text" value = "Observable" style="width: 10ch;font-weight: bold; color: rgb(44,0,159);" name="observerC2"> {
+class Theke <input type="text" id ="observerC1" style="width: 7ch;font-weight: bold; color: rgb(0,85,153);"> <input type="text" id="observerC2" style="width: 10ch;font-weight: bold; color: rgb(44,0,159);"> {
 
 boolean bestellungAbholbereit = false;
 
 public Theke() {...}
 
 /* Diese Methode wird aufgerufen, nachdem alle Getränke einer Bestellug eingeschänkt wurden.
-* Sie wird erneut aufgerufen, sobald diese abgeholt worden sind. */
-void abholstatusAendern() {
-bestellungAbholbereit = <input type="text" value = "!bestellungAbholbereit" style="width: 22ch;" name="observerC3">; // Abholstatus umkehren
-statusAenderung();
-}
+ * Sie wird erneut aufgerufen, sobald diese abgeholt worden sind. */
+  void abholstatusAendern() {
+    bestellungAbholbereit = <input type="text" id="observerC3" style="width: 22ch;">; // Abholstatus umkehren
+    statusAenderung();
+  }
 
-void statusAenderung() {
-setChanged();
-<input type="text" value = "notifyObservers()" style="width: 17ch;" name="observerC4">; // Kellner und sonstige Observer benachrichtigen
-}
+  void statusAenderung() {
+    setChanged();
+    <input type="text" id="observerC4" style="width: 17ch;">; // Kellner und sonstige Observer benachrichtigen
+  }
 
 }
     </code></div></pre>

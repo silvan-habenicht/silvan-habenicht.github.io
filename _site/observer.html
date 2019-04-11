@@ -6,17 +6,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Ristorante BendisPasta | Lernplattform für Design Patterns</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="main.css">
-        <link rel="stylesheet" href="highlighting/styles/school-book.css">
-        <link rel="icon" type="image/jpg" href="pictures/pasta_small.png"/>
+        <link rel="stylesheet" href="/main.css">
+        <link rel="stylesheet" href="/javascript/highlighting/styles/school-book.css">
+        <link rel="icon" type="image/jpg" href="/data/pictures/pasta_small.png"/>
     </head>
 
-    <body id="main">
+    <script>var home = false;</script>
 
-      <!-- syntax highlighting -->
-      <script src="highlighting/highlight.pack.js"></script>
-      <!-- website appearance -->
-      <script src="script.js"></script>
+    <body id="main">
 
       <!-- sidebar menu icon -->
 <div class="menuIcon">
@@ -25,7 +22,7 @@
 
 <!-- sidebar menu -->
 <nav class="sideMenu" id="patternMenu">
-    <img src="pictures/pasta_medium.png" href="/index.html" alt="Logo">
+    <img src="/data/pictures/pasta_medium.png" alt="Logo">
     <a id="titleMenu" style="font-weight:bold;box-shadow: none;font-style:normal;">Pattern-Menü</a>
     
       <a id="adapterMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/adapter.html" >Adapter</a>
@@ -114,7 +111,7 @@ interface Observer {
     <div style="margin-left: auto;margin-right: auto;overflow-x: scroll;">
     <h4>Observable-API</h4>
     <pre><div class="code" style="max-width: 300px;"><code>
-class Observer {
+class Observable {
 
   void addObserver(Observer o) {...}
   protected void clearChanged() {...}
@@ -193,7 +190,7 @@ class Observer {
             </li>
             <li>
                 <label>
-                    <input type="radio" name="observerA" />
+                    <input type="radio" id="observerA" name="observerA" />
                     Objekte über Änderungen in einem anderen Objekt auf dem Laufenden halten
                 </label>
             </li>
@@ -201,29 +198,29 @@ class Observer {
     </fieldset>
     <br />
     <fieldset>
-        Welche Aussage stimmt nicht?
+        Welche Aussagen stimmen nicht?
         <ul>
             <li>
                 <label>
-                    <input type="checkbox" name="observerB1" />
+                    <input type="checkbox" id="observerB1" />
                     Ein Observable kann mehrere Observer registrieren
                 </label>
             </li>
             <li>
                 <label>
-                    <input type="checkbox" name="observerB2" />
+                    <input type="checkbox" id="observerB2" />
                     Ein Observer-Objekt kann sich in mehreren Obervables registrieren
                 </label>
             </li>
             <li>
                 <label>
-                    <input type="checkbox" name="observerB3" />
+                    <input type="checkbox" id="observerB3" />
                     <code>java.util.Observable </code> ist ein Interface
                 </label>
             </li>
             <li>
                 <label>
-                    <input type="checkbox" name="observerB4" />
+                    <input type="checkbox" id="observerB4" />
                     <code>java.util.Observer </code> ist eine abstrakte Klasse
                 </label>
             </li>
@@ -234,23 +231,23 @@ class Observer {
         Vervollständige das folgende Klassengerüst.
     </fieldset>
     <pre><div class="code"><code>
-class Theke <input type="text" value="extends" style="width: 7ch;font-weight: bold; color: rgb(0,85,153);" name="observerC1" /> <input type="text" value="Observable" style="width: 10ch;font-weight: bold; color: rgb(44,0,159);" name="observerC2" /> {
+class Theke <input type="text" id="observerC1" style="width: 7ch;font-weight: bold; color: rgb(0,85,153);" /> <input type="text" id="observerC2" style="width: 10ch;font-weight: bold; color: rgb(44,0,159);" /> {
 
 boolean bestellungAbholbereit = false;
 
 public Theke() {...}
 
 /* Diese Methode wird aufgerufen, nachdem alle Getränke einer Bestellug eingeschänkt wurden.
-* Sie wird erneut aufgerufen, sobald diese abgeholt worden sind. */
-void abholstatusAendern() {
-bestellungAbholbereit = <input type="text" value="!bestellungAbholbereit" style="width: 22ch;" name="observerC3" />; // Abholstatus umkehren
-statusAenderung();
-}
+ * Sie wird erneut aufgerufen, sobald diese abgeholt worden sind. */
+  void abholstatusAendern() {
+    bestellungAbholbereit = <input type="text" id="observerC3" style="width: 22ch;" />; // Abholstatus umkehren
+    statusAenderung();
+  }
 
-void statusAenderung() {
-setChanged();
-<input type="text" value="notifyObservers()" style="width: 17ch;" name="observerC4" />; // Kellner und sonstige Observer benachrichtigen
-}
+  void statusAenderung() {
+    setChanged();
+    <input type="text" id="observerC4" style="width: 17ch;" />; // Kellner und sonstige Observer benachrichtigen
+  }
 
 }
     </code></div></pre>
@@ -260,10 +257,16 @@ setChanged();
 
     </body>
 
-    <!-- multiple choice test evaluation -->
-    <script src="check-test.js"></script>
+    <!-- import jQuery -->
+    <script src="javascript/jquery-3.3.0.min.js"></script>
 
-    <!-- Lösungen anzeigen -->
-    <script>solveAll();</script>
+    <!-- syntax highlighting -->
+    <script src="javascript/highlighting/highlight.pack.js"></script>
+
+    <!-- website appearance -->
+    <script src="javascript/script.js"></script>
+
+    <!-- multiple choice test evaluation -->
+    <script src="javascript/check-test.js"></script>
 
 </html>

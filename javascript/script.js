@@ -1,16 +1,28 @@
 /*eslint-env browser*/
 
 /* off canvas menu script */
-var opened = 0;
+var opened = false;
+
+$( document ).ready(function() {
+
+  /*global hljs*/
+  /* call function for syntax highlighting from highlight.pack.js*/
+  hljs.initHighlightingOnLoad();
+
+  if(home) {
+    enterHome();
+  } else if (window.innerWidth > 1040){
+    openMenuWithoutTransition();
+  }
+});
 
 /* exported openCloseMenu to index.html*/
 function openCloseMenu() {
     "use strict";
     if (!opened) {
-        opened = 1;
-        document.getElementById("patternMenu").style.width = "240px";
+        opened = true;
     } else {
-        opened = 0;
+        opened = false;
         document.getElementById("patternMenu").style.width = "0";
     }
     window.onresize();
@@ -24,10 +36,6 @@ function conditionCloseMenu() {
     }
 }
 
-/*global hljs*/
-/* call function for syntax highlighting from highlight.pack.js*/
-hljs.initHighlightingOnLoad();
-
 function enterHome() {
     if (window.innerWidth > 1040) {
         document.getElementById("main").style.marginLeft = (window.innerWidth - 800) / 2 + "px";
@@ -36,6 +44,15 @@ function enterHome() {
             openCloseMenu();
         }, 1000);
     }
+}
+
+function openMenuWithoutTransition() {
+  document.getElementById("main").style.marginLeft = (window.innerWidth - 800) / 2 + "px";
+  opened = true;
+  document.getElementById("patternMenu").classList.add('notransition'); // Disable transitions
+  window.onresize();
+  document.getElementById("patternMenu").offsetHeight; // Trigger a reflow, flushing the CSS changes
+  document.getElementById("patternMenu").classList.remove('notransition'); // Re-enable transitions
 }
 
 window.onresize = function (event) { // eslint-disable-line no-unused-vars
