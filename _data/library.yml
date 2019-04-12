@@ -1,32 +1,42 @@
 - name: Datenmuster
   class: category
+  link: /default_pattern.html
 
 - name: Active Record
   class: pattern
+  link: /default_pattern.html
 
 - name: Data Access Object
   class: pattern
+  link: /default_pattern.html
 
 - name: Data Transfer Object
   class: pattern
+  link: /default_pattern.html
 
 - name: Identity Field
   class: pattern
+  link: /default_pattern.html
 
 - name: Identity Map
   class: pattern
+  link: /default_pattern.html
 
 - name: Lazy Loading
   class: pattern
+  link: /default_pattern.html
 
 - name: Row Data Gateway
   class: pattern
+  link: /default_pattern.html
 
 - name: Table Data Gateway
   class: pattern
+  link: /default_pattern.html
 
 - name: Unit of Work
   class: pattern
+  link: /default_pattern.html
 
 
 
@@ -34,21 +44,27 @@
 
 - name: Erzeugungsmuster
   class: category
+  link: /default_pattern.html
 
 - name: Abstract Factory
   class: pattern
+  link: /default_pattern.html
 
 - name: Builder
   class: pattern
+  link: /default_pattern.html
 
 - name: Factory Method
   class: pattern
+  link: /default_pattern.html
 
 - name: Prototype
   class: pattern
+  link: /default_pattern.html
 
 - name: Singleton
   class: pattern
+  link: /default_pattern.html
 
 
 
@@ -56,33 +72,43 @@
 
 - name: GUI-Muster
   class: category
+  link: /default_pattern.html
 
-- Application Controller
+- name: Application Controller
   class: pattern
+  link: /default_pattern.html
 
 - name: Front Controller
   class: pattern
+  link: /default_pattern.html
 
 - name: Model View Controller
   class: pattern
+  link: /default_pattern.html
 
 - name: Model View Presenter
   class: pattern
+  link: /default_pattern.html
 
 - name: Model View ViewModel
   class: pattern
+  link: /default_pattern.html
 
 - name: Page Controller
   class: pattern
+  link: /default_pattern.html
 
 - name: Template View
   class: pattern
+  link: /default_pattern.html
 
 - name: Transform View
   class: pattern
+  link: /default_pattern.html
 
 - name: Two Step View
   class: pattern
+  link: /default_pattern.html
 
 
 
