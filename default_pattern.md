@@ -3,4 +3,4 @@ title: Ristorante BendisPasta
 layout: library_index
 ---
 
-## Zu diesem Pattern gibt es noch keinen Eintrag
+## Zu diesem Pattern existiert noch keinen Eintrag
