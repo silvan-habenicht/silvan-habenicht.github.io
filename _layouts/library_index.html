@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{page.title}} | Lernplattform für Design Patterns</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="icon" type="image/jpg" href="/data/pictures/pasta_small.png"/>
+  </head>
+
+  <style>
+    body {
+      height: 100%;
+    }
+
+    a.category {
+      font-size: 20px;
+      background: darkred;
+      color: beige;
+      padding: 0px 8px 0px 46px;
+    }
+
+    a.category:hover {
+      box-shadow: none;
+    }
+
+    a.pattern {
+      font-size:14px;
+      padding: 4px 8px 4px 60px;
+    }
+
+    .sideMenu img {
+        margin-left: 0;
+    }
+
+  </style>
+
+  <script>var home = false;</script>
+
+  <body id="main">
+    {% include library_navigation.html %}
+    {{content}}
+  </body>
+
+  <!-- import jQuery -->
+  <script src="javascript/jquery-3.3.0.min.js"></script>
+
+  <!-- syntax highlighting -->
+  <script src="javascript/highlighting/highlight.pack.js"></script>
+
+  <!-- website appearance -->
+  <script src="javascript/script.js"></script>
+
+</html>

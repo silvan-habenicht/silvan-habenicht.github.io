@@ -1,6 +1,4 @@
-/*eslint-env browser*/
 
-/* off canvas menu script */
 var opened = false;
 
 hljs.initHighlightingOnLoad();
@@ -14,8 +12,17 @@ $( document ).ready(function() {
   }
 });
 
-/* exported openCloseMenu to index.html*/
-function openCloseMenu() {
+function enterHome() {
+    if (window.innerWidth > 1040) {
+        document.getElementById("main").style.marginLeft = (window.innerWidth - 800) / 2 + "px";
+        setTimeout(function () {
+            "use strict";
+            toggleMenu();
+        }, 1000);
+    }
+}
+
+function toggleMenu() {
     "use strict";
     if (!opened) {
         opened = true;
@@ -24,24 +31,6 @@ function openCloseMenu() {
         document.getElementById("patternMenu").style.width = "0";
     }
     window.onresize();
-}
-
-/* exported conditionCloseMenu to index.html*/
-function conditionCloseMenu() {
-    "use strict";
-    if (window.innerWidth < 1040) {
-        openCloseMenu();
-    }
-}
-
-function enterHome() {
-    if (window.innerWidth > 1040) {
-        document.getElementById("main").style.marginLeft = (window.innerWidth - 800) / 2 + "px";
-        setTimeout(function () {
-            "use strict";
-            openCloseMenu();
-        }, 1000);
-    }
 }
 
 function openMenuWithoutTransition() {
@@ -53,8 +42,22 @@ function openMenuWithoutTransition() {
   document.getElementById("patternMenu").classList.remove('notransition'); // Re-enable transitions
 }
 
-window.onresize = function (event) { // eslint-disable-line no-unused-vars
+function conditionCloseMenu() {
     "use strict";
+    if (window.innerWidth < 1040) {
+        toggleMenu();
+    }
+}
+
+function getCertificate() {
+    window.open("data/pictures/pasta.jpg");
+}
+
+function openLibrary() {
+    window.open("library.html");
+}
+
+window.onresize = function (event) {
 
     if (opened) {
         if (window.innerWidth < 560) {

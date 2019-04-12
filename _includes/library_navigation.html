@@ -1,0 +1,21 @@
+<!-- sidebar menu icon -->
+<div class="menuIcon">
+    <a id="toggle" onclick="toggleMenu()"><span></span></a>
+</div>
+
+<!-- sidebar menu -->
+<nav class="sideMenu" id="patternMenu">
+    <center><img src="/data/pictures/pasta_medium.png" alt="Logo"></center>
+    {% for item in site.data.library %}
+      {% if item.class == "category" %}
+        </br>
+        <a class="category">{{ item.name }}</a>
+      {% endif %}
+      {% if item.class == "pattern" %}
+        <a href="{{ item.link }}" class="pattern">{{ item.name }}</a>
+      {% endif %}
+    {% endfor %}
+    <br/>
+    <br/>
+    <br/>
+</nav>

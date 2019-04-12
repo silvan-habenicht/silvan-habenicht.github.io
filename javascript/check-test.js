@@ -266,21 +266,16 @@ function checkDecorator() {
     }
 }
 
-function styleSolved(pattern, menuPattern) {
+function styleSolved(pattern, nameInMenu) {
   $("#" + pattern + "Menu").css('color','darkgreen');
-  $("#" + pattern + "Menu").html(menuPattern + " &#10003;");
+  $("#" + pattern + "Menu").html(nameInMenu + " &#10003;");
   $("#" + pattern + "Result").html("");
   $("#" + pattern + "Button").css('background','darkgreen');
 }
 
-function styleUnsolved(pattern, menuPattern) {
+function styleUnsolved(pattern, nameInMenu) {
   $("#" + pattern + "Menu").css('color','darkred');
-  $("#" + pattern + "Menu").html(menuPattern + "");
+  $("#" + pattern + "Menu").html(nameInMenu + "");
   $("#" + pattern + "Result").html("&#10007; Bitte überprüfe deine Eingaben.");
   $("#" + pattern + "Button").css('background','darkred');
-}
-
-function getCertificate() {
-    "use strict";
-    window.open("data/pictures/pasta.jpg");
 }

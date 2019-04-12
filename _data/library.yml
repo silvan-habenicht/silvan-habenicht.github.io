@@ -1,0 +1,157 @@
+- name: Datenmuster
+  class: category
+
+- name: Active Record
+  class: pattern
+
+- name: Data Access Object
+  class: pattern
+
+- name: Data Transfer Object
+  class: pattern
+
+- name: Identity Field
+  class: pattern
+
+- name: Identity Map
+  class: pattern
+
+- name: Lazy Loading
+  class: pattern
+
+- name: Row Data Gateway
+  class: pattern
+
+- name: Table Data Gateway
+  class: pattern
+
+- name: Unit of Work
+  class: pattern
+
+
+
+
+
+- name: Erzeugungsmuster
+  class: category
+
+- name: Abstract Factory
+  class: pattern
+
+- name: Builder
+  class: pattern
+
+- name: Factory Method
+  class: pattern
+
+- name: Prototype
+  class: pattern
+
+- name: Singleton
+  class: pattern
+
+
+
+
+
+- name: GUI-Muster
+  class: category
+
+- Application Controller
+  class: pattern
+
+- name: Front Controller
+  class: pattern
+
+- name: Model View Controller
+  class: pattern
+
+- name: Model View Presenter
+  class: pattern
+
+- name: Model View ViewModel
+  class: pattern
+
+- name: Page Controller
+  class: pattern
+
+- name: Template View
+  class: pattern
+
+- name: Transform View
+  class: pattern
+
+- name: Two Step View
+  class: pattern
+
+
+
+
+
+
+- name: Strukturmuster
+  class: category
+
+- name: Adapter
+  class: pattern
+
+- name: Bridge
+  class: pattern
+
+- name: Composite
+  class: pattern
+
+- name: Decorator
+  class: pattern
+
+- name: Facade
+  class: pattern
+
+- name: Flyweight
+  class: pattern
+
+- name: Proxy
+  class: pattern
+
+
+
+
+
+- name: Verhaltensmuster
+  class: category
+
+- name: Chain of Responsibility
+  class: pattern
+
+- name: Command
+  class: pattern
+
+- name: Interpreter
+  class: pattern
+
+- name: Iterator
+  class: pattern
+
+- name: Mediator
+  class: pattern
+
+- name: Memento
+  class: pattern
+
+- name: Null Object
+  class: pattern
+
+- name: Observer
+  class: pattern
+
+- name: State
+  class: pattern
+
+- name: Strategy
+  class: pattern
+
+- name: Template Method
+  class: pattern
+
+- name: Visitor
+  class: pattern
