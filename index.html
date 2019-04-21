@@ -1,5 +1,5 @@
 ---
-title: Ristorante BendisPasta
+title: BendisPasta
 layout: default
 ---
 

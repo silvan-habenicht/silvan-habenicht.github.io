@@ -1,4 +1,4 @@
 ---
-title: Ristorante BendisPasta
+title: BendisPasta
 layout: library_index
 ---
