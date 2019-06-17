@@ -117,27 +117,35 @@
 
 - name: Strukturmuster
   class: category
+  link: /default_pattern.html
 
 - name: Adapter
   class: pattern
+  link: /default_pattern.html
 
 - name: Bridge
   class: pattern
+  link: /default_pattern.html
 
 - name: Composite
   class: pattern
+  link: /default_pattern.html
 
 - name: Decorator
   class: pattern
+  link: /default_pattern.html
 
 - name: Facade
   class: pattern
+  link: /default_pattern.html
 
 - name: Flyweight
   class: pattern
+  link: /default_pattern.html
 
 - name: Proxy
   class: pattern
+  link: /default_pattern.html
 
 
 
@@ -145,39 +153,52 @@
 
 - name: Verhaltensmuster
   class: category
+  link: /default_pattern.html
 
 - name: Chain of Responsibility
   class: pattern
+  link: /default_pattern.html
 
 - name: Command
   class: pattern
+  link: /default_pattern.html
 
 - name: Interpreter
   class: pattern
+  link: /default_pattern.html
 
 - name: Iterator
   class: pattern
+  link: /default_pattern.html
 
 - name: Mediator
   class: pattern
+  link: /default_pattern.html
 
 - name: Memento
   class: pattern
+  link: /default_pattern.html
 
 - name: Null Object
   class: pattern
+  link: /default_pattern.html
 
 - name: Observer
   class: pattern
+  link: /default_pattern.html
 
 - name: State
   class: pattern
+  link: /default_pattern.html
 
 - name: Strategy
   class: pattern
+  link: /default_pattern.html
 
 - name: Template Method
   class: pattern
+  link: /template.html
 
 - name: Visitor
   class: pattern
+  link: /default_pattern.html

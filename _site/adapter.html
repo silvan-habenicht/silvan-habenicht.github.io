@@ -101,7 +101,7 @@ interface Getraenk {
 
 <p>Eine schnelle und einfach Lösung des Problems besteht darin, das Adapter-Pattern zu nutzen. Unten siehst du eine Getränke-Adapter-Klasse, die es dem Koch ermöglicht, ein Getränk genau so zu behandeln, wie er es von seinen Gerichten gewohnt ist:</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">GetraenkeAdapter</span> <span class="kd">implements</span> <span class="n">Gericht</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GetraenkeAdapter</span> <span class="kd">implements</span> <span class="n">Gericht</span> <span class="o">{</span>
 
   <span class="kd">private</span> <span class="n">Getraenk</span> <span class="n">getraenk</span><span class="o">;</span>
 
@@ -109,11 +109,11 @@ interface Getraenk {
     <span class="k">this</span><span class="o">.</span><span class="na">getraenk</span> <span class="o">=</span> <span class="n">getraenk</span><span class="o">;</span>
   <span class="o">}</span>
 
-  <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">()</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">getraenk</span><span class="o">.</span><span class="na">einschenken</span><span class="o">();</span>
   <span class="o">}</span>
 
-  <span class="kt">void</span> <span class="nf">servieren</span><span class="o">()</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">servieren</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">getraenk</span><span class="o">.</span><span class="na">servieren</span><span class="o">();</span>
   <span class="o">}</span>
 <span class="o">...</span>
@@ -197,7 +197,10 @@ interface Getraenk {
         Ergänze den nachfolgenden Code-Ausschnitt. Zur Erinnerung: Das Interface <code>Iterator</code> besitzt die drei Methoden <code>hasNext()</code>, <code>next()</code> sowie <code>remove()</code>. Das Interface <code>Enumeration</code> hat lediglich die beiden Funktionen <code>hasMoreElements()</code> und <code>nextElement()</code>.
     </fieldset>
     <pre><div class="code"><code>
-class EnumerationAdapter implements Iterator&lt;E&gt; {
+import java.util.Enumeration;
+import java.util.Iterator;
+
+public class EnumerationAdapter implements Iterator&lt;Object&gt; {
 
   private Enumeration&lt;?&gt; enumeration;
 
@@ -209,7 +212,7 @@ class EnumerationAdapter implements Iterator&lt;E&gt; {
     return <input type="text" id="adapterC2" style="width: 29ch;" />; // Bitte vervollständigen
   }
 
-  public E next() {
+  public Object next() {
     return <input type="text" id="adapterC3" style="width: 25ch;" />; // Bitte vervollständigen
   }
 

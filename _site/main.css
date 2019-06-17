@@ -153,6 +153,7 @@ input[type=text] {
     background: none;
     border: none;
     border-radius: 2px;
+    height: 2ch;
 }
 
 input[type=text]:hover {

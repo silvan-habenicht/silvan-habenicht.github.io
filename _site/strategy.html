@@ -74,59 +74,63 @@
 
 <p>Hier kommt uns das Strategy-Pattern wie gerufen. Dieses empfiehlt uns, die unterschiedlichen Zubereitungsarten in eigene Klassen zu kapseln und die gewünschte Zubereitungsart in einer Instanzvariable unseres Gerichtes zu speichern. Der Algorithmus zum Zubereiten der Pizza ist dann nicht mehr in der Pizza-Klasse selbst implementiert, stattdessen wird er über den Zugriff auf die darin gespeicherte Zubereitungsart aufgerufen. Wir erstellen also zunächst ein neues Interface, welches wir <code class="highlighter-rouge">Zubereitungsart</code> nennen:</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">Zubereitungsart</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Zubereitungsart</span> <span class="o">{</span>
 
-  <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">zutaten</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">zutaten</span><span class="o">);</span>
 
 <span class="o">}</span>
 </code></pre></div></div>
 
 <p>Eine konkrete Zubereitungsart wäre z. B. <code class="highlighter-rouge">ItalienischeZubereitungsart</code>:</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">ItalienischeZubereitungsart</span> <span class="kd">implements</span> <span class="n">Zubereitungsart</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ItalienischeZubereitungsart</span> <span class="kd">implements</span> <span class="n">Zubereitungsart</span> <span class="o">{</span>
 
-  <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">zutaten</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">...</span> <span class="c1">// Pizza mit den gegebenen Zutaten auf italienische Art zubereiten</span>
-  <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">zutaten</span><span class="o">)</span> <span class="o">{</span>
+     <span class="c1">// Pizza mit den gegebenen Zutaten auf italienische Art zubereiten</span>
+    <span class="o">}</span>
 
 <span class="o">}</span>
 </code></pre></div></div>
 
 <p>Unser neues Interface hat eine einzige Methode, für die es geschaffen wurde: <code class="highlighter-rouge">zubereiten(String[] zutaten)</code>. In unserer abstrakten Pizza-Klasse fügen wir nun die neue Instanzvariable <code class="highlighter-rouge">zubereitungsart</code> hinzu und ergänzen die Möglichkeit die gewünschte Zubereitungsart schon im Konstruktor zu spezifizieren:</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Pizza</span> <span class="kd">implements</span> <span class="n">Gericht</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Pizza</span> <span class="kd">implements</span> <span class="n">Gericht</span> <span class="o">{</span>
 
-  <span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">zutaten</span><span class="o">;</span>
-  <span class="kd">private</span> <span class="n">Zubereitungsart</span> <span class="n">zubereitungsart</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">zutaten</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">Zubereitungsart</span> <span class="n">zubereitungsart</span><span class="o">;</span>
+    <span class="kd">protected</span> <span class="kt">double</span> <span class="n">preis</span><span class="o">;</span>
 
-  <span class="kd">public</span> <span class="nf">Pizza</span><span class="o">()</span> <span class="o">{}</span>
+    <span class="kd">public</span> <span class="nf">Pizza</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">zutaten</span><span class="o">,</span> <span class="n">Zubereitungsart</span> <span class="n">zubereitungsart</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">zutaten</span> <span class="o">=</span> <span class="n">zutaten</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">zubereitungsart</span> <span class="o">=</span> <span class="n">zubereitungsart</span><span class="o">;</span>
+    <span class="o">}</span>
 
-  <span class="kd">public</span> <span class="nf">Pizza</span><span class="o">(</span><span class="n">Zubereitungsart</span> <span class="n">zubereitungsart</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">this</span><span class="o">.</span><span class="na">zubereitungsart</span> <span class="o">=</span> <span class="n">zubereitungsart</span><span class="o">;</span>
-  <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getPreis</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">preis</span><span class="o">;</span>
+    <span class="o">}</span>
 
-  <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">();</span>
+    <span class="kd">public</span>  <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">zubereitungsart</span><span class="o">.</span><span class="na">zubereiten</span><span class="o">(</span><span class="n">zutaten</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">servieren</span><span class="o">(){</span>
+      <span class="c1">// die Pizza servieren</span>
+    <span class="o">}</span>
 
 <span class="o">}</span>
 </code></pre></div></div>
 
 <p>So könnte dann eine konkrete Klasse vom Typ Pizza aussehen:</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">PizzaMargherita</span> <span class="kd">extends</span> <span class="n">Pizza</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PizzaMargherita</span> <span class="kd">extends</span> <span class="n">Pizza</span> <span class="o">{</span>
 
-  <span class="kd">public</span> <span class="nf">PizzaMargherita</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">this</span><span class="o">.</span><span class="na">zubereitungsart</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ItalienischeZubereitungsart</span><span class="o">();</span> <span class="c1">// Standard-Zubereitungsart</span>
-    <span class="n">zutaten</span> <span class="o">=</span> <span class="o">{</span><span class="s">"Tomatensauce"</span><span class="o">,</span> <span class="s">"Mozarella"</span><span class="o">};</span>
-  <span class="o">}</span>
+    <span class="kd">public</span> <span class="nf">PizzaMargherita</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">(</span><span class="k">new</span> <span class="n">ItalienischeZubereitungsart</span><span class="o">());</span> <span class="c1">// Standard-Zubereitungsart</span>
+    <span class="o">}</span>
 
-  <span class="kd">public</span> <span class="nf">PizzaMargherita</span><span class="o">(</span><span class="n">Zubereitungsart</span> <span class="n">zubereitungsart</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">this</span><span class="o">.</span><span class="na">zubereitungsart</span> <span class="o">=</span> <span class="n">zubereitungsart</span><span class="o">;</span>
-    <span class="n">zutaten</span> <span class="o">=</span> <span class="o">{</span><span class="s">"Tomatensauce"</span><span class="o">,</span> <span class="s">"Mozarella"</span><span class="o">};</span>
-  <span class="o">}</span>
-
-  <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">zubereitungsart</span><span class="o">.</span><span class="na">zubereiten</span><span class="o">(</span><span class="n">zutaten</span><span class="o">);</span>
-  <span class="o">}</span>
+    <span class="kd">public</span> <span class="nf">PizzaMargherita</span><span class="o">(</span><span class="n">Zubereitungsart</span> <span class="n">zubereitungsart</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="o">{</span><span class="s">"Tomatensauce"</span><span class="o">,</span> <span class="s">"Mozarella"</span><span class="o">},</span> <span class="n">zubereitungsart</span><span class="o">);</span>
+    <span class="o">}</span>
 
 <span class="o">}</span>
 </code></pre></div></div>
@@ -169,9 +173,9 @@
         Ergänze das Gerüst für eine neue Zubereitungsart <code>AmerikanischeZubereitungsart</code>
     </fieldset>
     <pre><div class="code"><code>
-class <input type="text" id="strategyC1" style="width: 28ch;font-weight: bold; color: rgb(44,0,159);" /> <input type="text" id="strategyC2" style="width: 10ch;font-weight: bold; color: rgb(0,85,153);" /> <input type="text" id="strategyC3" style="width: 15ch;font-weight: bold; color: rgb(44,0,159);" /> {
+public class <input type="text" id="strategyC1" style="width: 28ch;font-weight: bold; color: rgb(44,0,159);" /> <input type="text" id="strategyC2" style="width: 10ch;font-weight: bold; color: rgb(0,85,153);" /> <input type="text" id="strategyC3" style="width: 15ch;font-weight: bold; color: rgb(44,0,159);" /> {
 
-<input type="text" id="strategyC4" style="width: 4ch;font-weight: bold; color: rgb(0,85,153);" /> <input type="text" id="strategyC5" style="width: 10ch;color: rgb(44,0,159);font-weight: bold;" />(<input type="text" id="strategyC6" style="width: 8ch;" /> zutaten) { // Rückgabetyp, Methodennamen und Parametertyp eintragen
+public <input type="text" id="strategyC4" style="width: 4ch;font-weight: bold; color: rgb(0,85,153);" /> <input type="text" id="strategyC5" style="width: 10ch;color: rgb(44,0,159);font-weight: bold;" />(<input type="text" id="strategyC6" style="width: 8ch;" /> zutaten) { // Rückgabetyp, Methodennamen und Parametertyp eintragen
 ... // Pizza mit den gegebenen Zutaten auf amerikanische Art zubereiten
 }
 

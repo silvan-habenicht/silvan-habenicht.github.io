@@ -21,9 +21,9 @@ Hier kommt uns das Strategy-Pattern wie gerufen. Dieses empfiehlt uns, die unter
 
 
 ```java
-interface Zubereitungsart {
+public interface Zubereitungsart {
 
-  void zubereiten(String[] zutaten);
+    void zubereiten(String[] zutaten);
 
 }
 ```
@@ -31,11 +31,11 @@ interface Zubereitungsart {
 Eine konkrete Zubereitungsart wäre z. B. ``ItalienischeZubereitungsart``:
 
 ```java
-class ItalienischeZubereitungsart implements Zubereitungsart {
+public class ItalienischeZubereitungsart implements Zubereitungsart {
 
-  void zubereiten(String[] zutaten) {
-    ... // Pizza mit den gegebenen Zutaten auf italienische Art zubereiten
-  }
+    public void zubereiten(String[] zutaten) {
+     // Pizza mit den gegebenen Zutaten auf italienische Art zubereiten
+    }
 
 }
 ```
@@ -43,18 +43,28 @@ class ItalienischeZubereitungsart implements Zubereitungsart {
 Unser neues Interface hat eine einzige Methode, für die es geschaffen wurde: ``zubereiten(String[] zutaten)``. In unserer abstrakten Pizza-Klasse fügen wir nun die neue Instanzvariable ``zubereitungsart`` hinzu und ergänzen die Möglichkeit die gewünschte Zubereitungsart schon im Konstruktor zu spezifizieren:
 
 ```java
-abstract class Pizza implements Gericht {
+public abstract class Pizza implements Gericht {
 
-  private String[] zutaten;
-  private Zubereitungsart zubereitungsart;
+    private String[] zutaten;
+    private Zubereitungsart zubereitungsart;
+    protected double preis;
 
-  public Pizza() {}
+    public Pizza(String[] zutaten, Zubereitungsart zubereitungsart) {
+        this.zutaten = zutaten;
+        this.zubereitungsart = zubereitungsart;
+    }
 
-  public Pizza(Zubereitungsart zubereitungsart) {
-    this.zubereitungsart = zubereitungsart;
-  }
+    public double getPreis() {
+        return preis;
+    }
 
-  abstract void zubereiten();
+    public  void zubereiten() {
+        zubereitungsart.zubereiten(zutaten);
+    }
+
+    public void servieren(){
+      // die Pizza servieren
+    }
 
 }
 ```
@@ -62,21 +72,15 @@ abstract class Pizza implements Gericht {
 So könnte dann eine konkrete Klasse vom Typ Pizza aussehen:
 
 ```java
-class PizzaMargherita extends Pizza {
+public class PizzaMargherita extends Pizza {
 
-  public PizzaMargherita() {
-    this.zubereitungsart = new ItalienischeZubereitungsart(); // Standard-Zubereitungsart
-    zutaten = {"Tomatensauce", "Mozarella"};
-  }
+    public PizzaMargherita() {
+        this(new ItalienischeZubereitungsart()); // Standard-Zubereitungsart
+    }
 
-  public PizzaMargherita(Zubereitungsart zubereitungsart) {
-    this.zubereitungsart = zubereitungsart;
-    zutaten = {"Tomatensauce", "Mozarella"};
-  }
-
-  void zubereiten() {
-    zubereitungsart.zubereiten(zutaten);
-  }
+    public PizzaMargherita(Zubereitungsart zubereitungsart) {
+        super(new String[] {"Tomatensauce", "Mozarella"}, zubereitungsart);
+    }
 
 }
 ```
@@ -119,9 +123,9 @@ Nun können wir Pizzen flexibel mit unterschiedlichen Zubereitungsarten erzeugen
         Ergänze das Gerüst für eine neue Zubereitungsart <code>AmerikanischeZubereitungsart</code>
     </fieldset>
     <pre><div class="code"><code>
-class <input type="text" id="strategyC1" style="width: 28ch;font-weight: bold; color: rgb(44,0,159);"> <input type="text" id="strategyC2" style="width: 10ch;font-weight: bold; color: rgb(0,85,153);"> <input type="text" id="strategyC3" style="width: 15ch;font-weight: bold; color: rgb(44,0,159);"> {
+public class <input type="text" id="strategyC1" style="width: 28ch;font-weight: bold; color: rgb(44,0,159);"> <input type="text" id="strategyC2" style="width: 10ch;font-weight: bold; color: rgb(0,85,153);"> <input type="text" id="strategyC3" style="width: 15ch;font-weight: bold; color: rgb(44,0,159);"> {
 
-<input type="text" id="strategyC4" style="width: 4ch;font-weight: bold; color: rgb(0,85,153);"> <input type="text" id="strategyC5" style="width: 10ch;color: rgb(44,0,159);font-weight: bold;">(<input type="text" id="strategyC6" style="width: 8ch;"> zutaten) { // Rückgabetyp, Methodennamen und Parametertyp eintragen
+public <input type="text" id="strategyC4" style="width: 4ch;font-weight: bold; color: rgb(0,85,153);"> <input type="text" id="strategyC5" style="width: 10ch;color: rgb(44,0,159);font-weight: bold;">(<input type="text" id="strategyC6" style="width: 8ch;"> zutaten) { // Rückgabetyp, Methodennamen und Parametertyp eintragen
 ... // Pizza mit den gegebenen Zutaten auf amerikanische Art zubereiten
 }
 

@@ -81,19 +81,19 @@ In unserem Fall implementiert der Kellner das Interface ``Observer``, damit er v
 
 
 ```java
-class Kellner implements Observer {
+public class Kellner implements Observer {
 
-  void update(Observable observable, Object arg) {
-    if (observable instanceof Tisch) {
-      Tisch tisch = (Tisch) observable;
-      zumOrtGehen(tisch);
-    } else if (observable instanceof Theke) {
-      Theke theke = (Theke) observable;
-      zumOrtGehen(theke);
-    } ... // ggf. Abfrage weiterer in Frage kommenden Observables
-  }
+    public void update(Observable observable, Object arg) {
+        if (observable instanceof Tisch) {
+            Tisch tisch = (Tisch) observable;
+            zumOrtGehen(tisch);
+        } else if (observable instanceof Theke) {
+            Theke theke = (Theke) observable;
+            zumOrtGehen(theke);
+        } // ggf. Abfrage weiterer in Frage kommenden Observables
+    }
 
-  void zumOrtGehen(Ort ort) {...} // zum Restaurantteil „ort“ gehen
+    public void zumOrtGehen(Ort ort) {} // zum Restaurantteil „ort“ gehen
 
 }
 ```
@@ -101,19 +101,19 @@ class Kellner implements Observer {
 Unterklassen von ``java.util.Observable``, die einen Observer bzw. im konkreten Fall einen Kellner benachrichtigen möchten, können dazu einfach die geerbte Methode ``notifyObservers()`` nutzen. Ihr Aufruf hat zur Folge, dass in allen eingetragenen Observern die Update-Methode ausgeführt wird; als Parameter wird das Observable selbst übergeben. Ein solches Observable könnte ein Objekt der (hier nicht genauer spezifizierten) Klasse ``Tisch`` sein:
 
 ```java
-class Tisch extends Observable implements Ort {
+public class Tisch extends Observable implements Ort {
 
-  ... // diverse Instanzvariablen für Tischnummer, Standort, Bestellung o. Ä.
+    // diverse Instanzvariablen für Tischnummer, Standort, Bestellung o. Ä.
 
-  public Tisch() {}
+    public Tisch() {}
 
-  ... // diverse Methoden
+    // diverse Methoden
 
-  // Wann immer an einem Tisch etwas benötigt wird, wird diese Funktion aufgerufen
-  void statusAenderung() {
-    setChanged();
-    notifyObservers(); // Kellner und sonstige Observer benachrichtigen
-  }
+    // Wann immer an einem Tisch etwas benötigt wird, wird diese Funktion aufgerufen
+    public void statusAenderung() {
+        setChanged();
+        notifyObservers(); // Kellner und sonstige Observer benachrichtigen
+    }
 }
 ```
 
@@ -183,20 +183,20 @@ class Tisch extends Observable implements Ort {
         Vervollständige das folgende Klassengerüst.
     </fieldset>
     <pre><div class="code"><code>
-class Theke <input type="text" id ="observerC1" style="width: 7ch;font-weight: bold; color: rgb(0,85,153);"> <input type="text" id="observerC2" style="width: 10ch;font-weight: bold; color: rgb(44,0,159);"> {
+public class Theke <input type="text" id ="observerC1" style="width: 7ch;font-weight: bold; color: rgb(0,85,153);"> <input type="text" id="observerC2" style="width: 10ch;font-weight: bold; color: rgb(44,0,159);"> {
 
-boolean bestellungAbholbereit = false;
+private boolean bestellungAbholbereit = false;
 
 public Theke() {...}
 
 /* Diese Methode wird aufgerufen, nachdem alle Getränke einer Bestellug eingeschänkt wurden.
  * Sie wird erneut aufgerufen, sobald diese abgeholt worden sind. */
-  void abholstatusAendern() {
+  public void abholstatusAendern() {
     bestellungAbholbereit = <input type="text" id="observerC3" style="width: 22ch;">; // Abholstatus umkehren
     statusAenderung();
   }
 
-  void statusAenderung() {
+  public void statusAenderung() {
     setChanged();
     <input type="text" id="observerC4" style="width: 17ch;">; // Kellner und sonstige Observer benachrichtigen
   }

@@ -70,7 +70,7 @@
 
 <p>Anstelle konkreter Menü-Objekte, wollen wir den Befehlsklassen in Zukunft die entsprechenden Nummern aus der Karte übergeben. Die neue <code>GerichteBestellung</code>-Klasse könnte in etwa so aussehen:</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">GerichteBestellung</span> <span class="kd">implements</span> <span class="n">Befehl</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GerichteBestellung</span> <span class="kd">implements</span> <span class="n">Befehl</span> <span class="o">{</span>
 
   <span class="kd">private</span> <span class="n">Gericht</span> <span class="n">gericht</span><span class="o">;</span>
 
@@ -107,7 +107,7 @@
 
   <span class="o">}</span>
 
-  <span class="kt">void</span> <span class="n">ausf</span><span class="err">ü</span><span class="n">hren</span><span class="o">()</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="n">ausf</span><span class="err">ü</span><span class="n">hren</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">gericht</span><span class="o">.</span><span class="na">zubereiten</span><span class="o">();</span>
     <span class="n">gericht</span><span class="o">.</span><span class="na">servieren</span><span class="o">();</span>
   <span class="o">}</span>
@@ -122,24 +122,24 @@
 <p>Das Factory Method-Pattern empfiehlt uns genau das. Wir erstellen eine neue Klasse <code>GerichteFabrik</code>, die eine Methode zur Erzeugung von Gerichten bereitstellt: <code>erzeugeGericht()</code>. Wie genau diese Methode implementiert wird, interessiert uns dabei erstmal nicht. Dies kann wie im vorigen Beispiel anhand einer Menge von if- bzw. case-Abfragen geschehen, mithilfe einer inneren bzw. globalen Speisekarten-Klasse oder auf der Grundlage sonstiger geeigneter Datenstrukturen. Entscheidend ist, dass wir unsere Klassenstruktur allein durch die Auslagerung schon erheblich verbessert haben. Änderungen der Speisekarte müssen jetzt nur noch in die zentrale Gerichte-Fabrik übertragen werden, um alle Klassen, die die Fabrik nutzen, auf einen Schlag zu aktualisieren. Zudem kann die Gerichtefabrik im Bedarfsfall auch zur Laufzeit ausgetauscht werden.</p>
 
 <h4 id="neuer-code">Neuer Code</h4>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">GerichteBestellung</span> <span class="kd">implements</span> <span class="n">Befehl</span><span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GerichteBestellung</span> <span class="kd">implements</span> <span class="n">Befehl</span> <span class="o">{</span>
 
-  <span class="kd">private</span> <span class="n">Gericht</span> <span class="n">gericht</span><span class="o">;</span>
-  <span class="kd">private</span> <span class="n">GerichteFabrik</span> <span class="n">fabrik</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">Gericht</span> <span class="n">gericht</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">GerichteFabrik</span> <span class="n">fabrik</span><span class="o">;</span>
 
-  <span class="kd">public</span> <span class="nf">GerichteBestellung</span><span class="o">(</span><span class="kt">int</span> <span class="n">gerichtID</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">fabrik</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GerichteFabrikImpl</span><span class="o">();</span>
-    <span class="n">gericht</span> <span class="o">=</span> <span class="n">fabrik</span><span class="o">.</span><span class="na">erzeugeGericht</span><span class="o">(</span><span class="n">gerichtID</span><span class="o">);</span>
-  <span class="o">}</span>
+    <span class="kd">public</span> <span class="nf">GerichteBestellung</span><span class="o">(</span><span class="kt">int</span> <span class="n">gerichtID</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">fabrik</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GerichteFabrikImpl</span><span class="o">();</span>
+        <span class="n">gericht</span> <span class="o">=</span> <span class="n">fabrik</span><span class="o">.</span><span class="na">erzeugeGericht</span><span class="o">(</span><span class="n">gerichtID</span><span class="o">);</span>
+    <span class="o">}</span>
 
-  <span class="kt">void</span> <span class="nf">ausfuehren</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">gericht</span><span class="o">.</span><span class="na">zubereiten</span><span class="o">();</span>
-    <span class="n">gericht</span><span class="o">.</span><span class="na">servieren</span><span class="o">();</span>
-  <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ausfuehren</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">gericht</span><span class="o">.</span><span class="na">zubereiten</span><span class="o">();</span>
+        <span class="n">gericht</span><span class="o">.</span><span class="na">servieren</span><span class="o">();</span>
+    <span class="o">}</span>
 
-  <span class="kt">void</span> <span class="nf">setFabrik</span><span class="o">(</span><span class="n">GerichteFabrik</span> <span class="n">fabrik</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">this</span><span class="o">.</span><span class="na">fabrik</span> <span class="o">=</span> <span class="n">fabrik</span><span class="o">;</span>
-  <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setFabrik</span><span class="o">(</span><span class="n">GerichteFabrik</span> <span class="n">fabrik</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">fabrik</span> <span class="o">=</span> <span class="n">fabrik</span><span class="o">;</span>
+    <span class="o">}</span>
 
 <span class="o">}</span>
 </code></pre></div></div>
@@ -210,7 +210,7 @@
         Ergänze das untenstehende Gerüst für unsere GerichteFabrik.
     </fieldset>
     <pre><div class="code"><code>
-class GerichteFabrik {
+public class GerichteFabrik {
 
   public GerichteFabrik() {}
 

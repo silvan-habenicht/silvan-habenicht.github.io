@@ -132,38 +132,38 @@ class Observable {
 
 <p>In unserem Fall implementiert der Kellner das Interface <code class="highlighter-rouge">Observer</code>, damit er von den <code class="highlighter-rouge">Observables</code>, die er beobachtet (<em>observe</em>), benachrichtigt werden kann. Dazu muss er eine einzige Methode <code class="highlighter-rouge">update()</code> implementieren; sie wird später von den Observables aufgerufen, welche darin eine Referenz auf sich selbst übergeben. Auf diese Weise kann der Kellner direkt auf das Objekt zugreifen, von dem er benachrichtigt wurde:</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Kellner</span> <span class="kd">implements</span> <span class="n">Observer</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Kellner</span> <span class="kd">implements</span> <span class="n">Observer</span> <span class="o">{</span>
 
-  <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="n">Observable</span> <span class="n">observable</span><span class="o">,</span> <span class="n">Object</span> <span class="n">arg</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">observable</span> <span class="k">instanceof</span> <span class="n">Tisch</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">Tisch</span> <span class="n">tisch</span> <span class="o">=</span> <span class="o">(</span><span class="n">Tisch</span><span class="o">)</span> <span class="n">observable</span><span class="o">;</span>
-      <span class="n">zumOrtGehen</span><span class="o">(</span><span class="n">tisch</span><span class="o">);</span>
-    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">observable</span> <span class="k">instanceof</span> <span class="n">Theke</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">Theke</span> <span class="n">theke</span> <span class="o">=</span> <span class="o">(</span><span class="n">Theke</span><span class="o">)</span> <span class="n">observable</span><span class="o">;</span>
-      <span class="n">zumOrtGehen</span><span class="o">(</span><span class="n">theke</span><span class="o">);</span>
-    <span class="o">}</span> <span class="o">...</span> <span class="c1">// ggf. Abfrage weiterer in Frage kommenden Observables</span>
-  <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="n">Observable</span> <span class="n">observable</span><span class="o">,</span> <span class="n">Object</span> <span class="n">arg</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">observable</span> <span class="k">instanceof</span> <span class="n">Tisch</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Tisch</span> <span class="n">tisch</span> <span class="o">=</span> <span class="o">(</span><span class="n">Tisch</span><span class="o">)</span> <span class="n">observable</span><span class="o">;</span>
+            <span class="n">zumOrtGehen</span><span class="o">(</span><span class="n">tisch</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">observable</span> <span class="k">instanceof</span> <span class="n">Theke</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Theke</span> <span class="n">theke</span> <span class="o">=</span> <span class="o">(</span><span class="n">Theke</span><span class="o">)</span> <span class="n">observable</span><span class="o">;</span>
+            <span class="n">zumOrtGehen</span><span class="o">(</span><span class="n">theke</span><span class="o">);</span>
+        <span class="o">}</span> <span class="c1">// ggf. Abfrage weiterer in Frage kommenden Observables</span>
+    <span class="o">}</span>
 
-  <span class="kt">void</span> <span class="nf">zumOrtGehen</span><span class="o">(</span><span class="n">Ort</span> <span class="n">ort</span><span class="o">)</span> <span class="o">{...}</span> <span class="c1">// zum Restaurantteil „ort“ gehen</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">zumOrtGehen</span><span class="o">(</span><span class="n">Ort</span> <span class="n">ort</span><span class="o">)</span> <span class="o">{}</span> <span class="c1">// zum Restaurantteil „ort“ gehen</span>
 
 <span class="o">}</span>
 </code></pre></div></div>
 
 <p>Unterklassen von <code class="highlighter-rouge">java.util.Observable</code>, die einen Observer bzw. im konkreten Fall einen Kellner benachrichtigen möchten, können dazu einfach die geerbte Methode <code class="highlighter-rouge">notifyObservers()</code> nutzen. Ihr Aufruf hat zur Folge, dass in allen eingetragenen Observern die Update-Methode ausgeführt wird; als Parameter wird das Observable selbst übergeben. Ein solches Observable könnte ein Objekt der (hier nicht genauer spezifizierten) Klasse <code class="highlighter-rouge">Tisch</code> sein:</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Tisch</span> <span class="kd">extends</span> <span class="n">Observable</span> <span class="kd">implements</span> <span class="n">Ort</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Tisch</span> <span class="kd">extends</span> <span class="n">Observable</span> <span class="kd">implements</span> <span class="n">Ort</span> <span class="o">{</span>
 
-  <span class="o">...</span> <span class="c1">// diverse Instanzvariablen für Tischnummer, Standort, Bestellung o. Ä.</span>
+    <span class="c1">// diverse Instanzvariablen für Tischnummer, Standort, Bestellung o. Ä.</span>
 
-  <span class="kd">public</span> <span class="nf">Tisch</span><span class="o">()</span> <span class="o">{}</span>
+    <span class="kd">public</span> <span class="nf">Tisch</span><span class="o">()</span> <span class="o">{}</span>
 
-  <span class="o">...</span> <span class="c1">// diverse Methoden</span>
+    <span class="c1">// diverse Methoden</span>
 
-  <span class="c1">// Wann immer an einem Tisch etwas benötigt wird, wird diese Funktion aufgerufen</span>
-  <span class="kt">void</span> <span class="nf">statusAenderung</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">setChanged</span><span class="o">();</span>
-    <span class="n">notifyObservers</span><span class="o">();</span> <span class="c1">// Kellner und sonstige Observer benachrichtigen</span>
-  <span class="o">}</span>
+    <span class="c1">// Wann immer an einem Tisch etwas benötigt wird, wird diese Funktion aufgerufen</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">statusAenderung</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">setChanged</span><span class="o">();</span>
+        <span class="n">notifyObservers</span><span class="o">();</span> <span class="c1">// Kellner und sonstige Observer benachrichtigen</span>
+    <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -233,20 +233,20 @@ class Observable {
         Vervollständige das folgende Klassengerüst.
     </fieldset>
     <pre><div class="code"><code>
-class Theke <input type="text" id="observerC1" style="width: 7ch;font-weight: bold; color: rgb(0,85,153);" /> <input type="text" id="observerC2" style="width: 10ch;font-weight: bold; color: rgb(44,0,159);" /> {
+public class Theke <input type="text" id="observerC1" style="width: 7ch;font-weight: bold; color: rgb(0,85,153);" /> <input type="text" id="observerC2" style="width: 10ch;font-weight: bold; color: rgb(44,0,159);" /> {
 
-boolean bestellungAbholbereit = false;
+private boolean bestellungAbholbereit = false;
 
 public Theke() {...}
 
 /* Diese Methode wird aufgerufen, nachdem alle Getränke einer Bestellug eingeschänkt wurden.
  * Sie wird erneut aufgerufen, sobald diese abgeholt worden sind. */
-  void abholstatusAendern() {
+  public void abholstatusAendern() {
     bestellungAbholbereit = <input type="text" id="observerC3" style="width: 22ch;" />; // Abholstatus umkehren
     statusAenderung();
   }
 
-  void statusAenderung() {
+  public void statusAenderung() {
     setChanged();
     <input type="text" id="observerC4" style="width: 17ch;" />; // Kellner und sonstige Observer benachrichtigen
   }

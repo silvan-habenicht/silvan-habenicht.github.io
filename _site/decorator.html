@@ -66,19 +66,19 @@
 
 <p>Als nächstes möchten wir den Kunden von <em>BendisPasta</em> die Möglichkeit bieten, ihren Gerichten  eine Garnitur hinzuzufügen. So soll es für alle Pizzen die Option geben, sie u. A. mit Knoblauch, Oregano oder scharfer Sauce serviert zu bekommen. Hier sehen wir einen ersten Vorschlag, diesem Wunsch zu entsprechen — durch Bildung weiterer Unterklassen:</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">PizzaMargheritaMitKnoblauch</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PizzaMargheritaMitKnoblauch</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
 
-<span class="kd">class</span> <span class="nc">PizzaMargheritaMitOregano</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PizzaMargheritaMitOregano</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
 
-<span class="kd">class</span> <span class="nc">PizzaMargheritaMitScharferSauce</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PizzaMargheritaMitScharferSauce</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
 
-<span class="kd">class</span> <span class="nc">PizzaMargheritaMitOreganoUndKnoblauch</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PizzaMargheritaMitOreganoUndKnoblauch</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
 
-<span class="kd">class</span> <span class="nc">PizzaMargheritaMitKnoblauchUndScharferSauce</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PizzaMargheritaMitKnoblauchUndScharferSauce</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
 
-<span class="kd">class</span> <span class="nc">PizzaMargheritaMitOreganoUndScharferSauce</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PizzaMargheritaMitOreganoUndScharferSauce</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
 
-<span class="kd">class</span> <span class="nc">PizzaMargheritaMitKnoblauchUndOreganoUndScharferSauce</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PizzaMargheritaMitKnoblauchUndOreganoUndScharferSauce</span> <span class="kd">extends</span> <span class="n">PizzaMargherita</span> <span class="o">{...}</span>
 
 </code></pre></div></div>
 
@@ -92,37 +92,38 @@
 
 <p>Dreh- und Angelpunkt unseres neuen Patterns ist eine abstrakte Decorator-Klasse, die wir in unserem Fall Garnitur nennen. Dazu hier ein Beispiel, wie wir das Decorator-Pattern zum Würzen unserer Pizzen nutzen können:</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">PizzaGarnitur</span> <span class="kd">extends</span> <span class="n">Pizza</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">PizzaGarnitur</span> <span class="kd">extends</span> <span class="n">Pizza</span> <span class="o">{</span>
 
-  <span class="kd">private</span> <span class="kt">float</span> <span class="n">preis</span><span class="o">;</span>
-  <span class="kd">private</span> <span class="n">Pizza</span> <span class="n">pizza</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">Pizza</span> <span class="n">pizza</span><span class="o">;</span>
 
-  <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="nf">PizzaGarnitur</span><span class="o">(</span><span class="n">Pizza</span> <span class="n">pizza</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">pizza</span> <span class="o">=</span> <span class="n">pizza</span><span class="o">;</span>
+    <span class="o">}</span>
 
-  <span class="kt">void</span> <span class="nf">servieren</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">pizza</span><span class="o">.</span><span class="na">servieren</span><span class="o">();</span>
-  <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">servieren</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">pizza</span><span class="o">.</span><span class="na">servieren</span><span class="o">();</span>
+    <span class="o">}</span>
 
-  <span class="kt">int</span> <span class="nf">preis</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="n">pizza</span><span class="o">.</span><span class="na">preis</span><span class="o">()</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">preis</span><span class="o">;</span>
-  <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">preis</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">pizza</span><span class="o">.</span><span class="na">getPreis</span><span class="o">()</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">preis</span><span class="o">;</span>
+    <span class="o">}</span>
 
 <span class="o">}</span>
 </code></pre></div></div>
 
 <p>Unsere neue Klasse <code class="highlighter-rouge">PizzaGarnitur</code> erweitert die abstrakte Klasse <code class="highlighter-rouge">Pizza</code> — sie ist damit sozusagen selbst eine Pizza. Der Konstruktor erwartet allerdings im Übergabeparameter die „echte“ Pizza, welche dann in der Instanzvariable <code class="highlighter-rouge">pizza</code> gesichert wird. Für jede Methode, die eine Klasse vom Typ <code class="highlighter-rouge">Pizza</code> bereitstellen muss, ruft die Klasse vom Typ <code class="highlighter-rouge">GerichteGarnitur</code> die entsprechende Methode per Zugriff auf das gespeicherte Pizza-Objekt auf. Im Fall von Knoblauch sieht das dann in etwa so aus:</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Knoblauch</span> <span class="kd">extends</span> <span class="n">PizzaGarnitur</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Knoblauch</span> <span class="kd">extends</span> <span class="n">PizzaGarnitur</span> <span class="o">{</span>
 
-  <span class="kd">public</span> <span class="nf">Knoblauch</span><span class="o">(</span><span class="n">Pizza</span> <span class="n">pizza</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">this</span><span class="o">.</span><span class="na">pizza</span> <span class="o">=</span> <span class="n">pizza</span><span class="o">;</span>
-    <span class="k">this</span><span class="o">.</span><span class="na">preis</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">;</span>
-  <span class="o">}</span>
+    <span class="kd">public</span> <span class="nf">Knoblauch</span><span class="o">(</span><span class="n">Pizza</span> <span class="n">pizza</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">pizza</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">preis</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">;</span>
+    <span class="o">}</span>
 
-  <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">pizza</span><span class="o">.</span><span class="na">zubereiten</span><span class="o">();</span>
-    <span class="o">...</span> <span class="c1">// mit Knoblauch garnieren</span>
-  <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">zubereiten</span><span class="o">();</span>
+        <span class="o">...</span> <span class="c1">// mit Knoblauch garnieren</span>
+    <span class="o">}</span>
 
 <span class="o">}</span>
 </code></pre></div></div>

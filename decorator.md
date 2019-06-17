@@ -12,19 +12,19 @@ layout: default
 Als nächstes möchten wir den Kunden von _BendisPasta_ die Möglichkeit bieten, ihren Gerichten  eine Garnitur hinzuzufügen. So soll es für alle Pizzen die Option geben, sie u. A. mit Knoblauch, Oregano oder scharfer Sauce serviert zu bekommen. Hier sehen wir einen ersten Vorschlag, diesem Wunsch zu entsprechen &mdash; durch Bildung weiterer Unterklassen:
 
 ```java
-class PizzaMargheritaMitKnoblauch extends PizzaMargherita {...}
+public class PizzaMargheritaMitKnoblauch extends PizzaMargherita {...}
 
-class PizzaMargheritaMitOregano extends PizzaMargherita {...}
+public class PizzaMargheritaMitOregano extends PizzaMargherita {...}
 
-class PizzaMargheritaMitScharferSauce extends PizzaMargherita {...}
+public class PizzaMargheritaMitScharferSauce extends PizzaMargherita {...}
 
-class PizzaMargheritaMitOreganoUndKnoblauch extends PizzaMargherita {...}
+public class PizzaMargheritaMitOreganoUndKnoblauch extends PizzaMargherita {...}
 
-class PizzaMargheritaMitKnoblauchUndScharferSauce extends PizzaMargherita {...}
+public class PizzaMargheritaMitKnoblauchUndScharferSauce extends PizzaMargherita {...}
 
-class PizzaMargheritaMitOreganoUndScharferSauce extends PizzaMargherita {...}
+public class PizzaMargheritaMitOreganoUndScharferSauce extends PizzaMargherita {...}
 
-class PizzaMargheritaMitKnoblauchUndOreganoUndScharferSauce extends PizzaMargherita {...}
+public class PizzaMargheritaMitKnoblauchUndOreganoUndScharferSauce extends PizzaMargherita {...}
 
 ```
 
@@ -39,20 +39,21 @@ Wir suchen eine einfache und saubere Möglichkeit, unseren konkreten Gerichten o
 Dreh- und Angelpunkt unseres neuen Patterns ist eine abstrakte Decorator-Klasse, die wir in unserem Fall Garnitur nennen. Dazu hier ein Beispiel, wie wir das Decorator-Pattern zum Würzen unserer Pizzen nutzen können:
 
 ```java
-abstract class PizzaGarnitur extends Pizza {
+public abstract class PizzaGarnitur extends Pizza {
 
-  private float preis;
-  private Pizza pizza;
+    private Pizza pizza;
 
-  abstract void zubereiten();
+    public PizzaGarnitur(Pizza pizza){
+        this.pizza = pizza;
+    }
 
-  void servieren() {
-    pizza.servieren();
-  }
+    public void servieren() {
+        pizza.servieren();
+    }
 
-  int preis() {
-    return pizza.preis() + this.preis;
-  }
+    public double preis() {
+        return pizza.getPreis() + this.preis;
+    }
 
 }
 ```
@@ -60,17 +61,17 @@ abstract class PizzaGarnitur extends Pizza {
 Unsere neue Klasse ``PizzaGarnitur`` erweitert die abstrakte Klasse ``Pizza`` &mdash; sie ist damit sozusagen selbst eine Pizza. Der Konstruktor erwartet allerdings im Übergabeparameter die „echte“ Pizza, welche dann in der Instanzvariable ``pizza`` gesichert wird. Für jede Methode, die eine Klasse vom Typ ``Pizza`` bereitstellen muss, ruft die Klasse vom Typ ``GerichteGarnitur`` die entsprechende Methode per Zugriff auf das gespeicherte Pizza-Objekt auf. Im Fall von Knoblauch sieht das dann in etwa so aus:
 
 ```java
-class Knoblauch extends PizzaGarnitur {
+public class Knoblauch extends PizzaGarnitur {
 
-  public Knoblauch(Pizza pizza) {
-    this.pizza = pizza;
-    this.preis = 0.5;
-  }
+    public Knoblauch(Pizza pizza) {
+        super(pizza);
+        this.preis = 0.5;
+    }
 
-  void zubereiten() {
-    pizza.zubereiten();
-    ... // mit Knoblauch garnieren
-  }
+    public void zubereiten() {
+        super.zubereiten();
+        ... // mit Knoblauch garnieren
+    }
 
 }
 ```

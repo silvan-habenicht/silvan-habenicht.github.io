@@ -89,4 +89,4 @@ window.onresize = function (event) {
             document.getElementById("main").style.padding = "2em 4em 4em";
         }
     }
-};
+}; 

@@ -50,7 +50,7 @@ Eine schnelle und einfach Lösung des Problems besteht darin, das Adapter-Patter
 
 
 ```java
-class GetraenkeAdapter implements Gericht {
+public class GetraenkeAdapter implements Gericht {
 
   private Getraenk getraenk;
 
@@ -58,11 +58,11 @@ class GetraenkeAdapter implements Gericht {
     this.getraenk = getraenk;
   }
 
-  void zubereiten() {
+  public void zubereiten() {
     getraenk.einschenken();
   }
 
-  void servieren() {
+  public void servieren() {
     getraenk.servieren();
   }
 ...
@@ -148,7 +148,10 @@ Wenn du schon eine Weile mit Java gearbeitet hast, wird dir das Interface <code>
         Ergänze den nachfolgenden Code-Ausschnitt. Zur Erinnerung: Das Interface <code>Iterator</code> besitzt die drei Methoden <code>hasNext()</code>, <code>next()</code> sowie <code>remove()</code>. Das Interface <code>Enumeration</code> hat lediglich die beiden Funktionen <code>hasMoreElements()</code> und <code>nextElement()</code>.
     </fieldset>
     <pre><div class="code"><code>
-class EnumerationAdapter implements Iterator&lt;E&gt; {
+import java.util.Enumeration;
+import java.util.Iterator;
+
+public class EnumerationAdapter implements Iterator&lt;Object&gt; {
 
   private Enumeration&lt;?&gt; enumeration;
 
@@ -160,7 +163,7 @@ class EnumerationAdapter implements Iterator&lt;E&gt; {
     return <input type="text" id="adapterC2" style="width: 29ch;">; // Bitte vervollständigen
   }
 
-  public E next() {
+  public Object next() {
     return <input type="text" id="adapterC3" style="width: 25ch;">; // Bitte vervollständigen
   }
 

@@ -294,7 +294,78 @@
     <br/>
 </nav>
 
-    
+    <h2 id="template-method-pattern">Template Method-Pattern</h2>
+
+<p class="note">
+    Zur „Definition der Grundstruktur eines Algorithmus in einer Operation sowie Delegation einiger Ablaufschritte an Unterklassen. Das Design Pattern Template Method (Schablonenmethode) ermöglicht den Unterklassen, bestimmte Schritte eines Algorithmus zu überschreiben, ohne dessen grundlegende Struktur zu verändern.“ [GoF]
+</p>
+
+<p>Betrachten wir die folgende abstrakte Klasse mit dem Namen „Pizza“</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  <span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Pizza</span> <span class="o">{</span>
+
+      <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">();</span>
+
+  <span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>sowie zwei ihrer erweiternden Klassen:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  <span class="kd">public</span> <span class="kd">class</span> <span class="nc">PizzaCipolla</span> <span class="kd">extends</span> <span class="n">Pizza</span> <span class="o">{</span>
+
+      <span class="nd">@Override</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">()</span> <span class="o">{</span>
+          <span class="n">teigAusrollen</span><span class="o">();</span>
+          <span class="n">tomatensauce</span><span class="o">();</span>
+          <span class="n">mitZwiebelnBelegen</span><span class="o">();</span>
+          <span class="n">kaese</span><span class="o">();</span>
+          <span class="n">backen</span><span class="o">();</span>
+      <span class="o">}</span>
+
+      <span class="o">...</span> <span class="c1">// Implementierung der Methoden</span>
+  <span class="o">}</span>
+
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  <span class="kd">public</span> <span class="kd">class</span> <span class="nc">PizzaProsciutto</span> <span class="kd">extends</span> <span class="n">Pizza</span> <span class="o">{</span>
+
+      <span class="nd">@Override</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">()</span> <span class="o">{</span>
+          <span class="n">teigAusrollen</span><span class="o">();</span>
+          <span class="n">tomatensauce</span><span class="o">();</span>
+          <span class="n">mitSchinkenBelegen</span><span class="o">();</span>
+          <span class="n">kaese</span><span class="o">();</span>
+          <span class="n">backen</span><span class="o">();</span>
+      <span class="o">}</span>
+
+      <span class="o">...</span> <span class="c1">// Implementierung der Methoden</span>
+  <span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>Man erkennt, dass die Implementierungen der <code class="highlighter-rouge">zubereiten()</code>-Methode sehr ähnlich ausfallen. Sie unterscheiden sich einzig durch denjenigen Schritt, der für das Belegen der Zutaten zuständig ist. Eine Codeverdopplung dieser Art ist äußerst unschön, da mögliche Änderungen in jeder Pizza-Subklasse einzeln durchgeführt werden müssen. Das Template Method-Pattern bietet eine einfache Variante, den bestehenden Code zu verbessern. Wir implementieren dazu alle sich wiederholdenen Schritte der <code class="highlighter-rouge">zubereiten()</code>-Methode bereits in der abstrakten <code class="highlighter-rouge">Pizza</code>-Klasse und lagern den Schritt zum Belegen der Zutaten (der sich in jeder erbenden Klasse unterscheidet) in eine separate abstrakte Methode aus. Die <code class="highlighter-rouge">zubereiten()</code>-Methode kann nun <code class="highlighter-rouge">final</code> gesetzt werden und alle Subklassen von <code class="highlighter-rouge">Pizza</code> müssen ab sofort nur noch die darin enthaltene <code class="highlighter-rouge">belegen()</code>-Methode implementieren. Unser Code wird dadurch robuster und agiler:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  <span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Pizza</span> <span class="o">{</span>
+
+      <span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">()</span> <span class="o">{</span>
+          <span class="n">teigAusrollen</span><span class="o">();</span>
+          <span class="n">tomatensauce</span><span class="o">();</span>
+          <span class="n">belegen</span><span class="o">();</span>
+          <span class="n">kaese</span><span class="o">();</span>
+          <span class="n">backen</span><span class="o">();</span>
+      <span class="o">}</span>
+
+      <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">belegen</span><span class="o">();</span>
+
+      <span class="o">...</span> <span class="c1">// Implementierung der übrigen Methoden</span>
+  <span class="o">}</span>
+
+</code></pre></div></div>
 
   </body>
 

@@ -17,7 +17,7 @@ Anstelle konkreter Menü-Objekte, wollen wir den Befehlsklassen in Zukunft die e
 
 
 ```java
-class GerichteBestellung implements Befehl {
+public class GerichteBestellung implements Befehl {
 
   private Gericht gericht;
 
@@ -54,7 +54,7 @@ class GerichteBestellung implements Befehl {
 
   }
 
-  void ausführen() {
+  public void ausführen() {
     gericht.zubereiten();
     gericht.servieren();
   }
@@ -70,24 +70,24 @@ Das Factory Method-Pattern empfiehlt uns genau das. Wir erstellen eine neue Klas
 
 #### Neuer Code
 ```java
-class GerichteBestellung implements Befehl{
+public class GerichteBestellung implements Befehl {
 
-  private Gericht gericht;
-  private GerichteFabrik fabrik;
+    private Gericht gericht;
+    private GerichteFabrik fabrik;
 
-  public GerichteBestellung(int gerichtID) {
-    fabrik = new GerichteFabrikImpl();
-    gericht = fabrik.erzeugeGericht(gerichtID);
-  }
+    public GerichteBestellung(int gerichtID) {
+        fabrik = new GerichteFabrikImpl();
+        gericht = fabrik.erzeugeGericht(gerichtID);
+    }
 
-  void ausfuehren() {
-    gericht.zubereiten();
-    gericht.servieren();
-  }
+    public void ausfuehren() {
+        gericht.zubereiten();
+        gericht.servieren();
+    }
 
-  void setFabrik(GerichteFabrik fabrik) {
-    this.fabrik = fabrik;
-  }
+    public void setFabrik(GerichteFabrik fabrik) {
+        this.fabrik = fabrik;
+    }
 
 }
 ```
@@ -159,7 +159,7 @@ class GerichteBestellung implements Befehl{
         Ergänze das untenstehende Gerüst für unsere GerichteFabrik.
     </fieldset>
     <pre><div class="code"><code>
-class GerichteFabrik {
+public class GerichteFabrik {
 
   public GerichteFabrik() {}
 

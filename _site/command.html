@@ -74,14 +74,15 @@
 
 <p>An dieser Stelle bedienen wir uns dem Command-Pattern, welches sich in vier Klassen und ein Interface gliedert: Es gibt den Kunden (<em>Client</em>), den Empfänger (<em>Receiver</em>), den Aufrufer (<em>Invoker</em>) und den konkreten Befehl (<em>concrete Command</em>), der ein Interface vom Typ Befehl (<em>Command</em>) implementiert. Dieses Interface, enthält eine einzige Methode <code class="highlighter-rouge">ausfuehren()</code> bzw. <code class="highlighter-rouge">execute()</code>:</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">Befehl</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@FunctionalInterface</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Befehl</span> <span class="o">{</span>
     <span class="kt">void</span> <span class="nf">ausfuehren</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
 <p>Der Ablauf in einem Command-Pattern sieht in etwa wie folgt aus: Der Kunde erzeugt zunächst ein konkretes Befehls-Objekt und benennt darin den Empfänger (das Objekt, welches den Befehl am Ende ausführen soll/kann). Der Aufrufer nimmt das Befehls-Objekt entgegen, speichert es und ruft bei Gelegenheit dessen <code class="highlighter-rouge">ausfuehren()</code>-Methode auf. Diese wiederum ruft den Empfänger auf, der schließlich den eigentlichen Befehl ausführt. Sehen wir uns einmal an, wie so eine konkrete Befehls-Klasse aussehen könnte. Der Empfänger ist in diesem Fall ein Gericht:</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">GerichteBestellung</span> <span class="kd">implements</span> <span class="n">Befehl</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GerichteBestellung</span> <span class="kd">implements</span> <span class="n">Befehl</span> <span class="o">{</span>
 
     <span class="kd">private</span> <span class="n">Gericht</span> <span class="n">gericht</span><span class="o">;</span>
 
@@ -89,7 +90,7 @@
         <span class="k">this</span><span class="o">.</span><span class="na">gericht</span> <span class="o">=</span> <span class="n">gericht</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kt">void</span> <span class="nf">ausfuehren</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ausfuehren</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">gericht</span><span class="o">.</span><span class="na">zubereiten</span><span class="o">();</span>
         <span class="n">gericht</span><span class="o">.</span><span class="na">servieren</span><span class="o">();</span>
     <span class="o">}</span>
@@ -99,22 +100,23 @@
 
 <p>Nun werfen wir einen Blick auf die Kellner-Klasse, welche in unserem Beispiel als Aufrufer fungiert. Nachdem der Kunde einen konkreten Befehl erzeugt hat, kann er ihn dem Kellner in der Methode <code>bestellungEntgegennehmen(Befehl befehl)</code> übergeben. Dieser wird dann später alle Befehle ausführen lassen.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Kellner</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
 
-    <span class="n">List</span><span class="o">&lt;</span><span class="n">Befehl</span><span class="o">&gt;</span> <span class="n">bestellung</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Kellner</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Befehl</span><span class="o">&gt;</span> <span class="n">bestellung</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="nf">Kellner</span> <span class="o">()</span> <span class="o">{</span>
         <span class="n">bestellung</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Befehl</span><span class="o">&gt;();</span>
     <span class="o">}</span>
 
-    <span class="kt">void</span> <span class="nf">bestellungEntgegennehmen</span><span class="o">(</span><span class="n">Befehl</span> <span class="n">befehl</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">bestellungEntgegennehmen</span><span class="o">(</span><span class="n">Befehl</span> <span class="n">befehl</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">bestellung</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">befehl</span><span class="o">);</span>
     <span class="o">}</span>
 
-    <span class="kt">void</span> <span class="nf">bestellungAbschliessen</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">for</span><span class="o">(</span><span class="n">Befehl</span> <span class="n">b</span> <span class="o">:</span> <span class="n">bestellung</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">b</span><span class="o">.</span><span class="na">ausfuehren</span><span class="o">();</span>
-        <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">bestellungAbschliessen</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">bestellung</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="nl">Befehl:</span><span class="o">:</span><span class="n">ausfuehren</span><span class="o">);</span>
         <span class="n">bestellung</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
     <span class="o">}</span>
 

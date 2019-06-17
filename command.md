@@ -25,7 +25,8 @@ An dieser Stelle bedienen wir uns dem Command-Pattern, welches sich in vier Klas
 
 
 ```java
-interface Befehl {
+@FunctionalInterface
+public interface Befehl {
     void ausfuehren();
 }
 ```
@@ -35,7 +36,7 @@ Der Ablauf in einem Command-Pattern sieht in etwa wie folgt aus: Der Kunde erzeu
 
 
 ```java
-class GerichteBestellung implements Befehl {
+public class GerichteBestellung implements Befehl {
 
     private Gericht gericht;
 
@@ -43,7 +44,7 @@ class GerichteBestellung implements Befehl {
         this.gericht = gericht;
     }
 
-    void ausfuehren() {
+    public void ausfuehren() {
         gericht.zubereiten();
         gericht.servieren();
     }
@@ -54,22 +55,23 @@ class GerichteBestellung implements Befehl {
 Nun werfen wir einen Blick auf die Kellner-Klasse, welche in unserem Beispiel als Aufrufer fungiert. Nachdem der Kunde einen konkreten Befehl erzeugt hat, kann er ihn dem Kellner in der Methode <code>bestellungEntgegennehmen(Befehl befehl)</code> übergeben. Dieser wird dann später alle Befehle ausführen lassen.
 
 ```java
-class Kellner {
+import java.util.ArrayList;
+import java.util.List;
 
-    List<Befehl> bestellung;
+public class Kellner {
+
+    private List<Befehl> bestellung;
 
     public Kellner () {
         bestellung = new ArrayList<Befehl>();
     }
 
-    void bestellungEntgegennehmen(Befehl befehl) {
+    public void bestellungEntgegennehmen(Befehl befehl) {
         bestellung.add(befehl);
     }
 
-    void bestellungAbschliessen() {
-        for(Befehl b : bestellung) {
-            b.ausfuehren();
-        }
+    public void bestellungAbschliessen() {
+        bestellung.forEach(Befehl::ausfuehren);
         bestellung.clear();
     }
 
