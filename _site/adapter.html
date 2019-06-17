@@ -1,246 +1,389 @@
 <!DOCTYPE html>
 <html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Adapter Pattern - BendisPasta | Lernplattform für Design Patterns</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/javascript/highlighting/styles/pojoaque.css"> <!-- alternativ: school-book.css -->
+    <link rel="icon" type="image/jpg" href="/data/pictures/pasta_small.png"/>
+  </head>
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>BendisPasta | Lernplattform für Design Patterns</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/main.css">
-        <link rel="stylesheet" href="/javascript/highlighting/styles/school-book.css"> <!-- alternativ: pojoaque.css -->
-        <link rel="icon" type="image/jpg" href="/data/pictures/pasta_small.png"/>
-    </head>
+  <style>
+    body {
+      height: 100%;
+    }
 
-    <script>var home = false;</script>
+    a.category {
+      font-size: 20px;
+      background: darkred;
+      color: beige;
+      padding: 0px 8px 0px 46px;
+    }
 
-    <body id="main">
+    a.category:hover {
+      box-shadow: none;
+    }
 
-      <!-- sidebar menu icon -->
+    a.pattern {
+      font-size:14px;
+      padding: 4px 8px 4px 60px;
+    }
+
+    .sideMenu img {
+        margin-left: 0;
+    }
+
+  </style>
+
+  <script>var home = false;</script>
+
+  <body id="main">
+    <!-- sidebar menu icon -->
 <div class="menuIcon">
     <a id="toggle" onclick="toggleMenu()"><span></span></a>
 </div>
 
 <!-- sidebar menu -->
 <nav class="sideMenu" id="patternMenu">
-    <img src="/data/pictures/pasta_medium.png" alt="Logo">
-    <a id="titleMenu" style="font-weight:bold;box-shadow: none;font-style:normal;">Pattern-Menü</a>
+    <center><img src="/data/pictures/pasta_medium.png" alt="Logo"></center>
     
-      <a id="adapterMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/adapter.html" class="current">Adapter</a>
+      
+        </br>
+        <a class="category">Architekturmuster</a>
+      
+      
     
-      <a id="commandMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/command.html" >Command</a>
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Blackboard</a>
+      
     
-      <a id="observerMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/observer.html" >Observer</a>
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Dependency Injection</a>
+      
     
-      <a id="factoryMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/factory.html" >Factory</a>
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Domain Model</a>
+      
     
-      <a id="strategyMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/strategy.html" >Strategy</a>
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Domain Object</a>
+      
     
-      <a id="decoratorMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/decorator.html" >Decorator</a>
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Layers</a>
+      
     
-    <br/>
-    <button type="button" style="width: auto;" disabled=true onclick="getCertificate()" id="certificate">Zertifikat erstellen</button>
-    <br/>
-    <button type="button" style="width: auto;" onclick="openLibrary()" >Pattern-Bibliothek</button>
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Microkernel</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Model View Controller</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Pipes and Filter</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Presentation-Abstraction-Control</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Reflection</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Shared Repository</a>
+      
+    
+      
+        </br>
+        <a class="category">Datenmuster</a>
+      
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Active Record</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Data Access Object</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Data Transfer Object</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Identity Field</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Identity Map</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Lazy Loading</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Row Data Gateway</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Table Data Gateway</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Unit of Work</a>
+      
+    
+      
+        </br>
+        <a class="category">Erzeugungsmuster</a>
+      
+      
+    
+      
+      
+        <a class="pattern" href="/abstract_factory.html" >Abstract Factory</a>
+      
+    
+      
+      
+        <a class="pattern" href="/builder.html" >Builder</a>
+      
+    
+      
+      
+        <a class="pattern" href="/factory_method.html" >Factory Method</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Prototype</a>
+      
+    
+      
+      
+        <a class="pattern" href="/singleton.html" >Singleton</a>
+      
+    
+      
+        </br>
+        <a class="category">GUI-Muster</a>
+      
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Application Controller</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Front Controller</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Model View Presenter</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Model View ViewModel</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Page Controller</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Template View</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Transform View</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Two Step View</a>
+      
+    
+      
+        </br>
+        <a class="category">Strukturmuster</a>
+      
+      
+    
+      
+      
+        <a class="pattern" href="/adapter.html" >Adapter</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Bridge</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Composite</a>
+      
+    
+      
+      
+        <a class="pattern" href="/decorator.html" >Decorator</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Facade</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Flyweight</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Proxy</a>
+      
+    
+      
+        </br>
+        <a class="category">Verhaltensmuster</a>
+      
+      
+    
+      
+      
+        <a class="pattern" href="/cor.html" >Chain of Responsibility</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Command</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Interpreter</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Iterator</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Mediator</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Memento</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Null Object</a>
+      
+    
+      
+      
+        <a class="pattern" href="/observer.html" >Observer</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >State</a>
+      
+    
+      
+      
+        <a class="pattern" href="/strategy.html" >Strategy</a>
+      
+    
+      
+      
+        <a class="pattern" href="/template.html" >Template Method</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Visitor</a>
+      
+    
     <br/>
     <br/>
     <br/>
 </nav>
 
 
-      <!-- pop-up notification -->
-        <div id="alert">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            Gratulation! Du kannst jetzt dein Zertifikat herunterladen
-        </div>
+    <hr class="italian" />
+    <h1>Adapter Pattern</h1>
+    <hr class="italian" />
 
-
-      <hr class="italian" />
-      <a href="/index.html" style="text-decoration: none;"><h1>BendisPasta<h1></a>
-      <hr class="italian" />
-
-      <h2 id="das-adapter-pattern-direkt-zum-test">Das Adapter-Pattern <a class="testjump" href="#adapterForm">…direkt zum Test…</a></h2>
-
-<p class="note">
+    <p class="note">
     Zur „Anpassung der Schnittstelle einer Klasse an ein anderes von den Clients erwartetes Interface. Das Design Pattern Adapter (Adapter) ermöglicht die Zusammenarbeit von Klassen, die ansonsten aufgrund der Inkompatibilität ihrer Schnittstellen nicht dazu in der Lage wären.“ [GoF]
 </p>
 
-<p>Im Restaurant <em>BendisPasta</em> werden in erster Linie zwei Arten von Objekten serviert: Gerichte und Getränke.</p>
+<h2 id="patterns-in-freier-wildbahn">Patterns in freier Wildbahn</h2>
 
-<div style="display:flex; flex-wrap: wrap;">
-    <div style="margin-left: auto;margin-right: auto;overflow-x: scroll;">
-    <h4>Gerichte-API</h4>
-    <pre><div class="code"><code>
-interface Gericht {
+<p><a href="https://github.com/bendisposto/propra_vl_pattern/tree/master/src/adapter_pattern">Flammkuchen-Pizza-Adapter</a> - abgerufen am 17. Juni 2019</p>
 
-  void zubereiten();
-  void servieren();
+  </body>
 
-}
-    </code></div></pre>
-    </div>
-    <div style="margin-left: auto;margin-right: auto;overflow-x: scroll;">
-    <h4>Getränke-API</h4>
-    <pre><div class="code"><code>
-interface Getraenk {
+  <!-- import jQuery -->
+  <script src="javascript/jquery-3.3.0.min.js"></script>
 
-  void einschenken();
-  void servieren();
+  <!-- import Popper.js -->
+  <script src="javascript/popper.min.js"></script>
 
-}
-    </code></div></pre>
-    </div>
-</div>
+  <!-- import Bootstrap -->
+  <script src="javascript/bootstrap.min.js"></script>
 
-<p>Bislang wurde die Methode <code class="highlighter-rouge">zubereiten()</code> ausschließlich von einer Instanz der Klasse <code class="highlighter-rouge">Koch</code> aufgerufen, das Einschenken der Getränke wurde hingegen von einem <code class="highlighter-rouge">Barkeeper</code>-Objekt übernommen. Im Zuge der betrieblichen Rationalisierungsmaßnahmen wird von den Mitarbeitern nun mehr Flexibilität verlangt. Um an besucherarmen Tagen effizienter zu arbeiten, sollen alle Mitarbeiter, die bislang nur mit Gerichten zu tun hatten, auch mit Getränken umgehen können.</p>
+  <!-- syntax highlighting -->
+  <script src="javascript/highlighting/highlight.pack.js"></script>
 
-<h4 id="was-ist-zu-tun">Was ist zu tun?</h4>
+  <!-- website appearance -->
+  <script src="javascript/script.js"></script>
 
-<p>Im Kern machen die beiden Methoden <code class="highlighter-rouge">zubereiten()</code> und <code class="highlighter-rouge">einschenken()</code> dasselbe: Sie bereiten eine Bestellung so vor, dass sie vom Kellner serviert werden kann. Wann immer ein Koch auf einem Gerichte-Objekt <code class="highlighter-rouge">zubereiten()</code> aufrufen würde, müsste er also anstelle dessen <code class="highlighter-rouge">einschenken()</code> aufrufen, sofern er es mit einem Getränk zu tun hat. Eine Möglichkeit das zu realisieren besteht in einem Refactoring. Wir könnten z. B. alle Klassen so anpassen, dass <code class="highlighter-rouge">Gericht</code> und <code class="highlighter-rouge">Getraenk</code> sowie <code class="highlighter-rouge">Koch</code>, <code class="highlighter-rouge">Barkeeper</code> und alle anderen Mitarbeiter nur noch mit einer einheitlichen Methode (z. B. <code class="highlighter-rouge">vorbereiten()</code>) arbeiten. Der Refactoring Ansatz ist jedoch mit hohem Aufwand verbunden, falls die bisherigen Methodennamen und Strukturen schon vielfach genutzt wurden und verstreut im Einsatz sind.</p>
-
-<h4 id="die-lösung">Die Lösung</h4>
-
-<p>Eine schnelle und einfach Lösung des Problems besteht darin, das Adapter-Pattern zu nutzen. Unten siehst du eine Getränke-Adapter-Klasse, die es dem Koch ermöglicht, ein Getränk genau so zu behandeln, wie er es von seinen Gerichten gewohnt ist:</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GetraenkeAdapter</span> <span class="kd">implements</span> <span class="n">Gericht</span> <span class="o">{</span>
-
-  <span class="kd">private</span> <span class="n">Getraenk</span> <span class="n">getraenk</span><span class="o">;</span>
-
-  <span class="kd">public</span> <span class="nf">GetraenkeAdapter</span><span class="o">(</span><span class="n">Getraenk</span> <span class="n">getraenk</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">this</span><span class="o">.</span><span class="na">getraenk</span> <span class="o">=</span> <span class="n">getraenk</span><span class="o">;</span>
-  <span class="o">}</span>
-
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">getraenk</span><span class="o">.</span><span class="na">einschenken</span><span class="o">();</span>
-  <span class="o">}</span>
-
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">servieren</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">getraenk</span><span class="o">.</span><span class="na">servieren</span><span class="o">();</span>
-  <span class="o">}</span>
-<span class="o">...</span>
-
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>Wann immer wir unserem Koch also ein Getränk übergeben möchten, stecken wir es vorher in einen Getränkeadapter. Wenn wir beispielsweise möchten, dass sich unser Koch um ein Wasser kümmert, so schreiben wir ihm anstelle von <code class="highlighter-rouge">new Wasser</code> folgendes auf Aufgabenliste: <code class="highlighter-rouge">new GetraenkeAdapter(new Wasser())</code>. Wir erzeugen also ein Objekt der Klasse <code class="highlighter-rouge">GetraenkeAdapter</code>, welchem wir im Konstruktor ein Getränk übergeben. Der Getränke-Adapter kümmert sich darum, die Funktionen der Getränke-Klasse in ihre Entsprechungen aus der Gerichte-Klasse zu übersetzen. Da <code class="highlighter-rouge">GetraenkeAdapter</code> eine Unterklasse von <code class="highlighter-rouge">Gericht</code> ist, sind keine weiteren Änderungen in der <code class="highlighter-rouge">Koch</code>-Klasse erforderlich.</p>
-
-<h4 id="ein-praxisbeispiel">Ein Praxisbeispiel</h4>
-
-<p>Wenn du schon eine Weile mit Java gearbeitet hast, wird dir das Interface <code>java.util.Iterator</code> vielleicht ein Begriff sein. Die Schnittstelle beinhaltet die Funktionen <code class="highlighter-rouge">hasNext()</code>, <code class="highlighter-rouge">next()</code> sowie <code class="highlighter-rouge">remove()</code> und löst damit ihren Vorgänger <code class="highlighter-rouge">java.util.Enumeration</code> ab. Die beiden Methoden der Enumeration-Schnittstelle sind <code class="highlighter-rouge">hasMoreElements()</code> und <code class="highlighter-rouge">nextElement()</code>. Es kann durchaus vorkommen, dass wir in einem alten Java-Projekt auf Enumerations stoßen, obwohl wir inzwischen Iterators verwenden. In einem solchen Fall würde es sich anbieten, mit einem Enumeration-Adapter zu arbeiten.</p>
-
-<p class="note">
-    Übrigens: Auch der Iterator ist ein sogenanntes Design Pattern. Zweck des Iterator-Patterns ist es, den Zugriff auf Objekte einer Collection zu ermöglichen, ohne die zugrunde liegende Implementierung zu kennen.
-</p>
-
-<form id="adapterForm">
-    <h3>Zwischenprüfung</h3>
-    <fieldset>
-        Was ist die Aufgabe des Adapter-Patterns?
-        <ul>
-            <li>
-                <label>
-                    <input type="radio" name="adapterA" />
-                    Transformation von angloamerikanischen Maßeinheiten in das metrische System und umgekehrt
-                </label>
-            </li>
-            <li>
-                <label>
-                    <input type="radio" name="adapterA" />
-                    Refactoring
-                </label>
-            </li>
-            <li>
-                <label>
-                    <input type="radio" name="adapterA" />
-                    Es reduziert eine Schnittstelle auf die Elemente, die ein bestimmter Client benötigt
-                </label>
-            </li>
-            <li>
-                <label>
-                    <input id="adapterA" type="radio" name="adapterA" />
-                    Übersetzung der Schnittstelle einer bestimmten Klasse in die Schnittstelle einer ähnlich gearteten anderen Klasse
-                </label>
-            </li>
-        </ul>
-    </fieldset>
-    <br />
-    <fieldset>
-        Welches Objekt wird der Adapter-Klasse im Konstruktor übergeben?
-        <ul>
-            <li>
-                <label>
-                    <input id="adapterB" type="radio" name="adapterB" />
-                    Das Objekt, dessen Schnittstelle für den Client übersetzt werden muss
-                </label>
-            </li>
-            <li>
-                <label>
-                    <input type="radio" name="adapterB" />
-                    Das Objekt, dessen Schnittstelle der Client erwartet
-                </label>
-            </li>
-            <li>
-                <label>
-                    <input type="radio" name="adapterB" />
-                    Das <code>null</code>-Objekt
-                </label>
-            </li>
-            <li>
-                <label>
-                    <input type="radio" name="adapterB" />
-                    Das Client-Objekt
-                </label>
-            </li>
-        </ul>
-    </fieldset>
-    <br />
-    <fieldset>
-        Ergänze den nachfolgenden Code-Ausschnitt. Zur Erinnerung: Das Interface <code>Iterator</code> besitzt die drei Methoden <code>hasNext()</code>, <code>next()</code> sowie <code>remove()</code>. Das Interface <code>Enumeration</code> hat lediglich die beiden Funktionen <code>hasMoreElements()</code> und <code>nextElement()</code>.
-    </fieldset>
-    <pre><div class="code"><code>
-import java.util.Enumeration;
-import java.util.Iterator;
-
-public class EnumerationAdapter implements Iterator&lt;Object&gt; {
-
-  private Enumeration&lt;?&gt; enumeration;
-
-  public EnumerationAdapter(Enumeration&lt;?&gt; enumeration) {
-    this.enumeration = enumeration;
+  <style>
+  code {
+      border-radius: 5px;
   }
-
-  public boolean <input type="text" id="adapterC1" style="width: 9ch;" /> { // Bitte vervollständigen
-    return <input type="text" id="adapterC2" style="width: 29ch;" />; // Bitte vervollständigen
-  }
-
-  public Object next() {
-    return <input type="text" id="adapterC3" style="width: 25ch;" />; // Bitte vervollständigen
-  }
-
-  public void <input type="text" id="adapterC4" style="width: 8ch;" /> { // Bitte vervollständigen
-    throw new UnsupportedOperationException();
-  }
-
-}
-    </code></div></pre>
-    <button type="button" onclick="checkAdapter()" id="adapterButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="adapterResult"></center>
-</form>
-
-
-    </body>
-
-    <!-- import jQuery -->
-    <script src="javascript/jquery-3.3.0.min.js"></script>
-
-    <!-- ion sound -->
-    <script src="javascript/ion/js/ion.sound.js"></script>
-
-    <!-- syntax highlighting -->
-    <script src="javascript/highlighting/highlight.pack.js"></script>
-
-    <!-- website appearance -->
-    <script src="javascript/script.js"></script>
-
-    <!-- multiple choice test evaluation -->
-    <script src="javascript/check-test.js"></script>
+  </style>
 
 </html>

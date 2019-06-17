@@ -1,23 +1,23 @@
 - name: Adapter
-  link: /adapter.html
+  link: /adapter-ex.html
   id: adapterMenu
 
 - name: Command
-  link: /command.html
+  link: /command-ex.html
   id: commandMenu
 
 - name: Observer
-  link: /observer.html
+  link: /observer-ex.html
   id: observerMenu
 
 - name: Factory
-  link: /factory.html
+  link: /factory-ex.html
   id: factoryMenu
 
 - name: Strategy
-  link: /strategy.html
+  link: /strategy-ex.html
   id: strategyMenu
 
 - name: Decorator
-  link: /decorator.html
+  link: /decorator-ex.html
   id: decoratorMenu

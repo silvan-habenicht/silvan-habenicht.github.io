@@ -1,6 +1,55 @@
+- name: Architekturmuster
+  class: category
+
+- name: Blackboard
+  class: pattern
+  link: /default_pattern.html
+
+- name: Dependency Injection
+  class: pattern
+  link: /default_pattern.html
+
+- name: Domain Model
+  class: pattern
+  link: /default_pattern.html
+
+- name: Domain Object
+  class: pattern
+  link: /default_pattern.html
+
+- name: Layers
+  class: pattern
+  link: /default_pattern.html
+
+- name: Microkernel
+  class: pattern
+  link: /default_pattern.html
+
+- name: Model View Controller
+  class: pattern
+  link: /default_pattern.html
+
+- name: Pipes and Filter
+  class: pattern
+  link: /default_pattern.html
+
+- name: Presentation-Abstraction-Control
+  class: pattern
+  link: /default_pattern.html
+
+- name: Reflection
+  class: pattern
+  link: /default_pattern.html
+
+- name: Shared Repository
+  class: pattern
+  link: /default_pattern.html
+
+
+
+
 - name: Datenmuster
   class: category
-  link: /default_pattern.html
 
 - name: Active Record
   class: pattern
@@ -44,19 +93,18 @@
 
 - name: Erzeugungsmuster
   class: category
-  link: /default_pattern.html
 
 - name: Abstract Factory
   class: pattern
-  link: /default_pattern.html
+  link: /abstract_factory.html
 
 - name: Builder
   class: pattern
-  link: /default_pattern.html
+  link: /builder.html
 
 - name: Factory Method
   class: pattern
-  link: /default_pattern.html
+  link: /factory_method.html
 
 - name: Prototype
   class: pattern
@@ -64,7 +112,7 @@
 
 - name: Singleton
   class: pattern
-  link: /default_pattern.html
+  link: /singleton.html
 
 
 
@@ -72,17 +120,12 @@
 
 - name: GUI-Muster
   class: category
-  link: /default_pattern.html
 
 - name: Application Controller
   class: pattern
   link: /default_pattern.html
 
 - name: Front Controller
-  class: pattern
-  link: /default_pattern.html
-
-- name: Model View Controller
   class: pattern
   link: /default_pattern.html
 
@@ -117,11 +160,10 @@
 
 - name: Strukturmuster
   class: category
-  link: /default_pattern.html
 
 - name: Adapter
   class: pattern
-  link: /default_pattern.html
+  link: /adapter.html
 
 - name: Bridge
   class: pattern
@@ -133,7 +175,7 @@
 
 - name: Decorator
   class: pattern
-  link: /default_pattern.html
+  link: /decorator.html
 
 - name: Facade
   class: pattern
@@ -153,11 +195,10 @@
 
 - name: Verhaltensmuster
   class: category
-  link: /default_pattern.html
 
 - name: Chain of Responsibility
   class: pattern
-  link: /default_pattern.html
+  link: /cor.html
 
 - name: Command
   class: pattern
@@ -185,7 +226,7 @@
 
 - name: Observer
   class: pattern
-  link: /default_pattern.html
+  link: /observer.html
 
 - name: State
   class: pattern
@@ -193,7 +234,7 @@
 
 - name: Strategy
   class: pattern
-  link: /default_pattern.html
+  link: /strategy.html
 
 - name: Template Method
   class: pattern

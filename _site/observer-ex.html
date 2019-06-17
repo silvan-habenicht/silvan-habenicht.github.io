@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="de">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title> BendisPasta | Lernplattform für Design Patterns</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/main.css">
+        <link rel="stylesheet" href="/javascript/highlighting/styles/school-book.css"> <!-- alternativ: pojoaque.css -->
+        <link rel="icon" type="image/jpg" href="/data/pictures/pasta_small.png"/>
+    </head>
+
+    <script>var home = false;</script>
+
+    <body id="main">
+
+      <!-- sidebar menu icon -->
+<div class="menuIcon">
+    <a id="toggle" onclick="toggleMenu()"><span></span></a>
+</div>
+
+<!-- sidebar menu -->
+<nav class="sideMenu" id="patternMenu">
+    <img src="/data/pictures/pasta_medium.png" alt="Logo">
+    <a id="titleMenu" style="font-weight:bold;box-shadow: none;font-style:normal;">Pattern-Menü</a>
+    
+      <a id="adapterMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/adapter-ex.html" >Adapter</a>
+    
+      <a id="commandMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/command-ex.html" >Command</a>
+    
+      <a id="observerMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/observer-ex.html" class="current">Observer</a>
+    
+      <a id="factoryMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/factory-ex.html" >Factory</a>
+    
+      <a id="strategyMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/strategy-ex.html" >Strategy</a>
+    
+      <a id="decoratorMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/decorator-ex.html" >Decorator</a>
+    
+    <br/>
+    <button type="button" style="width: auto;" disabled=true onclick="getCertificate()" id="certificate">Zertifikat erstellen</button>
+    <br/>
+    <button type="button" style="width: auto;" onclick="openLibrary()" >Pattern-Bibliothek</button>
+    <br/>
+    <br/>
+    <br/>
+</nav>
+
+
+      <!-- pop-up notification -->
+        <div id="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            Gratulation! Du kannst jetzt dein Zertifikat herunterladen
+        </div>
+
+
+      <hr class="italian" />
+      <a href="/index.html" style="text-decoration: none;"><h1>BendisPasta</h1></a>
+      <hr class="italian" />
+
+      <h2 id="das-observer-pattern-direkt-zum-test">Das Observer-Pattern <a class="testjump" href="#observerForm">…direkt zum Test…</a></h2>
+
+<p class="note">
+    Definition einer 1-zu-n-Abhängigkeit zwischen Objekten, damit im Fall einer Zustandsänderung eines Objekts alle davon abhängigen Objekte entsprechend benachrichtigt und automatisch aktualisiert werden.
+</p>
+
+<p>Werfen wir einen Blick in den Arbeitsalltag eines Kellners im <em>Ristorante BendisPasta</em>:</p>
+
+<ul>
+  <li>Eine Gruppe von neuen Gästen betritt das Restaurant.</li>
+  <li>Der Kellner bringt die Menükarten und fragt, was er den Gästen zu trinken bringen kann.</li>
+  <li>Die Gäste sagen, sie müssen noch überlegen.</li>
+  <li>Die Gäste haben sich entschieden und <em>warten</em> auf den Kellner.</li>
+  <li>Der Kellner kommt <em>irgendwann</em> wieder und nimmt eine Getränkebestellung entgegen.</li>
+  <li>Der Kellner übermittelt die Bestellung an den Barkeeper.</li>
+  <li>Der Kellner <em>wartet</em>, bis der Barkeeper die Getränke <em>irgendwann</em> eingeschenkt hat.</li>
+  <li>Der Kellner serviert die Getränke und fragt, was die Gäste essen möchten.</li>
+  <li>Die Gäste bitten um etwas Bedenkzeit.</li>
+  <li>Die Gäste <em>warten</em> auf den Kellner.</li>
+  <li><em>Irgendwann</em> kommt der Kellner wieder und nimmt die Bestellung auf.</li>
+  <li>Die Bestellung wird an die Küche weitergeleitet.</li>
+  <li><em>Irgendwann</em> geht der Kellner zurück zum Tisch, um Wein nachzuschenken.</li>
+  <li>Die Gläser sind jedoch noch voll.</li>
+  <li>Der Kellner erkundigt sich <em>irgendwann</em> in der Küche, ob schon ein Gericht servierbereit ist.</li>
+  <li>Der Koch schickt ihn weg. Der Kellner <em>wartet</em>.</li>
+  <li>Inzwischen ist die Bestellung zubereitet.</li>
+  <li>Der Kellner kommt <em>irgendwann</em> wieder zur Küche. Das Essen ist nun nicht mehr ganz warm</li>
+  <li>Er serviert die Bestellung.</li>
+  <li>…</li>
+</ul>
+
+<p>Zwei Wörter stechen in dieser Aufzählung besonders hervor — <em>warten</em> und <em>irgendwann</em>. Die Kellner unseres Restaurants leisten eigentlich hervorragende Arbeit, doch ihr Timing ist unter aller Sau. Während eines Arbeitstages verbringen sie einen Großteil ihrer Zeit damit zu warten oder unnötige Strecken zu laufen, weil sie nicht wissen, wann sie wo zu sein haben. Diese Vergeudung von kostbarer Arbeitszeit sollte Geschäftsführer Jens nicht weiter auf sich sitzen lassen.</p>
+
+<h4 id="was-ist-zu-tun">Was ist zu tun?</h4>
+
+<p>Derzeit müssen die Kellner von <em>BendisPasta</em> einen Teil des Restaurants nach dem anderen abklappern und sich jedes Mal erkundigen, ob sie dort gerade gebraucht werden oder nicht. Umgekehrt wird ein Schuh draus: Würden die Kellner nur im Bedarfsfall zu sich gerufen, so ließe sich deren Arbeitseffizienz enorm steigern. Wir möchten daher ein neues System etablieren, in welchem die Kellner benachrichtigt werden können, sobald ein Kunde bestellen möchte bzw. sobald ein Gericht fertig zubereitet worden ist.</p>
+
+<p>Die Lösung</p>
+
+<p>Glücklicherweise müssen wir uns auch für dieses Problem nicht mehr den Kopf zerbrechen, denn das Observer-Pattern bietet hierfür eine praktikable Schablone. Und nicht nur das — im Package <code class="highlighter-rouge">java.util</code> findet sich sogar ein entsprechendes Framework, welches wir direkt einsetzen können! Dazu zählen das Interface <code class="highlighter-rouge">Observer</code> sowie die Klasse <code class="highlighter-rouge">Observable</code>.</p>
+
+<p class="note">
+    Hinweis: <code> java.util.Observer </code> und <code> java.util.Observable </code> sind inzwischen <em>depracated</em> und sollten nicht mehr verwendet werden. Die <a target="blank" href="https://docs.oracle.com/javase/9/docs/api/java/util/Observable.html">Begründung von Oracle</a> macht deutlich, dass das Observer-Pattern auch als ein <em>Antipattern</em> betrachtet werden kann.
+</p>
+
+<div style="display:flex; flex-wrap: wrap;">
+    <div style="margin-left: auto;margin-right: auto;overflow-x: scroll;">
+    <h4>Observer-API</h4>
+    <pre><div class="code" style="max-width: 300px;"><code>
+interface Observer {
+
+   void update(Observable o, Object arg);
+
+}
+    </code></div></pre>
+    </div>
+    <div style="margin-left: auto;margin-right: auto;overflow-x: scroll;">
+    <h4>Observable-API</h4>
+    <pre><div class="code" style="max-width: 300px;"><code>
+class Observable {
+
+  void addObserver(Observer o) {...}
+  protected void clearChanged() {...}
+  int countObservers() {...}
+  void deleteObserver(Observer o) {...}
+  void deleteObservers() {...}
+  boolean hasChanged() {...}
+  void notifyObservers() {...}
+  void notifyObservers(Object arg) {...}
+  protected void setChanged() {...}
+
+}
+    </code></div></pre>
+    </div>
+</div>
+
+<p>In unserem Fall implementiert der Kellner das Interface <code class="highlighter-rouge">Observer</code>, damit er von den <code class="highlighter-rouge">Observables</code>, die er beobachtet (<em>observe</em>), benachrichtigt werden kann. Dazu muss er eine einzige Methode <code class="highlighter-rouge">update()</code> implementieren; sie wird später von den Observables aufgerufen, welche darin eine Referenz auf sich selbst übergeben. Auf diese Weise kann der Kellner direkt auf das Objekt zugreifen, von dem er benachrichtigt wurde:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Kellner</span> <span class="kd">implements</span> <span class="n">Observer</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="n">Observable</span> <span class="n">observable</span><span class="o">,</span> <span class="n">Object</span> <span class="n">arg</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">observable</span> <span class="k">instanceof</span> <span class="n">Tisch</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Tisch</span> <span class="n">tisch</span> <span class="o">=</span> <span class="o">(</span><span class="n">Tisch</span><span class="o">)</span> <span class="n">observable</span><span class="o">;</span>
+            <span class="n">zumOrtGehen</span><span class="o">(</span><span class="n">tisch</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">observable</span> <span class="k">instanceof</span> <span class="n">Theke</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Theke</span> <span class="n">theke</span> <span class="o">=</span> <span class="o">(</span><span class="n">Theke</span><span class="o">)</span> <span class="n">observable</span><span class="o">;</span>
+            <span class="n">zumOrtGehen</span><span class="o">(</span><span class="n">theke</span><span class="o">);</span>
+        <span class="o">}</span> <span class="c1">// ggf. Abfrage weiterer in Frage kommenden Observables</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">zumOrtGehen</span><span class="o">(</span><span class="n">Ort</span> <span class="n">ort</span><span class="o">)</span> <span class="o">{}</span> <span class="c1">// zum Restaurantteil „ort“ gehen</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Unterklassen von <code class="highlighter-rouge">java.util.Observable</code>, die einen Observer bzw. im konkreten Fall einen Kellner benachrichtigen möchten, können dazu einfach die geerbte Methode <code class="highlighter-rouge">notifyObservers()</code> nutzen. Ihr Aufruf hat zur Folge, dass in allen eingetragenen Observern die Update-Methode ausgeführt wird; als Parameter wird das Observable selbst übergeben. Ein solches Observable könnte ein Objekt der (hier nicht genauer spezifizierten) Klasse <code class="highlighter-rouge">Tisch</code> sein:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Tisch</span> <span class="kd">extends</span> <span class="n">Observable</span> <span class="kd">implements</span> <span class="n">Ort</span> <span class="o">{</span>
+
+    <span class="c1">// diverse Instanzvariablen für Tischnummer, Standort, Bestellung o. Ä.</span>
+
+    <span class="kd">public</span> <span class="nf">Tisch</span><span class="o">()</span> <span class="o">{}</span>
+
+    <span class="c1">// diverse Methoden</span>
+
+    <span class="c1">// Wann immer an einem Tisch etwas benötigt wird, wird diese Funktion aufgerufen</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">statusAenderung</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">setChanged</span><span class="o">();</span>
+        <span class="n">notifyObservers</span><span class="o">();</span> <span class="c1">// Kellner und sonstige Observer benachrichtigen</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<form id="observerForm">
+    <h3>Multiple Choice-Test</h3>
+    <fieldset>
+        Wozu dient das Observer-Muster?
+        <ul>
+            <li>
+                <label>
+                    <input type="radio" name="observerA" />
+                    Vermeidung von zeitgleichen Objektzugriffen bei nebenläufigen Anwendungen
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="observerA" />
+                    Effizienteres Pair-Programming
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="observerA" />
+                    Kontrolle der Nutzung von Variablentypen
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" id="observerA" name="observerA" />
+                    Objekte über Änderungen in einem anderen Objekt auf dem Laufenden halten
+                </label>
+            </li>
+        </ul>
+    </fieldset>
+    <br />
+    <fieldset>
+        Welche Aussagen stimmen nicht?
+        <ul>
+            <li>
+                <label>
+                    <input type="checkbox" id="observerB1" />
+                    Ein Observable kann mehrere Observer registrieren
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" id="observerB2" />
+                    Ein Observer-Objekt kann sich in mehreren Obervables registrieren
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" id="observerB3" />
+                    <code>java.util.Observable </code> ist ein Interface
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" id="observerB4" />
+                    <code>java.util.Observer </code> ist eine abstrakte Klasse
+                </label>
+            </li>
+        </ul>
+    </fieldset>
+    <br />
+    <fieldset>
+        Vervollständige das folgende Klassengerüst.
+    </fieldset>
+    <pre><div class="code"><code>
+public class Theke <input type="text" id="observerC1" style="width: 7ch;font-weight: bold; color: rgb(0,85,153);" /> <input type="text" id="observerC2" style="width: 10ch;font-weight: bold; color: rgb(44,0,159);" /> {
+
+private boolean bestellungAbholbereit = false;
+
+public Theke() {...}
+
+/* Diese Methode wird aufgerufen, nachdem alle Getränke einer Bestellug eingeschänkt wurden.
+ * Sie wird erneut aufgerufen, sobald diese abgeholt worden sind. */
+  public void abholstatusAendern() {
+    bestellungAbholbereit = <input type="text" id="observerC3" style="width: 22ch;" />; // Abholstatus umkehren
+    statusAenderung();
+  }
+
+  public void statusAenderung() {
+    setChanged();
+    <input type="text" id="observerC4" style="width: 17ch;" />; // Kellner und sonstige Observer benachrichtigen
+  }
+
+}
+    </code></div></pre>
+    <button type="button" onclick="checkObserver()" id="observerButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="observerResult"></center>
+</form>
+
+
+    </body>
+
+    <!-- import jQuery -->
+    <script src="javascript/jquery-3.3.0.min.js"></script>
+
+    <!-- ion sound -->
+    <script src="javascript/ion/js/ion.sound.js"></script>
+
+    <!-- syntax highlighting -->
+    <script src="javascript/highlighting/highlight.pack.js"></script>
+
+    <!-- website appearance -->
+    <script src="javascript/script.js"></script>
+
+    <!-- multiple choice test evaluation -->
+    <script src="javascript/check-test.js"></script>
+
+</html>

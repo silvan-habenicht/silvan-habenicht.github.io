@@ -1,205 +1,389 @@
 <!DOCTYPE html>
 <html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Strategy Pattern - BendisPasta | Lernplattform für Design Patterns</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/javascript/highlighting/styles/pojoaque.css"> <!-- alternativ: school-book.css -->
+    <link rel="icon" type="image/jpg" href="/data/pictures/pasta_small.png"/>
+  </head>
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>BendisPasta | Lernplattform für Design Patterns</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/main.css">
-        <link rel="stylesheet" href="/javascript/highlighting/styles/school-book.css"> <!-- alternativ: pojoaque.css -->
-        <link rel="icon" type="image/jpg" href="/data/pictures/pasta_small.png"/>
-    </head>
+  <style>
+    body {
+      height: 100%;
+    }
 
-    <script>var home = false;</script>
+    a.category {
+      font-size: 20px;
+      background: darkred;
+      color: beige;
+      padding: 0px 8px 0px 46px;
+    }
 
-    <body id="main">
+    a.category:hover {
+      box-shadow: none;
+    }
 
-      <!-- sidebar menu icon -->
+    a.pattern {
+      font-size:14px;
+      padding: 4px 8px 4px 60px;
+    }
+
+    .sideMenu img {
+        margin-left: 0;
+    }
+
+  </style>
+
+  <script>var home = false;</script>
+
+  <body id="main">
+    <!-- sidebar menu icon -->
 <div class="menuIcon">
     <a id="toggle" onclick="toggleMenu()"><span></span></a>
 </div>
 
 <!-- sidebar menu -->
 <nav class="sideMenu" id="patternMenu">
-    <img src="/data/pictures/pasta_medium.png" alt="Logo">
-    <a id="titleMenu" style="font-weight:bold;box-shadow: none;font-style:normal;">Pattern-Menü</a>
+    <center><img src="/data/pictures/pasta_medium.png" alt="Logo"></center>
     
-      <a id="adapterMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/adapter.html" >Adapter</a>
+      
+        </br>
+        <a class="category">Architekturmuster</a>
+      
+      
     
-      <a id="commandMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/command.html" >Command</a>
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Blackboard</a>
+      
     
-      <a id="observerMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/observer.html" >Observer</a>
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Dependency Injection</a>
+      
     
-      <a id="factoryMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/factory.html" >Factory</a>
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Domain Model</a>
+      
     
-      <a id="strategyMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/strategy.html" class="current">Strategy</a>
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Domain Object</a>
+      
     
-      <a id="decoratorMenu"style="text-indent:15px;font-size:14px;" onclick="conditionCloseMenu()" href="/decorator.html" >Decorator</a>
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Layers</a>
+      
     
-    <br/>
-    <button type="button" style="width: auto;" disabled=true onclick="getCertificate()" id="certificate">Zertifikat erstellen</button>
-    <br/>
-    <button type="button" style="width: auto;" onclick="openLibrary()" >Pattern-Bibliothek</button>
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Microkernel</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Model View Controller</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Pipes and Filter</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Presentation-Abstraction-Control</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Reflection</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Shared Repository</a>
+      
+    
+      
+        </br>
+        <a class="category">Datenmuster</a>
+      
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Active Record</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Data Access Object</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Data Transfer Object</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Identity Field</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Identity Map</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Lazy Loading</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Row Data Gateway</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Table Data Gateway</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Unit of Work</a>
+      
+    
+      
+        </br>
+        <a class="category">Erzeugungsmuster</a>
+      
+      
+    
+      
+      
+        <a class="pattern" href="/abstract_factory.html" >Abstract Factory</a>
+      
+    
+      
+      
+        <a class="pattern" href="/builder.html" >Builder</a>
+      
+    
+      
+      
+        <a class="pattern" href="/factory_method.html" >Factory Method</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Prototype</a>
+      
+    
+      
+      
+        <a class="pattern" href="/singleton.html" >Singleton</a>
+      
+    
+      
+        </br>
+        <a class="category">GUI-Muster</a>
+      
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Application Controller</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Front Controller</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Model View Presenter</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Model View ViewModel</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Page Controller</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Template View</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Transform View</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Two Step View</a>
+      
+    
+      
+        </br>
+        <a class="category">Strukturmuster</a>
+      
+      
+    
+      
+      
+        <a class="pattern" href="/adapter.html" >Adapter</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Bridge</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Composite</a>
+      
+    
+      
+      
+        <a class="pattern" href="/decorator.html" >Decorator</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Facade</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Flyweight</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Proxy</a>
+      
+    
+      
+        </br>
+        <a class="category">Verhaltensmuster</a>
+      
+      
+    
+      
+      
+        <a class="pattern" href="/cor.html" >Chain of Responsibility</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Command</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Interpreter</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Iterator</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Mediator</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Memento</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Null Object</a>
+      
+    
+      
+      
+        <a class="pattern" href="/observer.html" >Observer</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >State</a>
+      
+    
+      
+      
+        <a class="pattern" href="/strategy.html" >Strategy</a>
+      
+    
+      
+      
+        <a class="pattern" href="/template.html" >Template Method</a>
+      
+    
+      
+      
+        <a class="pattern" href="/default_pattern.html"  style="color: grey;" >Visitor</a>
+      
+    
     <br/>
     <br/>
     <br/>
 </nav>
 
 
-      <!-- pop-up notification -->
-        <div id="alert">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            Gratulation! Du kannst jetzt dein Zertifikat herunterladen
-        </div>
+    <hr class="italian" />
+    <h1>Strategy Pattern</h1>
+    <hr class="italian" />
 
-
-      <hr class="italian" />
-      <a href="/index.html" style="text-decoration: none;"><h1>BendisPasta<h1></a>
-      <hr class="italian" />
-
-      <h2 id="das-strategy-pattern-direkt-zum-test">Das Strategy-Pattern <a class="testjump" href="#strategyForm">…direkt zum Test…</a></h2>
-
-<p class="note">
+    <p class="note">
     Zur „Definition einer Familie von einzeln gekapselten, austauschbaren Algorithmen. Das Design Pattern Strategy (Strategie) ermöglicht eine variable und von den Clients unabhängige Nutzung des Algorithmus.“ [GoF]
 </p>
 
-<p>Die Pizzeria <em>BendisPasta</em> legt viel Wert auf ein vielseitiges und abwechslungsreiches Angebot. Aus diesem Grund müssen die Gerichte der Karte je nach Saison und Koch auf unterschiedliche Weise zubereitet werden. So soll auch die Pizza nicht nur nach klassisch italienischer Rezeptur, sondern auch auf amerikanischer Art gebacken werden können. Zudem will man sich offen halten, noch weitere Rezepturen und Variationen anbieten und bestehende Rezepte jederzeit ändern zu können.</p>
+<h2 id="patterns-in-freier-wildbahn">Patterns in freier Wildbahn</h2>
 
-<h4 id="was-ist-zu-tun">Was ist zu tun?</h4>
+<p><a href="https://github.com/bendisposto/propra_vl_pattern/tree/master/src/strategy_pattern">ArbeitsAnweisung für Pizzeria-Mitarbeiter</a> - abgerufen am 17. Juni 2019</p>
 
-<p>Derzeit ist die Methode <code class="highlighter-rouge">zubereiten()</code> in den konkreten Gerichte-Klassen der einzige Ort, an dem die einzelnen Schritte einer Rezeptur spezifiziert, d. h. implementiert sind. Wenn wir also eine Pizza Margherita nicht auf italienische, sondern auf amerikanische Art zubereiten wollen, so müssten wir dazu die gesamte Methode <code class="highlighter-rouge">zubereiten()</code> in der Klasse <code class="highlighter-rouge">PizzaMargherita</code> überschreiben. Wir sind nun auf der Suche nach einer Möglichkeit, um den darin enthaltenen Code flexibel austauschen zu können.</p>
+  </body>
 
-<p>Die Lösung</p>
+  <!-- import jQuery -->
+  <script src="javascript/jquery-3.3.0.min.js"></script>
 
-<p>Hier kommt uns das Strategy-Pattern wie gerufen. Dieses empfiehlt uns, die unterschiedlichen Zubereitungsarten in eigene Klassen zu kapseln und die gewünschte Zubereitungsart in einer Instanzvariable unseres Gerichtes zu speichern. Der Algorithmus zum Zubereiten der Pizza ist dann nicht mehr in der Pizza-Klasse selbst implementiert, stattdessen wird er über den Zugriff auf die darin gespeicherte Zubereitungsart aufgerufen. Wir erstellen also zunächst ein neues Interface, welches wir <code class="highlighter-rouge">Zubereitungsart</code> nennen:</p>
+  <!-- import Popper.js -->
+  <script src="javascript/popper.min.js"></script>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Zubereitungsart</span> <span class="o">{</span>
+  <!-- import Bootstrap -->
+  <script src="javascript/bootstrap.min.js"></script>
 
-    <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">zutaten</span><span class="o">);</span>
+  <!-- syntax highlighting -->
+  <script src="javascript/highlighting/highlight.pack.js"></script>
 
-<span class="o">}</span>
-</code></pre></div></div>
+  <!-- website appearance -->
+  <script src="javascript/script.js"></script>
 
-<p>Eine konkrete Zubereitungsart wäre z. B. <code class="highlighter-rouge">ItalienischeZubereitungsart</code>:</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ItalienischeZubereitungsart</span> <span class="kd">implements</span> <span class="n">Zubereitungsart</span> <span class="o">{</span>
-
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">zutaten</span><span class="o">)</span> <span class="o">{</span>
-     <span class="c1">// Pizza mit den gegebenen Zutaten auf italienische Art zubereiten</span>
-    <span class="o">}</span>
-
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>Unser neues Interface hat eine einzige Methode, für die es geschaffen wurde: <code class="highlighter-rouge">zubereiten(String[] zutaten)</code>. In unserer abstrakten Pizza-Klasse fügen wir nun die neue Instanzvariable <code class="highlighter-rouge">zubereitungsart</code> hinzu und ergänzen die Möglichkeit die gewünschte Zubereitungsart schon im Konstruktor zu spezifizieren:</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Pizza</span> <span class="kd">implements</span> <span class="n">Gericht</span> <span class="o">{</span>
-
-    <span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">zutaten</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">Zubereitungsart</span> <span class="n">zubereitungsart</span><span class="o">;</span>
-    <span class="kd">protected</span> <span class="kt">double</span> <span class="n">preis</span><span class="o">;</span>
-
-    <span class="kd">public</span> <span class="nf">Pizza</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">zutaten</span><span class="o">,</span> <span class="n">Zubereitungsart</span> <span class="n">zubereitungsart</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">zutaten</span> <span class="o">=</span> <span class="n">zutaten</span><span class="o">;</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">zubereitungsart</span> <span class="o">=</span> <span class="n">zubereitungsart</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getPreis</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">preis</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span>  <span class="kt">void</span> <span class="nf">zubereiten</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">zubereitungsart</span><span class="o">.</span><span class="na">zubereiten</span><span class="o">(</span><span class="n">zutaten</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">servieren</span><span class="o">(){</span>
-      <span class="c1">// die Pizza servieren</span>
-    <span class="o">}</span>
-
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>So könnte dann eine konkrete Klasse vom Typ Pizza aussehen:</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PizzaMargherita</span> <span class="kd">extends</span> <span class="n">Pizza</span> <span class="o">{</span>
-
-    <span class="kd">public</span> <span class="nf">PizzaMargherita</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">(</span><span class="k">new</span> <span class="n">ItalienischeZubereitungsart</span><span class="o">());</span> <span class="c1">// Standard-Zubereitungsart</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="nf">PizzaMargherita</span><span class="o">(</span><span class="n">Zubereitungsart</span> <span class="n">zubereitungsart</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="o">{</span><span class="s">"Tomatensauce"</span><span class="o">,</span> <span class="s">"Mozarella"</span><span class="o">},</span> <span class="n">zubereitungsart</span><span class="o">);</span>
-    <span class="o">}</span>
-
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>Nun können wir Pizzen flexibel mit unterschiedlichen Zubereitungsarten erzeugen. Mithilfe einer Setter-methode — <code class="highlighter-rouge">setZubereitungsart()</code> — könnten wir die Zubereitungsart sogar zur Laufzeit ändern. Wird eine Zubereitungsart bearbeitet, so werden die Änderungen von allen Gerichteklassen, die diese Zubereitungsart verwenden, automatisch übernommen. Wie du siehst, bietet das Strategy-Pattern eine ganze Reihe von Vorteilen.</p>
-
-<form id="strategyForm">
-    <h3>Multiple Choice-Test</h3>
-    <fieldset>
-        Was ist die wesentliche Motivation des Strategy-Ansatzes?
-        <ul>
-            <li>
-                <label>
-                    <input type="radio" name="strategyA" />
-                    Einen konkreten Algorithmus möglichst effizient gestalten
-                </label>
-            </li>
-            <li>
-                <label>
-                    <input type="radio" name="strategyA" />
-                    Die Menge an Klassenvariablen minimieren
-                </label>
-            </li>
-            <li>
-                <label>
-                    <input type="radio" name="strategyA" />
-                    Den vorrangigen Zweck eines Projektes stets im Auge behalten
-                </label>
-            </li>
-            <li>
-                <label>
-                    <input type="radio" id="strategyA" name="strategyA" />
-                    Algorithmen bzw. Methoden einer Klasse leichter austauschbar halten
-                </label>
-            </li>
-        </ul>
-    </fieldset>
-    <br />
-    <fieldset>
-        Ergänze das Gerüst für eine neue Zubereitungsart <code>AmerikanischeZubereitungsart</code>
-    </fieldset>
-    <pre><div class="code"><code>
-public class <input type="text" id="strategyC1" style="width: 28ch;font-weight: bold; color: rgb(44,0,159);" /> <input type="text" id="strategyC2" style="width: 10ch;font-weight: bold; color: rgb(0,85,153);" /> <input type="text" id="strategyC3" style="width: 15ch;font-weight: bold; color: rgb(44,0,159);" /> {
-
-public <input type="text" id="strategyC4" style="width: 4ch;font-weight: bold; color: rgb(0,85,153);" /> <input type="text" id="strategyC5" style="width: 10ch;color: rgb(44,0,159);font-weight: bold;" />(<input type="text" id="strategyC6" style="width: 8ch;" /> zutaten) { // Rückgabetyp, Methodennamen und Parametertyp eintragen
-... // Pizza mit den gegebenen Zutaten auf amerikanische Art zubereiten
-}
-
-}
-    </code></div></pre>
-    <button type="button" onclick="checkStrategy()" id="strategyButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="strategyResult"></center>
-</form>
-
-
-    </body>
-
-    <!-- import jQuery -->
-    <script src="javascript/jquery-3.3.0.min.js"></script>
-
-    <!-- ion sound -->
-    <script src="javascript/ion/js/ion.sound.js"></script>
-
-    <!-- syntax highlighting -->
-    <script src="javascript/highlighting/highlight.pack.js"></script>
-
-    <!-- website appearance -->
-    <script src="javascript/script.js"></script>
-
-    <!-- multiple choice test evaluation -->
-    <script src="javascript/check-test.js"></script>
+  <style>
+  code {
+      border-radius: 5px;
+  }
+  </style>
 
 </html>

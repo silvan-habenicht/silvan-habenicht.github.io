@@ -1,9 +1,7 @@
 ---
-title: BendisPasta
+title: Template Method-Pattern
 layout: library_index
 ---
-
-## Template Method-Pattern
 
 <p class="note">
     Zur „Definition der Grundstruktur eines Algorithmus in einer Operation sowie Delegation einiger Ablaufschritte an Unterklassen. Das Design Pattern Template Method (Schablonenmethode) ermöglicht den Unterklassen, bestimmte Schritte eines Algorithmus zu überschreiben, ohne dessen grundlegende Struktur zu verändern.“ [GoF]
@@ -78,4 +76,8 @@ Man erkennt, dass die Implementierungen der ``zubereiten()``-Methode sehr ähnli
       ... // Implementierung der übrigen Methoden
   }
 
-```  
+```
+
+## Patterns in freier Wildbahn
+
+[AccountCreator](https://github.com/java9s/template-method-pattern) - abgerufen am 17. Juni 2019
