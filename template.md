@@ -1,11 +1,10 @@
 ---
-title: Template Method-Pattern
+title: Template Method
 layout: library_index
 ---
 
-<p class="note">
-    Zur „Definition der Grundstruktur eines Algorithmus in einer Operation sowie Delegation einiger Ablaufschritte an Unterklassen. Das Design Pattern Template Method (Schablonenmethode) ermöglicht den Unterklassen, bestimmte Schritte eines Algorithmus zu überschreiben, ohne dessen grundlegende Struktur zu verändern.“ [GoF]
-</p>
+
+> Zur „Definition der Grundstruktur eines Algorithmus in einer Operation sowie Delegation einiger Ablaufschritte an Unterklassen. Das Design Pattern Template Method (Schablonenmethode) ermöglicht den Unterklassen, bestimmte Schritte eines Algorithmus zu überschreiben, ohne dessen grundlegende Struktur zu verändern.“ [GoF]
 
 Betrachten wir die folgende abstrakte Klasse mit dem Namen „Pizza“
 

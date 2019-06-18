@@ -1,11 +1,9 @@
 ---
-title: Chain of Responsibility Pattern
+title: Chain of Responsibility
 layout: library_index
 ---
 
-<p class="note">
-    Zur „Vermeidung der Kopplung eines Request-Absenders mit seinem Empfänger, indem mehr als ein Objekt in die Lage versetzt wird, den Request zu bearbeiten. Die empfangenden Objekte werden miteinander verkettet und der Request wird dann so lange entlang dieser Kette weitergeleitet, bis er von einem Objekt angenommen und bearbeitet wird.“ [GoF]
-</p>
+> Zur „Vermeidung der Kopplung eines Request-Absenders mit seinem Empfänger, indem mehr als ein Objekt in die Lage versetzt wird, den Request zu bearbeiten. Die empfangenden Objekte werden miteinander verkettet und der Request wird dann so lange entlang dieser Kette weitergeleitet, bis er von einem Objekt angenommen und bearbeitet wird.“ [GoF]
 
 ## Patterns in freier Wildbahn
 

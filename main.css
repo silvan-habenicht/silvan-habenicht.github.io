@@ -68,6 +68,15 @@ p.note {
     border-radius: 2px;
 }
 
+blockquote {
+    background: beige;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border-radius: 2px;
+}
+
 button {
     font-family: inherit;
     font-size: 1em;

@@ -1,11 +1,9 @@
 ---
-title: Observer Pattern
+title: Observer
 layout: library_index
 ---
 
-<p class="note">
-    Definition einer 1-zu-n-Abhängigkeit zwischen Objekten, damit im Fall einer Zustandsänderung eines Objekts alle davon abhängigen Objekte entsprechend benachrichtigt und automatisch aktualisiert werden.
-</p>
+> Zur „Definition einer 1-zu-n-Abhängigkeit zwischen Objekten, damit im Fall einer Zustandsänderung eines Objekts alle davon abhängigen Objekte entsprechend benachrichtigt und automatisch aktualisiert werden.“ [GoF]
 
 ## Patterns in freier Wildbahn
 

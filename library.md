@@ -1,4 +1,4 @@
 ---
-title: BendisPasta Pattern-Bibliothek
+title: BendisPasta | Pattern Bibliothek
 layout: library_index
 ---

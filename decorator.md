@@ -1,11 +1,9 @@
 ---
-title: Decorator Pattern
+title: Decorator
 layout: library_index
 ---
 
-<p class="note">
-    Zur „dynamische[n] Erweiterung der Funktionalität eines Objekts. Decorator-Objekte stellen hinsichtlich der Ergänzung einer Klasse um weitere Zuständigkeiten eine flexible Alternative zur Unterklassenbildung dar.“ [GoF]
-</p>
+> Zur „dynamische[n] Erweiterung der Funktionalität eines Objekts. Decorator-Objekte stellen hinsichtlich der Ergänzung einer Klasse um weitere Zuständigkeiten eine flexible Alternative zur Unterklassenbildung dar.“ [GoF]
 
 ## Patterns in freier Wildbahn
 

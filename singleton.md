@@ -1,11 +1,9 @@
 ---
-title: Singleton Pattern
+title: Singleton
 layout: library_index
 ---
 
-<p class="note">
-    Zur „Sicherstellung der Existenz nur einer einzigen Klasseninstanz sowie Bereitstellung eines globalen Zugriffspunkts für diese Instanz.“ [GoF]
-</p>
+> Zur „Sicherstellung der Existenz nur einer einzigen Klasseninstanz sowie Bereitstellung eines globalen Zugriffspunkts für diese Instanz.“ [GoF]
 
 ## Patterns in freier Wildbahn
 

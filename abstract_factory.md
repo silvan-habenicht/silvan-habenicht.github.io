@@ -1,11 +1,9 @@
 ---
-title: Abstract Factory Pattern
+title: Abstract Factory
 layout: library_index
 ---
 
-<p class="note">
-    Zur „Bereitstellung einer Schnittstelle zum Erzeugen verwandter oder voneinander abhängiger Objektfamilien ohne die Benennung ihrer konkreten Klassen.“ [GoF]
-</p>
+> Zur „Bereitstellung einer Schnittstelle zum Erzeugen verwandter oder voneinander abhängiger Objektfamilien ohne die Benennung ihrer konkreten Klassen.“ [GoF]
 
 ## Patterns in freier Wildbahn
 

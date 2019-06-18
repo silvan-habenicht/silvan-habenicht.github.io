@@ -48,6 +48,7 @@
 
 
 
+
 - name: Datenmuster
   class: category
 
@@ -108,7 +109,7 @@
 
 - name: Prototype
   class: pattern
-  link: /default_pattern.html
+  link: /prototype.html
 
 - name: Singleton
   class: pattern
@@ -167,11 +168,11 @@
 
 - name: Bridge
   class: pattern
-  link: /default_pattern.html
+  link: /bridge.html
 
 - name: Composite
   class: pattern
-  link: /default_pattern.html
+  link: /composite.html
 
 - name: Decorator
   class: pattern
@@ -179,15 +180,15 @@
 
 - name: Facade
   class: pattern
-  link: /default_pattern.html
+  link: /facade.html
 
 - name: Flyweight
   class: pattern
-  link: /default_pattern.html
+  link: /flyweight.html
 
 - name: Proxy
   class: pattern
-  link: /default_pattern.html
+  link: /proxy.html
 
 
 
@@ -202,23 +203,23 @@
 
 - name: Command
   class: pattern
-  link: /default_pattern.html
+  link: /command.html
 
 - name: Interpreter
   class: pattern
-  link: /default_pattern.html
+  link: /interpreter.html
 
 - name: Iterator
   class: pattern
-  link: /default_pattern.html
+  link: /iterator.html
 
 - name: Mediator
   class: pattern
-  link: /default_pattern.html
+  link: /mediator.html
 
 - name: Memento
   class: pattern
-  link: /default_pattern.html
+  link: /memento.html
 
 - name: Null Object
   class: pattern
@@ -230,7 +231,7 @@
 
 - name: State
   class: pattern
-  link: /default_pattern.html
+  link: /state.html
 
 - name: Strategy
   class: pattern
@@ -242,4 +243,15 @@
 
 - name: Visitor
   class: pattern
-  link: /default_pattern.html
+  link: /visitor.html
+
+
+
+
+
+- name: Weitere Muster
+  class: category
+
+- name: Event Sourcing
+  class: pattern
+  link: /event_sourcing.html
