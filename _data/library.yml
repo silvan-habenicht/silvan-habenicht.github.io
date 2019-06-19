@@ -1,10 +1,6 @@
 - name: Architekturmuster
   class: category
 
-- name: Blackboard
-  class: pattern
-  link: /default_pattern.html
-
 - name: Dependency Injection
   class: pattern
   link: /default_pattern.html
@@ -27,7 +23,7 @@
 
 - name: Model View Controller
   class: pattern
-  link: /default_pattern.html
+  link: /mvc.html
 
 - name: Pipes and Filter
   class: pattern
@@ -62,7 +58,7 @@
 
 - name: Data Transfer Object
   class: pattern
-  link: /default_pattern.html
+  link: /dto.html
 
 - name: Identity Field
   class: pattern
@@ -128,7 +124,7 @@
 
 - name: Front Controller
   class: pattern
-  link: /default_pattern.html
+  link: /front_controller.html
 
 - name: Model View Presenter
   class: pattern
@@ -197,6 +193,10 @@
 - name: Verhaltensmuster
   class: category
 
+- name: Blackboard
+  class: pattern
+  link: /default_pattern.html
+
 - name: Chain of Responsibility
   class: pattern
   link: /cor.html
@@ -223,7 +223,7 @@
 
 - name: Null Object
   class: pattern
-  link: /default_pattern.html
+  link: /nullobject.html
 
 - name: Observer
   class: pattern

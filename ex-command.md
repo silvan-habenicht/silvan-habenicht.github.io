@@ -63,7 +63,7 @@ public class Kellner {
     private List<Befehl> bestellung;
 
     public Kellner () {
-        bestellung = new ArrayList<Befehl>();
+        bestellung = new ArrayList<>();
     }
 
     public void bestellungEntgegennehmen(Befehl befehl) {

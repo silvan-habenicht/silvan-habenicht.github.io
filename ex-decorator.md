@@ -47,12 +47,13 @@ public abstract class PizzaGarnitur extends Pizza {
         this.pizza = pizza;
     }
 
+    @Override
     public void servieren() {
         pizza.servieren();
     }
 
     public double preis() {
-        return pizza.getPreis() + this.preis;
+        return pizza.preis() + this.preis;
     }
 
 }
@@ -68,6 +69,7 @@ public class Knoblauch extends PizzaGarnitur {
         this.preis = 0.5;
     }
 
+    @Override
     public void zubereiten() {
         super.zubereiten();
         ... // mit Knoblauch garnieren

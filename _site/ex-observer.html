@@ -119,14 +119,14 @@ interface Observer {
     <pre><div class="code" style="max-width: 300px;"><code>
 class Observable {
 
-  void addObserver(Observer o) {...}
+  public void addObserver(Observer o) {...}
   protected void clearChanged() {...}
-  int countObservers() {...}
-  void deleteObserver(Observer o) {...}
-  void deleteObservers() {...}
-  boolean hasChanged() {...}
-  void notifyObservers() {...}
-  void notifyObservers(Object arg) {...}
+  public int countObservers() {...}
+  public void deleteObserver(Observer o) {...}
+  public void deleteObservers() {...}
+  public boolean hasChanged() {...}
+  public void notifyObservers() {...}
+  public void notifyObservers(Object arg) {...}
   protected void setChanged() {...}
 
 }

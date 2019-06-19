@@ -47,15 +47,10 @@ public abstract class Pizza implements Gericht {
 
     private String[] zutaten;
     private Zubereitungsart zubereitungsart;
-    protected double preis;
 
     public Pizza(String[] zutaten, Zubereitungsart zubereitungsart) {
         this.zutaten = zutaten;
         this.zubereitungsart = zubereitungsart;
-    }
-
-    public double getPreis() {
-        return preis;
     }
 
     public  void zubereiten() {
@@ -65,6 +60,8 @@ public abstract class Pizza implements Gericht {
     public void servieren(){
       // die Pizza servieren
     }
+
+    ...
 
 }
 ```
