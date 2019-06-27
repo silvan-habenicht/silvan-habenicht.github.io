@@ -85,6 +85,8 @@ function solveCommand() {
   $("#commandA").attr("checked",true);
 
   $("#commandB").attr("checked",true);
+
+  $("#commandC").attr("checked",true);
 }
 
 function solveObserver() {
@@ -116,6 +118,8 @@ function solveFactory() {
 
 function solveStrategy() {
   $("#strategyA").attr("checked",true);
+
+  $("#strategyB").attr("checked",true);
 
   $("#strategyC1").attr("value", "AmerikanischeZubereitungsart");
   $("#strategyC2").attr("value", "implements");
@@ -172,7 +176,8 @@ function checkAdapter() {
 function checkCommand() {
 
     if ($("#commandA").prop("checked") &&
-            $("#commandB").prop("checked")) {
+            $("#commandB").prop("checked") &&
+            $("#commandC").prop("checked")) {
 
         styleSolved("command", "Command");
         localStorage.setItem("commandSolved","true");
@@ -233,6 +238,7 @@ function checkFactory() {
 function checkStrategy() {
 
     if ($("#strategyA").prop("checked") &&
+            $("#strategyB").prop("checked") &&
             $("#strategyC1").val() === "AmerikanischeZubereitungsart" &&
             $("#strategyC2").val() === "implements" &&
             $("#strategyC3").val() === "Zubereitungsart" &&
@@ -270,6 +276,7 @@ function styleSolved(pattern, nameInMenu) {
   $("#" + pattern + "Menu").css('color','darkgreen');
   $("#" + pattern + "Menu").html(nameInMenu + " &#10003;");
   $("#" + pattern + "Result").html("");
+  $("#" + pattern + "Next").css('display', 'block');
   $("#" + pattern + "Button").css('background','darkgreen');
 }
 
@@ -277,5 +284,6 @@ function styleUnsolved(pattern, nameInMenu) {
   $("#" + pattern + "Menu").css('color','darkred');
   $("#" + pattern + "Menu").html(nameInMenu + "");
   $("#" + pattern + "Result").html("&#10007; Bitte überprüfe deine Eingaben.");
+  $("#" + pattern + "Next").css('display', 'none');
   $("#" + pattern + "Button").css('background','darkred');
 }

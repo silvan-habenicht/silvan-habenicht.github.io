@@ -115,4 +115,5 @@ Wenn wir nun eine Pizza Margherita mit Knoblauch erzeugen möchten, so geschieht
     </fieldset>
     <br/>
     <button type="button" onclick="checkDecorator()" id="decoratorButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="decoratorResult"></center>
+    <center><a id="adapterNext" style="display: none;"></a></center>
 </form>

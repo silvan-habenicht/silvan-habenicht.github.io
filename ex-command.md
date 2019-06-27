@@ -140,5 +140,36 @@ public class Kellner {
         </ul>
     </fieldset>
     <br/>
+    <fieldset>
+        Welche Funktion stellt das Command-Pattern überlicherweise außerdem bereit?
+        <ul>
+            <li>
+                <label>
+                    <input id="commandC" type="radio" name="commandC">
+                    Befehle rückgängig machen
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="commandC">
+                    Befehle erzwingen
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="commandC">
+                    Zugriffsrechte modifizieren
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="commandC">
+                    Warteschlangen abarbeiten
+                </label>
+            </li>
+        </ul>
+    </fieldset>
+    <br/>
     <button type="button" onclick="checkCommand()" id="commandButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="commandResult"></center>
+    <center><a id="commandNext" style="display: none;" href="/ex-observer.html">Nächstes Pattern...</a></center>
 </form>

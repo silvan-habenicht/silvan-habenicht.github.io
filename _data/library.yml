@@ -3,7 +3,7 @@
 
 - name: Dependency Injection
   class: pattern
-  link: /default_pattern.html
+  link: /dependency_injection.html
 
 - name: Domain Model
   class: pattern
@@ -54,7 +54,7 @@
 
 - name: Data Access Object
   class: pattern
-  link: /default_pattern.html
+  link: /dao.html
 
 - name: Data Transfer Object
   class: pattern
@@ -128,7 +128,7 @@
 
 - name: Model View Presenter
   class: pattern
-  link: /default_pattern.html
+  link: /mvp.html
 
 - name: Model View ViewModel
   class: pattern
@@ -255,3 +255,7 @@
 - name: Event Sourcing
   class: pattern
   link: /event_sourcing.html
+
+- name: CQRS
+  class: pattern
+  link: /default_pattern.html

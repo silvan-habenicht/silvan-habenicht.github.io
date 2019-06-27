@@ -110,7 +110,37 @@ Nun können wir Pizzen flexibel mit unterschiedlichen Zubereitungsarten erzeugen
             <li>
                 <label>
                     <input type="radio" id="strategyA" name="strategyA">
-                    Algorithmen bzw. Methoden einer Klasse leichter austauschbar halten
+                    Algorithmen einer Klasse leichter austauschbar halten
+                </label>
+            </li>
+        </ul>
+    </fieldset>
+    <br/>
+    <fieldset>
+        Auf welchen Aspekt einer Klasse zielt das Strategy-Pattern vornehmlich ab?
+        <ul>
+            <li>
+                <label>
+                    <input type="radio" name="strategyB">
+                    Erzeugung (Instanziierung/Konstruktion)
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input id="strategyB" type="radio" name="strategyB">
+                    Verhalten (Funktionen/Methoden)
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="strategyB">
+                    Struktur (Aufbau/Schnittstelle)
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="strategyB">
+                    Persistenz (Datenbank/Sicherung)
                 </label>
             </li>
         </ul>
@@ -129,4 +159,5 @@ public <input type="text" id="strategyC4" style="width: 4ch;font-weight: bold; c
 }
     </code></div></pre>
     <button type="button" onclick="checkStrategy()" id="strategyButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="strategyResult"></center>
+    <center><a id="strategyNext" style="display: none;" href="/ex-decorator.html">Nächstes Pattern...</a></center>
 </form>

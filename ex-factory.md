@@ -171,4 +171,5 @@ public class GerichteFabrik {
 }
     </code></div></pre>
     <button type="button" onclick="checkFactory()" id="factoryButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="factoryResult"></center>
+    <center><a id="factoryNext" style="display: none;" href="/ex-strategy.html">Nächstes Pattern...</a></center>
 </form>

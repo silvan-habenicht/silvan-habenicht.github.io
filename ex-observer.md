@@ -46,7 +46,7 @@ Die Lösung
 Glücklicherweise müssen wir uns auch für dieses Problem nicht mehr den Kopf zerbrechen, denn das Observer-Pattern bietet hierfür eine praktikable Schablone. Und nicht nur das &mdash; im Package ``java.util`` findet sich sogar ein entsprechendes Framework, welches wir direkt einsetzen können! Dazu zählen das Interface ``Observer`` sowie die Klasse ``Observable``.
 
 <p class="note">
-    Hinweis: <code> java.util.Observer </code> und <code> java.util.Observable </code> sind seit Java 9 <em>depracated</em> und sollten eigentlich nicht mehr verwendet werden. Die <a target="blank" href="https://docs.oracle.com/javase/9/docs/api/java/util/Observable.html">Begründung von Oracle</a> macht deutlich, dass das Observer-Pattern auch als ein <em>Antipattern</em> angesehen werden kann.
+    Hinweis: <code> java.util.Observer </code> und <code> java.util.Observable </code> sind seit Java 9 <em>depracated</em> und sollten in der Praxis nicht mehr verwendet werden. Die <a target="blank" href="https://docs.oracle.com/javase/9/docs/api/java/util/Observable.html">Begründung von Oracle</a> macht deutlich, dass das Observer-Pattern auch als ein <em>Antipattern</em> angesehen werden kann.
 </p>
 
 <div style="display:flex; flex-wrap: wrap;">
@@ -208,4 +208,5 @@ public Theke() {...}
 }
     </code></div></pre>
     <button type="button" onclick="checkObserver()" id="observerButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="observerResult"></center>
+    <center><a id="observerNext" style="display: none;" href="/ex-factory.html">Nächstes Pattern...</a></center>
 </form>

@@ -3,7 +3,7 @@ title: Event Sourcing
 layout: library_index
 ---
 
-> Zum Festhalten von Zustandsänderungen einer Anwendung in Form einer Folge von Ereignissen. [[Martin Fowler]](https://martinfowler.com/eaaDev/EventSourcing.html)
+> Zum Festhalten von Zustandsänderungen in einer Anwendung als Folge von Ereignissen. [[Martin Fowler]](https://martinfowler.com/eaaDev/EventSourcing.html)
 
 ## Patterns in freier Wildbahn
 
