@@ -50,7 +50,7 @@ function conditionCloseMenu() {
 }
 
 function getCertificate() {
-    window.open("data/pictures/pasta.jpg");
+    window.open("data/certificate.pdf");
 }
 
 function openLibrary() {
@@ -89,4 +89,4 @@ window.onresize = function (event) {
             document.getElementById("main").style.padding = "2em 4em 4em";
         }
     }
-}; 
+};

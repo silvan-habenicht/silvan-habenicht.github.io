@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
-  solveAllTests();
+  // Uncomment to initially checkmark all correct choices:
+  // solveAllTests();
 
   if (localStorage.getItem("adapterSolved") == null) {
     setAllTestsUnsolved();

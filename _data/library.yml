@@ -2,43 +2,33 @@
   class: category
 
 - name: Dependency Injection
-  class: pattern
   link: /dependency_injection.html
 
 - name: Domain Model
-  class: pattern
   link: /default_pattern.html
 
 - name: Domain Object
-  class: pattern
   link: /default_pattern.html
 
 - name: Layers
-  class: pattern
   link: /default_pattern.html
 
 - name: Microkernel
-  class: pattern
   link: /default_pattern.html
 
 - name: Model View Controller
-  class: pattern
   link: /mvc.html
 
 - name: Pipes and Filter
-  class: pattern
   link: /default_pattern.html
 
 - name: Presentation-Abstraction-Control
-  class: pattern
   link: /default_pattern.html
 
 - name: Reflection
-  class: pattern
   link: /default_pattern.html
 
 - name: Shared Repository
-  class: pattern
   link: /default_pattern.html
 
 
@@ -49,39 +39,30 @@
   class: category
 
 - name: Active Record
-  class: pattern
   link: /default_pattern.html
 
 - name: Data Access Object
-  class: pattern
   link: /dao.html
 
 - name: Data Transfer Object
-  class: pattern
   link: /dto.html
 
 - name: Identity Field
-  class: pattern
   link: /default_pattern.html
 
 - name: Identity Map
-  class: pattern
   link: /default_pattern.html
 
 - name: Lazy Loading
-  class: pattern
   link: /default_pattern.html
 
 - name: Row Data Gateway
-  class: pattern
   link: /default_pattern.html
 
 - name: Table Data Gateway
-  class: pattern
   link: /default_pattern.html
 
 - name: Unit of Work
-  class: pattern
   link: /default_pattern.html
 
 
@@ -92,23 +73,18 @@
   class: category
 
 - name: Abstract Factory
-  class: pattern
   link: /abstract_factory.html
 
 - name: Builder
-  class: pattern
   link: /builder.html
 
 - name: Factory Method
-  class: pattern
   link: /factory_method.html
 
 - name: Prototype
-  class: pattern
   link: /prototype.html
 
 - name: Singleton
-  class: pattern
   link: /singleton.html
 
 
@@ -119,35 +95,27 @@
   class: category
 
 - name: Application Controller
-  class: pattern
   link: /default_pattern.html
 
 - name: Front Controller
-  class: pattern
   link: /front_controller.html
 
 - name: Model View Presenter
-  class: pattern
   link: /mvp.html
 
 - name: Model View ViewModel
-  class: pattern
   link: /default_pattern.html
 
 - name: Page Controller
-  class: pattern
   link: /default_pattern.html
 
 - name: Template View
-  class: pattern
   link: /default_pattern.html
 
 - name: Transform View
-  class: pattern
   link: /default_pattern.html
 
 - name: Two Step View
-  class: pattern
   link: /default_pattern.html
 
 
@@ -159,31 +127,24 @@
   class: category
 
 - name: Adapter
-  class: pattern
   link: /adapter.html
 
 - name: Bridge
-  class: pattern
   link: /bridge.html
 
 - name: Composite
-  class: pattern
   link: /composite.html
 
 - name: Decorator
-  class: pattern
   link: /decorator.html
 
 - name: Facade
-  class: pattern
   link: /facade.html
 
 - name: Flyweight
-  class: pattern
   link: /flyweight.html
 
 - name: Proxy
-  class: pattern
   link: /proxy.html
 
 
@@ -194,55 +155,42 @@
   class: category
 
 - name: Blackboard
-  class: pattern
   link: /default_pattern.html
 
 - name: Chain of Responsibility
-  class: pattern
   link: /cor.html
 
 - name: Command
-  class: pattern
   link: /command.html
 
 - name: Interpreter
-  class: pattern
   link: /interpreter.html
 
 - name: Iterator
-  class: pattern
   link: /iterator.html
 
 - name: Mediator
-  class: pattern
   link: /mediator.html
 
 - name: Memento
-  class: pattern
   link: /memento.html
 
 - name: Null Object
-  class: pattern
   link: /nullobject.html
 
 - name: Observer
-  class: pattern
   link: /observer.html
 
 - name: State
-  class: pattern
   link: /state.html
 
 - name: Strategy
-  class: pattern
   link: /strategy.html
 
 - name: Template Method
-  class: pattern
   link: /template.html
 
 - name: Visitor
-  class: pattern
   link: /visitor.html
 
 
@@ -253,9 +201,7 @@
   class: category
 
 - name: Event Sourcing
-  class: pattern
   link: /event_sourcing.html
 
 - name: CQRS
-  class: pattern
   link: /default_pattern.html

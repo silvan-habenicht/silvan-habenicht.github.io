@@ -187,7 +187,7 @@ public class Tisch extends Observable implements Ort {
         Vervollständige das folgende Klassengerüst.
     </fieldset>
     <pre><div class="code"><code>
-public class Theke <input type="text" id ="observerC1" style="width: 7ch;font-weight: bold; color: rgb(0,85,153);"> <input type="text" id="observerC2" style="width: 10ch;font-weight: bold; color: rgb(44,0,159);"> {
+public class Theke <input type="text" id ="observerC1" style="width: 7ch;font-weight: bold; color: rgb(0,85,153);"> <input type="text" id="observerC2" style="width: 10ch;font-weight: bold; color: rgb(44,0,159);"> { // Theke erbt von?
 
 private boolean bestellungAbholbereit = false;
 

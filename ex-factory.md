@@ -164,7 +164,7 @@ public class GerichteFabrik {
   public GerichteFabrik() {}
 
   // Fabrikmethode
-  <input type="text" id="factoryC1" style="width: 7ch;"> <input type="text" id="factoryC2" style="width: 14ch;color: rgb(44,0,159);font-weight: bold;">(<input type="text" id="factoryC3" style="width: 3ch;color: rgb(0,85,153);font-weight: bold;"> gerichtID) { // Rückgabetyp, Methodennamen und Parametertyp eintragen
+  public <input type="text" id="factoryC1" style="width: 7ch;"> <input type="text" id="factoryC2" style="width: 14ch;color: rgb(44,0,159);font-weight: bold;">(<input type="text" id="factoryC3" style="width: 3ch;color: rgb(0,85,153);font-weight: bold;"> gerichtID) { // Rückgabetyp, Methodennamen und Parametertyp eintragen
   ... // beliebige Implementierung (nichts zu ergänzen)
   }
 

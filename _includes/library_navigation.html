@@ -10,8 +10,7 @@
       {% if item.class == "category" %}
         </br>
         <a class="category">{{ item.name }}</a>
-      {% endif %}
-      {% if item.class == "pattern" %}
+      {% else %}
         <a class="pattern" href="{{ item.link }}" {% if item.link ==  "/default_pattern.html" %} style="color: grey;" {% endif %}>{{ item.name }}</a>
       {% endif %}
     {% endfor %}

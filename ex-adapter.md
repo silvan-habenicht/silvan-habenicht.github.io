@@ -173,5 +173,6 @@ public class EnumerationAdapter implements Iterator&lt;Object&gt; {
 
 }
     </code></div></pre>
-    <button type="button" onclick="checkAdapter()" id="adapterButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="adapterResult"></center><center><a id="adapterNext" style="display: none;" href="/ex-command.html">Nächstes Pattern...</a></center>
+    <button type="button" onclick="checkAdapter()" id="adapterButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="adapterResult"></center>
+    <center><a id="adapterNext" style="display: none;" href="/ex-command.html">Nächstes Pattern...</a></center>
 </form>
