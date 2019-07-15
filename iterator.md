@@ -7,4 +7,4 @@ layout: library_index
 
 ## Patterns in freier Wildbahn
 
-[java.util.Iterator](https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/util/Iterator.html) - abgerufen am 18. Juni 2019
+[Hello World Example](https://github.com/code4craft/hello-design-pattern/tree/master/src/main/java/helloworld/behavioral/iterator) - abgerufen am 15. Juli 2019

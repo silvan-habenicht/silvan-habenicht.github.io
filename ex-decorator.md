@@ -114,6 +114,36 @@ Wenn wir nun eine Pizza Margherita mit Knoblauch erzeugen möchten, so geschieht
         </ul>
     </fieldset>
     <br/>
+    <fieldset>
+        Die Decorator-Klasse muss eine Instanzvariable von welchem Typ bereitstellen?
+        <ul>
+            <li>
+                <label>
+                    <input type="radio" name="decoratorB">
+                    <code>int</code>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" id="decoratorB" name="decoratorB">
+                    Die Instanzvariable sollte vom selben Supertyp sein wie die Klasse selbst.
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="decoratorB">
+                    Die Instanzvariable sollte von einem anderen Supertyp sein als die Klasse selbst.
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="decoratorB">
+                    <code>String</code>
+                </label>
+            </li>
+        </ul>
+    </fieldset>
+    <br/>
     <button type="button" onclick="checkDecorator()" id="decoratorButton">Auswerten</button>&nbsp;&nbsp;&nbsp;&nbsp;<center id="decoratorResult"></center>
     <center><a id="adapterNext" style="display: none;"></a></center>
 </form>

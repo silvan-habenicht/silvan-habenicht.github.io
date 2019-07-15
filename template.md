@@ -80,3 +80,5 @@ Man erkennt, dass die Implementierungen der ``zubereiten()``-Methode sehr ähnli
 ## Patterns in freier Wildbahn
 
 [AccountCreator](https://github.com/java9s/template-method-pattern) - abgerufen am 17. Juni 2019
+
+[Hello World Example](https://github.com/code4craft/hello-design-pattern/tree/master/src/main/java/helloworld/behavioral/template_method) - abgerufen am 15. Juli 2019

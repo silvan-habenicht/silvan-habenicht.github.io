@@ -1,10 +1,12 @@
 
+// Indicates whether the control menu is opened/visible
 var opened = false;
 
+// Load syntax highlighting from hljs
 hljs.initHighlightingOnLoad();
 
 $( document ).ready(function() {
-
+  // Menu-animation only when visiting the home-page (index.html)
   if(home) {
     enterHome();
   } else if (window.innerWidth > 1040){
@@ -42,6 +44,7 @@ function openMenuWithoutTransition() {
   document.getElementById("patternMenu").classList.remove('notransition'); // Re-enable transitions
 }
 
+// Close menu only when the window-width is small
 function conditionCloseMenu() {
     "use strict";
     if (window.innerWidth < 1040) {
@@ -57,6 +60,7 @@ function openLibrary() {
     window.open("library.html");
 }
 
+// Dynamic resizing for different window sizes
 window.onresize = function (event) {
 
     if (opened) {

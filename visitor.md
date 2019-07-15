@@ -8,3 +8,5 @@ layout: library_index
 ## Patterns in freier Wildbahn
 
 [CashOutVisitor](https://github.com/jacob-pecile/Visitor) - abgerufen am 18. Juni 2019
+
+[Hello World Example](https://github.com/code4craft/hello-design-pattern/tree/master/src/main/java/helloworld/behavioral/visitor) - abgerufen am 15. Juli 2019

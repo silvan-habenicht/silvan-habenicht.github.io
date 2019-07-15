@@ -55,6 +55,7 @@ function retrieveSolvedTests() {
     solveDecorator();
     styleSolved("decorator", "Decorator");
   }
+  // Enable download of certificate if all exercises are solved
   if (allPatternsSolved()) {
     $("#certificate").prop("disabled", false);
   }
@@ -72,10 +73,13 @@ function solveAllTests() {
 }
 
 function solveAdapter() {
+  // Solve exercise 1
   $("#adapterA").attr("checked",true);
 
+  // Solve exercise 2
   $("#adapterB").attr("checked",true);
 
+  // Solve exercise 3
   $("#adapterC1").attr("value", "hasNext()");
   $("#adapterC2").attr("value", "enumeration.hasMoreElements()");
   $("#adapterC3").attr("value", "enumeration.nextElement()");
@@ -83,21 +87,27 @@ function solveAdapter() {
 }
 
 function solveCommand() {
+  // Solve exercise 1
   $("#commandA").attr("checked",true);
 
+  // Solve exercise 2
   $("#commandB").attr("checked",true);
 
+  // Solve exercise 3
   $("#commandC").attr("checked",true);
 }
 
 function solveObserver() {
+  // Solve exercise 1
   $("#observerA").attr("checked",true);
 
+  // Solve exercise 2
   $("#observerB1").attr("checked",false);
   $("#observerB2").attr("checked",false);
   $("#observerB3").attr("checked",true);
   $("#observerB4").attr("checked",true);
 
+  // Solve exercise 3
   $("#observerC1").attr("value", "extends");
   $("#observerC2").attr("value", "Observable");
   $("#observerC3").attr("value", "!bestellungAbholbereit");
@@ -105,23 +115,29 @@ function solveObserver() {
 }
 
 function solveFactory() {
+  // Solve exercise 1
   $("#factoryA").attr("checked",true);
 
+  // Solve exercise 2
   $("#factoryB1").attr("checked",true);
   $("#factoryB2").attr("checked",true);
   $("#factoryB3").attr("checked",true);
   $("#factoryB4").attr("checked",false);
 
+  // Solve exercise 3
   $("#factoryC1").attr("value", "Gericht");
   $("#factoryC2").attr("value", "erzeugeGericht");
   $("#factoryC3").attr("value", "int");
 }
 
 function solveStrategy() {
+  // Solve exercise 1
   $("#strategyA").attr("checked",true);
 
+  // Solve exercise 2
   $("#strategyB").attr("checked",true);
 
+  // Solve exercise 3
   $("#strategyC1").attr("value", "AmerikanischeZubereitungsart");
   $("#strategyC2").attr("value", "implements");
   $("#strategyC3").attr("value", "Zubereitungsart");
@@ -131,9 +147,25 @@ function solveStrategy() {
 }
 
 function solveDecorator() {
+  // Solve exercise 1
   $("#decoratorA").attr("checked",true);
+
+  // Solve exercise 2
+  $("#decoratorB").attr("checked",true);
 }
 
+// Check whether all exercises have been solved and if so, show a message
+function checkSolved() {
+  if (allPatternsSolved()) {
+    $("#certificate").prop("disabled", false);
+    setTimeout(function () {
+        ion.sound.play("tinder-match");
+        document.getElementById("alert").style.display = "block";
+    }, 1000);
+  }
+}
+
+// Returns true iff all exercises have been solved correctly
 function allPatternsSolved() {
   if (localStorage.getItem("adapterSolved") == "false") { return false; }
   if (localStorage.getItem("commandSolved") == "false") { return false; }
@@ -144,15 +176,8 @@ function allPatternsSolved() {
   return true;
 }
 
-function checkSolved() {
-  if (allPatternsSolved()) {
-    $("#certificate").prop("disabled", false);
-    setTimeout(function () {
-        ion.sound.play("tinder-match");
-        document.getElementById("alert").style.display = "block";
-    }, 1000);
-  }
-}
+// Each of the "check" function is called when pressing the corresponding
+// "Auswerten"-HTML-Buttons
 
 function checkAdapter() {
 
@@ -260,7 +285,8 @@ function checkStrategy() {
 
 function checkDecorator() {
 
-    if ($("#decoratorA").prop("checked")) {
+    if ($("#decoratorA").prop("checked") &&
+          $("#decoratorB").prop("checked")) {
 
         styleSolved("decorator", "Decorator");
         localStorage.setItem("decoratorSolved","true");
